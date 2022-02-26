@@ -24,5 +24,5 @@ export interface Hotel {
   starRating: number;
   telephone: string;
   town: string;
-  roomDetails: RoomsDetails[];
+  roomsDetails: RoomsDetails;
 }
