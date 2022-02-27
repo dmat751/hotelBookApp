@@ -8,6 +8,6 @@ const store = configureStore({
 });
 
 type RootState = ReturnType<typeof store.getState>;
-export const selectHotelList = (state: RootState) => state.hotelList.hotelList;
+export const selectHotelList = (state: RootState) => state.hotelList;
 
 export default store;

@@ -9,7 +9,13 @@ import { selectHotelList } from '../../../store/index';
 
 const HotelList = () => {
   const dispatch = useDispatch();
-  const hotelList = useSelector(selectHotelList);
+  const hotelListItem = useSelector(selectHotelList);
+  const hotelFilters = hotelListItem.filters;
+
+  let hotelList = hotelListItem.hotelList.filter((hotelItem) => {
+    return hotelItem.starRating >= hotelFilters.stars;
+  });
+  console.log(hotelList);
 
   useEffect(() => {
     dispatch(fetchHotelListData());

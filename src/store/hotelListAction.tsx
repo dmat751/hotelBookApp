@@ -2,7 +2,7 @@ import { Hotel } from '../models/Hotel';
 import { RoomsDetails } from '../models/Room';
 import PromisePool from '@supercharge/promise-pool';
 import { Dispatch } from 'redux';
-import hotelListSlice, { HotelListSliceState } from './hotelListSlice';
+import hotelListSlice from './hotelListSlice';
 
 const getHotelList = async (): Promise<Hotel[]> => {
   const listResp = await fetch(
@@ -30,8 +30,7 @@ export const fetchHotelListData = () => {
           return (hotelItem.roomsDetails = await getRoomList(hotelItem.id));
         });
 
-      let payloadHotelData: HotelListSliceState = { hotelList };
-      dispatch(hotelListSlice.actions.replaceHotelList(payloadHotelData));
+      dispatch(hotelListSlice.actions.replaceHotelList(hotelList));
     };
 
     const hotelListData = await getData();
