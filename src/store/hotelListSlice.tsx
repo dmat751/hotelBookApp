@@ -1,0 +1,24 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Hotel } from '../models/Hotel';
+
+export interface HotelListSliceState {
+  hotelList: Hotel[];
+}
+
+const initialState: HotelListSliceState = {
+  hotelList: [],
+};
+
+const hotelListSlice = createSlice({
+  name: 'hotelList',
+  initialState,
+  reducers: {
+    replaceHotelList(state, action: PayloadAction<HotelListSliceState>) {
+      state.hotelList = action.payload.hotelList;
+    },
+  },
+});
+
+export const { replaceHotelList } = hotelListSlice.actions;
+
+export default hotelListSlice;

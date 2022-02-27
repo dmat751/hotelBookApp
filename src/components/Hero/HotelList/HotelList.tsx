@@ -11,7 +11,7 @@ const getHotelList = async (): Promise<Hotel[]> => {
   return await listResp.json();
 };
 
-const getRoom = async (id: string): Promise<RoomsDetails> => {
+const getRoomList = async (id: string): Promise<RoomsDetails> => {
   const dataResp = await fetch(
     'https://obmng.dbm.guestline.net/api/roomRates/OBMNG/' + id
   );
@@ -28,17 +28,16 @@ const HotelList: React.FC<{ dummyVar: string }> = (props) => {
       const roomList = await PromisePool.withConcurrency(5)
         .for(hotelList)
         .process(async (hotelItem) => {
-          return (hotelItem.roomsDetails = await getRoom(hotelItem.id));
+          return (hotelItem.roomsDetails = await getRoomList(hotelItem.id));
         });
-      console.log(hotelList);
+      // console.log(hotelList);
       sethotelsData(hotelList);
     };
     getData();
   }, []);
 
   return (
-      <React.Fragment>
-          
+    <React.Fragment>
       <ul>
         {hotelsData.map((hotelItem) => {
           return (
