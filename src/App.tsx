@@ -1,26 +1,16 @@
 import classes from './App.module.scss';
 import Hero from './components/Hero/Hero';
 import HotelList from './components/Hero/HotelList/HotelList';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectHotelList } from './store/index';
-import { Fragment, useEffect } from 'react';
-import { fetchHotelListData } from './store/hotelListAction';
+import { Fragment } from 'react';
 
 const dummyUrl =
   'https://cdn.wallpaperhub.app/cloudcache/d/3/c/2/b/f/d3c2bf863b952ad8d93816729ce85bb0bbebcbc8.png';
 
 function App() {
-  const dispatch = useDispatch();
-  const hotelList = useSelector(selectHotelList);
-
-  useEffect(() => {
-    dispatch(fetchHotelListData());
-  }, [dispatch]);
-
   return (
     <Fragment>
       <Hero heroPhotoUrl={dummyUrl} heroPhotoAlt="dummy alt"></Hero>
-      <HotelList hotelList={hotelList}></HotelList>
+      <HotelList></HotelList>
     </Fragment>
   );
 }

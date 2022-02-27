@@ -2,12 +2,23 @@ import { Hotel } from '../../../models/Hotel';
 import HotelItem from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
 import baseClasses from './../../../baseClasses.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchHotelListData } from '../../../store/hotelListAction';
+import { selectHotelList } from '../../../store/index';
 
-const HotelList: React.FC<{ hotelList: Hotel[] }> = (props) => {
+const HotelList = () => {
+  const dispatch = useDispatch();
+  const hotelList = useSelector(selectHotelList);
+
+  useEffect(() => {
+    dispatch(fetchHotelListData());
+  }, [dispatch]);
+
   return (
     <div className={classes['list-container']}>
       <ul className={`${classes.list} ${baseClasses['basic-container1']}`}>
-        {props.hotelList.map((hotelItem) => {
+        {hotelList.map((hotelItem) => {
           return (
             <li className={classes['list-item']} key={hotelItem.id}>
               <HotelItem hotelItem={hotelItem} />
