@@ -29,10 +29,11 @@ export const fetchHotelListData = () => {
         .process(async (hotelItem) => {
           return (hotelItem.roomsDetails = await getRoomList(hotelItem.id));
         });
-      console.log(hotelList);
-      let hotelData: HotelListSliceState = { hotelList };
-      dispatch(hotelListSlice.actions.replaceHotelList(hotelData));
+
+      let payloadHotelData: HotelListSliceState = { hotelList };
+      dispatch(hotelListSlice.actions.replaceHotelList(payloadHotelData));
     };
+
     const hotelListData = await getData();
   };
 };

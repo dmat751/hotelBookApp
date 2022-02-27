@@ -20,7 +20,7 @@ function App() {
   return (
     <Fragment>
       <Hero heroPhotoUrl={dummyUrl} heroPhotoAlt="dummy alt"></Hero>
-      <HotelList dummyVar="rwf"></HotelList>
+      <HotelList hotelList={hotelList}></HotelList>
     </Fragment>
   );
 }
