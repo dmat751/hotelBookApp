@@ -1,38 +1,21 @@
-import React from 'react';
 import { Hotel } from '../../../models/Hotel';
+import HotelItem from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
+import baseClasses from './../../../baseClasses.module.scss';
 
 const HotelList: React.FC<{ hotelList: Hotel[] }> = (props) => {
   return (
-    <ul>
-      {props.hotelList.map((hotelItem) => {
-        return (
-          <React.Fragment key={hotelItem.id}>
-            <li>
-              hotel ID:{hotelItem.id} star:{hotelItem.starRating}
+    <div className={classes['list-container']}>
+      <ul className={`${classes.list} ${baseClasses['basic-container1']}`}>
+        {props.hotelList.map((hotelItem) => {
+          return (
+            <li className={classes['list-item']} key={hotelItem.id}>
+              <HotelItem hotelItem={hotelItem} />
             </li>
-            <ul>
-              {hotelItem.roomsDetails.rooms.map((roomItem) => {
-                return (
-                  <li className={classes['room-item']} key={roomItem.id}>
-                    <div className={classes['room-row']}>ID:{roomItem.id}</div>
-                    <div className={classes['room-row']}>
-                      maxAdults:{roomItem.occupancy.maxAdults}
-                    </div>
-                    <div className={classes['room-row']}>
-                      maxChildren:{roomItem.occupancy.maxChildren}
-                    </div>
-                    <div className={classes['room-row']}>
-                      maxOverall:{roomItem.occupancy.maxOverall}
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </React.Fragment>
-        );
-      })}
-    </ul>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 export default HotelList;

@@ -1,4 +1,4 @@
-import './App.scss';
+import classes from './App.module.scss';
 import Hero from './components/Hero/Hero';
 import HotelList from './components/Hero/HotelList/HotelList';
 import { useSelector, useDispatch } from 'react-redux';

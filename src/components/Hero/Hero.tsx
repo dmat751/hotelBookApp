@@ -1,3 +1,4 @@
+import FormFilter from './FormFilter/FormFilter';
 import classes from './Hero.module.scss';
 
 const Hero: React.FC<{ heroPhotoUrl: string; heroPhotoAlt: string }> = (
@@ -10,6 +11,7 @@ const Hero: React.FC<{ heroPhotoUrl: string; heroPhotoAlt: string }> = (
         src={props.heroPhotoUrl}
         alt={props.heroPhotoAlt}
       />
+      <FormFilter someData="rifn" />
     </div>
   );
 };
