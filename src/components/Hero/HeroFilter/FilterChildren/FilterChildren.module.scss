@@ -1,0 +1,30 @@
+.filter {
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+  &__label {
+    font-size: 1.2rem;
+  }
+
+  &__button {
+    padding: 2px 7px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    span {
+      display: block;
+    }
+  }
+
+  &__counter {
+    margin: 0 6px;
+  }
+
+  &__plus-button {
+  }
+
+  &__minus-button {
+  }
+}

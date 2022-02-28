@@ -1,4 +1,3 @@
-import { Hotel } from '../../../models/Hotel';
 import HotelItem from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
 import baseClasses from './../../../baseClasses.module.scss';
@@ -15,7 +14,6 @@ const HotelList = () => {
   let hotelList = hotelListItem.hotelList.filter((hotelItem) => {
     return hotelItem.starRating >= hotelFilters.stars;
   });
-  console.log(hotelList);
 
   useEffect(() => {
     dispatch(fetchHotelListData());

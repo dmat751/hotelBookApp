@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectHotelList } from '../../../store';
 import hotelListSlice, { HotelsFilters } from '../../../store/hotelListSlice';
+import FilterChildren from './FilterChildren/FilterChildren';
 import FilterStar from './FilterStar/FilterStar';
 import classes from './HeroFilter.module.scss';
 
@@ -18,51 +20,55 @@ const starActiveColor: starOptions = {
   fillColor: 'yellow',
 };
 
-const starInActiveColor: starOptions = {
+const starInactiveColor: starOptions = {
   borderColor: 'yellow',
   fillColor: 'transparent',
 };
 
-const FormFilter = () => {
-  // const starInputRef = useRef<HTMLInputElement>(null);
-  // const dispatch = useDispatch();
-
-  // const searchHandler = (event: React.SyntheticEvent) => {
-  //   event.preventDefault();
-
-  //   const enteredStarAmount = starInputRef.current?.value;
-  //   const numberStarAmount = parseInputToNumber(enteredStarAmount);
-  //   const hotelFilters: HotelsFilters = {
-  //     adults: 2,
-  //     children: 0,
-  //     stars: numberStarAmount,
-  //   };
-  //   dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
-  // };
-
-  const initStarState: starWidgetState = {
-    starArray: [
-      starInActiveColor,
-      starInActiveColor,
-      starInActiveColor,
-      starInActiveColor,
-      starInActiveColor,
-    ],
-  };
-
-  const onClickHandler = (starIndex: number): void => {
-    const newStarState: starWidgetState = { starArray: [] };
-    for (let i = 0; i < initStarState.starArray.length; i++) {
-      if (i <= starIndex) {
-        newStarState.starArray.push(starActiveColor);
-      } else {
-        newStarState.starArray.push(starInActiveColor);
-      }
+const generateStarState = (
+  starAmount: number,
+  filledStarsAmount: number
+): starWidgetState => {
+  let newStarState: starWidgetState = { starArray: [] };
+  for (let i = 1; i <= starAmount; i++) {
+    if (i <= filledStarsAmount) {
+      newStarState.starArray.push(starActiveColor);
+    } else {
+      newStarState.starArray.push(starInactiveColor);
     }
+  }
+  return newStarState;
+};
+
+const FormFilter = () => {
+  const maxHotelRateStarAmount = 5;
+  const hotelListItem = useSelector(selectHotelList);
+  const initStarAmount = hotelListItem.filters.stars;
+  console.log(initStarAmount);
+  const dispatch = useDispatch();
+
+  const onClickHandlerStar = (starIndex: number): void => {
+    const newStarState: starWidgetState = generateStarState(
+      maxHotelRateStarAmount,
+      starIndex + 1
+    );
+
     setStarState(newStarState);
+    const hotelFilters: HotelsFilters = {
+      adults: hotelListItem.filters.adults,
+      children: hotelListItem.filters.children,
+      stars: starIndex + 1,
+    };
+    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
   };
+
+  const initStarState: starWidgetState = generateStarState(
+    maxHotelRateStarAmount,
+    initStarAmount
+  );
 
   const [starState, setStarState] = useState(initStarState);
+  // const [childrenState, setChildrenState] = useState(initChildrenState)
 
   return (
     <div className={classes.filter}>
@@ -71,7 +77,7 @@ const FormFilter = () => {
           return (
             <FilterStar
               key={key}
-              onClickHandler={onClickHandler.bind(null, key)}
+              onClickHandler={onClickHandlerStar.bind(null, key)}
               clickedStarID={key}
               borderColor={starItem.borderColor}
               fillColor={starItem.fillColor}
@@ -79,7 +85,7 @@ const FormFilter = () => {
           );
         })}
 
-        <button>Search</button>
+        <FilterChildren dummyVar="rf" />
       </div>
     </div>
   );
