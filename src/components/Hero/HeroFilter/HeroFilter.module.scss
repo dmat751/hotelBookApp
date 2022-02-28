@@ -1,0 +1,12 @@
+.filter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-50%);
+
+  &__content {
+    background-color: green;
+    padding: 10px;
+    display: flex;
+  }
+}
