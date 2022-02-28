@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { Children, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectHotelList } from '../../../store';
 import hotelListSlice, { HotelsFilters } from '../../../store/hotelListSlice';
-import FilterChildren from './FilterChildren/FilterChildren';
+import FilterAmount from './FilterAmount/FilterAmount';
 import FilterStar from './FilterStar/FilterStar';
 import classes from './HeroFilter.module.scss';
 
@@ -40,11 +40,32 @@ const generateStarState = (
   return newStarState;
 };
 
+const AmountFilterNextValueGenerator = (
+  operationType: string,
+  prevState: number
+): number => {
+  let newState;
+  if (operationType === '-') {
+    if (prevState > 0) {
+      newState = prevState - 1;
+    } else {
+      newState = prevState;
+    }
+    return newState;
+  } else if (operationType === '+') {
+    const newState = prevState + 1;
+    return newState;
+  } else {
+    return prevState;
+  }
+};
+
 const FormFilter = () => {
   const maxHotelRateStarAmount = 5;
   const hotelListItem = useSelector(selectHotelList);
   const initStarAmount = hotelListItem.filters.stars;
-  console.log(initStarAmount);
+  const currentChildrenState = hotelListItem.filters.children;
+  const currentAdultState = hotelListItem.filters.adults;
   const dispatch = useDispatch();
 
   const onClickHandlerStar = (starIndex: number): void => {
@@ -62,13 +83,67 @@ const FormFilter = () => {
     dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
   };
 
+  const onClickIncreaseChildrenHandler = (): void => {
+    const newChildrenState = AmountFilterNextValueGenerator(
+      '+',
+      currentChildrenState
+    );
+    const hotelFilters: HotelsFilters = {
+      adults: hotelListItem.filters.adults,
+      children: newChildrenState,
+      stars: hotelListItem.filters.stars,
+    };
+    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
+  };
+
+  const onClickDecreaseChildrenHandler = (): void => {
+    const newChildrenState = AmountFilterNextValueGenerator(
+      '-',
+      currentChildrenState
+    );
+
+    const hotelFilters: HotelsFilters = {
+      adults: hotelListItem.filters.adults,
+      children: newChildrenState,
+      stars: hotelListItem.filters.stars,
+    };
+    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
+  };
+
+  const onClickDecraseAdultHandler = (): void => {
+    const newAdultState = AmountFilterNextValueGenerator(
+      '-',
+      currentAdultState
+    );
+
+    const hotelFilters: HotelsFilters = {
+      adults: newAdultState,
+      children: hotelListItem.filters.children,
+      stars: hotelListItem.filters.stars,
+    };
+    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
+  };
+
+  const onClickIncreaseAdultHandler = (): void => {
+    const newAdultState = AmountFilterNextValueGenerator(
+      '+',
+      currentAdultState
+    );
+
+    const hotelFilters: HotelsFilters = {
+      adults: newAdultState,
+      children: hotelListItem.filters.children,
+      stars: hotelListItem.filters.stars,
+    };
+    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
+  };
+
   const initStarState: starWidgetState = generateStarState(
     maxHotelRateStarAmount,
     initStarAmount
   );
 
   const [starState, setStarState] = useState(initStarState);
-  // const [childrenState, setChildrenState] = useState(initChildrenState)
 
   return (
     <div className={classes.filter}>
@@ -85,7 +160,19 @@ const FormFilter = () => {
           );
         })}
 
-        <FilterChildren dummyVar="rf" />
+        <FilterAmount
+          onIncreaseFilterHandler={onClickIncreaseChildrenHandler}
+          onDecreaseFilterHandler={onClickDecreaseChildrenHandler}
+          currentFilterAmount={currentChildrenState}
+          filterLabel={'Children:'}
+        />
+
+        <FilterAmount
+          onIncreaseFilterHandler={onClickIncreaseAdultHandler}
+          onDecreaseFilterHandler={onClickDecraseAdultHandler}
+          currentFilterAmount={currentAdultState}
+          filterLabel={'Adults:'}
+        />
       </div>
     </div>
   );
