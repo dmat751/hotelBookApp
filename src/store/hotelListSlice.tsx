@@ -16,6 +16,7 @@ export interface HotelListSliceState {
 export interface ApiQueryStatus {
   notification: string;
   isError: boolean;
+  isLoading: boolean;
 }
 
 const initialState: HotelListSliceState = {
@@ -28,6 +29,7 @@ const initialState: HotelListSliceState = {
   apiQueryStatus: {
     isError: false,
     notification: '',
+    isLoading: false,
   },
 };
 

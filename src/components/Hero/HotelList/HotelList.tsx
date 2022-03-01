@@ -128,7 +128,9 @@ const HotelList = () => {
               </li>
             );
           })}
-        {hotelListItem.apiQueryStatus.notification && (
+        {console.log(hotelListItem.apiQueryStatus)}
+        {(hotelListItem.apiQueryStatus.isLoading ||
+          hotelListItem.apiQueryStatus.isError) && (
           <li>{hotelListItem.apiQueryStatus.notification}</li>
         )}
       </ul>

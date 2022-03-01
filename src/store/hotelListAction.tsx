@@ -36,6 +36,7 @@ export const fetchHotelListData = () => {
         const newApiStatusLoading: ApiQueryStatus = {
           isError: false,
           notification: 'Loading...',
+          isLoading: true,
         };
         dispatch(hotelListSlice.actions.setApiQueryStatus(newApiStatusLoading));
         const hotelList = await getHotelList();
@@ -50,20 +51,23 @@ export const fetchHotelListData = () => {
           const newApiStatusDone: ApiQueryStatus = {
             isError: false,
             notification: '',
+            isLoading: false,
           };
           dispatch(hotelListSlice.actions.setApiQueryStatus(newApiStatusDone));
+          dispatch(hotelListSlice.actions.replaceHotelList(hotelList));
         } else {
           const newApiStatusDone: ApiQueryStatus = {
             isError: true,
             notification: 'Error - can not fetch room data',
+            isLoading: false,
           };
           dispatch(hotelListSlice.actions.setApiQueryStatus(newApiStatusDone));
         }
-        dispatch(hotelListSlice.actions.replaceHotelList(hotelList));
       } catch (error) {
         const newApiStatusError: ApiQueryStatus = {
           isError: true,
           notification: 'Error - can not fetch data',
+          isLoading: false,
         };
         dispatch(hotelListSlice.actions.setApiQueryStatus(newApiStatusError));
       }
