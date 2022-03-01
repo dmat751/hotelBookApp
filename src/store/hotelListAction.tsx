@@ -20,7 +20,6 @@ const getRoomList = async (id: string): Promise<RoomsDetails> => {
 
 export const fetchHotelListData = () => {
   return async (dispatch: Dispatch<any>) => {
-    console.log(dispatch);
     const getData = async () => {
       const hotelList = await getHotelList();
 

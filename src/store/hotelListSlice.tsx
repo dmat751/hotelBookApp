@@ -17,7 +17,7 @@ const initialState: HotelListSliceState = {
   filters: {
     adults: 2,
     children: 0,
-    stars: 3,
+    stars: 1,
   },
 };
 
