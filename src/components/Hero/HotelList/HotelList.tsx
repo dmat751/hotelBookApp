@@ -9,30 +9,95 @@ import { Hotel } from '../../../models/Hotel';
 
 let isInitial = true;
 
+const childrenFilter = (
+  hotelList: Hotel[],
+  childrenAmount: number
+): Hotel[] => {
+  const result = hotelList.map((hotelItem) => {
+    let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
+      if (room.occupancy.maxChildren >= childrenAmount) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    const filteredHotel = {
+      ...hotelItem,
+      roomsDetails: {
+        ratePlans: hotelItem.roomsDetails.ratePlans,
+        rooms: filteredRoom,
+      },
+    };
+
+    return filteredHotel;
+  });
+  return result;
+};
+
+const adultFilter = (hotelList: Hotel[], adultAmount: number): Hotel[] => {
+  const result = hotelList.map((hotelItem) => {
+    let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
+      if (room.occupancy.maxAdults >= adultAmount) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    const filteredHotel = {
+      ...hotelItem,
+      roomsDetails: {
+        ratePlans: hotelItem.roomsDetails.ratePlans,
+        rooms: filteredRoom,
+      },
+    };
+
+    return filteredHotel;
+  });
+  return result;
+};
+
+const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] => {
+  const result = hotelList.filter((hotelItem) => {
+    if (hotelItem.starRating >= starAmount) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  return result;
+};
+
+const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] => {
+  const result = hotelList.filter((hotelItem) => {
+    if (hotelItem.roomsDetails.rooms.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  return result;
+};
+
 const HotelList = () => {
   const dispatch = useDispatch();
   const hotelListItem = useSelector(selectHotelList);
   const hotelFilters = hotelListItem.filters;
   let filteredHotelList = hotelListItem.hotelList;
   if (!isInitial) {
-    filteredHotelList = filteredHotelList.map((hotelItem) => {
-      let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
-        if (room.occupancy.maxChildren >= hotelFilters.children) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-      const filteredHotel = {
-        ...hotelItem,
-        roomsDetails: {
-          ratePlans: hotelItem.roomsDetails.ratePlans,
-          rooms: filteredRoom,
-        },
-      };
-      return filteredHotel;
-    });
-    console.log(filteredHotelList);
+    filteredHotelList = childrenFilter(
+      filteredHotelList,
+      hotelFilters.children
+    );
+
+    filteredHotelList = adultFilter(filteredHotelList, hotelFilters.adults);
+
+    filteredHotelList = starFilter(filteredHotelList, hotelFilters.stars);
+
+    filteredHotelList = removeHotelsWithoutRooms(filteredHotelList);
   }
 
   useEffect(() => {
