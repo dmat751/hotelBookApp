@@ -87,17 +87,21 @@ const HotelList = () => {
   const hotelListItem = useSelector(selectHotelList);
   const hotelFilters = hotelListItem.filters;
   let filteredHotelList = hotelListItem.hotelList;
-  if (!isInitial) {
-    filteredHotelList = childrenFilter(
-      filteredHotelList,
-      hotelFilters.children
-    );
+  if (!isInitial && !hotelListItem.apiQueryStatus.isError) {
+    try {
+      filteredHotelList = childrenFilter(
+        filteredHotelList,
+        hotelFilters.children
+      );
 
-    filteredHotelList = adultFilter(filteredHotelList, hotelFilters.adults);
+      filteredHotelList = adultFilter(filteredHotelList, hotelFilters.adults);
 
-    filteredHotelList = starFilter(filteredHotelList, hotelFilters.stars);
+      filteredHotelList = starFilter(filteredHotelList, hotelFilters.stars);
 
-    filteredHotelList = removeHotelsWithoutRooms(filteredHotelList);
+      filteredHotelList = removeHotelsWithoutRooms(filteredHotelList);
+    } catch (error) {
+      console.log('filter Error');
+    }
   }
 
   useEffect(() => {
@@ -118,11 +122,15 @@ const HotelList = () => {
           filteredHotelList.map((hotelItem) => {
             return (
               <li className={classes['list-item']} key={hotelItem.id}>
-                <HotelItem hotelItem={hotelItem} />
+                {!hotelListItem.apiQueryStatus.isError && (
+                  <HotelItem hotelItem={hotelItem} />
+                )}
               </li>
             );
           })}
-        {isInitial && <li>Loading data...</li>}
+        {hotelListItem.apiQueryStatus.notification && (
+          <li>{hotelListItem.apiQueryStatus.notification}</li>
+        )}
       </ul>
     </div>
   );

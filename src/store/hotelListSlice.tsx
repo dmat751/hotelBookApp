@@ -1,15 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Hotel } from '../models/Hotel';
 
-export interface HotelListSliceState {
-  hotelList: Hotel[];
-  filters: HotelsFilters;
-}
-
 export interface HotelsFilters {
   adults: number;
   children: number;
   stars: number;
+}
+
+export interface HotelListSliceState {
+  hotelList: Hotel[];
+  filters: HotelsFilters;
+  apiQueryStatus: ApiQueryStatus;
+}
+
+export interface ApiQueryStatus {
+  notification: string;
+  isError: boolean;
 }
 
 const initialState: HotelListSliceState = {
@@ -18,6 +24,10 @@ const initialState: HotelListSliceState = {
     adults: 2,
     children: 0,
     stars: 1,
+  },
+  apiQueryStatus: {
+    isError: false,
+    notification: '',
   },
 };
 
@@ -30,6 +40,9 @@ const hotelListSlice = createSlice({
     },
     setHotelFilters(state, action: PayloadAction<HotelsFilters>) {
       state.filters = action.payload;
+    },
+    setApiQueryStatus(state, action: PayloadAction<ApiQueryStatus>) {
+      state.apiQueryStatus = action.payload;
     },
   },
 });
