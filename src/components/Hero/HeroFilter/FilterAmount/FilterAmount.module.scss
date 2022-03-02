@@ -7,14 +7,19 @@
   }
 
   &__button {
-    padding: 2px 7px;
+    padding: 5px;
     margin: 0 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgb(144, 202, 249);
+    border: none;
+
     cursor: pointer;
-    span {
+    svg {
       display: block;
+      height: 10px;
+      width: 10px;
     }
   }
 

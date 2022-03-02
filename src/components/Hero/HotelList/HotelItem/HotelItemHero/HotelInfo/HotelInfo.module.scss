@@ -1,4 +1,23 @@
 .info {
   margin-right: auto;
-  margin-left: 10px;
+  padding: 0 30px;
+  font-family: 'Varela Round', sans-serif;
+
+  h2 {
+    font-size: 3rem;
+    margin-top: 10px;
+  }
+
+  h3 {
+    margin-top: 25px;
+  }
+
+  h4 {
+    margin-top: 5px;
+  }
+
+  h3,
+  h4 {
+    font-size: 2rem;
+  }
 }

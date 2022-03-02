@@ -6,7 +6,7 @@ import Stars from './Stars/Stars';
 const HotelItemHero: React.FC<{ hotelItem: Hotel }> = (props) => {
   return (
     <div className={classes.hero}>
-      <Slider Images={props.hotelItem.images} />
+      <Slider images={props.hotelItem.images} />
       <HotelInfo
         hotelName={props.hotelItem.name}
         hotelAddress1={props.hotelItem.address1}

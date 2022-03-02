@@ -1,29 +1,16 @@
 import { Hotel } from '../../../../models/Hotel';
 import classes from './HotelItem.module.scss';
 import HotelItemHero from './HotelItemHero/HotelItemHero';
+import HotelItemRoom from './HotelItemRoom/HotelItemRoom';
 
 const HotelItem: React.FC<{ hotelItem: Hotel }> = (props) => {
   const hotelItem = props.hotelItem;
   return (
     <div className={classes.item}>
-      ID:{hotelItem.id} star: {hotelItem.starRating}
       <HotelItemHero hotelItem={props.hotelItem} />
       <ul>
         {hotelItem.roomsDetails.rooms.map((roomItem) => {
-          return (
-            <li className={classes['room-item']} key={roomItem.id}>
-              <div className={classes['room-row']}>ID:{roomItem.id}</div>
-              <div className={classes['room-row']}>
-                maxAdults:{roomItem.occupancy.maxAdults}
-              </div>
-              <div className={classes['room-row']}>
-                maxChildren:{roomItem.occupancy.maxChildren}
-              </div>
-              <div className={classes['room-row']}>
-                maxOverall:{roomItem.occupancy.maxOverall}
-              </div>
-            </li>
-          );
+          return <HotelItemRoom room={roomItem} />;
         })}
       </ul>
     </div>
