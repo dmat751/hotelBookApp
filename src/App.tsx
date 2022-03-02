@@ -18,6 +18,8 @@ function App() {
     heroAlt = '';
   }
 
+  console.log('test app');
+
   return (
     <Fragment>
       <Hero heroPhotoUrl={heroUrl} heroPhotoAlt={heroAlt}></Hero>

@@ -1,10 +1,11 @@
-import { Children, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectHotelList } from '../../../store';
-import hotelListSlice, { HotelsFilters } from '../../../store/hotelListSlice';
+import { selectHotelFilters } from '../../../store';
+import hotelFiltersSlice from '../../../store/hotelFiltersSlice';
 import FilterAmount from './FilterAmount/FilterAmount';
 import FilterStar from './FilterStar/FilterStar';
 import classes from './HeroFilter.module.scss';
+import { HotelsFilters } from './../../../store/hotelFiltersSlice';
 
 interface starOptions {
   borderColor: string;
@@ -62,10 +63,10 @@ const AmountFilterNextValueGenerator = (
 
 const FormFilter = () => {
   const maxHotelRateStarAmount = 5;
-  const hotelListItem = useSelector(selectHotelList);
-  const initStarAmount = hotelListItem.filters.stars;
-  const currentChildrenState = hotelListItem.filters.children;
-  const currentAdultState = hotelListItem.filters.adults;
+  const hotelFilters = useSelector(selectHotelFilters);
+  const initStarAmount = hotelFilters.stars;
+  const currentChildrenState = hotelFilters.children;
+  const currentAdultState = hotelFilters.adults;
   const dispatch = useDispatch();
 
   const onClickHandlerStar = (starIndex: number): void => {
@@ -75,12 +76,12 @@ const FormFilter = () => {
     );
 
     setStarState(newStarState);
-    const hotelFilters: HotelsFilters = {
-      adults: hotelListItem.filters.adults,
-      children: hotelListItem.filters.children,
+    const newHotelFilters: HotelsFilters = {
+      adults: hotelFilters.adults,
+      children: hotelFilters.children,
       stars: starIndex + 1,
     };
-    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
+    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
   };
 
   const onClickIncreaseChildrenHandler = (): void => {
@@ -88,12 +89,12 @@ const FormFilter = () => {
       '+',
       currentChildrenState
     );
-    const hotelFilters: HotelsFilters = {
-      adults: hotelListItem.filters.adults,
+    const newHotelFilters: HotelsFilters = {
+      adults: hotelFilters.adults,
       children: newChildrenState,
-      stars: hotelListItem.filters.stars,
+      stars: hotelFilters.stars,
     };
-    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
+    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
   };
 
   const onClickDecreaseChildrenHandler = (): void => {
@@ -102,12 +103,12 @@ const FormFilter = () => {
       currentChildrenState
     );
 
-    const hotelFilters: HotelsFilters = {
-      adults: hotelListItem.filters.adults,
+    const newHotelFilters: HotelsFilters = {
+      adults: hotelFilters.adults,
       children: newChildrenState,
-      stars: hotelListItem.filters.stars,
+      stars: hotelFilters.stars,
     };
-    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
+    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
   };
 
   const onClickDecraseAdultHandler = (): void => {
@@ -116,12 +117,12 @@ const FormFilter = () => {
       currentAdultState
     );
 
-    const hotelFilters: HotelsFilters = {
+    const newHotelFilters: HotelsFilters = {
       adults: newAdultState,
-      children: hotelListItem.filters.children,
-      stars: hotelListItem.filters.stars,
+      children: hotelFilters.children,
+      stars: hotelFilters.stars,
     };
-    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
+    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
   };
 
   const onClickIncreaseAdultHandler = (): void => {
@@ -130,12 +131,12 @@ const FormFilter = () => {
       currentAdultState
     );
 
-    const hotelFilters: HotelsFilters = {
+    const newHotelFilters: HotelsFilters = {
       adults: newAdultState,
-      children: hotelListItem.filters.children,
-      stars: hotelListItem.filters.stars,
+      children: hotelFilters.children,
+      stars: hotelFilters.stars,
     };
-    dispatch(hotelListSlice.actions.setHotelFilters(hotelFilters));
+    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
   };
 
   const initStarState: starWidgetState = generateStarState(

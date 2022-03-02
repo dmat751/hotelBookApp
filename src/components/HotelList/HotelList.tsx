@@ -4,7 +4,7 @@ import baseClasses from './../../baseClasses.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchHotelListData } from '../../store/hotelListAction';
-import { selectHotelList } from '../../store/index';
+import { selectHotelFilters, selectHotelList } from '../../store/index';
 import { Hotel } from '../../models/Hotel';
 
 let isInitial = true;
@@ -85,7 +85,7 @@ const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] => {
 const HotelList = () => {
   const dispatch = useDispatch();
   const hotelListItem = useSelector(selectHotelList);
-  const hotelFilters = hotelListItem.filters;
+  const hotelFilters = useSelector(selectHotelFilters);
   let filteredHotelList = hotelListItem.hotelList;
   if (!isInitial && !hotelListItem.apiQueryStatus.isError) {
     try {
