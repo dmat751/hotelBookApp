@@ -1,11 +1,11 @@
 import HotelItem from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
-import baseClasses from './../../../baseClasses.module.scss';
+import baseClasses from './../../baseClasses.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchHotelListData } from '../../../store/hotelListAction';
-import { selectHotelList } from '../../../store/index';
-import { Hotel } from '../../../models/Hotel';
+import { fetchHotelListData } from '../../store/hotelListAction';
+import { selectHotelList } from '../../store/index';
+import { Hotel } from '../../models/Hotel';
 
 let isInitial = true;
 
@@ -128,7 +128,6 @@ const HotelList = () => {
               </li>
             );
           })}
-        {console.log(hotelListItem.apiQueryStatus)}
         {(hotelListItem.apiQueryStatus.isLoading ||
           hotelListItem.apiQueryStatus.isError) && (
           <li>{hotelListItem.apiQueryStatus.notification}</li>
