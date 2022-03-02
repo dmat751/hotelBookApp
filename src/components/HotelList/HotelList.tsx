@@ -111,16 +111,27 @@ const HotelList = () => {
     dispatch(fetchHotelListData());
   }, [dispatch]);
 
+  let content: JSX.Element[];
+
+  if (filteredHotelList.length > 0) {
+    content = filteredHotelList.map((hotelItem) => {
+      return (
+        <li className={classes['list-item']} key={hotelItem.id}>
+          {!apiQueryStatus.isError && <HotelItem hotelItem={hotelItem} />}
+        </li>
+      );
+    });
+  } else {
+    content = [
+      <p className={`${apiQueryStatus.isLoading && classes['hide-item']}`}>
+        We can not find any hotels
+      </p>,
+    ];
+  }
   return (
     <div className={classes['list-container']}>
       <ul className={`${classes.list} ${baseClasses['basic-container1']}`}>
-        {filteredHotelList.map((hotelItem) => {
-          return (
-            <li className={classes['list-item']} key={hotelItem.id}>
-              {!apiQueryStatus.isError && <HotelItem hotelItem={hotelItem} />}
-            </li>
-          );
-        })}
+        {content}
         {(apiQueryStatus.isLoading || apiQueryStatus.isError) && (
           <li>{apiQueryStatus.notification}</li>
         )}
