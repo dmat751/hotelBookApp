@@ -1,11 +1,13 @@
 import { Hotel } from '../../../../models/Hotel';
 import classes from './HotelItem.module.scss';
+import HotelItemHero from './HotelItemHero/HotelItemHero';
 
 const HotelItem: React.FC<{ hotelItem: Hotel }> = (props) => {
   const hotelItem = props.hotelItem;
   return (
-    <div>
+    <div className={classes.item}>
       ID:{hotelItem.id} star: {hotelItem.starRating}
+      <HotelItemHero hotelItem={props.hotelItem} />
       <ul>
         {hotelItem.roomsDetails.rooms.map((roomItem) => {
           return (
