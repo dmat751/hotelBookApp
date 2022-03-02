@@ -1,6 +1,5 @@
 import Hero from './components/Hero/Hero';
 import HotelList from './components/HotelList/HotelList';
-import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { selectHotelList } from './store';
 import { Hotel } from './models/Hotel';
@@ -16,7 +15,7 @@ const getRandomInt = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-const selectRandonPhoto = (hotelListItem: Hotel[]): Photo => {
+const selectRandomPhoto = (hotelListItem: Hotel[]): Photo => {
   let imgArray: Photo[] = [];
   hotelListItem.forEach((hotelItem) => {
     hotelItem.images.forEach((imgItem) => {
@@ -37,20 +36,20 @@ function App() {
 
   let randomPhoto: Photo = { alt: '', url: '' };
   try {
-    randomPhoto = selectRandonPhoto(hotelListItem.hotelList);
+    randomPhoto = selectRandomPhoto(hotelListItem.hotelList);
   } catch (error) {
     randomPhoto.alt = '';
     randomPhoto.url = '';
   }
 
   return (
-    <Fragment>
+    <>
       <Hero
         heroPhotoUrl={randomPhoto.url}
         heroPhotoAlt={randomPhoto.alt}
       ></Hero>
       <HotelList></HotelList>
-    </Fragment>
+    </>
   );
 }
 

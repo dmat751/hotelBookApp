@@ -31,56 +31,52 @@ const getRoomList = async (id: string): Promise<RoomsDetails> => {
 
 export const fetchHotelListData = () => {
   return async (dispatch: Dispatch<any>) => {
-    const getData = async () => {
-      try {
-        const newApiStatusLoading: ApiQueryStatus = {
+    try {
+      const newApiStatusLoading: ApiQueryStatus = {
+        isError: false,
+        notification: 'Loading...',
+        isLoading: true,
+      };
+      dispatch(
+        ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusLoading)
+      );
+      const hotelList = await getHotelList();
+
+      const roomList = await PromisePool.withConcurrency(5)
+        .for(hotelList)
+        .process(async (hotelItem) => {
+          return (hotelItem.roomsDetails = await getRoomList(hotelItem.id));
+        });
+
+      if (roomList.errors.length === 0) {
+        const newApiStatusDone: ApiQueryStatus = {
           isError: false,
-          notification: 'Loading...',
-          isLoading: true,
-        };
-        dispatch(
-          ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusLoading)
-        );
-        const hotelList = await getHotelList();
-
-        const roomList = await PromisePool.withConcurrency(5)
-          .for(hotelList)
-          .process(async (hotelItem) => {
-            return (hotelItem.roomsDetails = await getRoomList(hotelItem.id));
-          });
-
-        if (roomList.errors.length === 0) {
-          const newApiStatusDone: ApiQueryStatus = {
-            isError: false,
-            notification: '',
-            isLoading: false,
-          };
-          dispatch(
-            ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusDone)
-          );
-          dispatch(hotelListSlice.actions.replaceHotelList(hotelList));
-        } else {
-          const newApiStatusDone: ApiQueryStatus = {
-            isError: true,
-            notification: 'Error - can not fetch room data',
-            isLoading: false,
-          };
-          dispatch(
-            ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusDone)
-          );
-        }
-      } catch (error) {
-        const newApiStatusError: ApiQueryStatus = {
-          isError: true,
-          notification: 'Error - can not fetch data',
+          notification: '',
           isLoading: false,
         };
         dispatch(
-          ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusError)
+          ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusDone)
+        );
+        dispatch(hotelListSlice.actions.replaceHotelList(hotelList));
+      } else {
+        const newApiStatusDone: ApiQueryStatus = {
+          isError: true,
+          notification: 'Error - can not fetch room data',
+          isLoading: false,
+        };
+        dispatch(
+          ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusDone)
         );
       }
-    };
-
-    const hotelListData = await getData();
+    } catch (error) {
+      const newApiStatusError: ApiQueryStatus = {
+        isError: true,
+        notification: 'Error - can not fetch data',
+        isLoading: false,
+      };
+      dispatch(
+        ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusError)
+      );
+    }
   };
 };

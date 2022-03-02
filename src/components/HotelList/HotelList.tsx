@@ -123,7 +123,10 @@ const HotelList = () => {
     });
   } else {
     content = [
-      <p className={`${apiQueryStatus.isLoading && classes['hide-item']}`}>
+      <p
+        key={'p'}
+        className={`${apiQueryStatus.isLoading && classes['hide-item']}`}
+      >
         We can not find any hotels
       </p>,
     ];
