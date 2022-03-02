@@ -2,8 +2,8 @@ import { Hotel } from '../models/Hotel';
 import { RoomsDetails } from '../models/Room';
 import PromisePool from '@supercharge/promise-pool';
 import { Dispatch } from 'redux';
+import ApiQueryStatusSlice, { ApiQueryStatus } from './ApiStatusSlice';
 import hotelListSlice from './hotelListSlice';
-import { ApiQueryStatus } from './hotelListSlice';
 
 const getHotelList = async (): Promise<Hotel[]> => {
   const listResp = await fetch(
@@ -38,7 +38,9 @@ export const fetchHotelListData = () => {
           notification: 'Loading...',
           isLoading: true,
         };
-        dispatch(hotelListSlice.actions.setApiQueryStatus(newApiStatusLoading));
+        dispatch(
+          ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusLoading)
+        );
         const hotelList = await getHotelList();
 
         const roomList = await PromisePool.withConcurrency(5)
@@ -53,7 +55,9 @@ export const fetchHotelListData = () => {
             notification: '',
             isLoading: false,
           };
-          dispatch(hotelListSlice.actions.setApiQueryStatus(newApiStatusDone));
+          dispatch(
+            ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusDone)
+          );
           dispatch(hotelListSlice.actions.replaceHotelList(hotelList));
         } else {
           const newApiStatusDone: ApiQueryStatus = {
@@ -61,7 +65,9 @@ export const fetchHotelListData = () => {
             notification: 'Error - can not fetch room data',
             isLoading: false,
           };
-          dispatch(hotelListSlice.actions.setApiQueryStatus(newApiStatusDone));
+          dispatch(
+            ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusDone)
+          );
         }
       } catch (error) {
         const newApiStatusError: ApiQueryStatus = {
@@ -69,7 +75,9 @@ export const fetchHotelListData = () => {
           notification: 'Error - can not fetch data',
           isLoading: false,
         };
-        dispatch(hotelListSlice.actions.setApiQueryStatus(newApiStatusError));
+        dispatch(
+          ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusError)
+        );
       }
     };
 

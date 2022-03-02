@@ -4,10 +4,12 @@ import baseClasses from './../../baseClasses.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchHotelListData } from '../../store/hotelListAction';
-import { selectHotelFilters, selectHotelList } from '../../store/index';
+import {
+  selectApiQueryStatus,
+  selectHotelFilters,
+  selectHotelList,
+} from '../../store/index';
 import { Hotel } from '../../models/Hotel';
-
-let isInitial = true;
 
 const childrenFilter = (
   hotelList: Hotel[],
@@ -86,8 +88,9 @@ const HotelList = () => {
   const dispatch = useDispatch();
   const hotelListItem = useSelector(selectHotelList);
   const hotelFilters = useSelector(selectHotelFilters);
+  const apiQueryStatus = useSelector(selectApiQueryStatus);
   let filteredHotelList = hotelListItem.hotelList;
-  if (!isInitial && !hotelListItem.apiQueryStatus.isError) {
+  if (!apiQueryStatus.isError) {
     try {
       filteredHotelList = childrenFilter(
         filteredHotelList,
@@ -108,29 +111,18 @@ const HotelList = () => {
     dispatch(fetchHotelListData());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isInitial) {
-      isInitial = false;
-      return;
-    }
-  }, []);
-
   return (
     <div className={classes['list-container']}>
       <ul className={`${classes.list} ${baseClasses['basic-container1']}`}>
-        {!isInitial &&
-          filteredHotelList.map((hotelItem) => {
-            return (
-              <li className={classes['list-item']} key={hotelItem.id}>
-                {!hotelListItem.apiQueryStatus.isError && (
-                  <HotelItem hotelItem={hotelItem} />
-                )}
-              </li>
-            );
-          })}
-        {(hotelListItem.apiQueryStatus.isLoading ||
-          hotelListItem.apiQueryStatus.isError) && (
-          <li>{hotelListItem.apiQueryStatus.notification}</li>
+        {filteredHotelList.map((hotelItem) => {
+          return (
+            <li className={classes['list-item']} key={hotelItem.id}>
+              {!apiQueryStatus.isError && <HotelItem hotelItem={hotelItem} />}
+            </li>
+          );
+        })}
+        {(apiQueryStatus.isLoading || apiQueryStatus.isError) && (
+          <li>{apiQueryStatus.notification}</li>
         )}
       </ul>
     </div>
