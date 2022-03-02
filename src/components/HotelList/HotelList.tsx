@@ -111,7 +111,7 @@ const HotelList = () => {
     dispatch(fetchHotelListData());
   }, [dispatch]);
 
-  let content: JSX.Element[];
+  let content: JSX.Element[] | JSX.Element;
 
   if (filteredHotelList.length > 0) {
     content = filteredHotelList.map((hotelItem) => {
@@ -122,14 +122,11 @@ const HotelList = () => {
       );
     });
   } else {
-    content = [
-      <p
-        key={'p'}
-        className={`${apiQueryStatus.isLoading && classes['hide-item']}`}
-      >
+    content = (
+      <p className={`${apiQueryStatus.isLoading && classes['hide-item']}`}>
         We can not find any hotels
-      </p>,
-    ];
+      </p>
+    );
   }
   return (
     <div className={classes['list-container']}>

@@ -1,10 +1,9 @@
 import React from 'react';
-import classes from './FIlterStar.module.scss';
+import classes from './FilterStar.module.scss';
 
 const FilterStar: React.FC<{
   borderColor: string;
   fillColor: string;
-  clickedStarID: number;
   onClickHandler: any;
 }> = (props) => {
   return (

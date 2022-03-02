@@ -150,7 +150,6 @@ const FormFilter = () => {
               <FilterStar
                 key={key}
                 onClickHandler={onClickHandlerStar.bind(null, key)}
-                clickedStarID={key}
                 borderColor={starItem.borderColor}
                 fillColor={starItem.fillColor}
               />
