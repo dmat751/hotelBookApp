@@ -10,6 +10,9 @@
   max-width: 150px;
   flex-shrink: 0;
   margin-right: 30px;
+  @media only screen and (max-width: 900px) {
+    max-width: 80px;
+  }
 
   h5 {
     font-size: 1.2rem;

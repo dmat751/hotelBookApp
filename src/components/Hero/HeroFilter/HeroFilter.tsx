@@ -148,17 +148,19 @@ const FormFilter = () => {
   return (
     <div className={classes.filter}>
       <div className={classes.filter__content}>
-        {starState.starArray.map((starItem, key) => {
-          return (
-            <FilterStar
-              key={key}
-              onClickHandler={onClickHandlerStar.bind(null, key)}
-              clickedStarID={key}
-              borderColor={starItem.borderColor}
-              fillColor={starItem.fillColor}
-            />
-          );
-        })}
+        <div className={classes.stars}>
+          {starState.starArray.map((starItem, key) => {
+            return (
+              <FilterStar
+                key={key}
+                onClickHandler={onClickHandlerStar.bind(null, key)}
+                clickedStarID={key}
+                borderColor={starItem.borderColor}
+                fillColor={starItem.fillColor}
+              />
+            );
+          })}
+        </div>
 
         <FilterAmount
           onIncreaseFilterHandler={onClickIncreaseChildrenHandler}
