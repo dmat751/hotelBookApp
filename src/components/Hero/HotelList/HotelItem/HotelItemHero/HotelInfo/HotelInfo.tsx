@@ -1,5 +1,5 @@
 import classes from './HotelInfo.module.scss';
-const component: React.FC<{
+const HotelInfo: React.FC<{
   hotelName: string;
   hotelAddress1: string;
   hotelAddress2: string;
@@ -12,4 +12,4 @@ const component: React.FC<{
     </div>
   );
 };
-export default component;
+export default HotelInfo;

@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './Swiper.scss';
-const component: React.FC<{ images: { url: string; alt: string }[] }> = (
+const Slider: React.FC<{ images: { url: string; alt: string }[] }> = (
   props
 ) => {
   return (
@@ -20,9 +20,9 @@ const component: React.FC<{ images: { url: string; alt: string }[] }> = (
         modules={[Navigation, Pagination]}
         className="mySwiper"
       >
-        {props.images.map((item) => {
+        {props.images.map((item, index) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <div className={classes['slider-item']}>
                 <img className={classes.img} src={item.url} alt={item.alt} />
               </div>
@@ -33,4 +33,4 @@ const component: React.FC<{ images: { url: string; alt: string }[] }> = (
     </div>
   );
 };
-export default component;
+export default Slider;

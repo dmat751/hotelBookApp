@@ -31,15 +31,19 @@ const starsStateBuilder = (
   return starsState;
 };
 
-const component: React.FC<{ starAmount: number }> = (props) => {
+const Stars: React.FC<{ starAmount: number }> = (props) => {
   return (
     <div className={classes.stars}>
-      {starsStateBuilder(props.starAmount, 5).map((item) => {
+      {starsStateBuilder(props.starAmount, 5).map((item, index) => {
         return (
-          <Star borderColor={item.borderColor} fillColor={item.fillColor} />
+          <Star
+            key={index}
+            borderColor={item.borderColor}
+            fillColor={item.fillColor}
+          />
         );
       })}
     </div>
   );
 };
-export default component;
+export default Stars;

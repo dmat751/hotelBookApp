@@ -10,7 +10,7 @@ const HotelItem: React.FC<{ hotelItem: Hotel }> = (props) => {
       <HotelItemHero hotelItem={props.hotelItem} />
       <ul>
         {hotelItem.roomsDetails.rooms.map((roomItem) => {
-          return <HotelItemRoom room={roomItem} />;
+          return <HotelItemRoom key={roomItem.id} room={roomItem} />;
         })}
       </ul>
     </div>
