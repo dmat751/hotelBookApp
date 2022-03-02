@@ -77,8 +77,7 @@ const FormFilter = () => {
 
     setStarState(newStarState);
     const newHotelFilters: HotelsFilters = {
-      adults: hotelFilters.adults,
-      children: hotelFilters.children,
+      ...hotelFilters,
       stars: starIndex + 1,
     };
     dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
@@ -90,9 +89,8 @@ const FormFilter = () => {
       currentChildrenState
     );
     const newHotelFilters: HotelsFilters = {
-      adults: hotelFilters.adults,
+      ...hotelFilters,
       children: newChildrenState,
-      stars: hotelFilters.stars,
     };
     dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
   };
@@ -104,9 +102,8 @@ const FormFilter = () => {
     );
 
     const newHotelFilters: HotelsFilters = {
-      adults: hotelFilters.adults,
+      ...hotelFilters,
       children: newChildrenState,
-      stars: hotelFilters.stars,
     };
     dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
   };
@@ -118,9 +115,8 @@ const FormFilter = () => {
     );
 
     const newHotelFilters: HotelsFilters = {
+      ...hotelFilters,
       adults: newAdultState,
-      children: hotelFilters.children,
-      stars: hotelFilters.stars,
     };
     dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
   };
@@ -132,9 +128,8 @@ const FormFilter = () => {
     );
 
     const newHotelFilters: HotelsFilters = {
+      ...hotelFilters,
       adults: newAdultState,
-      children: hotelFilters.children,
-      stars: hotelFilters.stars,
     };
     dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
   };
