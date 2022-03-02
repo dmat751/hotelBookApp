@@ -35,29 +35,6 @@ const childrenFilter = (
   return result;
 };
 
-const maxPersonFilter = (hotelList: Hotel[], personAmount: number): Hotel[] => {
-  const result = hotelList.map((hotelItem) => {
-    let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
-      if (room.occupancy.maxOverall >= personAmount) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-
-    const filteredHotel = {
-      ...hotelItem,
-      roomsDetails: {
-        ratePlans: hotelItem.roomsDetails.ratePlans,
-        rooms: filteredRoom,
-      },
-    };
-
-    return filteredHotel;
-  });
-  return result;
-};
-
 const adultFilter = (hotelList: Hotel[], adultAmount: number): Hotel[] => {
   const result = hotelList.map((hotelItem) => {
     let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
@@ -118,11 +95,6 @@ const HotelList = () => {
       );
 
       filteredHotelList = adultFilter(filteredHotelList, hotelFilters.adults);
-
-      filteredHotelList = maxPersonFilter(
-        filteredHotelList,
-        hotelFilters.adults + hotelFilters.children
-      );
 
       filteredHotelList = starFilter(filteredHotelList, hotelFilters.stars);
 
