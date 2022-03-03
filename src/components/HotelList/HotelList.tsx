@@ -153,7 +153,11 @@ const HotelList = () => {
       <ul className={`${classes.list} ${baseClasses['basic-container1']}`}>
         {!hotelFilters.filterLoading && content}
         {hotelFilters.filterLoading && spinner}
-        {apiQueryStatus.isError && <li>{apiQueryStatus.notification}</li>}
+        {apiQueryStatus.isError && (
+          <li className={classes['error-info']}>
+            {apiQueryStatus.notification}
+          </li>
+        )}
         {apiQueryStatus.isLoading && <li>{spinner}</li>}
       </ul>
     </div>
