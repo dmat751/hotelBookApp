@@ -11,6 +11,22 @@ import {
 } from '../../store/index';
 import { Hotel } from '../../models/Hotel';
 
+const spinner = (
+  <div className={classes['multi-spinner-container']}>
+    <div className={classes['multi-spinner']}>
+      <div className={classes['multi-spinner']}>
+        <div className={classes['multi-spinner']}>
+          <div className={classes['multi-spinner']}>
+            <div className={classes['multi-spinner']}>
+              <div className={classes['multi-spinner']}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const childrenFilter = (
   hotelList: Hotel[],
   childrenAmount: number
@@ -131,10 +147,10 @@ const HotelList = () => {
   return (
     <div className={classes['list-container']}>
       <ul className={`${classes.list} ${baseClasses['basic-container1']}`}>
-        {content}
-        {(apiQueryStatus.isLoading || apiQueryStatus.isError) && (
-          <li>{apiQueryStatus.notification}</li>
-        )}
+        {!hotelFilters.filterLoading && content}
+        {hotelFilters.filterLoading && spinner}
+        {apiQueryStatus.isError && <li>{apiQueryStatus.notification}</li>}
+        {apiQueryStatus.isLoading && <li>{spinner}</li>}
       </ul>
     </div>
   );

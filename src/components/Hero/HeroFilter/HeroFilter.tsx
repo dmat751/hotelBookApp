@@ -61,6 +61,14 @@ const AmountFilterNextValueGenerator = (
   }
 };
 
+const setFiltersState = (dispatch: any, newHotelFilters: HotelsFilters) => {
+  dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
+  dispatch(hotelFiltersSlice.actions.setFilterLoading(true));
+  setTimeout(() => {
+    dispatch(hotelFiltersSlice.actions.setFilterLoading(false));
+  }, 500);
+};
+
 const FormFilter = () => {
   const maxHotelRateStarAmount = 5;
   const hotelFilters = useSelector(selectHotelFilters);
@@ -80,7 +88,7 @@ const FormFilter = () => {
       ...hotelFilters,
       stars: starIndex + 1,
     };
-    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
+    setFiltersState(dispatch, newHotelFilters);
   };
 
   const onClickIncreaseChildrenHandler = (): void => {
@@ -92,7 +100,7 @@ const FormFilter = () => {
       ...hotelFilters,
       children: newChildrenState,
     };
-    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
+    setFiltersState(dispatch, newHotelFilters);
   };
 
   const onClickDecreaseChildrenHandler = (): void => {
@@ -105,7 +113,7 @@ const FormFilter = () => {
       ...hotelFilters,
       children: newChildrenState,
     };
-    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
+    setFiltersState(dispatch, newHotelFilters);
   };
 
   const onClickDecraseAdultHandler = (): void => {
@@ -118,7 +126,7 @@ const FormFilter = () => {
       ...hotelFilters,
       adults: newAdultState,
     };
-    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
+    setFiltersState(dispatch, newHotelFilters);
   };
 
   const onClickIncreaseAdultHandler = (): void => {
@@ -131,7 +139,7 @@ const FormFilter = () => {
       ...hotelFilters,
       adults: newAdultState,
     };
-    dispatch(hotelFiltersSlice.actions.setHotelFilters(newHotelFilters));
+    setFiltersState(dispatch, newHotelFilters);
   };
 
   const initStarState: starWidgetState = generateStarState(
