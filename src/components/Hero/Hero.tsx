@@ -6,11 +6,15 @@ const Hero: React.FC<{ heroPhotoUrl: string; heroPhotoAlt: string }> = (
 ) => {
   return (
     <div className={classes.hero}>
-      <img
-        className={classes.hero__img}
-        src={props.heroPhotoUrl}
-        alt={props.heroPhotoAlt}
-      />
+      <div className={classes['hero__img-container']}>
+        {props.heroPhotoUrl && (
+          <img
+            className={classes.hero__img}
+            src={props.heroPhotoUrl}
+            alt={props.heroPhotoAlt}
+          />
+        )}
+      </div>
       <FormFilter />
     </div>
   );
