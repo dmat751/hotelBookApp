@@ -17,12 +17,12 @@ interface starWidgetState {
 }
 
 const starActiveColor: starOptions = {
-  borderColor: 'yellow',
-  fillColor: 'yellow',
+  borderColor: '#fff500',
+  fillColor: '#fff500',
 };
 
 const starInactiveColor: starOptions = {
-  borderColor: 'yellow',
+  borderColor: '#fff500',
   fillColor: 'transparent',
 };
 

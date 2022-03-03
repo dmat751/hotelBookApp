@@ -5,10 +5,12 @@
   transform: translateY(-50%);
 
   &__content {
-    border: 1px solid rgb(0, 195, 255);
+    border: 3px solid rgb(0, 195, 255);
     background-color: #e7e7e7;
+    border-radius: 15px;
     padding: 10px;
     display: flex;
+    font-family: 'Varela Round', sans-serif;
     @media only screen and (max-width: 900px) {
       flex-direction: column;
       align-items: center;
