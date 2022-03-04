@@ -1,29 +1,15 @@
 import { Hotel } from '../models/Hotel';
-import { RoomsDetails } from '../models/Room';
+import { Room, RoomsDetails } from '../models/Room';
 import PromisePool from '@supercharge/promise-pool';
 import { Dispatch } from 'redux';
 import ApiQueryStatusSlice, { ApiQueryStatus } from './ApiStatusSlice';
 import hotelListSlice from './hotelListSlice';
 
-const getHotelList = async (): Promise<Hotel[]> => {
-  const listResp = await fetch(
-    'https://obmng.dbm.guestline.net/api/hotels?collection-id=OBMNG'
-  );
-
-  if (!listResp.ok) {
-    throw new Error('Could not fetch hotel data!');
-  }
-
-  return await listResp.json();
-};
-
-const getRoomList = async (id: string): Promise<RoomsDetails> => {
-  const dataResp = await fetch(
-    'https://obmng.dbm.guestline.net/api/roomRates/OBMNG/' + id
-  );
+const getApiData = async <T,>(url: string): Promise<T> => {
+  const dataResp = await fetch(url);
 
   if (!dataResp.ok) {
-    throw new Error('Could not fetch hotel data!');
+    throw new Error('Could not fetch data!');
   }
 
   return await dataResp.json();
@@ -40,12 +26,16 @@ export const fetchHotelListData = () => {
       dispatch(
         ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusLoading)
       );
-      const hotelList = await getHotelList();
+      const hotelList = await getApiData<Hotel[]>(
+        `${process.env.REACT_APP_HOTEL_LIST_URL}`
+      );
 
       const roomList = await PromisePool.withConcurrency(5)
         .for(hotelList)
         .process(async (hotelItem) => {
-          return (hotelItem.roomsDetails = await getRoomList(hotelItem.id));
+          return (hotelItem.roomsDetails = await getApiData<RoomsDetails>(
+            `${process.env.REACT_APP_ROOM_LIST_URL + hotelItem.id}`
+          ));
         });
 
       if (roomList.errors.length === 0) {
