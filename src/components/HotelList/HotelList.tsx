@@ -1,6 +1,6 @@
 import HotelItem from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
-import baseClasses from './../../baseClasses.module.scss';
+import baseClasses from '../../assets/baseClasses.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchHotelListData } from '../../store/hotelListAction';
@@ -10,56 +10,21 @@ import {
   selectHotelList,
 } from '../../store/index';
 import { Hotel } from '../../models/Hotel';
+import { spinner } from '../../helpers/Spinner/Spinner';
 
-const spinner = (
-  <div className={classes['multi-spinner-container']}>
-    <div className={classes['multi-spinner']}>
-      <div className={classes['multi-spinner']}>
-        <div className={classes['multi-spinner']}>
-          <div className={classes['multi-spinner']}>
-            <div className={classes['multi-spinner']}>
-              <div className={classes['multi-spinner']}></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const childrenFilter = (
+const amountFilter = (
   hotelList: Hotel[],
-  childrenAmount: number
-): Hotel[] => {
+  amount: number,
+  filterType: string
+) => {
   const result = hotelList.map((hotelItem) => {
     let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
-      if (room.occupancy.maxChildren >= childrenAmount) {
-        return true;
+      if (filterType === 'children') {
+        return room.occupancy.maxChildren >= amount ? true : false;
+      } else if (filterType === 'adults') {
+        return room.occupancy.maxAdults >= amount ? true : false;
       } else {
-        return false;
-      }
-    });
-
-    const filteredHotel = {
-      ...hotelItem,
-      roomsDetails: {
-        ratePlans: hotelItem.roomsDetails.ratePlans,
-        rooms: filteredRoom,
-      },
-    };
-
-    return filteredHotel;
-  });
-  return result;
-};
-
-const adultFilter = (hotelList: Hotel[], adultAmount: number): Hotel[] => {
-  const result = hotelList.map((hotelItem) => {
-    let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
-      if (room.occupancy.maxAdults >= adultAmount) {
         return true;
-      } else {
-        return false;
       }
     });
 
@@ -78,11 +43,7 @@ const adultFilter = (hotelList: Hotel[], adultAmount: number): Hotel[] => {
 
 const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] => {
   const result = hotelList.filter((hotelItem) => {
-    if (hotelItem.starRating >= starAmount) {
-      return true;
-    } else {
-      return false;
-    }
+    return hotelItem.starRating >= starAmount ? true : false;
   });
 
   return result;
@@ -90,11 +51,7 @@ const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] => {
 
 const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] => {
   const result = hotelList.filter((hotelItem) => {
-    if (hotelItem.roomsDetails.rooms.length === 0) {
-      return false;
-    } else {
-      return true;
-    }
+    return hotelItem.roomsDetails.rooms.length === 0 ? false : true;
   });
 
   return result;
@@ -108,12 +65,17 @@ const HotelList = () => {
   let filteredHotelList = hotelListItem.hotelList;
   if (!apiQueryStatus.isError) {
     try {
-      filteredHotelList = childrenFilter(
+      filteredHotelList = amountFilter(
         filteredHotelList,
-        hotelFilters.children
+        hotelFilters.children,
+        'children'
       );
 
-      filteredHotelList = adultFilter(filteredHotelList, hotelFilters.adults);
+      filteredHotelList = amountFilter(
+        filteredHotelList,
+        hotelFilters.adults,
+        'adults'
+      );
 
       filteredHotelList = starFilter(filteredHotelList, hotelFilters.stars);
 

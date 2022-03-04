@@ -26,6 +26,12 @@
     width: 25px;
     cursor: pointer;
     position: relative;
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: rgb(209, 209, 209);
+    }
+
     span {
       position: absolute;
       transform: translate(-50%, -50%);

@@ -1,19 +1,23 @@
 import Star from './Star';
 import classes from './Stars.module.scss';
 
+const starColor1 = '#fff500';
+const starColor2 = 'transparent';
+const hotelMaxStars = 5;
+
 interface starOptions {
   borderColor: string;
   fillColor: string;
 }
 
 const starActiveColor: starOptions = {
-  borderColor: '#fff500',
-  fillColor: '#fff500',
+  borderColor: starColor1,
+  fillColor: starColor1,
 };
 
 const starInactiveColor: starOptions = {
-  borderColor: '#fff500',
-  fillColor: 'transparent',
+  borderColor: starColor1,
+  fillColor: starColor2,
 };
 
 const starsStateBuilder = (
@@ -22,11 +26,9 @@ const starsStateBuilder = (
 ): starOptions[] => {
   let starsState: starOptions[] = [];
   for (let i = 1; i <= maxStarsAmount; i++) {
-    if (i <= activeStarsAmount) {
-      starsState.push(starActiveColor);
-    } else {
-      starsState.push(starInactiveColor);
-    }
+    i <= activeStarsAmount
+      ? starsState.push(starActiveColor)
+      : starsState.push(starInactiveColor);
   }
   return starsState;
 };
@@ -34,7 +36,7 @@ const starsStateBuilder = (
 const Stars: React.FC<{ starAmount: number }> = (props) => {
   return (
     <div className={classes.stars}>
-      {starsStateBuilder(props.starAmount, 5).map((item, index) => {
+      {starsStateBuilder(props.starAmount, hotelMaxStars).map((item, index) => {
         return (
           <Star
             key={index}

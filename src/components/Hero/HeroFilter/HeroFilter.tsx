@@ -7,6 +7,9 @@ import FilterStar from './FilterStar/FilterStar';
 import classes from './HeroFilter.module.scss';
 import { HotelsFilters } from './../../../store/hotelFiltersSlice';
 
+const starColor1 = '#fff500';
+const starColor2 = 'transparent';
+
 interface starOptions {
   borderColor: string;
   fillColor: string;
@@ -17,13 +20,13 @@ interface starWidgetState {
 }
 
 const starActiveColor: starOptions = {
-  borderColor: '#fff500',
-  fillColor: '#fff500',
+  borderColor: starColor1,
+  fillColor: starColor1,
 };
 
 const starInactiveColor: starOptions = {
-  borderColor: '#fff500',
-  fillColor: 'transparent',
+  borderColor: starColor1,
+  fillColor: starColor2,
 };
 
 const generateStarState = (
@@ -170,6 +173,8 @@ const FormFilter = () => {
           onDecreaseFilterHandler={onClickDecreaseChildrenHandler}
           currentFilterAmount={currentChildrenState}
           filterLabel={'Children:'}
+          isMinusButtonDisabled={hotelFilters.children === 0 ? true : false}
+          isPlusButtonDisabled={false}
         />
 
         <FilterAmount
@@ -177,6 +182,8 @@ const FormFilter = () => {
           onDecreaseFilterHandler={onClickDecraseAdultHandler}
           currentFilterAmount={currentAdultState}
           filterLabel={'Adults:'}
+          isMinusButtonDisabled={hotelFilters.adults === 0 ? true : false}
+          isPlusButtonDisabled={false}
         />
       </div>
     </div>
