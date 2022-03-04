@@ -5,8 +5,8 @@ How to run project ?
 
 Project was tested for:
 
-node:
-v14.17.6
+    node:
+    v14.17.6
 
-yarn:
-1.22.11
+    yarn:
+    1.22.11
