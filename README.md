@@ -4,6 +4,7 @@ How to run project ?
 2. Run yarn start
 
 Project was tested for:
+
 node:
 v14.17.6
 
