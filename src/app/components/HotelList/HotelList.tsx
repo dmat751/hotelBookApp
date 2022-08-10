@@ -1,16 +1,16 @@
 import HotelItem from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
-import baseClasses from '../../assets/baseClasses.module.scss';
+import baseClasses from '../../../assets/baseClasses.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchHotelListData } from '../../app/store/hotelListAction';
+import { fetchHotelListData } from '../../store/hotelListAction';
 import {
   selectApiQueryStatus,
   selectHotelFilters,
   selectHotelList,
-} from '../../app/store/index';
-import { Hotel } from '../../models/hotel';
-import { spinner } from '../../helpers/Spinner/Spinner';
+} from '../../store';
+import { Hotel } from '../../../models/hotel';
+import { spinner } from '../../../helpers/Spinner/Spinner';
 
 const amountFilter = (
   hotelList: Hotel[],

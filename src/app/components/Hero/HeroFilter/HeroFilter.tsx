@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectHotelFilters } from '../../../app/store';
-import hotelFiltersSlice from '../../../app/store/hotelFiltersSlice';
+import { selectHotelFilters } from '../../../store';
+import hotelFiltersSlice from '../../../store/hotelFiltersSlice';
 import FilterAmount from './FilterAmount/FilterAmount';
 import FilterStar from './FilterStar/FilterStar';
 import classes from './HeroFilter.module.scss';
-import { HotelsFilters } from '../../../app/store/hotelFiltersSlice';
+import { HotelsFilters } from '../../../store/hotelFiltersSlice';
 
 const starColor1 = '#fff500';
 const starColor2 = 'transparent';

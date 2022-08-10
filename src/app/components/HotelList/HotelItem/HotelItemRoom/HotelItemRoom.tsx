@@ -1,4 +1,4 @@
-import { Room } from '../../../../models/room';
+import { Room } from '../../../../../models/room';
 import classes from './HotelItemRoom.module.scss';
 
 const HotelItemRoom: React.FC<{ room: Room }> = (props) => {
