@@ -1,4 +1,4 @@
-import { RoomsDetails } from './Room';
+import { RoomsDetails } from './room';
 
 export interface Hotel {
   address1: string;

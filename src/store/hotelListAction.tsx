@@ -1,5 +1,5 @@
-import { Hotel } from '../models/Hotel';
-import { RoomsDetails } from '../models/Room';
+import { Hotel } from '../models/hotel';
+import { RoomsDetails } from '../models/room';
 import PromisePool from '@supercharge/promise-pool';
 import { Dispatch } from 'redux';
 import ApiQueryStatusSlice, { ApiQueryStatus } from './ApiStatusSlice';
