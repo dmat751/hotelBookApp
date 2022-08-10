@@ -9,7 +9,7 @@ import {
   selectHotelFilters,
   selectHotelList,
 } from '../../store';
-import { Hotel } from '../../../types/hotel';
+import { Hotel } from '../../types/hotel';
 import { spinner } from '../../../helpers/Spinner/Spinner';
 
 const amountFilter = (
