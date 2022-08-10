@@ -10,12 +10,12 @@ import { HotelsFilters } from '../../../store/hotelFiltersSlice';
 const starColor1 = '#fff500';
 const starColor2 = 'transparent';
 
-interface starOptions {
+type starOptions = {
   borderColor: string;
   fillColor: string;
 }
 
-interface starWidgetState {
+type starWidgetState = {
   starArray: starOptions[];
 }
 

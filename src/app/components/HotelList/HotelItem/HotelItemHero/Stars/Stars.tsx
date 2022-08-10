@@ -5,7 +5,7 @@ const starColor1 = '#fff500';
 const starColor2 = 'transparent';
 const hotelMaxStars = 5;
 
-interface starOptions {
+type starOptions = {
   borderColor: string;
   fillColor: string;
 }

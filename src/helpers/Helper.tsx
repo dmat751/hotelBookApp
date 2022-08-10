@@ -10,7 +10,7 @@ export const getRandomInt = (min: number, max: number): number => {
   }
 };
 
-export interface Photo {
+export type Photo = {
   url: string;
   alt: string;
 }

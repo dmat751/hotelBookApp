@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Hotel } from '../../models/hotel';
 
-export interface HotelListSliceState {
+export type HotelListSliceState = {
   hotelList: Hotel[];
 }
 

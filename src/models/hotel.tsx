@@ -1,6 +1,6 @@
 import { RoomsDetails } from './room';
 
-export interface Hotel {
+export type Hotel = {
   address1: string;
   address2: string;
   checkInHours: string;

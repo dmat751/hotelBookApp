@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-export interface HotelsFilters {
+export type HotelsFilters = {
   adults: number;
   children: number;
   stars: number;

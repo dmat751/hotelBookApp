@@ -1,9 +1,9 @@
-export interface RoomsDetails {
+export type RoomsDetails = {
   ratePlans: RatePlan[];
   rooms: Room[];
 }
 
-export interface RatePlan {
+export type RatePlan = {
   cancellationPolicy: {
     amount: number;
     applicable: string;
@@ -19,7 +19,7 @@ export interface RatePlan {
   shortDescription: string;
 }
 
-export interface Room {
+export type Room = {
   bedConfiguration: string;
   disabledAccess: boolean;
   facilities: Facility[];
@@ -31,12 +31,12 @@ export interface Room {
   shortDescription: string;
 }
 
-export interface Facility {
+export type Facility = {
   code: string;
   name: string;
 }
 
-export interface Image {
+export type Image = {
   url: string;
   alt: string;
 }

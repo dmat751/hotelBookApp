@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface ApiQueryStatus {
+export type ApiQueryStatus = {
   notification: string;
   isError: boolean;
   isLoading: boolean;
