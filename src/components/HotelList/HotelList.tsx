@@ -3,12 +3,12 @@ import classes from './HotelList.module.scss';
 import baseClasses from '../../assets/baseClasses.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchHotelListData } from '../../store/hotelListAction';
+import { fetchHotelListData } from '../../app/store/hotelListAction';
 import {
   selectApiQueryStatus,
   selectHotelFilters,
   selectHotelList,
-} from '../../store/index';
+} from '../../app/store/index';
 import { Hotel } from '../../models/hotel';
 import { spinner } from '../../helpers/Spinner/Spinner';
 

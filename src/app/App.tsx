@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import Hero from './components/Hero/Hero';
-import HotelList from './components/HotelList/HotelList';
+import Hero from '../components/Hero/Hero';
+import HotelList from '../components/HotelList/HotelList';
 import { selectHotelList } from './store';
-import { selectRandomPhoto } from './helpers/Helper';
+import { selectRandomPhoto } from '../helpers/Helper';
 
 function App() {
   const hotelListItem = useSelector(selectHotelList);
