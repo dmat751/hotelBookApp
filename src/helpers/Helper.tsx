@@ -1,4 +1,4 @@
-import { Hotel } from '../models/hotel';
+import { Hotel } from '../types/hotel';
 
 export const getRandomInt = (min: number, max: number): number => {
   min = Math.ceil(min);

@@ -1,6 +1,6 @@
 import HotelItem from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
-import baseClasses from '../../../assets/baseClasses.module.scss';
+import baseClasses from '../../assets/baseClasses.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchHotelListData } from '../../store/hotelListAction';
@@ -9,7 +9,7 @@ import {
   selectHotelFilters,
   selectHotelList,
 } from '../../store';
-import { Hotel } from '../../../models/hotel';
+import { Hotel } from '../../../types/hotel';
 import { spinner } from '../../../helpers/Spinner/Spinner';
 
 const amountFilter = (

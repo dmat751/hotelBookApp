@@ -1,4 +1,4 @@
-import { Hotel } from '../../../../models/hotel';
+import { Hotel } from '../../../../types/hotel';
 import classes from './HotelItem.module.scss';
 import HotelItemHero from './HotelItemHero/HotelItemHero';
 import HotelItemRoom from './HotelItemRoom/HotelItemRoom';
