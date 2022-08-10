@@ -1,16 +1,12 @@
 import HotelItem from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
 import baseClasses from '../../assets/baseClasses.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchHotelListData } from '../../store/hotelListAction';
-import {
-  selectApiQueryStatus,
-  selectHotelFilters,
-  selectHotelList,
-} from '../../store';
-import { Hotel } from '../../types/hotel';
-import { spinner } from '../../../helpers/Spinner/Spinner';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
+import {fetchHotelListData} from '../../store/hotelListAction';
+import {selectApiQueryStatus, selectHotelFilters, selectHotelList,} from '../../store';
+import {Hotel} from '../../types/hotel';
+import {spinner} from '../../../helpers/Spinner/Spinner';
 
 const amountFilter = (
   hotelList: Hotel[],
@@ -20,9 +16,9 @@ const amountFilter = (
   const result = hotelList.map((hotelItem) => {
     let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
       if (filterType === 'children') {
-        return room.occupancy.maxChildren >= amount ? true : false;
+        return room.occupancy.maxChildren >= amount;
       } else if (filterType === 'adults') {
-        return room.occupancy.maxAdults >= amount ? true : false;
+        return room.occupancy.maxAdults >= amount;
       } else {
         return true;
       }
@@ -41,21 +37,9 @@ const amountFilter = (
   return result;
 };
 
-const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] => {
-  const result = hotelList.filter((hotelItem) => {
-    return hotelItem.starRating >= starAmount ? true : false;
-  });
+const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] => hotelList.filter((hotelItem) => hotelItem.starRating >= starAmount);
 
-  return result;
-};
-
-const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] => {
-  const result = hotelList.filter((hotelItem) => {
-    return hotelItem.roomsDetails.rooms.length === 0 ? false : true;
-  });
-
-  return result;
-};
+const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] => hotelList.filter((hotelItem) => hotelItem.roomsDetails.rooms.length !== 0);
 
 const HotelList = () => {
   const dispatch = useDispatch();

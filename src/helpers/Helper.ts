@@ -3,11 +3,7 @@ import { Hotel } from '../app/types/hotel';
 export const getRandomInt = (min: number, max: number): number => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  if (min === max) {
-    return -1;
-  } else {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
+  return min===max ? -1 : Math.floor(Math.random() * (max - min)) + min
 };
 
 export type Photo = {
