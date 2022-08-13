@@ -1,14 +1,14 @@
 import HotelItem from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
 import baseClasses from '../../assets/baseClasses.module.scss';
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from 'react';
-import {fetchHotelListData} from '../../../modules/HotelList/hotelListAction';
-import {selectHotelFilters} from '../../store';
-import {Hotel} from '../../types/hotel';
-import {spinner} from '../../../helpers/Spinner/Spinner';
-import {selectApiQueryStatus} from "../../../modules/ApiStatus/ApiStatusSelector";
-import {selectHotelList} from "../../../modules/HotelList/hotelListSelector";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchHotelListData } from '../../../modules/hotelList/hotelListAction';
+import { Hotel } from '../../types/hotel';
+import { spinner } from '../../../helpers/Spinner/Spinner';
+import { selectApiQueryStatus } from '../../../modules/apiStatus/ApiStatusSelector';
+import { selectHotelList } from '../../../modules/hotelList/hotelListSelector';
+import { selectHotelFilters } from '../../../modules/hotelFilters/hotelFiltersSelector';
 
 const amountFilter = (
   hotelList: Hotel[],
@@ -39,9 +39,11 @@ const amountFilter = (
   return result;
 };
 
-const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] => hotelList.filter((hotelItem) => hotelItem.starRating >= starAmount);
+const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] =>
+  hotelList.filter((hotelItem) => hotelItem.starRating >= starAmount);
 
-const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] => hotelList.filter((hotelItem) => hotelItem.roomsDetails.rooms.length !== 0);
+const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] =>
+  hotelList.filter((hotelItem) => hotelItem.roomsDetails.rooms.length !== 0);
 
 const HotelList = () => {
   const dispatch = useDispatch();

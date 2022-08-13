@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import hotelListSlice from '../../modules/HotelList/hotelListSlice';
-import hotelFiltersSlice from './hotelFiltersSlice';
-import ApiQueryStatusSlice from '../../modules/ApiStatus/ApiStatusSlice';
+import hotelListSlice from '../../modules/hotelList/hotelListSlice';
+import hotelFiltersSlice from '../../modules/hotelFilters/hotelFiltersSlice';
+import ApiQueryStatusSlice from '../../modules/apiStatus/ApiStatusSlice';
 import {RootState} from "../types/rootState";
 
 const store = configureStore({
@@ -13,6 +13,6 @@ const store = configureStore({
 });
 
 //TODO : dopisać selektor do random photo
-export const selectHotelFilters = (state: RootState) => state.hotelFilters;
+
 
 export default store;
