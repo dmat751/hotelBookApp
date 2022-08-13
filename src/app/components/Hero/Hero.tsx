@@ -1,8 +1,8 @@
 import FormFilter from './HeroFilter/HeroFilter';
 import classes from './Hero.module.scss';
 import { useSelector } from 'react-redux';
-import { selectHotelList } from '../../store';
 import { selectRandomPhoto } from '../../../helpers/Helper';
+import {selectHotelList} from "../../../modules/HotelList/hotelListSelector";
 
 export const Hero = () => {
   const hotelListItem = useSelector(selectHotelList);

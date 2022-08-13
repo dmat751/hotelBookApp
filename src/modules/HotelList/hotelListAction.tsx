@@ -1,8 +1,8 @@
-import { Hotel } from '../types/hotel';
-import { RoomsDetails } from '../types/room';
+import { Hotel } from '../../app/types/hotel';
+import { RoomsDetails } from '../../app/types/room';
 import PromisePool from '@supercharge/promise-pool';
 import { Dispatch } from 'redux';
-import ApiQueryStatusSlice, { ApiQueryStatus } from './ApiStatusSlice';
+import ApiQueryStatusSlice, { ApiQueryStatus } from '../ApiStatus/ApiStatusSlice';
 import hotelListSlice from './hotelListSlice';
 
 const getApiData = async <T,>(url: string): Promise<T> => {

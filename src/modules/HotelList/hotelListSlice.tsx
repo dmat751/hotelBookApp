@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Hotel } from '../types/hotel';
+import { Hotel } from '../../app/types/hotel';
 
 export type HotelListSliceState = {
   hotelList: Hotel[];
