@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchHotelListData } from '../../../modules/hotelList/hotelListAction';
 import { Hotel } from '../../types/hotel';
-import { spinner } from '../../../helpers/Spinner/Spinner';
+import { spinner } from '../../../UI/Spinner/Spinner';
 import { selectApiQueryStatus } from '../../../modules/apiStatus/ApiStatusSelector';
 import { selectHotelList } from '../../../modules/hotelList/hotelListSelector';
 import { selectHotelFilters } from '../../../modules/hotelFilters/hotelFiltersSelectors';
