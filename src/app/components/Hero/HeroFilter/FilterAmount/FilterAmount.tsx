@@ -3,7 +3,7 @@ import classes from './FilterAmount.module.scss';
 const FilterFilter: React.FC<{
   currentFilterAmount: number;
   onIncreaseFilterHandler: any;
-  onDecreaseFilterHandler: any;
+  onDecreaseFilterHandler: () => void;
   filterLabel: string;
   isPlusButtonDisabled: boolean;
   isMinusButtonDisabled: boolean;

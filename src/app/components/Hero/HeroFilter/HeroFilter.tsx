@@ -13,11 +13,11 @@ const starColor2 = 'transparent';
 type starOptions = {
   borderColor: string;
   fillColor: string;
-}
+};
 
 type starWidgetState = {
   starArray: starOptions[];
-}
+};
 
 const starActiveColor: starOptions = {
   borderColor: starColor1,
@@ -144,6 +144,8 @@ const FormFilter = () => {
     };
     setFiltersState(dispatch, newHotelFilters);
   };
+
+  //TODO: komponent uprościc i logika do reducera, akcja przekazuje + lub -
 
   const initStarState: starWidgetState = generateStarState(
     maxHotelRateStarAmount,
