@@ -32,11 +32,6 @@ const hotelFiltersSlice = createSlice({
   name: 'hotelFilters',
   initialState,
   reducers: {
-    setHotelFilters(state, action: PayloadAction<HotelsFilters>) {
-      state.adults = action.payload.adults;
-      state.children = action.payload.children;
-      state.stars = action.payload.stars;
-    },
     setFilterLoading(state, action: PayloadAction<boolean>) {
       state.filterLoading = action.payload;
     },
@@ -51,7 +46,5 @@ const hotelFiltersSlice = createSlice({
     },
   },
 });
-
-export const { setHotelFilters, setFilterLoading } = hotelFiltersSlice.actions;
 
 export default hotelFiltersSlice;
