@@ -5,7 +5,8 @@ import FilterAmount from './FilterAmount/FilterAmount';
 import FilterStar from './FilterStar/FilterStar';
 import classes from './HeroFilter.module.scss';
 import { HotelsFilters } from '../../../../modules/hotelFilters/hotelFiltersSlice';
-import { selectHotelFilters } from '../../../../modules/hotelFilters/hotelFiltersSelector';
+import {selectChildrenFilter, selectHotelFilters} from '../../../../modules/hotelFilters/hotelFiltersSelector';
+import {operationSign} from "../../../types/operations";
 
 const starColor1 = '#fff500';
 const starColor2 = 'transparent';
@@ -76,7 +77,7 @@ const FormFilter = () => {
   const maxHotelRateStarAmount = 5;
   const hotelFilters = useSelector(selectHotelFilters);
   const initStarAmount = hotelFilters.stars;
-  const currentChildrenState = hotelFilters.children;
+  const currentChildrenState = useSelector(selectChildrenFilter);
   const currentAdultState = hotelFilters.adults;
   const dispatch = useDispatch();
 
@@ -95,15 +96,7 @@ const FormFilter = () => {
   };
 
   const onClickIncreaseChildrenHandler = (): void => {
-    const newChildrenState = AmountFilterNextValueGenerator(
-      '+',
-      currentChildrenState
-    );
-    const newHotelFilters: HotelsFilters = {
-      ...hotelFilters,
-      children: newChildrenState,
-    };
-    setFiltersState(dispatch, newHotelFilters);
+    dispatch(hotelFiltersSlice.actions.setChildrenFilter(operationSign.plus));
   };
 
   const onClickDecreaseChildrenHandler = (): void => {
