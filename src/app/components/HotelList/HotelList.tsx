@@ -8,7 +8,7 @@ import { Hotel } from '../../types/hotel';
 import { spinner } from '../../../helpers/Spinner/Spinner';
 import { selectApiQueryStatus } from '../../../modules/apiStatus/ApiStatusSelector';
 import { selectHotelList } from '../../../modules/hotelList/hotelListSelector';
-import { selectHotelFilters } from '../../../modules/hotelFilters/hotelFiltersSelector';
+import { selectHotelFilters } from '../../../modules/hotelFilters/hotelFiltersSelectors';
 
 const amountFilter = (
   hotelList: Hotel[],

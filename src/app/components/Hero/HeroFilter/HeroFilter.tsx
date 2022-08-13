@@ -5,7 +5,7 @@ import FilterAmount from './FilterAmount/FilterAmount';
 import FilterStar from './FilterStar/FilterStar';
 import classes from './HeroFilter.module.scss';
 import { HotelsFilters } from '../../../../modules/hotelFilters/hotelFiltersSlice';
-import {selectChildrenFilter, selectHotelFilters} from '../../../../modules/hotelFilters/hotelFiltersSelector';
+import {selectChildrenFilter, selectHotelFilters} from '../../../../modules/hotelFilters/hotelFiltersSelectors';
 import {operationSign} from "../../../types/operations";
 
 const starColor1 = '#fff500';
@@ -100,16 +100,7 @@ const FormFilter = () => {
   };
 
   const onClickDecreaseChildrenHandler = (): void => {
-    const newChildrenState = AmountFilterNextValueGenerator(
-      '-',
-      currentChildrenState
-    );
-
-    const newHotelFilters: HotelsFilters = {
-      ...hotelFilters,
-      children: newChildrenState,
-    };
-    setFiltersState(dispatch, newHotelFilters);
+    dispatch(hotelFiltersSlice.actions.setChildrenFilter(operationSign.minus));
   };
 
   const onClickDecraseAdultHandler = (): void => {
