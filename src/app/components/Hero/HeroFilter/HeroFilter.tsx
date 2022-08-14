@@ -1,20 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import hotelFiltersSlice from '../../../../modules/hotelFilters/hotelFiltersSlice';
-import FilterAmount from './FilterAmount/FilterAmount';
 import classes from './HeroFilter.module.scss';
+import { FilterAmount } from './FilterAmount/FilterAmount';
 import {
   selectAdultsFilter,
   selectChildrenFilter,
 } from '../../../../modules/hotelFilters/hotelFiltersSelectors';
-import {operationSign} from "../../../types/operations";
-import StarFilter from "./StarFilter/StarFilter";
-import {setRefreshAnim} from "../../../../UI/Spinner/refreshFiltersAnim";
+import { operationSign } from '../../../types/operations';
+import { StarFilter } from './StarFilter/StarFilter';
+import { setRefreshAnim } from '../../../../UI/Spinner/refreshFiltersAnim';
 
-const FormFilter = () => {
+export const FormFilter = () => {
   const currentChildrenState = useSelector(selectChildrenFilter);
   const currentAdultState = useSelector(selectAdultsFilter);
   const dispatch = useDispatch();
-
 
   const onClickIncreaseChildrenHandler = (): void => {
     dispatch(hotelFiltersSlice.actions.setChildrenFilter(operationSign.plus));
@@ -39,8 +38,11 @@ const FormFilter = () => {
   return (
     <div className={classes.filter}>
       <div className={classes.filter__content}>
-
-        <StarFilter starColor1={'#fff500'} starColor2={'transparent'} maxHotelRateStarAmount={5}/>
+        <StarFilter
+          starColor1={'#fff500'}
+          starColor2={'transparent'}
+          maxHotelRateStarAmount={5}
+        />
 
         <FilterAmount
           onIncreaseFilterHandler={onClickIncreaseChildrenHandler}
@@ -63,4 +65,3 @@ const FormFilter = () => {
     </div>
   );
 };
-export default FormFilter;

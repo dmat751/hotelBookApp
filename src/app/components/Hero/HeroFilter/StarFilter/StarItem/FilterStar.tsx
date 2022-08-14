@@ -1,13 +1,19 @@
 import React from 'react';
 import classes from './FilterStar.module.scss';
 
-const FilterStar: React.FC<{
+type Props = Readonly<{
   borderColor: string;
   fillColor: string;
   onClickHandler: any;
-}> = (props) => {
+}>;
+
+export const FilterStar = ({
+  borderColor,
+  fillColor,
+  onClickHandler,
+}: Props) => {
   return (
-    <div onClick={props.onClickHandler} className={classes['svg-item']}>
+    <div onClick={onClickHandler} className={classes['svg-item']}>
       <svg
         className={classes.svg}
         viewBox="0 0 300 275"
@@ -15,8 +21,8 @@ const FilterStar: React.FC<{
         version="1.1"
       >
         <polygon
-          fill={props.fillColor}
-          stroke={props.borderColor}
+          fill={fillColor}
+          stroke={borderColor}
           strokeWidth="15"
           points="150,25  179,111 269,111 197,165
                     223,251  150,200 77,251  103,165
@@ -26,4 +32,3 @@ const FilterStar: React.FC<{
     </div>
   );
 };
-export default FilterStar;

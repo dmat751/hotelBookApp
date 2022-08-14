@@ -1,5 +1,5 @@
 import { Hotel } from '../../../../types/hotel';
-import HotelInfo from './HotelInfo/HotelInfo';
+import { HotelInfo } from './HotelInfo/HotelInfo';
 import classes from './HotelItemHero.module.scss';
 import Slider from './Slider/Slider';
 import Stars from './Stars/Stars';

@@ -1,29 +1,36 @@
 import classes from './FilterAmount.module.scss';
 
-const FilterFilter: React.FC<{
+type Props = Readonly<{
   currentFilterAmount: number;
-  onIncreaseFilterHandler: any;
+  onIncreaseFilterHandler: () => void;
   onDecreaseFilterHandler: () => void;
   filterLabel: string;
   isPlusButtonDisabled: boolean;
   isMinusButtonDisabled: boolean;
-}> = (props) => {
+}>;
+
+export const FilterAmount = ({
+  currentFilterAmount,
+  onIncreaseFilterHandler,
+  onDecreaseFilterHandler,
+  filterLabel,
+  isPlusButtonDisabled,
+  isMinusButtonDisabled,
+}: Props) => {
   return (
     <div className={classes.filter}>
-      <p className={classes['filter__label']}>{props.filterLabel}</p>
+      <p className={classes['filter__label']}>{filterLabel}</p>
       <button
-        disabled={props.isPlusButtonDisabled}
-        onClick={props.onIncreaseFilterHandler}
+        disabled={isPlusButtonDisabled}
+        onClick={onIncreaseFilterHandler}
         className={`${classes['filter__button']} ${classes['filter__plus-button']}`}
       >
         <span>+</span>
       </button>
-      <div className={classes['filter__counter']}>
-        {props.currentFilterAmount}
-      </div>
+      <div className={classes['filter__counter']}>{currentFilterAmount}</div>
       <button
-        disabled={props.isMinusButtonDisabled}
-        onClick={props.onDecreaseFilterHandler}
+        disabled={isMinusButtonDisabled}
+        onClick={onDecreaseFilterHandler}
         className={`${classes['filter__button']} ${classes['filter__minus-button']}`}
       >
         <span>_</span>
@@ -31,4 +38,3 @@ const FilterFilter: React.FC<{
     </div>
   );
 };
-export default FilterFilter;
