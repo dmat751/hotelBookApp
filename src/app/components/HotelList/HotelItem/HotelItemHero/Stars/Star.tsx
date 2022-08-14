@@ -1,8 +1,7 @@
 import classes from './Star.module.scss';
-const Star: React.FC<{
-  borderColor: string;
-  fillColor: string;
-}> = (props) => {
+
+type Props = Readonly<{ borderColor: string; fillColor: string }>;
+export const Star = ({ borderColor, fillColor }: Props) => {
   return (
     <div>
       <svg
@@ -12,8 +11,8 @@ const Star: React.FC<{
         version="1.1"
       >
         <polygon
-          fill={props.fillColor}
-          stroke={props.borderColor}
+          fill={fillColor}
+          stroke={borderColor}
           strokeWidth="15"
           points="150,25  179,111 269,111 197,165
                     223,251  150,200 77,251  103,165
@@ -23,4 +22,3 @@ const Star: React.FC<{
     </div>
   );
 };
-export default Star;

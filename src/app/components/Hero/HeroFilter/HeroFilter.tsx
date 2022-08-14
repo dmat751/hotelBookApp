@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import hotelFiltersSlice from '../../../../modules/hotelFilters/hotelFiltersSlice';
+import { hotelFiltersSlice } from '../../../../modules/hotelFilters/hotelFiltersSlice';
 import classes from './HeroFilter.module.scss';
 import { FilterAmount } from './FilterAmount/FilterAmount';
 import {

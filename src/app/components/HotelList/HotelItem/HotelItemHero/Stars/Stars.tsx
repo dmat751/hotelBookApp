@@ -1,14 +1,10 @@
-import Star from './Star';
+import { starOptions } from '../../../../../types/star';
+import { Star } from './Star';
 import classes from './Stars.module.scss';
 
 const starColor1 = '#fff500';
 const starColor2 = 'transparent';
 const hotelMaxStars = 5;
-
-type starOptions = {
-  borderColor: string;
-  fillColor: string;
-}
 
 const starActiveColor: starOptions = {
   borderColor: starColor1,
@@ -33,10 +29,11 @@ const starsStateBuilder = (
   return starsState;
 };
 
-const Stars: React.FC<{ starAmount: number }> = (props) => {
+type Props = Readonly<{ starAmount: number }>;
+export const Stars = ({ starAmount }: Props) => {
   return (
     <div className={classes.stars}>
-      {starsStateBuilder(props.starAmount, hotelMaxStars).map((item, index) => {
+      {starsStateBuilder(starAmount, hotelMaxStars).map((item, index) => {
         return (
           <Star
             key={index}
@@ -48,4 +45,3 @@ const Stars: React.FC<{ starAmount: number }> = (props) => {
     </div>
   );
 };
-export default Stars;

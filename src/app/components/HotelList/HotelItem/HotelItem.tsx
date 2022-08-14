@@ -1,13 +1,13 @@
 import { Hotel } from '../../../types/hotel';
 import classes from './HotelItem.module.scss';
-import HotelItemHero from './HotelItemHero/HotelItemHero';
-import HotelItemRoom from './HotelItemRoom/HotelItemRoom';
+import { HotelItemHero } from './HotelItemHero/HotelItemHero';
+import { HotelItemRoom } from './HotelItemRoom/HotelItemRoom';
 
-const HotelItem: React.FC<{ hotelItem: Hotel }> = (props) => {
-  const hotelItem = props.hotelItem;
+type Props = Readonly<{ hotelItem: Hotel }>;
+export const HotelItem = ({ hotelItem }: Props) => {
   return (
     <div className={classes.item}>
-      <HotelItemHero hotelItem={props.hotelItem} />
+      <HotelItemHero hotelItem={hotelItem} />
       <ul>
         {hotelItem.roomsDetails.rooms.map((roomItem) => {
           return <HotelItemRoom key={roomItem.id} room={roomItem} />;
@@ -16,4 +16,3 @@ const HotelItem: React.FC<{ hotelItem: Hotel }> = (props) => {
     </div>
   );
 };
-export default HotelItem;

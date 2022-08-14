@@ -3,13 +3,13 @@ import { Hotel } from '../../app/types/hotel';
 
 export type HotelListSliceState = {
   hotelList: Hotel[];
-}
+};
 
 const initialState: HotelListSliceState = {
   hotelList: [],
 };
 
-const hotelListSlice = createSlice({
+export const hotelListSlice = createSlice({
   name: 'hotelList',
   initialState,
   reducers: {
@@ -20,5 +20,3 @@ const hotelListSlice = createSlice({
 });
 
 export const { replaceHotelList } = hotelListSlice.actions;
-
-export default hotelListSlice;

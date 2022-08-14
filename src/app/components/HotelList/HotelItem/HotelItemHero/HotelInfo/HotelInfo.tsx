@@ -1,4 +1,3 @@
-import { type } from '@testing-library/user-event/dist/type';
 import classes from './HotelInfo.module.scss';
 type Props = Readonly<{
   hotelName: string;

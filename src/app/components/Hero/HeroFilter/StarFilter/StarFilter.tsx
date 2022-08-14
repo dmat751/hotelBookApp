@@ -3,17 +3,9 @@ import { FilterStar } from './StarItem/FilterStar';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
-import hotelFiltersSlice from '../../../../../modules/hotelFilters/hotelFiltersSlice';
+import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
 import { setRefreshAnim } from '../../../../../UI/Spinner/refreshFiltersAnim';
-
-type starOptions = {
-  borderColor: string;
-  fillColor: string;
-};
-
-type starWidgetState = {
-  starArray: starOptions[];
-};
+import { starOptions, starWidgetState } from '../../../../types/star';
 
 const generateStarState = (
   starAmount: number,

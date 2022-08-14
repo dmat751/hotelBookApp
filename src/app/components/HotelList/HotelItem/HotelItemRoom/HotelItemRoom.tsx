@@ -1,18 +1,18 @@
 import { Room } from '../../../../types/room';
 import classes from './HotelItemRoom.module.scss';
 
-const HotelItemRoom: React.FC<{ room: Room }> = (props) => {
+type Props = Readonly<{ room: Room }>;
+export const HotelItemRoom = ({ room }: Props) => {
   return (
     <div className={classes.item}>
       <div className={classes.header}>
-        <h5>{props.room.name}</h5>
-        <h6>Adults: {props.room.occupancy.maxAdults}</h6>
-        <h6>Children: {props.room.occupancy.maxChildren}</h6>
+        <h5>{room.name}</h5>
+        <h6>Adults: {room.occupancy.maxAdults}</h6>
+        <h6>Children: {room.occupancy.maxChildren}</h6>
       </div>
       <div className={classes.desc}>
-        <p>{props.room.longDescription}</p>
+        <p>{room.longDescription}</p>
       </div>
     </div>
   );
 };
-export default HotelItemRoom;

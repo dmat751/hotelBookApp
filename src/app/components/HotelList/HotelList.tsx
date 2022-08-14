@@ -1,4 +1,4 @@
-import HotelItem from './HotelItem/HotelItem';
+import { HotelItem } from './HotelItem/HotelItem';
 import classes from './HotelList.module.scss';
 import baseClasses from '../../assets/baseClasses.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -45,7 +45,7 @@ const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] =>
 const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] =>
   hotelList.filter((hotelItem) => hotelItem.roomsDetails.rooms.length !== 0);
 
-const HotelList = () => {
+export const HotelList = () => {
   const dispatch = useDispatch();
   const hotelListItem = useSelector(selectHotelList);
   const hotelFilters = useSelector(selectHotelFilters);
@@ -113,4 +113,3 @@ const HotelList = () => {
     </div>
   );
 };
-export default HotelList;

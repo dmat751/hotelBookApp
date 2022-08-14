@@ -4,7 +4,7 @@ export type ApiQueryStatus = {
   notification: string;
   isError: boolean;
   isLoading: boolean;
-}
+};
 
 const initialState: ApiQueryStatus = {
   isError: false,
@@ -12,7 +12,7 @@ const initialState: ApiQueryStatus = {
   isLoading: false,
 };
 
-const ApiQueryStatusSlice = createSlice({
+export const ApiQueryStatusSlice = createSlice({
   name: 'apiQueryStatus',
   initialState,
   reducers: {
@@ -25,5 +25,3 @@ const ApiQueryStatusSlice = createSlice({
 });
 
 export const { setApiQueryStatus } = ApiQueryStatusSlice.actions;
-
-export default ApiQueryStatusSlice;

@@ -28,7 +28,7 @@ const controlPlusMinusFilter = (
   return filterValue;
 };
 
-const hotelFiltersSlice = createSlice({
+export const hotelFiltersSlice = createSlice({
   name: 'hotelFilters',
   initialState,
   reducers: {
@@ -46,5 +46,3 @@ const hotelFiltersSlice = createSlice({
     },
   },
 });
-
-export default hotelFiltersSlice;

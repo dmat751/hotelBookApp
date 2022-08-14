@@ -1,13 +1,11 @@
 import { Hero } from './components/Hero/Hero';
-import HotelList from './components/HotelList/HotelList';
+import { HotelList } from './components/HotelList/HotelList';
 
-function App() {
+export const App = () => {
   return (
     <>
       <Hero />
       <HotelList />
     </>
   );
-}
-
-export default App;
+};

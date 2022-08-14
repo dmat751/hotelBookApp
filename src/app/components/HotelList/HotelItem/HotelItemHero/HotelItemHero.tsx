@@ -1,19 +1,20 @@
 import { Hotel } from '../../../../types/hotel';
 import { HotelInfo } from './HotelInfo/HotelInfo';
 import classes from './HotelItemHero.module.scss';
-import Slider from './Slider/Slider';
-import Stars from './Stars/Stars';
-const HotelItemHero: React.FC<{ hotelItem: Hotel }> = (props) => {
+import { Slider } from './Slider/Slider';
+import { Stars } from './Stars/Stars';
+
+type Props = Readonly<{ hotelItem: Hotel }>;
+export const HotelItemHero = ({ hotelItem }: Props) => {
   return (
     <div className={classes.hero}>
-      <Slider images={props.hotelItem.images} />
+      <Slider images={hotelItem.images} />
       <HotelInfo
-        hotelName={props.hotelItem.name}
-        hotelAddress1={props.hotelItem.address1}
-        hotelAddress2={props.hotelItem.address2}
+        hotelName={hotelItem.name}
+        hotelAddress1={hotelItem.address1}
+        hotelAddress2={hotelItem.address2}
       />
-      <Stars starAmount={props.hotelItem.starRating} />
+      <Stars starAmount={hotelItem.starRating} />
     </div>
   );
 };
-export default HotelItemHero;
