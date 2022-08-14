@@ -1,7 +1,7 @@
 export type RoomsDetails = {
   ratePlans: RatePlan[];
   rooms: Room[];
-}
+};
 
 export type RatePlan = {
   cancellationPolicy: {
@@ -17,7 +17,7 @@ export type RatePlan = {
   longDescription: string;
   prePayment: string;
   shortDescription: string;
-}
+};
 
 export type Room = {
   bedConfiguration: string;
@@ -29,14 +29,14 @@ export type Room = {
   name: string;
   occupancy: { maxAdults: number; maxChildren: number; maxOverall: number };
   shortDescription: string;
-}
+};
 
 export type Facility = {
   code: string;
   name: string;
-}
+};
 
 export type Image = {
   url: string;
   alt: string;
-}
+};

@@ -1,10 +1,9 @@
-import React from 'react';
 import classes from './FilterStar.module.scss';
 
 type Props = Readonly<{
   borderColor: string;
   fillColor: string;
-  onClickHandler: any;
+  onClickHandler: () => void;
 }>;
 
 export const FilterStar = ({

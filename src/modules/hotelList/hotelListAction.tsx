@@ -2,11 +2,9 @@ import { Hotel } from '../../app/types/hotel';
 import { RoomsDetails } from '../../app/types/room';
 import PromisePool from '@supercharge/promise-pool';
 import { Dispatch } from 'redux';
-import {
-  ApiQueryStatusSlice,
-  ApiQueryStatus,
-} from '../apiStatus/ApiStatusSlice';
+import { ApiQueryStatusSlice } from '../apiStatus/ApiStatusSlice';
 import { hotelListSlice } from './hotelListSlice';
+import { ApiQueryStatus } from '../../app/types/apiQueryStatus';
 
 const getApiData = async <T,>(url: string): Promise<T> => {
   const dataResp = await fetch(url);
@@ -19,7 +17,18 @@ const getApiData = async <T,>(url: string): Promise<T> => {
 };
 
 export const fetchHotelListData = () => {
-  return async (dispatch: Dispatch<any>) => {
+  return async (
+    dispatch: Dispatch<
+      | {
+          payload: ApiQueryStatus;
+          type: string;
+        }
+      | {
+          payload: Hotel[];
+          type: string;
+        }
+    >
+  ) => {
     try {
       const newApiStatusLoading: ApiQueryStatus = {
         isError: false,
@@ -29,6 +38,7 @@ export const fetchHotelListData = () => {
       dispatch(
         ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusLoading)
       );
+      ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusLoading);
       const hotelList = await getApiData<Hotel[]>(
         `${process.env.REACT_APP_HOTEL_LIST_URL}`
       );

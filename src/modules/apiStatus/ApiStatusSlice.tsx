@@ -1,10 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export type ApiQueryStatus = {
-  notification: string;
-  isError: boolean;
-  isLoading: boolean;
-};
+import { ApiQueryStatus } from '../../app/types/apiQueryStatus';
 
 const initialState: ApiQueryStatus = {
   isError: false,
