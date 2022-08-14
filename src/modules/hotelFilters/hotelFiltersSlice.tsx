@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { HotelsFilters } from '../../app/types/hotelFilters';
 import { operationSign } from '../../app/types/operations';
-
-export type HotelsFilters = {
-  adults: number;
-  children: number;
-  stars: number;
-  filterLoading: boolean;
-};
 
 const initialState: HotelsFilters = {
   adults: 2,

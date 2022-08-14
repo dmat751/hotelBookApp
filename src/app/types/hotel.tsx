@@ -25,4 +25,8 @@ export type Hotel = {
   telephone: string;
   town: string;
   roomsDetails: RoomsDetails;
-}
+};
+
+export type HotelListSliceState = {
+  hotelList: Hotel[];
+};
