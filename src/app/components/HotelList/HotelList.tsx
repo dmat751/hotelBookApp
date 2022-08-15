@@ -11,7 +11,7 @@ import { selectIsFiltersLoading } from '../../../modules/hotelFilters/hotelFilte
 
 export const HotelList = () => {
   const dispatch = useDispatch();
-  const hotelListItem = useSelector(selectHotelList).hotelList;
+  const hotelListItem = useSelector(selectHotelList);
   const apiQueryStatus = useSelector(selectApiQueryStatus);
   const isFiltersLoading = useSelector(selectIsFiltersLoading);
 

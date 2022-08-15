@@ -58,5 +58,5 @@ export const selectHotelList = (state: RootState) => {
   } catch (error) {
     console.log('filter Error');
   }
-  return state.hotelList;
+  return filteredHotelList;
 };
