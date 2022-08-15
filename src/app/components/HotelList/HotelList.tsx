@@ -4,74 +4,16 @@ import baseClasses from '../../assets/baseClasses.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchHotelListData } from '../../../modules/hotelList/hotelListAction';
-import { Hotel } from '../../types/hotel';
 import { spinner } from '../../../UI/Spinner/Spinner';
 import { selectApiQueryStatus } from '../../../modules/apiStatus/ApiStatusSelector';
 import { selectHotelList } from '../../../modules/hotelList/hotelListSelector';
-import { selectHotelFilters } from '../../../modules/hotelFilters/hotelFiltersSelectors';
-
-const amountFilter = (
-  hotelList: Hotel[],
-  amount: number,
-  filterType: string
-) => {
-  const result = hotelList.map((hotelItem) => {
-    let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
-      if (filterType === 'children') {
-        return room.occupancy.maxChildren >= amount;
-      } else if (filterType === 'adults') {
-        return room.occupancy.maxAdults >= amount;
-      } else {
-        return true;
-      }
-    });
-
-    const filteredHotel = {
-      ...hotelItem,
-      roomsDetails: {
-        ratePlans: hotelItem.roomsDetails.ratePlans,
-        rooms: filteredRoom,
-      },
-    };
-
-    return filteredHotel;
-  });
-  return result;
-};
-
-const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] =>
-  hotelList.filter((hotelItem) => hotelItem.starRating >= starAmount);
-
-const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] =>
-  hotelList.filter((hotelItem) => hotelItem.roomsDetails.rooms.length !== 0);
+import { selectIsFiltersLoading } from '../../../modules/hotelFilters/hotelFiltersSelectors';
 
 export const HotelList = () => {
   const dispatch = useDispatch();
-  const hotelListItem = useSelector(selectHotelList);
-  const hotelFilters = useSelector(selectHotelFilters);
+  const hotelListItem = useSelector(selectHotelList).hotelList;
   const apiQueryStatus = useSelector(selectApiQueryStatus);
-  let filteredHotelList = hotelListItem.hotelList;
-  if (!apiQueryStatus.isError) {
-    try {
-      filteredHotelList = amountFilter(
-        filteredHotelList,
-        hotelFilters.children,
-        'children'
-      );
-
-      filteredHotelList = amountFilter(
-        filteredHotelList,
-        hotelFilters.adults,
-        'adults'
-      );
-
-      filteredHotelList = starFilter(filteredHotelList, hotelFilters.stars);
-
-      filteredHotelList = removeHotelsWithoutRooms(filteredHotelList);
-    } catch (error) {
-      console.log('filter Error');
-    }
-  }
+  const isFiltersLoading = useSelector(selectIsFiltersLoading);
 
   useEffect(() => {
     dispatch(fetchHotelListData());
@@ -79,8 +21,8 @@ export const HotelList = () => {
 
   let content: JSX.Element[] | JSX.Element;
 
-  if (filteredHotelList.length > 0) {
-    content = filteredHotelList.map((hotelItem) => {
+  if (hotelListItem.length > 0) {
+    content = hotelListItem.map((hotelItem) => {
       return (
         <li className={classes['list-item']} key={hotelItem.id}>
           {!apiQueryStatus.isError && <HotelItem hotelItem={hotelItem} />}
@@ -98,11 +40,12 @@ export const HotelList = () => {
       </p>
     );
   }
+
   return (
     <div className={classes['list-container']}>
       <ul className={`${classes.list} ${baseClasses['basic-container1']}`}>
-        {!hotelFilters.filterLoading && content}
-        {hotelFilters.filterLoading && spinner}
+        {!isFiltersLoading && content}
+        {isFiltersLoading && spinner}
         {apiQueryStatus.isError && (
           <li className={classes['error-info']}>
             {apiQueryStatus.notification}
