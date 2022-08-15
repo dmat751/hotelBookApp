@@ -5,6 +5,8 @@ import { selectRandomHotelPhoto } from '../../../modules/hotelList/randomHotelPh
 
 export const Hero = () => {
   const randomPhoto = useSelector(selectRandomHotelPhoto);
+
+  console.log('test');
   return (
     <div className={classes.hero}>
       <div className={classes['hero__img-container']}>

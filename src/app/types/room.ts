@@ -24,7 +24,7 @@ export type Room = {
   disabledAccess: boolean;
   facilities: Facility[];
   id: string;
-  images: Image[];
+  images: Photo[];
   longDescription: string;
   name: string;
   occupancy: { maxAdults: number; maxChildren: number; maxOverall: number };
@@ -36,7 +36,7 @@ export type Facility = {
   name: string;
 };
 
-export type Image = {
+export type Photo = {
   url: string;
   alt: string;
 };

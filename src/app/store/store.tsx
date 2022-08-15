@@ -10,5 +10,3 @@ export const store = configureStore({
     apiQueryStatus: ApiQueryStatusSlice.reducer,
   },
 });
-
-//TODO : dopisać selektor do random photo

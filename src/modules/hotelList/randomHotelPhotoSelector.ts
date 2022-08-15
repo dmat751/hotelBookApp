@@ -1,9 +1,9 @@
 import { RootState } from '../../app/types/rootState';
-import { Image } from '../../app/types/room';
+import { Photo } from '../../app/types/room';
 import { getRandomInt } from '../../app/queries/getRandomNumber';
 
 export const selectRandomHotelPhoto = (state: RootState) => {
-  let imgArray: Image[] = [];
+  let imgArray: Photo[] = [];
   state.hotelList.hotelList.forEach((hotelItem) => {
     hotelItem.images.forEach((imgItem) => {
       imgArray.push(imgItem);
@@ -13,7 +13,7 @@ export const selectRandomHotelPhoto = (state: RootState) => {
   if (randomImgArrayIndex !== -1) {
     return imgArray[randomImgArrayIndex];
   } else {
-    const result: Image = { alt: '', url: '' };
+    const result: Photo = { alt: '', url: '' };
     return result;
   }
 };
