@@ -1,6 +1,6 @@
 import { RootState } from '../../app/types/rootState';
 import { Photo } from '../../app/types/room';
-import { getRandomInt } from '../../app/queries/getRandomNumber';
+import { getRandomNumber } from '../../app/queries/getRandomNumber';
 
 export const selectRandomHotelPhoto = (state: RootState) => {
   let imgArray: Photo[] = [];
@@ -9,7 +9,7 @@ export const selectRandomHotelPhoto = (state: RootState) => {
       imgArray.push(imgItem);
     });
   });
-  let randomImgArrayIndex = getRandomInt(0, imgArray.length);
+  let randomImgArrayIndex = getRandomNumber(0, imgArray.length);
   if (randomImgArrayIndex !== -1) {
     return imgArray[randomImgArrayIndex];
   } else {
