@@ -13,11 +13,8 @@ export const selectRandomHotelPhoto = createSelector(
       .flat();
 
     const randomImgArrayIndex = getRandomNumber(0, imgArray.length);
-    if (randomImgArrayIndex !== -1) {
-      return imgArray[randomImgArrayIndex];
-    } else {
-      const result: Photo = { alt: '', url: '' };
-      return result;
-    }
+    return randomImgArrayIndex !== -1
+      ? imgArray[randomImgArrayIndex]
+      : { alt: '', url: '' };
   }
 );
