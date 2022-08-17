@@ -27,8 +27,14 @@ export type Room = {
   images: Photo[];
   longDescription: string;
   name: string;
-  occupancy: { maxAdults: number; maxChildren: number; maxOverall: number };
+  occupancy: Occupancy;
   shortDescription: string;
+};
+
+type Occupancy = {
+  maxAdults: number;
+  maxChildren: number;
+  maxOverall: number;
 };
 
 export type Facility = {
