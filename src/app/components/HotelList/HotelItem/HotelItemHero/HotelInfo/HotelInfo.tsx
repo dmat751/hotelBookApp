@@ -8,12 +8,10 @@ export const HotelInfo = ({
   hotelAddress1,
   hotelAddress2,
   hotelName,
-}: Props) => {
-  return (
-    <div className={classes.info}>
-      <h2>{hotelName}</h2>
-      <h3>{hotelAddress1}</h3>
-      {hotelAddress2 && <h4>{hotelAddress2}</h4>}
-    </div>
-  );
-};
+}: Props) => (
+  <div className={classes.info}>
+    <h2>{hotelName}</h2>
+    <h3>{hotelAddress1}</h3>
+    {hotelAddress2 && <h4>{hotelAddress2}</h4>}
+  </div>
+);

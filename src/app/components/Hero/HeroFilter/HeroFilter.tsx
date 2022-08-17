@@ -39,8 +39,8 @@ export const FormFilter = () => {
     <div className={classes.filter}>
       <div className={classes.filter__content}>
         <StarFilter
-          starColor1={'#fff500'}
-          starColor2={'transparent'}
+          starColor1="#fff500"
+          starColor2="transparent"
           maxHotelRateStarAmount={5}
         />
 
@@ -48,8 +48,8 @@ export const FormFilter = () => {
           onIncreaseFilterHandler={onClickIncreaseChildrenHandler}
           onDecreaseFilterHandler={onClickDecreaseChildrenHandler}
           currentFilterAmount={currentChildrenState}
-          filterLabel={'Children:'}
-          isMinusButtonDisabled={currentChildrenState === 0 ? true : false}
+          filterLabel="Children:"
+          isMinusButtonDisabled={currentChildrenState === 0}
           isPlusButtonDisabled={false}
         />
 
@@ -57,8 +57,8 @@ export const FormFilter = () => {
           onIncreaseFilterHandler={onClickIncreaseAdultHandler}
           onDecreaseFilterHandler={onClickDecraseAdultHandler}
           currentFilterAmount={currentAdultState}
-          filterLabel={'Adults:'}
-          isMinusButtonDisabled={currentAdultState === 0 ? true : false}
+          filterLabel="Adults:"
+          isMinusButtonDisabled={currentAdultState === 0}
           isPlusButtonDisabled={false}
         />
       </div>

@@ -4,19 +4,13 @@ import { useSelector } from 'react-redux';
 import { selectRandomHotelPhoto } from '../../../modules/hotelList/randomHotelPhotoSelector';
 
 export const Hero = () => {
-  const randomPhoto = useSelector(selectRandomHotelPhoto);
+  const { url, alt } = useSelector(selectRandomHotelPhoto);
+  //TODO: ask about rerender component
 
-  console.log('test');
   return (
     <div className={classes.hero}>
       <div className={classes['hero__img-container']}>
-        {randomPhoto.url && (
-          <img
-            className={classes.hero__img}
-            src={randomPhoto.url}
-            alt={randomPhoto.alt}
-          />
-        )}
+        {url && <img className={classes.hero__img} src={url} alt={alt} />}
       </div>
       <FormFilter />
     </div>

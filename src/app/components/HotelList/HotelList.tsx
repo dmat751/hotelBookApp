@@ -12,7 +12,11 @@ import { selectIsFiltersLoading } from '../../../modules/hotelFilters/hotelFilte
 export const HotelList = () => {
   const dispatch = useDispatch();
   const hotelListItem = useSelector(selectHotelList);
-  const apiQueryStatus = useSelector(selectApiQueryStatus);
+  const {
+    isError: isApiError,
+    isLoading: isApiLoading,
+    notification: apiNotification,
+  } = useSelector(selectApiQueryStatus);
   const isFiltersLoading = useSelector(selectIsFiltersLoading);
 
   useEffect(() => {
@@ -25,14 +29,14 @@ export const HotelList = () => {
     content = hotelListItem.map((hotelItem) => {
       return (
         <li className={classes['list-item']} key={hotelItem.id}>
-          {!apiQueryStatus.isError && <HotelItem hotelItem={hotelItem} />}
+          {!isApiError && <HotelItem hotelItem={hotelItem} />}
         </li>
       );
     });
   } else {
     content = (
       <p
-        className={`${apiQueryStatus.isLoading && classes['hide-item']} ${
+        className={`${isApiLoading && classes['hide-item']} ${
           classes['not-found']
         }`}
       >
@@ -46,12 +50,10 @@ export const HotelList = () => {
       <ul className={`${classes.list} ${baseClasses['basic-container1']}`}>
         {!isFiltersLoading && content}
         {isFiltersLoading && spinner}
-        {apiQueryStatus.isError && (
-          <li className={classes['error-info']}>
-            {apiQueryStatus.notification}
-          </li>
+        {isApiError && (
+          <li className={classes['error-info']}>{apiNotification}</li>
         )}
-        {apiQueryStatus.isLoading && <li>{spinner}</li>}
+        {isApiLoading && <li>{spinner}</li>}
       </ul>
     </div>
   );

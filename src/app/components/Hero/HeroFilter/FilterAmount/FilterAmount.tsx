@@ -16,25 +16,23 @@ export const FilterAmount = ({
   filterLabel,
   isPlusButtonDisabled,
   isMinusButtonDisabled,
-}: Props) => {
-  return (
-    <div className={classes.filter}>
-      <p className={classes['filter__label']}>{filterLabel}</p>
-      <button
-        disabled={isPlusButtonDisabled}
-        onClick={onIncreaseFilterHandler}
-        className={`${classes['filter__button']} ${classes['filter__plus-button']}`}
-      >
-        <span>+</span>
-      </button>
-      <div className={classes['filter__counter']}>{currentFilterAmount}</div>
-      <button
-        disabled={isMinusButtonDisabled}
-        onClick={onDecreaseFilterHandler}
-        className={`${classes['filter__button']} ${classes['filter__minus-button']}`}
-      >
-        <span>_</span>
-      </button>
-    </div>
-  );
-};
+}: Props) => (
+  <div className={classes.filter}>
+    <span className={classes['filter__label']}>{filterLabel}</span>
+    <button
+      disabled={isPlusButtonDisabled}
+      onClick={onIncreaseFilterHandler}
+      className={`${classes['filter__button']} ${classes['filter__plus-button']}`}
+    >
+      <span>+</span>
+    </button>
+    <div className={classes['filter__counter']}>{currentFilterAmount}</div>
+    <button
+      disabled={isMinusButtonDisabled}
+      onClick={onDecreaseFilterHandler}
+      className={`${classes['filter__button']} ${classes['filter__minus-button']}`}
+    >
+      <span>_</span>
+    </button>
+  </div>
+);
