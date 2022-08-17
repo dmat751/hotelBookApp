@@ -1,4 +1,4 @@
-import { RoomsDetails } from './room';
+import { Photo, RoomsDetails } from './room';
 
 export type Hotel = {
   address1: string;
@@ -13,7 +13,7 @@ export type Hotel = {
   email: string;
   facilities: { code: string }[];
   id: string;
-  images: { url: string; alt: string }[];
+  images: Photo[];
   name: string;
   position: {
     latitude: string;

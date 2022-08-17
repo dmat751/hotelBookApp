@@ -31,12 +31,12 @@ const amountFilter = (
 };
 
 const starFilter = (hotelList: Hotel[], starAmount: number): Hotel[] =>
-  hotelList.filter((hotelItem) => hotelItem.starRating >= starAmount);
+  hotelList.filter(({ starRating }) => starRating >= starAmount);
 
 const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] =>
-  hotelList.filter((hotelItem) => hotelItem.roomsDetails.rooms.length !== 0);
+  hotelList.filter(({ roomsDetails }) => roomsDetails.rooms.length !== 0);
 
-export const selectHotelList = (state: RootState) => {
+export const selectFilteredHotelList = (state: RootState) => {
   let filteredHotelList = state.hotelList.hotelList;
   const hotelFilters = state.hotelFilters;
   try {

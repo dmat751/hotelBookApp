@@ -7,11 +7,11 @@ import { selectApiQueryStatus } from '../../../modules/apiStatus/ApiStatusSelect
 import { selectIsFiltersLoading } from '../../../modules/hotelFilters/hotelFiltersSelectors';
 import { Notification } from '../../../UI/Notification/Notification';
 import { HotelListContent } from './HotelListContent/HotelListContent';
-import { selectHotelList } from '../../../modules/hotelList/hotelListSelector';
+import { selectFilteredHotelList } from '../../../modules/hotelList/filteredHotelListSelector';
 
 export const HotelList = () => {
   const dispatch = useDispatch();
-  const hotelListLength = useSelector(selectHotelList).length;
+  const hotelListLength = useSelector(selectFilteredHotelList).length;
   const {
     isError: isApiError,
     isLoading: isApiLoading,
