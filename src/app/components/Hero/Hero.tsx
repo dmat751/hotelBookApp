@@ -5,7 +5,6 @@ import { selectRandomHotelPhoto } from '../../../modules/hotelList/randomHotelPh
 
 export const Hero = () => {
   const { url, alt } = useSelector(selectRandomHotelPhoto);
-  //TODO: ask about rerender component
 
   return (
     <div className={classes.hero}>
