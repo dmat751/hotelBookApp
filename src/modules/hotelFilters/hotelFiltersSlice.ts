@@ -9,19 +9,6 @@ const initialState: HotelsFilters = {
   filterLoading: false,
 };
 
-const controlPlusMinusFilter = (
-  filterValue: number,
-  operation: operationSign
-) => {
-  if (operation === operationSign.plus) {
-    return ++filterValue;
-  }
-  if (operation === operationSign.minus) {
-    return --filterValue;
-  }
-  return filterValue;
-};
-
 export const hotelFiltersSlice = createSlice({
   name: 'hotelFilters',
   initialState,
@@ -30,10 +17,16 @@ export const hotelFiltersSlice = createSlice({
       state.filterLoading = action.payload;
     },
     setAdultsFilter(state, action: PayloadAction<operationSign>) {
-      state.adults = controlPlusMinusFilter(state.adults, action.payload);
+      state.adults =
+        action.payload === operationSign.plus
+          ? state.adults + 1
+          : state.adults - 1;
     },
     setChildrenFilter(state, action: PayloadAction<operationSign>) {
-      state.children = controlPlusMinusFilter(state.children, action.payload);
+      state.children =
+        action.payload === operationSign.plus
+          ? state.children + 1
+          : state.children - 1;
     },
     setStarsFilter(state, action: PayloadAction<number>) {
       state.stars = action.payload;

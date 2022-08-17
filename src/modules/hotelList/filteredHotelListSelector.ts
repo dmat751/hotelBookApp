@@ -4,7 +4,7 @@ import { RootState } from '../../app/types/rootState';
 const amountFilter = (
   hotelList: Hotel[],
   amount: number,
-  filterType: string
+  filterType: 'children' | 'adults'
 ) => {
   const result = hotelList.map((hotelItem) => {
     let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
