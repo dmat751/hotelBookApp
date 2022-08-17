@@ -1,25 +1,5 @@
 .list-container {
   display: flex;
-  justify-content: center;
-}
-.list {
-  list-style: none;
-}
-
-.list-item {
-  margin-bottom: 50px;
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-.hide-item {
-  display: none;
-}
-
-.not-found,
-.error-info {
-  font-family: 'Varela Round', sans-serif;
-  font-size: 2rem;
-  margin: 0 auto;
-  text-align: center;
+  flex-direction: column;
+  align-items: center;
 }
