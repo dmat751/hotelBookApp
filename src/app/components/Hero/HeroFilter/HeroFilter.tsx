@@ -6,7 +6,6 @@ import {
   selectAdultsFilter,
   selectChildrenFilter,
 } from '../../../../modules/hotelFilters/hotelFiltersSelectors';
-import { operationSign } from '../../../types/operations';
 import { StarFilter } from './StarFilter/StarFilter';
 import { setRefreshAnim } from '../../../../UI/Spinner/refreshFiltersAnim';
 
@@ -16,22 +15,22 @@ export const FormFilter = () => {
   const dispatch = useDispatch();
 
   const onClickIncreaseChildrenHandler = (): void => {
-    dispatch(hotelFiltersSlice.actions.setChildrenFilter(operationSign.plus));
+    dispatch(hotelFiltersSlice.actions.setChildrenFilter('ADD'));
     setRefreshAnim(dispatch);
   };
 
   const onClickDecreaseChildrenHandler = (): void => {
-    dispatch(hotelFiltersSlice.actions.setChildrenFilter(operationSign.minus));
+    dispatch(hotelFiltersSlice.actions.setChildrenFilter('SUB'));
     setRefreshAnim(dispatch);
   };
 
   const onClickDecraseAdultHandler = (): void => {
-    dispatch(hotelFiltersSlice.actions.setAdultsFilter(operationSign.minus));
+    dispatch(hotelFiltersSlice.actions.setAdultsFilter('SUB'));
     setRefreshAnim(dispatch);
   };
 
   const onClickIncreaseAdultHandler = (): void => {
-    dispatch(hotelFiltersSlice.actions.setAdultsFilter(operationSign.plus));
+    dispatch(hotelFiltersSlice.actions.setAdultsFilter('ADD'));
     setRefreshAnim(dispatch);
   };
 

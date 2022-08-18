@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { HotelsFilters } from '../../app/types/hotelFilters';
-import { operationSign } from '../../app/types/operations';
 
 const initialState: HotelsFilters = {
   adults: 2,
@@ -16,17 +15,13 @@ export const hotelFiltersSlice = createSlice({
     setFilterLoading(state, action: PayloadAction<boolean>) {
       state.filterLoading = action.payload;
     },
-    setAdultsFilter(state, action: PayloadAction<operationSign>) {
+    setAdultsFilter(state, action: PayloadAction<'ADD' | 'SUB'>) {
       state.adults =
-        action.payload === operationSign.plus
-          ? state.adults + 1
-          : state.adults - 1;
+        action.payload === 'ADD' ? state.adults + 1 : state.adults - 1;
     },
-    setChildrenFilter(state, action: PayloadAction<operationSign>) {
+    setChildrenFilter(state, action: PayloadAction<'ADD' | 'SUB'>) {
       state.children =
-        action.payload === operationSign.plus
-          ? state.children + 1
-          : state.children - 1;
+        action.payload === 'ADD' ? state.children + 1 : state.children - 1;
     },
     setStarsFilter(state, action: PayloadAction<number>) {
       state.stars = action.payload;
