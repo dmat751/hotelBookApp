@@ -32,14 +32,12 @@ const starsStateBuilder = (
 type Props = Readonly<{ starAmount: number }>;
 export const Stars = ({ starAmount }: Props) => (
   <div className={classes.stars}>
-    {starsStateBuilder(starAmount, hotelMaxStars).map((item, index) => {
-      return (
-        <Star
-          key={index}
-          borderColor={item.borderColor}
-          fillColor={item.fillColor}
-        />
-      );
-    })}
+    {starsStateBuilder(starAmount, hotelMaxStars).map((item, index) => (
+      <Star
+        key={index}
+        borderColor={item.borderColor}
+        fillColor={item.fillColor}
+      />
+    ))}
   </div>
 );

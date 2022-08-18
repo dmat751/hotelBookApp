@@ -67,16 +67,14 @@ export const StarFilter = ({
 
   return (
     <div className={classes.stars}>
-      {starState.starArray.map((starItem, key) => {
-        return (
-          <FilterStar
-            key={key}
-            onClickHandler={onClickHandlerStar.bind(null, key)}
-            borderColor={starItem.borderColor}
-            fillColor={starItem.fillColor}
-          />
-        );
-      })}
+      {starState.starArray.map((starItem, key) => (
+        <FilterStar
+          key={key}
+          onClickHandler={onClickHandlerStar.bind(null, key)}
+          borderColor={starItem.borderColor}
+          fillColor={starItem.fillColor}
+        />
+      ))}
     </div>
   );
 };
