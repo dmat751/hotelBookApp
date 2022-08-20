@@ -15,11 +15,9 @@ const generateStarState = (
 ): StarWidgetState => {
   let newStarState: StarWidgetState = { starArray: [] };
   for (let i = 1; i <= starAmount; i++) {
-    if (i <= filledStarsAmount) {
-      newStarState.starArray.push(starActiveColor);
-    } else {
-      newStarState.starArray.push(starInactiveColor);
-    }
+    newStarState.starArray.push(
+      i <= filledStarsAmount ? starActiveColor : starInactiveColor
+    );
   }
   return newStarState;
 };
