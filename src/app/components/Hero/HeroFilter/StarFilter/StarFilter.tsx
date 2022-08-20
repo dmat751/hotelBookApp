@@ -68,7 +68,7 @@ export const StarFilter = ({
       {starState.starArray.map((starItem, key) => (
         <FilterStar
           key={key}
-          onClickHandler={onClickHandlerStar.bind(null, key)}
+          onClickHandler={() => onClickHandlerStar(key)}
           borderColor={starItem.borderColor}
           fillColor={starItem.fillColor}
         />
