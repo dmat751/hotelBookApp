@@ -8,6 +8,8 @@ import {
 } from '../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { StarFilter } from './StarFilter/StarFilter';
 import { setRefreshAnim } from '../../../../UI/Spinner/refreshFiltersAnim';
+import { FilterByChildren } from './FilterByChildren/FilterByChildren';
+import { FilterByAdults } from './FilterByAdults/FilterByAdults';
 
 export const FormFilter = () => {
   const currentChildrenState = useSelector(selectChildrenFilter);
@@ -42,24 +44,8 @@ export const FormFilter = () => {
           starColor2="transparent"
           maxHotelRateStarAmount={5}
         />
-
-        <FilterAmount
-          onIncreaseFilterHandler={onClickIncreaseChildrenHandler}
-          onDecreaseFilterHandler={onClickDecreaseChildrenHandler}
-          currentFilterAmount={currentChildrenState}
-          filterLabel="Children:"
-          isMinusButtonDisabled={currentChildrenState === 0}
-          isPlusButtonDisabled={false}
-        />
-
-        <FilterAmount
-          onIncreaseFilterHandler={onClickIncreaseAdultHandler}
-          onDecreaseFilterHandler={onClickDecraseAdultHandler}
-          currentFilterAmount={currentAdultState}
-          filterLabel="Adults:"
-          isMinusButtonDisabled={currentAdultState === 0}
-          isPlusButtonDisabled={false}
-        />
+        <FilterByChildren />
+        <FilterByAdults />
       </div>
     </div>
   );
