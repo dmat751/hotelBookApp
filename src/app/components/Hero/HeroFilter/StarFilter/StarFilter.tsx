@@ -5,15 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
 import { setRefreshAnim } from '../../../../../UI/Spinner/refreshFiltersAnim';
-import { starOptions, starWidgetState } from '../../../../types/star';
+import { StarOptions, StarWidgetState } from '../../../../types/star';
 
 const generateStarState = (
   starAmount: number,
   filledStarsAmount: number,
-  starActiveColor: starOptions,
-  starInactiveColor: starOptions
-): starWidgetState => {
-  let newStarState: starWidgetState = { starArray: [] };
+  starActiveColor: StarOptions,
+  starInactiveColor: StarOptions
+): StarWidgetState => {
+  let newStarState: StarWidgetState = { starArray: [] };
   for (let i = 1; i <= starAmount; i++) {
     if (i <= filledStarsAmount) {
       newStarState.starArray.push(starActiveColor);
@@ -35,15 +35,15 @@ export const StarFilter = ({
   maxHotelRateStarAmount,
 }: Props) => {
   const currentStarAmount = useSelector(selectStarsFilter);
-  const starActiveColor: starOptions = {
+  const starActiveColor: StarOptions = {
     borderColor: starColor1,
     fillColor: starColor1,
   };
-  const starInactiveColor: starOptions = {
+  const starInactiveColor: StarOptions = {
     borderColor: starColor1,
     fillColor: starColor2,
   };
-  const initStarState: starWidgetState = generateStarState(
+  const initStarState: StarWidgetState = generateStarState(
     maxHotelRateStarAmount,
     currentStarAmount,
     starActiveColor,
