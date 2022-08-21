@@ -6,6 +6,7 @@ import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFilt
 import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
 import { setRefreshAnim } from '../../../../../UI/Spinner/refreshFiltersAnim';
 import { StarOptions, StarWidgetState } from '../../../../types/star';
+import nextId from 'react-id-generator';
 
 const generateStarState = (
   starAmount: number,
@@ -67,7 +68,7 @@ export const StarFilter = ({
     <div className={classes.stars}>
       {starState.starArray.map((starItem, key) => (
         <FilterStar
-          key={key}
+          key={nextId()}
           onClickHandler={() => onClickHandlerStar(key)}
           borderColor={starItem.borderColor}
           fillColor={starItem.fillColor}
