@@ -15,6 +15,10 @@ export const HotelItemHero = ({
       hotelAddress1={address1}
       hotelAddress2={address2}
     />
-    <Stars starAmount={starRating} />
+    <Stars
+      starAmount={starRating}
+      starColor1="#fff500"
+      starColor2="transparent"
+    />
   </div>
 );

@@ -1,6 +1,5 @@
 import classes from '../HeroFilter.module.scss';
 import { FilterStar } from './StarItem/FilterStar';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
