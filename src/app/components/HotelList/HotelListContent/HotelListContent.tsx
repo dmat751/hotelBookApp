@@ -8,7 +8,7 @@ export const HotelListContent = () => {
   const hotelListItems = useSelector(selectFilteredHotelList);
 
   return (
-    <ul className={`${classes.list} ${baseClasses['basic-container1']}`}>
+    <ul className={`${classes.list} ${baseClasses['basic-container-1']}`}>
       {hotelListItems.map((hotelItem) => (
         <li className={classes['list-item']} key={hotelItem.id}>
           <HotelItem hotelItem={hotelItem} />

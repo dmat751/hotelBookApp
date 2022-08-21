@@ -5,6 +5,9 @@ export const selectMaxHotelStars = createSelector(
   [selectAllHotelList],
   (hotelList) => {
     const starsMaxes = hotelList.map((hotel) => hotel.starRating);
-    return starsMaxes.length > 0 ? Math.max(...starsMaxes) : 0;
+    const defaultMaxStarsValue = 5;
+    return starsMaxes.length > 0
+      ? Math.max(...starsMaxes)
+      : defaultMaxStarsValue;
   }
 );
