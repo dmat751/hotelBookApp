@@ -1,7 +1,7 @@
-import { Star } from './Star';
 import classes from './Stars.module.scss';
 import nextId from 'react-id-generator';
 import { useStarsStateBuilder } from '../../../../../hooks/useStarsStateBuilder';
+import { StarItem } from '../../../../StarItem/StarItem';
 
 type Props = Readonly<{
   starAmount: number;
@@ -26,7 +26,7 @@ export const Stars = ({
   return (
     <div className={classes.stars}>
       {starsStatus.map((item) => (
-        <Star
+        <StarItem
           key={nextId()}
           borderColor={item.borderColor}
           fillColor={item.fillColor}

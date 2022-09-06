@@ -1,16 +1,12 @@
-import classes from './FilterStar.module.scss';
+import classes from './StarItem.module.scss';
 
 type Props = Readonly<{
   borderColor: string;
   fillColor: string;
-  onClickHandler: () => void;
+  onClickHandler?: () => void;
 }>;
 
-export const FilterStar = ({
-  borderColor,
-  fillColor,
-  onClickHandler,
-}: Props) => (
+export const StarItem = ({ borderColor, fillColor, onClickHandler }: Props) => (
   <div onClick={onClickHandler} className={classes['svg-item']}>
     <svg
       className={classes.svg}
