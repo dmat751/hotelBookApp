@@ -6,7 +6,6 @@ type Props = Readonly<{
   onDecreaseFilterHandler: () => void;
   filterLabel: string;
   isPlusButtonDisabled: boolean;
-  isMinusButtonDisabled: boolean;
 }>;
 
 export const FilterAmount = ({
@@ -15,7 +14,6 @@ export const FilterAmount = ({
   onDecreaseFilterHandler,
   filterLabel,
   isPlusButtonDisabled,
-  isMinusButtonDisabled,
 }: Props) => (
   <div className={classes.filter}>
     <span className={classes['filter__label']}>{filterLabel}</span>
@@ -28,7 +26,7 @@ export const FilterAmount = ({
     </button>
     <div className={classes['filter__counter']}>{currentFilterAmount}</div>
     <button
-      disabled={isMinusButtonDisabled}
+      disabled={currentFilterAmount === 0}
       onClick={onDecreaseFilterHandler}
       className={`${classes['filter__button']} ${classes['filter__minus-button']}`}
     >

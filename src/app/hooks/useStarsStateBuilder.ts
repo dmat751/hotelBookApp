@@ -6,7 +6,7 @@ const starsStateBuilder = (
   starActiveColor: StarOptions,
   starInactiveColor: StarOptions
 ): StarOptions[] => {
-  let starsState: StarOptions[] = [];
+  const starsState: StarOptions[] = [];
   for (let i = 1; i <= maxStarsAmount; i++) {
     i <= activeStarsAmount
       ? starsState.push(starActiveColor)

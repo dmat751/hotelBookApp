@@ -14,6 +14,17 @@ type Props = Readonly<{
   maxHotelRateStarAmount: number;
 }>;
 
+type Props1 = Readonly<{
+  numberOfStars?: number;
+  numberOfSelectedStarts: number;
+  onFilterChange?: (value: number) => void;
+}>;
+
+export const StarFilter2 = ({
+  numberOfStars = 5,
+  numberOfSelectedStarts,
+}: Props1) => {};
+
 export const StarFilter = ({
   starColor1,
   starColor2,

@@ -5,11 +5,7 @@ import { selectAllHotelList } from './allHotelListSelector';
 export const selectRandomHotelPhoto = createSelector(
   [selectAllHotelList],
   (hotelList) => {
-    const imgArray = hotelList
-      .map(({ images }) => {
-        return images;
-      })
-      .flat();
+    const imgArray = hotelList.map(({ images }) => images).flat();
 
     const randomImgArrayIndex = getRandomNumber(0, imgArray.length);
     return randomImgArrayIndex !== -1

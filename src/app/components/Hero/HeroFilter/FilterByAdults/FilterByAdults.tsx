@@ -21,7 +21,6 @@ export const FilterByAdults = () => {
     <FilterAmount
       currentFilterAmount={currentFilterAmount}
       filterLabel="Adults"
-      isMinusButtonDisabled={currentFilterAmount === 0}
       isPlusButtonDisabled={currentFilterAmount >= maxAdults}
       onDecreaseFilterHandler={handleOnDecrease}
       onIncreaseFilterHandler={handleOnIncrease}
