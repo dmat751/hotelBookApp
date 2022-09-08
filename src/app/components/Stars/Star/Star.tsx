@@ -7,9 +7,9 @@ type Props = Readonly<{
 }>;
 
 export const Star = ({ borderColor, fillColor, onClickHandler }: Props) => (
-  <div onClick={onClickHandler} className={classes['svg-item']}>
+  <div onClick={onClickHandler}>
     <svg
-      className={classes.svg}
+      className={`${classes.svg} ${onClickHandler && classes['svg--pointer']}`}
       viewBox="0 0 300 275"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"

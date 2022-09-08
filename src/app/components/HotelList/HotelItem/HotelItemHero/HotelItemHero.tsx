@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { selectMaxHotelStars } from '../../../../../modules/hotelList/maxHotelStarsSelector';
 import { Hotel } from '../../../../types/hotel';
+import { Stars } from '../../../Stars/Stars';
 import { HotelInfo } from './HotelInfo/HotelInfo';
 import classes from './HotelItemHero.module.scss';
 import { Slider } from './Slider/Slider';
-import { Stars } from './Stars/Stars';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
 export const HotelItemHero = ({
@@ -21,10 +21,10 @@ export const HotelItemHero = ({
         hotelAddress2={address2}
       />
       <Stars
-        starAmount={starRating}
-        starColor1="#fff500"
-        starColor2="transparent"
-        maxHotelRateStarAmount={hotelMaxStars}
+        borderColor="#fff500"
+        fillColor="#fff500"
+        numberOfSelectedStarts={starRating}
+        numberOfStars={hotelMaxStars}
       />
     </div>
   );

@@ -1,59 +1,29 @@
 import classes from '../HeroFilter.module.scss';
-import { Star } from '../../../Stars/Star/Star';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
 import { setRefreshAnim } from '../../../../../UI/Spinner/refreshFiltersAnim';
-import { StarOptions } from '../../../../types/star';
-import nextId from 'react-id-generator';
-import { useStarsStateBuilder } from '../../../../hooks/useStarsStateBuilder';
+import { Stars } from '../../../Stars/Stars';
+import { selectMaxHotelStars } from '../../../../../modules/hotelList/maxHotelStarsSelector';
 
-type Props = Readonly<{
-  starColor1: string;
-  starColor2: string;
-  maxHotelRateStarAmount: number;
-}>;
-
-type Props1 = Readonly<{
-  numberOfStars?: number;
-  numberOfSelectedStarts: number;
-  onFilterChange?: (value: number) => void;
-}>;
-
-export const StarFilter2 = ({
-  numberOfStars = 5,
-  numberOfSelectedStarts,
-}: Props1) => {};
-
-export const StarFilter = ({
-  starColor1,
-  starColor2,
-  maxHotelRateStarAmount,
-}: Props) => {
-  const currentStarAmount = useSelector(selectStarsFilter);
-  const starsState: StarOptions[] = useStarsStateBuilder({
-    activeStarAmount: currentStarAmount,
-    maxStarAmount: maxHotelRateStarAmount,
-    starColor1,
-    starColor2,
-  });
+export const StarFilter = () => {
+  const currentStarsAmount = useSelector(selectStarsFilter);
+  const maxStarsAmount = useSelector(selectMaxHotelStars);
   const dispatch = useDispatch();
 
   const onClickHandlerStar = (starIndex: number): void => {
     dispatch(hotelFiltersSlice.actions.setStarsFilter(starIndex + 1));
-    setRefreshAnim(dispatch);
   };
 
   return (
     <div className={classes.stars}>
-      {starsState.map((starItem, key) => (
-        <Star
-          key={nextId()}
-          onClickHandler={() => onClickHandlerStar(key)}
-          borderColor={starItem.borderColor}
-          fillColor={starItem.fillColor}
-        />
-      ))}
+      <Stars
+        borderColor="#fff500"
+        fillColor="#fff500"
+        numberOfSelectedStarts={currentStarsAmount}
+        numberOfStars={maxStarsAmount}
+        onFilterChange={onClickHandlerStar}
+      />
     </div>
   );
 };
