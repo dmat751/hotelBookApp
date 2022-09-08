@@ -1,5 +1,5 @@
 import classes from '../HeroFilter.module.scss';
-import { StarItem } from '../../../StarItem/StarItem';
+import { Star } from '../../../Stars/Star/Star';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
@@ -47,7 +47,7 @@ export const StarFilter = ({
   return (
     <div className={classes.stars}>
       {starsState.map((starItem, key) => (
-        <StarItem
+        <Star
           key={nextId()}
           onClickHandler={() => onClickHandlerStar(key)}
           borderColor={starItem.borderColor}
