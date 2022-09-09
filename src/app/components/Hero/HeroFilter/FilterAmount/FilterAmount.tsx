@@ -1,4 +1,4 @@
-import classes from './FilterAmount.module.scss';
+import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/solid';
 
 type Props = Readonly<{
   currentFilterAmount: number;
@@ -15,22 +15,22 @@ export const FilterAmount = ({
   filterLabel,
   isPlusButtonDisabled,
 }: Props) => (
-  <div className={classes.filter}>
-    <span className={classes['filter__label']}>{filterLabel}</span>
+  <div className="flex items-center md:my-0 md:mx-4 mt-0 mr-4 mb-2.5 ml-auto">
+    <label className="text-lg">{filterLabel}</label>
     <button
       disabled={isPlusButtonDisabled}
       onClick={onIncreaseFilterHandler}
-      className={`${classes['filter__button']} ${classes['filter__plus-button']}`}
+      className="p-1 rounded-full bg-blue-300 mx-1 disabled:cursor-not-allowed disabled:bg-gray-400"
     >
-      <span>+</span>
+      <PlusSmallIcon width={20} />
     </button>
-    <div className={classes['filter__counter']}>{currentFilterAmount}</div>
+    <div className="mx-1.5">{currentFilterAmount}</div>
     <button
       disabled={currentFilterAmount === 0}
       onClick={onDecreaseFilterHandler}
-      className={`${classes['filter__button']} ${classes['filter__minus-button']}`}
+      className="p-1 rounded-full bg-blue-300 mx-1 disabled:cursor-not-allowed disabled:bg-gray-400"
     >
-      <span>_</span>
+      <MinusSmallIcon width={20} />
     </button>
   </div>
 );
