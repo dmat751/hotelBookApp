@@ -2,7 +2,6 @@ import classes from '../HeroFilter.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
-import { setRefreshAnim } from '../../../../../UI/Spinner/refreshFiltersAnim';
 import { Stars } from '../../../Stars/Stars';
 import { selectMaxHotelStars } from '../../../../../modules/hotelList/maxHotelStarsSelector';
 

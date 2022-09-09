@@ -1,4 +1,5 @@
 import classes from './HotelInfo.module.scss';
+
 type Props = Readonly<{
   hotelName: string;
   hotelAddress1: string;
