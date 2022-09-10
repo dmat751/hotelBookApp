@@ -3,7 +3,6 @@ import { selectMaxHotelStars } from '../../../../../modules/hotelList/maxHotelSt
 import { Hotel } from '../../../../types/hotel';
 import { Stars } from '../../../Stars/Stars';
 import { HotelInfo } from './HotelInfo/HotelInfo';
-import classes from './HotelItemHero.module.scss';
 import { Slider } from './Slider/Slider';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
@@ -13,7 +12,7 @@ export const HotelItemHero = ({
   const hotelMaxStars = useSelector(selectMaxHotelStars);
 
   return (
-    <div className={classes.hero}>
+    <div className="flex md:justify-between md:flex-row md:items-start flex-col items-center">
       <Slider images={images} />
       <HotelInfo
         hotelName={name}
