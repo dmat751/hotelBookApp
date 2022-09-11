@@ -14,7 +14,7 @@ export const StarFilter = () => {
   };
 
   return (
-    <div className="flex mb-5 md:mb-0">
+    <div className="flex">
       <Stars
         borderColor="#fff500"
         fillColor="#fff500"
