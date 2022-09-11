@@ -1,4 +1,3 @@
-import classes from './Stars.module.scss';
 import nextId from 'react-id-generator';
 import { Star } from './Star/Star';
 import { StarOptions } from '../../types/star';
@@ -26,7 +25,7 @@ export const Stars = ({
   }
 
   return (
-    <div className={classes.stars}>
+    <div className="flex order-1 md:order-[-1]">
       {starsState.map((item, index) => (
         <Star
           key={nextId()}

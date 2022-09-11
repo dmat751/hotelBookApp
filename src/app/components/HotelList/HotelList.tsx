@@ -1,4 +1,3 @@
-import classes from './HotelList.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchHotelListData } from '../../../modules/hotelList/hotelListAction';
@@ -29,7 +28,7 @@ export const HotelList = () => {
     hotelListLength === 0 && !isSpinnerVisible;
 
   return (
-    <div className={classes['list-container']}>
+    <div className="flex flex-col items-center">
       {isContentVisible && <HotelListContent />}
       {isSpinnerVisible && spinner}
       {isApiError && <Notification message={apiNotification} msgType="error" />}
