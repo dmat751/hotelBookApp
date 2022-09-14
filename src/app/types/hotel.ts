@@ -29,4 +29,6 @@ export type Hotel = {
 
 export type HotelListSliceState = {
   hotelList: Hotel[];
+  dataStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: null | string;
 };
