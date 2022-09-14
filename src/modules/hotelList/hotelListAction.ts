@@ -6,7 +6,7 @@ import { ApiQueryStatusSlice } from '../apiStatus/ApiStatusSlice';
 import { hotelListSlice } from './hotelListSlice';
 import { ApiQueryStatus } from '../../app/types/apiQueryStatus';
 
-const getApiData = async <T,>(url: string): Promise<T> => {
+const getApiData = async <T>(url: string): Promise<T> => {
   const dataResp = await fetch(url);
 
   if (!dataResp.ok) {
@@ -38,7 +38,7 @@ export const fetchHotelListData = () => {
       dispatch(
         ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusLoading)
       );
-      ApiQueryStatusSlice.actions.setApiQueryStatus(newApiStatusLoading);
+
       const hotelList = await getApiData<Hotel[]>(
         `${process.env.REACT_APP_HOTEL_LIST_URL}`
       );
