@@ -1,4 +1,3 @@
-import classes from '../HeroFilter.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
@@ -15,7 +14,7 @@ export const StarFilter = () => {
   };
 
   return (
-    <div className={classes.stars}>
+    <div className="flex">
       <Stars
         borderColor="#fff500"
         fillColor="#fff500"
