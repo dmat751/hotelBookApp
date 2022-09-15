@@ -1,5 +1,3 @@
-import classes from './Star.module.scss';
-
 type Props = Readonly<{
   borderColor: string;
   fillColor: string;
@@ -9,7 +7,9 @@ type Props = Readonly<{
 export const Star = ({ borderColor, fillColor, onClickHandler }: Props) => (
   <div onClick={onClickHandler}>
     <svg
-      className={`${classes.svg} ${onClickHandler && classes['svg--pointer']}`}
+      className={`m-[2px] h-[30px] w-[30px] ${
+        onClickHandler && 'cursor-pointer'
+      }`}
       viewBox="0 0 300 275"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"

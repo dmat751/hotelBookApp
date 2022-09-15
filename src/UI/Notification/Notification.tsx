@@ -1,9 +1,15 @@
-import classes from './Notification.module.scss';
+import classNames from 'classnames';
 
 type Props = Readonly<{ message: string; msgType: 'error' | 'info' }>;
 export const Notification = ({ message, msgType }: Props) => {
-  const notiClasses = `${classes.notification} ${
-    classes['notification--' + msgType]
-  }`;
-  return <p className={notiClasses}>{message}</p>;
+  const classes = classNames(
+    'font-varela text-xl mx-auto text-center',
+    {
+      'text-black': msgType === 'info',
+    },
+    {
+      'text-red-600': msgType === 'error',
+    }
+  );
+  return <p className={classes}>{message}</p>;
 };
