@@ -25,7 +25,7 @@ export const Stars = ({
   }
 
   return (
-    <div className="flex order-1 md:order-[-1] mb-3 md:mb-0">
+    <div className="flex order-1  mb-3 md:mb-0">
       {starsState.map((item, index) => (
         <Star
           key={nextId()}
