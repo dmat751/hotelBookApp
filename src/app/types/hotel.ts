@@ -29,4 +29,7 @@ export type Hotel = {
 
 export type HotelListSliceState = {
   hotelList: Hotel[];
+  isLoading: boolean;
+  isError: boolean;
+  errorType: string;
 };
