@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { hotelListSlice } from '../../modules/hotelList/hotelListSlice';
 import { hotelFiltersSlice } from '../../modules/hotelFilters/hotelFiltersSlice';
 import createSagaMiddleware from 'redux-saga';
-import { hotelListSagas } from '../../modules/hotelList/hotelListSaga';
+import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,4 +14,4 @@ export const store = configureStore({
   middleware: [sagaMiddleware],
 });
 
-sagaMiddleware.run(hotelListSagas);
+sagaMiddleware.run(rootSaga);
