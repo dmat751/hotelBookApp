@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { spinner } from '../../../UI/Spinner/Spinner';
 import { Notification } from '../../../UI/Notification/Notification';
 import { HotelListContent } from './HotelListContent/HotelListContent';
-import { selectFilteredHotelList } from '../../../modules/hotelList/filteredHotelListSelector';
+import { selectFilteredHotelList } from '../../../modules/hotelList/selectors/filteredHotelListSelector';
 import { fetchData } from '../../../modules/hotelList/hotelListSlice';
 import {
   selectErrorType,
   selectIsDataError,
   selectIsDataLoading,
-} from '../../../modules/hotelList/dataStatusSelectors';
+} from '../../../modules/hotelList/selectors/dataStatusSelectors';
 
 export const HotelList = () => {
   const dispatch = useDispatch();

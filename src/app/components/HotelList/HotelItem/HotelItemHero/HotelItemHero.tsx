@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
-import { selectMaxHotelStars } from '../../../../../modules/hotelList/maxHotelStarsSelector';
+import { selectMaxHotelStars } from '../../../../../modules/hotelList/selectors/maxHotelStarsSelector';
 import { Hotel } from '../../../../types/hotel';
 import { Stars } from '../../../Stars/Stars';
 import { HotelInfo } from './HotelInfo/HotelInfo';

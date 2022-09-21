@@ -1,5 +1,5 @@
-import { Hotel } from '../../app/types/hotel';
-import { RootState } from '../../app/types/rootState';
+import { Hotel } from '../../../app/types/hotel';
+import { RootState } from '../../../app/types/rootState';
 
 const amountFilter = (
   hotelList: Hotel[],
