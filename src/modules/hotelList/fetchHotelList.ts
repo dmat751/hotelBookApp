@@ -2,6 +2,7 @@ import { RoomsDetails } from './../../app/types/room';
 import { PromisePool } from '@supercharge/promise-pool/dist';
 import { Hotel } from './../../app/types/hotel';
 import { getApiData } from './../../app/queries/getApiData';
+
 export const fetchHotelList = async () => {
   const hotelList = await getApiData<Hotel[]>(
     `${process.env.REACT_APP_HOTEL_LIST_URL}`
