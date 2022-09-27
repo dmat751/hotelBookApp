@@ -11,7 +11,7 @@ function* hotelListFetchSaga() {
   try {
     const hotelList: Hotel[] = yield call(fetchHotelList);
     yield put(getHotelListSuccess(hotelList));
-  } catch (error: unknown) {
+  } catch (error) {
     const errorMsg =
       error instanceof Error ? error.message : 'fetch error, unknown error';
     yield put(getHotelListFailure(errorMsg));
