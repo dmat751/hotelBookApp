@@ -21,6 +21,7 @@
     "react-id-generator": "^3.0.2",
     "react-redux": "^7.2.6",
     "react-scripts": "5.0.0",
+    "redux-saga": "^1.2.1",
     "sass": "^1.49.9",
     "swiper": "^8.0.6",
     "typescript": "^4.4.2",

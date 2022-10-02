@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectFilteredHotelList } from '../../../../modules/hotelList/filteredHotelListSelector';
+import { selectFilteredHotelList } from '../../../../modules/hotelList/selectors/filteredHotelListSelector';
 import { HotelItem } from '../HotelItem/HotelItem';
 import baseClasses from '../../../assets/baseClasses.module.scss';
 
