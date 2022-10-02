@@ -12,21 +12,18 @@ export const hotelListSlice = createSlice({
   name: 'hotelList',
   initialState,
   reducers: {
-    fetchData: ({ isLoading }) => {
-      isLoading = true;
+    fetchData: (state) => {
+      state.isLoading = true;
     },
-    getHotelListSuccess: ({ hotelList, isLoading }, { payload }) => {
-      hotelList = payload;
-      isLoading = false;
+    getHotelListSuccess: (state, { payload }) => {
+      state.hotelList = payload;
+      state.isLoading = false;
     },
-    getHotelListFailure: (
-      { isLoading, isError, errorType, hotelList },
-      { payload }
-    ) => {
-      isLoading = false;
-      isError = true;
-      errorType = payload;
-      hotelList = [];
+    getHotelListFailure: (state, { payload }) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.errorType = payload;
+      state.hotelList = [];
     },
   },
 });
