@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { spinner } from '../../../UI/Spinner/Spinner';
+import { Spinner } from '../../../UI/Spinner/Spinner';
 import { Notification } from '../../../UI/Notification/Notification';
 import { HotelListContent } from './HotelListContent/HotelListContent';
 import { selectFilteredHotelList } from '../../../modules/hotelList/selectors/filteredHotelListSelector';
@@ -29,7 +29,7 @@ export const HotelList = () => {
   return (
     <div className="flex flex-col items-center">
       {isContentVisible && <HotelListContent />}
-      {isDataLoading && spinner}
+      {isDataLoading && Spinner}
       {isApiError && <Notification message={apiNotification} msgType="error" />}
       {isVisibleHotelsNoFoundNotification && (
         <Notification message="We can not find any hotels" msgType="info" />

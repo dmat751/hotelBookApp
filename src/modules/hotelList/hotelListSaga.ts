@@ -1,6 +1,6 @@
 import { fetchHotelList } from './fetchHotelList';
 import { Hotel } from './../../app/types/hotel';
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 import {
   getHotelListFailure,
   getHotelListSuccess,
@@ -19,5 +19,5 @@ function* hotelListFetchSaga() {
 }
 
 export function* hotelListSagas() {
-  yield takeEvery(hotelListActions.fetchData, hotelListFetchSaga);
+  yield takeLatest(hotelListActions.fetchData, hotelListFetchSaga);
 }
