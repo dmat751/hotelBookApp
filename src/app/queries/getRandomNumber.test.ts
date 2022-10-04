@@ -1,6 +1,15 @@
 import { getRandomNumber } from './getRandomNumber';
 
 describe('test getRandomNumber function', () => {
+  it('test min and max args with mock', () => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.5429541808037164);
+    const randomDigit = getRandomNumber(0, 5);
+    expect(randomDigit).toBeGreaterThanOrEqual(0);
+    expect(randomDigit).toBeLessThanOrEqual(5);
+    expect(randomDigit).toBe(3);
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
   it('test min and max args', () => {
     for (let i = 0; i < 20; i++) {
       const randomDigit = getRandomNumber(0, 1);
@@ -29,7 +38,6 @@ describe('test getRandomNumber function', () => {
       }
       counter++;
     } while (randomDigit1 === randomDigit2);
-
     expect(randomDigit1 === randomDigit2).toBeFalsy();
   });
 

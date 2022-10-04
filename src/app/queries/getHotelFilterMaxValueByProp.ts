@@ -1,6 +1,6 @@
-import { Hotel } from './../types/hotel';
+import { Hotel } from '../types/hotel';
 
-export const getMaxValueByProp = (
+export const getHotelFilterMaxValueByProp = (
   hotelList: Hotel[],
   prop: 'maxChildren' | 'maxAdults'
 ) => {
