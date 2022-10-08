@@ -5,11 +5,17 @@ import { selectAllHotelList } from './allHotelListSelector';
 export const selectRandomHotelPhoto = createSelector(
   [selectAllHotelList],
   (hotelList) => {
+    const defaultResult = { alt: '', url: '' };
     const imgArray = hotelList.map(({ images }) => images).flat();
-    const randomImgArrayIndex = getRandomNumber(0, imgArray.length);
+
+    if (imgArray.length === 0) {
+      return defaultResult;
+    }
+
+    const randomImgArrayIndex = getRandomNumber(0, imgArray.length - 1);
 
     return randomImgArrayIndex !== -1
       ? imgArray[randomImgArrayIndex]
-      : { alt: '', url: '' };
+      : defaultResult;
   }
 );
