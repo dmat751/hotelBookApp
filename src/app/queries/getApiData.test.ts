@@ -16,7 +16,6 @@ describe('test getApiData fn', () => {
       const hotelData = await getApiData<Hotel[]>(
         `${process.env.REACT_APP_INVALID_HOTEL_LIST_URL}`
       );
-      console.log(hotelData);
     } catch (error) {
       errorMsg = error instanceof Error ? error.message : '';
     }

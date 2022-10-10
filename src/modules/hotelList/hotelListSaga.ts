@@ -1,6 +1,6 @@
 import { fetchHotelList } from './fetchHotelList';
 import { Hotel } from './../../app/types/hotel';
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   getHotelListFailure,
   getHotelListSuccess,
