@@ -24,14 +24,18 @@ export const FilterAmount = ({
     <div className="flex items-center md:my-0 md:mx-4 mt-0 mr-4 mb-2.5 ml-auto">
       <label className="text-lg">{filterLabel}</label>
       <button
+        data-testid="plus-btn"
         disabled={isPlusButtonDisabled}
         onClick={onIncreaseFilterHandler}
         className={filterButtonClassNames}
       >
         <PlusSmallIcon width={20} />
       </button>
-      <div className="mx-1.5">{currentFilterAmount}</div>
+      <span data-testid="current-filter-amount" className="mx-1.5">
+        {currentFilterAmount}
+      </span>
       <button
+        data-testid="minus-btn"
         disabled={currentFilterAmount === 0}
         onClick={onDecreaseFilterHandler}
         className={filterButtonClassNames}

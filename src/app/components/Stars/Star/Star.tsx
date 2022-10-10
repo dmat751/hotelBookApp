@@ -5,7 +5,7 @@ type Props = Readonly<{
 }>;
 
 export const Star = ({ borderColor, fillColor, onClickHandler }: Props) => (
-  <div onClick={onClickHandler}>
+  <div onClick={onClickHandler} data-testid="star-rendered">
     <svg
       className={`m-[2px] h-[30px] w-[30px] ${
         onClickHandler && 'cursor-pointer'
@@ -15,6 +15,7 @@ export const Star = ({ borderColor, fillColor, onClickHandler }: Props) => (
       version="1.1"
     >
       <polygon
+        data-testid={`star-polygon-${fillColor}`}
         fill={fillColor}
         stroke={borderColor}
         strokeWidth="15"
