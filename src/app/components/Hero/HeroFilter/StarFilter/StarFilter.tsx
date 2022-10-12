@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
-import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
+import { setStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
 import { Stars } from '../../../Stars/Stars';
 import { selectMaxHotelStars } from '../../../../../modules/hotelList/selectors/maxHotelStarsSelector';
 
@@ -10,7 +10,7 @@ export const StarFilter = () => {
   const dispatch = useDispatch();
 
   const onClickHandlerStar = (starIndex: number): void => {
-    dispatch(hotelFiltersSlice.actions.setStarsFilter(starIndex + 1));
+    dispatch(setStarsFilter(starIndex + 1));
   };
 
   return (

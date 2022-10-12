@@ -7,7 +7,7 @@ import {
   hotelListActions,
 } from './hotelListSlice';
 
-function* hotelListFetchSaga() {
+export function* hotelListFetchSaga() {
   try {
     const hotelList: Hotel[] = yield call(fetchHotelList);
     yield put(getHotelListSuccess(hotelList));

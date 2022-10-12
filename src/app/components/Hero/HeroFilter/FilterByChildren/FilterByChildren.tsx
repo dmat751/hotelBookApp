@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectChildrenFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
-import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
+import { setChildrenFilter } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
 import { selectMaxChildrenInHotels } from '../../../../../modules/hotelList/selectors/maxChildrenSelector';
 import { FilterAmount } from '../FilterAmount/FilterAmount';
 
@@ -10,11 +10,11 @@ export const FilterByChildren = () => {
   const dispatch = useDispatch();
 
   const handleOnIncrease = (): void => {
-    dispatch(hotelFiltersSlice.actions.setChildrenFilter('ADD'));
+    dispatch(setChildrenFilter('ADD'));
   };
 
   const handleOnDecrease = (): void => {
-    dispatch(hotelFiltersSlice.actions.setChildrenFilter('SUB'));
+    dispatch(setChildrenFilter('SUB'));
   };
 
   return (

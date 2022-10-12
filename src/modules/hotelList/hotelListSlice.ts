@@ -1,7 +1,8 @@
-import { createSlice, createAction } from '@reduxjs/toolkit';
+import { HotelList } from './../../app/components/HotelList/HotelList';
+import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit';
 import { Hotel, HotelListSliceState } from '../../app/types/hotel';
 
-const initialState: HotelListSliceState = {
+export const initialState: HotelListSliceState = {
   hotelList: [],
   isError: false,
   isLoading: false,
@@ -15,11 +16,11 @@ export const hotelListSlice = createSlice({
     fetchData: (state) => {
       state.isLoading = true;
     },
-    getHotelListSuccess: (state, { payload }) => {
+    getHotelListSuccess: (state, { payload }: PayloadAction<Hotel[]>) => {
       state.hotelList = payload;
       state.isLoading = false;
     },
-    getHotelListFailure: (state, { payload }) => {
+    getHotelListFailure: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.isError = true;
       state.errorType = payload;
