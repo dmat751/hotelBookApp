@@ -10,7 +10,13 @@ describe('HotelList test', () => {
         <HotelList />
       </Provider>
     );
-    const hotelText = screen.findByText('OBM Hotel 1');
-    expect(await hotelText).toBeInTheDocument();
+
+    //test is hotel visible
+    const hotelItem = screen.findByText('OBM Hotel 1');
+    expect(await hotelItem).toBeInTheDocument();
+
+    //test is hotel room visible
+    const roomItem = await screen.findByText('Deluxe Twin');
+    expect(roomItem).toBeInTheDocument();
   });
 });
