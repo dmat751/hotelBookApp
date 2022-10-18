@@ -17,7 +17,7 @@ export const HotelItemHero = ({
 
   return (
     <div className={hotelItemHeroClassNames}>
-      {/* <Slider images={images} /> */}
+      <Slider images={images} />
       <HotelInfo
         hotelName={name}
         hotelAddress1={address1}
