@@ -1,8 +1,8 @@
-import { Hotel } from './../../app/types/hotel';
-import { fetchHotelList } from './fetchHotelList';
+import { Hotel } from '../../../app/types/hotel';
+import { fetchHotelList } from '../fetchHotelList';
 import { testSaga, expectSaga } from 'redux-saga-test-plan';
-import { hotelListFetchSaga } from './hotelListSaga';
-import { getHotelListSuccess, initialState } from './hotelListSlice';
+import { hotelListFetchSaga } from '../hotelListSaga';
+import { getHotelListSuccess, initialState } from '../hotelListSlice';
 
 describe('test hotelListSagas', () => {
   it('test success fetch api data', () => {

@@ -1,6 +1,6 @@
 import { getByTestId, render, screen } from '@testing-library/react';
 import { useState } from 'react';
-import { FilterAmount } from './FilterAmount';
+import { FilterAmount } from '../FilterAmount';
 
 const TestFilter = () => {
   const [currentFilterAmount, setCurrentFilterAmount] = useState(1);

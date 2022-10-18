@@ -1,4 +1,4 @@
-import { getRandomNumber } from './getRandomNumber';
+import { getRandomNumber } from '../getRandomNumber';
 
 describe('test getRandomNumber function', () => {
   it('test min and max args with mock', () => {

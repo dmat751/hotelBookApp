@@ -1,6 +1,6 @@
-import { Hotel } from './../types/hotel';
-import { getApiData } from './getApiData';
-import validHotelData from '../../mocks/hotelsData/validHotelData.json';
+import { Hotel } from '../../types/hotel';
+import { getApiData } from '../getApiData';
+import validHotelData from '../../../mocks/hotelsData/validHotelData.json';
 
 describe('test getApiData fn', () => {
   test('get hotel data', async () => {

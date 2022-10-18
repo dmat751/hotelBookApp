@@ -1,7 +1,7 @@
-import { HotelList } from './HotelList';
+import { HotelList } from '../HotelList';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from '../../store/store';
+import { store } from '../../../store/store';
 
 describe('HotelList test', () => {
   test('get data form API and render hotel list.', async () => {

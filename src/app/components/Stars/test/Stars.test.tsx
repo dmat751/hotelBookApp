@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { useState } from 'react';
-import { Stars } from './Stars';
+import { Stars } from '../Stars';
 
 const TestStarComponent = () => {
   const [selectedStars, setSelectedStars] = useState(3);

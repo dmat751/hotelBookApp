@@ -1,5 +1,5 @@
-import { fetchHotelList } from './fetchHotelList';
-import { Hotel } from './../../app/types/hotel';
+import { fetchHotelList } from '../fetchHotelList';
+import { Hotel } from '../../../app/types/hotel';
 import {
   fetchData,
   getHotelListFailure,
@@ -7,7 +7,7 @@ import {
   hotelListActions,
   hotelListSlice,
   initialState,
-} from './hotelListSlice';
+} from '../hotelListSlice';
 
 describe('test hotel list slice', () => {
   it('test fetchData reducer', () => {

@@ -4,7 +4,7 @@ import {
   setAdultsFilter,
   setChildrenFilter,
   setStarsFilter,
-} from './hotelFiltersSlice';
+} from '../hotelFiltersSlice';
 
 describe('test setAdultsFilter reducer', () => {
   it('test ADD option', () => {

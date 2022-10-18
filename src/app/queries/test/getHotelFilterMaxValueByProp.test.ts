@@ -1,5 +1,5 @@
-import { getHotelFilterMaxValueByProp } from './getHotelFilterMaxValueByProp';
-import { fetchHotelList } from './../../modules/hotelList/fetchHotelList';
+import { getHotelFilterMaxValueByProp } from '../getHotelFilterMaxValueByProp';
+import { fetchHotelList } from '../../../modules/hotelList/fetchHotelList';
 
 describe('test getHotelFilterMaxValueByProp fn', () => {
   test('maxChildren case', async () => {
