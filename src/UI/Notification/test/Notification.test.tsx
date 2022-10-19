@@ -2,25 +2,42 @@ import { Notification } from '../Notification';
 import { render, screen } from '@testing-library/react';
 
 describe('test notification component', () => {
-  test('error type notification.', () => {
-    //given
-    render(<Notification message="testmsg" msgType="error" />);
+  type NotificationProps = {
+    message: string;
+    messageType: 'error' | 'info';
+    expectedClass: string;
+  };
 
-    //when
-    const notiItem = screen.getByText('testmsg');
+  const cases: NotificationProps[] = [
+    {
+      message: 'test msg error',
+      messageType: 'error',
+      expectedClass: 'text-red-600',
+    },
+    {
+      message: 'test msg info',
+      messageType: 'info',
+      expectedClass: 'text-black',
+    },
+  ].map((notiItem) =>
+    Object.assign(notiItem, {
+      toString: () => {
+        return `message: ${notiItem.message} \tmessageType: ${notiItem.messageType} \texpectedClass: ${notiItem.expectedClass}`;
+      },
+    } as NotificationProps)
+  );
 
-    //then
-    expect(notiItem).toHaveClass('text-red-600');
-  });
+  test.each<NotificationProps>(cases)(
+    'test %s',
+    ({ expectedClass, message, messageType }) => {
+      //given
+      render(<Notification message={message} msgType={messageType} />);
 
-  test('info type notification.', () => {
-    //given
-    render(<Notification message="testmsg" msgType="info" />);
+      //when
+      const notiItem = screen.getByText(message);
 
-    //when
-    const notiItem = screen.getByText('testmsg');
-
-    //then
-    expect(notiItem).toHaveClass('text-black');
-  });
+      //then
+      expect(notiItem).toHaveClass(expectedClass);
+    }
+  );
 });
