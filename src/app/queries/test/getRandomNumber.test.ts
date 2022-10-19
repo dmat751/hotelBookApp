@@ -41,7 +41,7 @@ describe('test getRandomNumber function', () => {
     expect(randomDigit1 === randomDigit2).toBeFalsy();
   });
 
-  it('return -1 when min and max is the same', () => {
+  it('should return -1 when min and max is the same', () => {
     expect(getRandomNumber(10, 10)).toBe(-1);
   });
 });

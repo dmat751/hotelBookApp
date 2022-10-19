@@ -15,7 +15,7 @@ describe('test hotel list slice', () => {
       hotelList: [],
       isError: false,
       isLoading: true,
-      errorType: '',
+      errorMessage: '',
     });
   });
 
@@ -27,7 +27,7 @@ describe('test hotel list slice', () => {
       hotelList: hotelList,
       isError: false,
       isLoading: false,
-      errorType: '',
+      errorMessage: '',
     });
   });
 
@@ -37,22 +37,18 @@ describe('test hotel list slice', () => {
     ).toEqual({
       isLoading: false,
       isError: true,
-      errorType: 'test error!!!',
+      errorMessage: 'test error!!!',
       hotelList: [],
     });
   });
 
-  it('should exist all reducer action', () => {
-    expect(
-      Object.prototype.hasOwnProperty.call(hotelListActions, 'fetchData')
-    ).toBe(true);
-
-    expect(
-      Object.prototype.hasOwnProperty.call(hotelListActions, 'fetchSuccess')
-    ).toBe(true);
-
-    expect(
-      Object.prototype.hasOwnProperty.call(hotelListActions, 'fetchFailure')
-    ).toBe(true);
-  });
+  const cases: string[] = ['fetchData', 'fetchSuccess', 'fetchFailure'];
+  test.each<string>(cases)(
+    '%s should exist in hotelList reducer',
+    (propName) => {
+      expect(
+        Object.prototype.hasOwnProperty.call(hotelListActions, propName)
+      ).toBe(true);
+    }
+  );
 });
