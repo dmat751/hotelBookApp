@@ -6,7 +6,7 @@ export const initialState: HotelListSliceState = {
   hotelList: [],
   isError: false,
   isLoading: false,
-  errorType: '',
+  errorMessage: '',
 };
 
 export const hotelListSlice = createSlice({
@@ -23,7 +23,7 @@ export const hotelListSlice = createSlice({
     getHotelListFailure: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.isError = true;
-      state.errorType = payload;
+      state.errorMessage = payload;
       state.hotelList = [];
     },
   },

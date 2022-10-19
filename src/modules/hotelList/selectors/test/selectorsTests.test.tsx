@@ -14,7 +14,7 @@ beforeEach(() => {
     hotelFilters: initialState,
     hotelList: {
       hotelList: castedHotelData,
-      errorType: '',
+      errorMessage: '',
       isError: false,
       isLoading: false,
     },
@@ -74,7 +74,7 @@ describe('test selectErrorType', () => {
     const testErrorMsg = 'test error msg';
     rootState = {
       hotelList: produce(rootState.hotelList, (draft) => {
-        draft.errorType = testErrorMsg;
+        draft.errorMessage = testErrorMsg;
       }),
       hotelFilters: rootState.hotelFilters,
     };
