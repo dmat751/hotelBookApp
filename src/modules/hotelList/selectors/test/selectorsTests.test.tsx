@@ -281,7 +281,7 @@ describe('test max filter values selectors', () => {
   );
 
   test.each<testCase>(cases)(
-    'test for %s',
+    'test for: %s',
     ({ hotelListValue, selectorToTest, expectedResult }) => {
       if (hotelListValue !== 'default') {
         rootState = {
