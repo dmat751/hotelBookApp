@@ -21,14 +21,15 @@ describe('test notification component', () => {
     },
   ].map((notiItem) =>
     Object.assign(notiItem, {
-      toString: () => {
-        return `message: ${notiItem.message} \tmessageType: ${notiItem.messageType} \texpectedClass: ${notiItem.expectedClass}`;
-      },
+      toString: () => `
+        message: ${notiItem.message}
+        messageType: ${notiItem.messageType}
+        expectedClass: ${notiItem.expectedClass}`,
     } as NotificationProps)
   );
 
   test.each<NotificationProps>(cases)(
-    'test %s',
+    'test for: %s',
     ({ expectedClass, message, messageType }) => {
       //given
       render(<Notification message={message} msgType={messageType} />);
