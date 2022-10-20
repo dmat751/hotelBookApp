@@ -11,6 +11,9 @@ import validHotelRoomData from '../../../../mocks/hotelWithRoomsData/hotelWithRo
 import produce from 'immer';
 import { selectFilteredHotelList } from '../filteredHotelListSelector';
 import { Room } from '../../../../app/types/room';
+import { selectMaxAdultsInHotels } from '../maxAdultsSelector';
+import { selectMaxChildrenInHotels } from '../maxChildrenSelector';
+import { selectMaxHotelStars } from '../maxHotelStarsSelector';
 
 const castedHotelData: Hotel[] = JSON.parse(JSON.stringify(validHotelRoomData));
 let rootState: RootState;
@@ -216,6 +219,81 @@ describe('test selectFilteredHotelList', () => {
           filteredHotels
         )
       ).toBe(true);
+    }
+  );
+});
+
+describe('test max filter values selectors', () => {
+  type testCase = {
+    hotelListValue: Hotel[] | 'default';
+    selectorToTest: Function;
+    expectedResult: number;
+    selectorNameForPrint: string;
+  };
+  const cases: testCase[] = [
+    {
+      hotelListValue: 'default',
+      selectorToTest: selectMaxAdultsInHotels,
+      expectedResult: 6,
+      selectorNameForPrint: 'selectMaxAdultsInHotels',
+    },
+    {
+      hotelListValue: [],
+      selectorToTest: selectMaxAdultsInHotels,
+      expectedResult: 0,
+      selectorNameForPrint: 'selectMaxAdultsInHotels',
+    },
+    {
+      hotelListValue: 'default',
+      selectorToTest: selectMaxChildrenInHotels,
+      expectedResult: 4,
+      selectorNameForPrint: 'selectMaxChildrenInHotels',
+    },
+    {
+      hotelListValue: [],
+      selectorToTest: selectMaxChildrenInHotels,
+      expectedResult: 0,
+      selectorNameForPrint: 'selectMaxChildrenInHotels',
+    },
+    {
+      hotelListValue: 'default',
+      selectorToTest: selectMaxHotelStars,
+      expectedResult: 5,
+      selectorNameForPrint: 'selectMaxHotelStars',
+    },
+    {
+      hotelListValue: [],
+      selectorToTest: selectMaxHotelStars,
+      expectedResult: 5,
+      selectorNameForPrint: 'selectMaxHotelStars',
+    },
+  ].map((caseItem) =>
+    Object.assign(caseItem, {
+      toString: () => {
+        const hotelListValueToPrint =
+          caseItem.hotelListValue !== 'default' ? 'custom' : 'default';
+        return `
+        hotelListValue: ${hotelListValueToPrint}
+        selector to test: ${caseItem.selectorNameForPrint}
+        expected result: ${caseItem.expectedResult}`;
+      },
+    } as testCase)
+  );
+
+  test.each<testCase>(cases)(
+    'test for %s',
+    ({ hotelListValue, selectorToTest, expectedResult }) => {
+      if (hotelListValue !== 'default') {
+        rootState = {
+          hotelList: produce(rootState.hotelList, (draft) => {
+            draft.hotelList = hotelListValue;
+          }),
+          hotelFilters: rootState.hotelFilters,
+        };
+      }
+      const selectedValue = selectorToTest(rootState);
+
+      expect(selectedValue).toBe(expectedResult);
     }
   );
 });
