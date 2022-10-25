@@ -10,10 +10,11 @@ import { initialState } from '../../../hotelFilters/hotelFiltersSlice';
 import validHotelRoomData from '../../../../mocks/hotelWithRoomsData/hotelWithRoomsData.json';
 import produce from 'immer';
 import { selectFilteredHotelList } from '../filteredHotelListSelector';
-import { Room } from '../../../../app/types/room';
+import { Photo, Room } from '../../../../app/types/room';
 import { selectMaxAdultsInHotels } from '../maxAdultsSelector';
 import { selectMaxChildrenInHotels } from '../maxChildrenSelector';
 import { selectMaxHotelStars } from '../maxHotelStarsSelector';
+import { selectRandomHotelPhoto } from '../randomHotelPhotoSelector';
 
 const castedHotelData: Hotel[] = JSON.parse(JSON.stringify(validHotelRoomData));
 let rootState: RootState;
@@ -125,31 +126,36 @@ describe('test selectIsDataError', () => {
 });
 
 describe('test selectFilteredHotelList', () => {
-  const isMaxAdultsOccupancyValid = (room: Room, minAdultsValue: number) =>
-    room.occupancy.maxAdults >= minAdultsValue;
+  const isMaxAdultsOccupancyValid = (room: Room, adultsValue: number) =>
+    room.occupancy.maxAdults >= adultsValue;
 
-  const isMaxChildrenOccupancyValid = (room: Room, minChildrenValue: number) =>
-    room.occupancy.maxChildren >= minChildrenValue;
+  const isMaxChildrenOccupancyValid = (room: Room, childrenValue: number) =>
+    room.occupancy.maxChildren >= childrenValue;
 
-  const isHotelStarsVaild = (hotel: Hotel, minStarsValue: number) =>
-    hotel.starRating >= minStarsValue;
+  const isHotelStarsRatingValid = (hotel: Hotel, starsValue: number) =>
+    hotel.starRating >= starsValue;
 
   const checkIsHotelRoomCorrectFiltered = (
-    minAdultsValue: number,
-    minChildrenValue: number,
-    minStarsValue: number,
+    adultsValue: number,
+    childrenValue: number,
+    starsValue: number,
     filteredHotels: Hotel[]
   ) => {
     filteredHotels.forEach((hotel) => {
       hotel.roomsDetails.rooms.forEach((room) => {
-        const isFiltersValid =
-          isMaxAdultsOccupancyValid(room, minAdultsValue) &&
-          isMaxChildrenOccupancyValid(room, minChildrenValue) &&
-          isHotelStarsVaild(hotel, minStarsValue);
-        if (!isFiltersValid) {
+        const isRoomsFiltersValid =
+          isMaxAdultsOccupancyValid(room, adultsValue) &&
+          isMaxChildrenOccupancyValid(room, childrenValue);
+
+        if (!isRoomsFiltersValid) {
           return false;
         }
       });
+
+      const isHotelFiltersValid = isHotelStarsRatingValid(hotel, starsValue);
+      if (!isHotelFiltersValid) {
+        return false;
+      }
     });
 
     return true;
@@ -294,6 +300,66 @@ describe('test max filter values selectors', () => {
       const selectedValue = selectorToTest(rootState);
 
       expect(selectedValue).toBe(expectedResult);
+    }
+  );
+});
+
+describe('test randomHotelPhotoSelector', () => {
+  type TestCase = {
+    hotelListValue: Hotel[] | 'default';
+    expectedResult: Photo;
+    getRandomNumberMockedValue: number;
+  };
+
+  const cases: TestCase[] = [
+    {
+      expectedResult: {
+        alt: '',
+        url: 'https://rl-uk2.azureedge.net/picturemanager/images/OBMNG1/hotel4.jpg',
+      },
+      getRandomNumberMockedValue: 1,
+      hotelListValue: 'default',
+    },
+    {
+      expectedResult: {
+        alt: '',
+        url: '',
+      },
+      getRandomNumberMockedValue: -1,
+      hotelListValue: [],
+    },
+  ].map((caseItem) =>
+    Object.assign(caseItem, {
+      toString: () => {
+        const hotelListValueToPrint =
+          caseItem.hotelListValue !== 'default' ? 'custom' : 'default';
+        return `
+        hotelListValue: ${hotelListValueToPrint}
+        getRandomNumberMockedValue: ${caseItem.getRandomNumberMockedValue}
+        expected result: {url: ${caseItem.expectedResult.url}, alt: ${caseItem.expectedResult.alt}}`;
+      },
+    } as TestCase)
+  );
+
+  test.each<TestCase>(cases)(
+    'test for %s',
+    ({ hotelListValue, getRandomNumberMockedValue, expectedResult }) => {
+      const getRandomNumber = require('../../../../app/queries/getRandomNumber');
+      const mock = jest
+        .spyOn(getRandomNumber, 'getRandomNumber')
+        .mockReturnValue(getRandomNumberMockedValue);
+
+      if (hotelListValue !== 'default') {
+        rootState = {
+          hotelList: produce(rootState.hotelList, (draft) => {
+            draft.hotelList = hotelListValue;
+          }),
+          hotelFilters: rootState.hotelFilters,
+        };
+      }
+      const selectedValue = selectRandomHotelPhoto(rootState);
+      expect(selectedValue).toEqual(expectedResult);
+      mock.mockRestore();
     }
   );
 });
