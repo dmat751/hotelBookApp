@@ -1,4 +1,3 @@
-import { Hotel } from './../../../app/types/hotel';
 import { fetchHotelList } from '../fetchHotelList';
 import { testSaga, expectSaga } from 'redux-saga-test-plan';
 import { hotelListFetchSaga } from '../hotelListSaga';
@@ -7,18 +6,15 @@ import {
   getHotelListSuccess,
   initialState,
 } from '../hotelListSlice';
-import validHotelRoomData from '../../../mocks/hotelWithRoomsData/hotelWithRoomsData.json';
-
-const castedHotelData: Hotel[] = JSON.parse(JSON.stringify(validHotelRoomData));
+import { fetchedHotelsWithRoomsData } from '../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 
 describe('test hotelListSagas', () => {
   it('test success fetch api data', async () => {
-    console.log(castedHotelData.length);
     testSaga(hotelListFetchSaga)
       .next()
       .call(fetchHotelList)
-      .next(castedHotelData)
-      .put(getHotelListSuccess(castedHotelData))
+      .next(fetchedHotelsWithRoomsData)
+      .put(getHotelListSuccess(fetchedHotelsWithRoomsData))
       .next()
       .isDone();
   });

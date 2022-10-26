@@ -7,7 +7,6 @@ import {
 import { Hotel } from '../../../../app/types/hotel';
 import { RootState } from '../../../../app/types/rootState';
 import { initialState } from '../../../hotelFilters/hotelFiltersSlice';
-import validHotelRoomData from '../../../../mocks/hotelWithRoomsData/hotelWithRoomsData.json';
 import produce from 'immer';
 import { selectFilteredHotelList } from '../filteredHotelListSelector';
 import { Photo, Room } from '../../../../app/types/room';
@@ -15,15 +14,15 @@ import { selectMaxAdultsInHotels } from '../maxAdultsSelector';
 import { selectMaxChildrenInHotels } from '../maxChildrenSelector';
 import { selectMaxHotelStars } from '../maxHotelStarsSelector';
 import { selectRandomHotelPhoto } from '../randomHotelPhotoSelector';
+import { fetchedHotelsWithRoomsData } from '../../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 
-const castedHotelData: Hotel[] = JSON.parse(JSON.stringify(validHotelRoomData));
 let rootState: RootState;
 
 const resetRootState = () => {
   rootState = {
     hotelFilters: initialState,
     hotelList: {
-      hotelList: castedHotelData,
+      hotelList: fetchedHotelsWithRoomsData,
       errorMessage: '',
       isError: false,
       isLoading: false,
@@ -42,7 +41,7 @@ describe('test allHotelListSelector', () => {
     const hotelList = selectAllHotelList(rootState);
 
     //then
-    expect(hotelList).toEqual(castedHotelData);
+    expect(hotelList).toEqual(fetchedHotelsWithRoomsData);
   });
 });
 
