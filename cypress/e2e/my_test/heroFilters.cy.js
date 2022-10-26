@@ -1,76 +1,83 @@
+const elementSelector = {
+  childrenFilter: {
+    plusBtn: '[data-testid="children-filter-plus-btn"]',
+    minusBtn: '[data-testid="children-filter-minus-btn"]',
+  },
+  adultsFilter: {
+    plusBtn: '[data-testid="adults-filter-plus-btn"]',
+    minusBtn: '[data-testid="adults-filter-minus-btn"]',
+  },
+};
+
 describe('test hero filters', () => {
   it('test click each filter btn', () => {
     cy.visit('localhost:3000/hotelBookApp');
     cy.wait(1000);
-
-    // add children
-    cy.get(':nth-child(2) > [data-testid="plus-btn"] > svg').click({
-      scrollBehavior: false,
-    });
 
     // select 4 star
     cy.get('.bg-stone-300 > :nth-child(1) > .flex > :nth-child(4)').click({
       scrollBehavior: false,
     });
 
-    // remove children
-    cy.get(':nth-child(2) > [data-testid="minus-btn"] > svg').click({
+    cy.get(elementSelector.childrenFilter.plusBtn).click({
       scrollBehavior: false,
     });
 
-    //add adults
-    cy.get(':nth-child(3) > [data-testid="plus-btn"] > svg').click({
+    cy.get(elementSelector.childrenFilter.minusBtn).click({
       scrollBehavior: false,
     });
 
-    //remove adults
-    cy.get(':nth-child(3) > [data-testid="minus-btn"] > svg').click({
+    cy.get(elementSelector.adultsFilter.plusBtn).click({
+      scrollBehavior: false,
+    });
+
+    cy.get(elementSelector.adultsFilter.minusBtn).click({
       scrollBehavior: false,
     });
   });
 
   it('test max children filters state', () => {
-    const maxChildrenState = 5;
-    for (let i = 0; i < maxChildrenState; i++) {
-      cy.get(':nth-child(2) > [data-testid="plus-btn"] > svg').click({
+    const shouldClickAmount = 4;
+    for (let i = 0; i < shouldClickAmount; i++) {
+      cy.get(elementSelector.childrenFilter.plusBtn).click({
         scrollBehavior: false,
       });
     }
 
-    cy.get(':nth-child(2) > [data-testid="plus-btn"]').should('be.disabled');
+    cy.get(elementSelector.childrenFilter.plusBtn).should('be.disabled');
   });
 
   it('test min children filters state', () => {
-    const maxChildrenState = 5;
+    const maxChildrenState = 4;
     for (let i = 0; i < maxChildrenState; i++) {
-      cy.get(':nth-child(2) > [data-testid="minus-btn"] > svg').click({
+      cy.get(elementSelector.childrenFilter.minusBtn).click({
         scrollBehavior: false,
       });
     }
 
-    cy.get(':nth-child(2) > [data-testid="minus-btn"]').should('be.disabled');
+    cy.get(elementSelector.childrenFilter.minusBtn).should('be.disabled');
   });
 
   it('test max adults filters state', () => {
-    const maxAdultsState = 6;
+    const maxAdultsState = 4;
     for (let i = 0; i < maxAdultsState; i++) {
-      cy.get(':nth-child(3) > [data-testid="plus-btn"] > svg').click({
+      cy.get(elementSelector.adultsFilter.plusBtn).click({
         scrollBehavior: false,
       });
     }
 
-    cy.get(':nth-child(3) > [data-testid="plus-btn"]').should('be.disabled');
+    cy.get(elementSelector.adultsFilter.plusBtn).should('be.disabled');
   });
 
   it('test min adults filters state', () => {
     const maxAdultsState = 6;
     for (let i = 0; i < maxAdultsState; i++) {
-      cy.get(':nth-child(3) > [data-testid="minus-btn"] > svg').click({
+      cy.get(elementSelector.adultsFilter.minusBtn).click({
         scrollBehavior: false,
       });
     }
 
-    cy.get(':nth-child(3) > [data-testid="minus-btn"]').should('be.disabled');
+    cy.get(elementSelector.adultsFilter.minusBtn).should('be.disabled');
   });
 
   it('test all stars clickable', () => {

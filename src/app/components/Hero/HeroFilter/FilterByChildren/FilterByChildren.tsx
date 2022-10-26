@@ -24,6 +24,7 @@ export const FilterByChildren = () => {
       isPlusButtonDisabled={currentFilterAmount >= maxChildren}
       onDecreaseFilterHandler={handleOnDecrease}
       onIncreaseFilterHandler={handleOnIncrease}
+      dataTestIdPrefix="children-filter"
     />
   );
 };

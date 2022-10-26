@@ -1,6 +1,8 @@
-import { getByTestId, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { useState } from 'react';
 import { FilterAmount } from '../FilterAmount';
+
+const dataTestIdPrefix = 'test-filter';
 
 const TestFilter = () => {
   const [currentFilterAmount, setCurrentFilterAmount] = useState(1);
@@ -21,6 +23,7 @@ const TestFilter = () => {
       isPlusButtonDisabled={currentFilterAmount >= maxFilterValue}
       onDecreaseFilterHandler={handleOnDecrease}
       onIncreaseFilterHandler={handleOnIncrease}
+      dataTestIdPrefix={dataTestIdPrefix}
     />
   );
 };
@@ -30,9 +33,11 @@ describe('test FilterAmount component', () => {
     render(<TestFilter />);
 
     const filterLabel = screen.getByText('TestFilter');
-    const currentFilterValue = screen.getByTestId('current-filter-amount');
-    const buttonPlus = screen.getByTestId('plus-btn');
-    const buttonMinus = screen.getByTestId('minus-btn');
+    const currentFilterValue = screen.getByTestId(
+      `${dataTestIdPrefix}-current-filter-amount`
+    );
+    const buttonPlus = screen.getByTestId(`${dataTestIdPrefix}-plus-btn`);
+    const buttonMinus = screen.getByTestId(`${dataTestIdPrefix}-minus-btn`);
 
     expect(filterLabel).toBeInTheDocument();
     expect(currentFilterValue.textContent).toBe('1');

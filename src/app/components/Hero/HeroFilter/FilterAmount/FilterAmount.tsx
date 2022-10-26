@@ -7,6 +7,7 @@ type Props = Readonly<{
   onDecreaseFilterHandler: () => void;
   filterLabel: string;
   isPlusButtonDisabled: boolean;
+  dataTestIdPrefix: string;
 }>;
 
 export const FilterAmount = ({
@@ -15,6 +16,7 @@ export const FilterAmount = ({
   onDecreaseFilterHandler,
   filterLabel,
   isPlusButtonDisabled,
+  dataTestIdPrefix: dataTestId,
 }: Props) => {
   const filterButtonClassNames = classNames(
     'p-1 rounded-full bg-blue-300 mx-1 disabled:cursor-not-allowed disabled:bg-gray-400'
@@ -24,18 +26,21 @@ export const FilterAmount = ({
     <div className="flex items-center md:my-0 md:mx-4 mt-0 mr-4 mb-2.5 ml-auto">
       <label className="text-lg">{filterLabel}</label>
       <button
-        data-testid="plus-btn"
+        data-testid={`${dataTestId}-plus-btn`}
         disabled={isPlusButtonDisabled}
         onClick={onIncreaseFilterHandler}
         className={filterButtonClassNames}
       >
         <PlusSmallIcon width={20} />
       </button>
-      <span data-testid="current-filter-amount" className="mx-1.5">
+      <span
+        data-testid={`${dataTestId}-current-filter-amount`}
+        className="mx-1.5"
+      >
         {currentFilterAmount}
       </span>
       <button
-        data-testid="minus-btn"
+        data-testid={`${dataTestId}-minus-btn`}
         disabled={currentFilterAmount === 0}
         onClick={onDecreaseFilterHandler}
         className={filterButtonClassNames}
