@@ -1,4 +1,3 @@
-import { HotelList } from './../../app/components/HotelList/HotelList';
 import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit';
 import { Hotel, HotelListSliceState } from '../../app/types/hotel';
 

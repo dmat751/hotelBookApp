@@ -1,15 +1,24 @@
+import { Hotel } from './../../../app/types/hotel';
 import { fetchHotelList } from '../fetchHotelList';
 import { testSaga, expectSaga } from 'redux-saga-test-plan';
 import { hotelListFetchSaga } from '../hotelListSaga';
-import { initialState } from '../hotelListSlice';
+import {
+  getHotelListFailure,
+  getHotelListSuccess,
+  initialState,
+} from '../hotelListSlice';
+import validHotelRoomData from '../../../mocks/hotelWithRoomsData/hotelWithRoomsData.json';
+
+const castedHotelData: Hotel[] = JSON.parse(JSON.stringify(validHotelRoomData));
 
 describe('test hotelListSagas', () => {
-  it('test success fetch api data', () => {
+  it('test success fetch api data', async () => {
+    console.log(castedHotelData.length);
     testSaga(hotelListFetchSaga)
       .next()
       .call(fetchHotelList)
-      .next()
-      .put({ type: 'hotelList/getHotelListSuccess', payload: undefined })
+      .next(castedHotelData)
+      .put(getHotelListSuccess(castedHotelData))
       .next()
       .isDone();
   });
@@ -19,7 +28,7 @@ describe('test hotelListSagas', () => {
       .next()
       .call(fetchHotelList)
       .throw(new Error('test error'))
-      .put({ type: 'hotelList/getHotelListFailure', payload: 'test error' })
+      .put(getHotelListFailure('test error'))
       .next()
       .isDone();
   });
