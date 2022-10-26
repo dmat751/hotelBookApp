@@ -14,6 +14,7 @@ export const selectRandomHotelPhoto = createSelector(
             alt: image?.alt ? image.alt : '',
             url: image?.url ? image.url : '',
           };
+
           return resultImage;
         })
       )

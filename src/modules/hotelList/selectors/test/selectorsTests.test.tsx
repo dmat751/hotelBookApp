@@ -277,6 +277,7 @@ describe('test max filter values selectors', () => {
       toString: () => {
         const hotelListValueToPrint =
           caseItem.hotelListValue !== 'default' ? 'custom' : 'default';
+
         return `
         hotelListValue: ${hotelListValueToPrint}
         selector to test: ${caseItem.selectorNameForPrint}
@@ -340,6 +341,7 @@ describe('test randomHotelPhotoSelector', () => {
       toString: () => {
         const hotelListValueToPrint =
           caseItem.hotelListValue !== 'default' ? 'custom' : 'default';
+
         return `
         hotelListValue: ${hotelListValueToPrint}
         getRandomNumberMockedValue: ${caseItem.getRandomNumberMockedValue}

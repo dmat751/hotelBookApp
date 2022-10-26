@@ -7,9 +7,8 @@ import validRoomsData from '../roomsData/validRoomsData.json';
 const getHotelIds = (validHotelData: Hotel[]) =>
   validHotelData.map((hotel) => hotel.id);
 
-const getRoomsUrls = (roomsUrl: string, hotelIds: string[]) => {
-  return hotelIds.map((hotelID) => roomsUrl + hotelID);
-};
+const getRoomsUrls = (roomsUrl: string, hotelIds: string[]) =>
+  hotelIds.map((hotelID) => roomsUrl + hotelID);
 
 const genearateApiRoomsEndpoints = (
   basicRoomsUrl: string,

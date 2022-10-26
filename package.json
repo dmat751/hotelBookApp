@@ -77,6 +77,8 @@
     "transform": {
       "^.+\\.css$": "jest-transform-css"
     },
-    "transformIgnorePatterns": ["node_modules/(?!(swiper|ssr-window|dom7)/)"]
+    "transformIgnorePatterns": [
+      "node_modules/(?!(swiper|ssr-window|dom7)/)"
+    ]
   }
 }

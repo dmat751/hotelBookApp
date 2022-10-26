@@ -11,5 +11,6 @@ export const Notification = ({ message, msgType }: Props) => {
       'text-red-600': msgType === 'error',
     }
   );
+
   return <p className={classes}>{message}</p>;
 };
