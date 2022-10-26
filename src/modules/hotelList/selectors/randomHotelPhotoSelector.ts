@@ -7,18 +7,21 @@ export const selectRandomHotelPhoto = createSelector(
   [selectAllHotelList],
   (hotelList): Photo => {
     const defaultResult: Photo = { alt: '', url: '' };
-    let imgArray: Photo[] = hotelList.map(({ images }) => images).flat();
+    const imgArray: Photo[] = hotelList
+      .map(({ images }) =>
+        images.map((image) => {
+          const resultImage: Photo = {
+            alt: image?.alt ? image.alt : '',
+            url: image?.url ? image.url : '',
+          };
+          return resultImage;
+        })
+      )
+      .flat();
+
     if (imgArray.length === 0) {
       return defaultResult;
     }
-
-    imgArray = imgArray.map((item) => {
-      if (!Object.prototype.hasOwnProperty.call(item, 'alt')) {
-        const result: Photo = { alt: '', url: item.url };
-        return result;
-      }
-      return item;
-    });
 
     const randomImgArrayIndex = getRandomNumber(0, imgArray.length - 1);
 

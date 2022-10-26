@@ -327,6 +327,14 @@ describe('test randomHotelPhotoSelector', () => {
       getRandomNumberMockedValue: -1,
       hotelListValue: [],
     },
+    {
+      expectedResult: {
+        alt: '',
+        url: 'https://rl-uk2.azureedge.net/picturemanager/images/OBMNG1/Hotel1.JPG',
+      },
+      getRandomNumberMockedValue: 0,
+      hotelListValue: fetchedHotelsWithRoomsData.slice(0, 1),
+    },
   ].map((caseItem) =>
     Object.assign(caseItem, {
       toString: () => {
