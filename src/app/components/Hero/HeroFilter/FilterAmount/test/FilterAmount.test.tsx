@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { useState } from 'react';
+import { act } from 'react-dom/test-utils';
 import { FilterAmount } from '../FilterAmount';
 
 const dataTestIdPrefix = 'test-filter';
@@ -43,14 +44,19 @@ describe('test FilterAmount component', () => {
     expect(currentFilterValue.textContent).toBe('1');
     expect(buttonPlus).not.toBeDisabled();
     expect(buttonMinus).not.toBeDisabled();
-
-    buttonMinus.click();
+    act(() => {
+      buttonMinus.click();
+    });
     expect(buttonMinus).toBeDisabled();
 
-    buttonPlus.click();
+    act(() => {
+      buttonPlus.click();
+    });
     expect(currentFilterValue.textContent).toBe('1');
 
-    buttonPlus.click();
+    act(() => {
+      buttonPlus.click();
+    });
     expect(buttonPlus).toBeDisabled();
     expect(currentFilterValue.textContent).toBe('2');
   });
