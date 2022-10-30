@@ -9,7 +9,7 @@ export const FormFilter = () => {
   return (
     <div className="w-full flex justify-center -translate-y-1/2">
       <div className={formFilterContentClassNames}>
-        <StarFilter />
+        <StarFilter starsDataTestId="stars-hero-filter-test-id" />
         <FilterByChildren />
         <FilterByAdults />
       </div>

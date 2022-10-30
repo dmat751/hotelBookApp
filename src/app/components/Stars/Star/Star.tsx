@@ -2,10 +2,16 @@ type Props = Readonly<{
   borderColor: string;
   fillColor: string;
   onClickHandler?: () => void;
+  starDataTestId: string;
 }>;
 
-export const Star = ({ borderColor, fillColor, onClickHandler }: Props) => (
-  <div onClick={onClickHandler} data-testid="star-rendered">
+export const Star = ({
+  borderColor,
+  fillColor,
+  onClickHandler,
+  starDataTestId,
+}: Props) => (
+  <div onClick={onClickHandler} data-testid={starDataTestId}>
     <svg
       className={`m-[2px] h-[30px] w-[30px] ${
         onClickHandler && 'cursor-pointer'

@@ -28,7 +28,7 @@ describe('test Stars component', () => {
     let filledStars = screen.getAllByTestId('star-polygon-red');
     expect(filledStars.length).toBe(3);
 
-    let renderedStars = screen.getAllByTestId('star-rendered');
+    let renderedStars = screen.getAllByTestId(/star-rendered-[0-9]+/i);
     expect(renderedStars.length).toBe(5);
 
     act(() => {
@@ -37,7 +37,7 @@ describe('test Stars component', () => {
     filledStars = screen.getAllByTestId('star-polygon-red');
     expect(filledStars.length).toBe(4);
 
-    renderedStars = screen.getAllByTestId('star-rendered');
+    renderedStars = screen.getAllByTestId(/star-rendered-[0-9]+/i);
     act(() => {
       renderedStars[0].click();
     });
