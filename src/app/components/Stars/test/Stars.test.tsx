@@ -23,8 +23,11 @@ const TestStarComponent = () => {
 
 describe('test Stars component', () => {
   test('fill correct clicked stars', () => {
+    //given
     render(<TestStarComponent />);
 
+    //when
+    //then
     let filledStars = screen.getAllByTestId('star-polygon-red');
     expect(filledStars.length).toBe(3);
 

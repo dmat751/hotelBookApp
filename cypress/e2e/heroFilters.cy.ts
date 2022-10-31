@@ -23,8 +23,11 @@ const elementSelector = {
 
 describe('test hero filters', () => {
   it('test click each filter btn', () => {
+    //given
     cy.visit('localhost:3000/hotelBookApp');
 
+    //when
+    //then
     cy.get(
       `${
         elementSelector.heroStarsFilter.filterContainer
@@ -53,6 +56,7 @@ describe('test hero filters', () => {
   });
 
   it('test max children filters state', () => {
+    //given
     const maxChildrenFilterValue =
       elementSelector.childrenFilter.maxFilterState;
     cy.document().then((doc) => {
@@ -60,6 +64,7 @@ describe('test hero filters', () => {
         elementSelector.childrenFilter.currentValue
       )?.textContent;
 
+      //when
       const currentFilterValueNumber: number = +currentFilterValue!;
       const shouldClickAmount =
         maxChildrenFilterValue - currentFilterValueNumber;
@@ -70,16 +75,19 @@ describe('test hero filters', () => {
         });
       }
 
+      //then
       cy.get(elementSelector.childrenFilter.plusBtn).should('be.disabled');
     });
   });
 
   it('test min children filters state', () => {
+    //given
     cy.document().then((doc) => {
       const currentFilterValue = doc.querySelector(
         elementSelector.childrenFilter.currentValue
       )?.textContent;
 
+      //when
       const currentFilterValueNumber: number = +currentFilterValue!;
       const shouldClickAmount = currentFilterValueNumber;
 
@@ -89,17 +97,20 @@ describe('test hero filters', () => {
         });
       }
 
+      //then
       cy.get(elementSelector.childrenFilter.minusBtn).should('be.disabled');
     });
   });
 
   it('test max adults filters state', () => {
+    //given
     const maxAdultsFilterValue = elementSelector.adultsFilter.maxFilterState;
     cy.document().then((doc) => {
       const currentFilterValue = doc.querySelector(
         elementSelector.adultsFilter.currentValue
       )?.textContent;
 
+      //when
       const currentFilterValueNumber: number = +currentFilterValue!;
       const shouldClickAmount = maxAdultsFilterValue - currentFilterValueNumber;
 
@@ -109,16 +120,19 @@ describe('test hero filters', () => {
         });
       }
 
+      //then
       cy.get(elementSelector.adultsFilter.plusBtn).should('be.disabled');
     });
   });
 
   it('test min adults filters state', () => {
+    //given
     cy.document().then((doc) => {
       const currentFilterValue = doc.querySelector(
         elementSelector.adultsFilter.currentValue
       )?.textContent;
 
+      //when
       const currentFilterValueNumber: number = +currentFilterValue!;
       const shouldClickAmount = currentFilterValueNumber;
 
@@ -128,12 +142,17 @@ describe('test hero filters', () => {
         });
       }
 
+      //then
       cy.get(elementSelector.adultsFilter.minusBtn).should('be.disabled');
     });
   });
 
   it('test all stars clickable', () => {
+    //given
     const starsAmount = elementSelector.heroStarsFilter.maxFilterState;
+
+    //when
+    //then
     for (let i = 0; i < starsAmount; i++) {
       cy.get(
         `${

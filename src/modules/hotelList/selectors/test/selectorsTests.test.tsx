@@ -125,6 +125,7 @@ describe('test selectIsDataError', () => {
 });
 
 describe('test selectFilteredHotelList', () => {
+  //given
   const isMaxAdultsOccupancyValid = (room: Room, adultsValue: number) =>
     room.occupancy.maxAdults >= adultsValue;
 
@@ -202,7 +203,6 @@ describe('test selectFilteredHotelList', () => {
   test.each<TestCase>(cases)(
     'test for: %s',
     ({ adults, children, stars, expectedHotelLength }) => {
-      //given
       //when
       rootState = {
         hotelList: rootState.hotelList,
@@ -229,6 +229,7 @@ describe('test selectFilteredHotelList', () => {
 });
 
 describe('test max filter values selectors', () => {
+  //given
   type TestCase = {
     hotelListValue: Hotel[] | 'default';
     selectorToTest: Function;
@@ -289,6 +290,7 @@ describe('test max filter values selectors', () => {
   test.each<TestCase>(cases)(
     'test for: %s',
     ({ hotelListValue, selectorToTest, expectedResult }) => {
+      //when
       if (hotelListValue !== 'default') {
         rootState = {
           hotelList: produce(rootState.hotelList, (draft) => {
@@ -299,12 +301,14 @@ describe('test max filter values selectors', () => {
       }
       const selectedValue = selectorToTest(rootState);
 
+      //then
       expect(selectedValue).toBe(expectedResult);
     }
   );
 });
 
 describe('test randomHotelPhotoSelector', () => {
+  //given
   type TestCase = {
     hotelListValue: Hotel[] | 'default';
     expectedResult: Photo;
@@ -353,6 +357,7 @@ describe('test randomHotelPhotoSelector', () => {
   test.each<TestCase>(cases)(
     'test for %s',
     ({ hotelListValue, getRandomNumberMockedValue, expectedResult }) => {
+      //when
       const getRandomNumber = require('../../../../app/queries/getRandomNumber');
       const mock = jest
         .spyOn(getRandomNumber, 'getRandomNumber')
@@ -367,6 +372,8 @@ describe('test randomHotelPhotoSelector', () => {
         };
       }
       const selectedValue = selectRandomHotelPhoto(rootState);
+
+      //then
       expect(selectedValue).toEqual(expectedResult);
       mock.mockRestore();
     }

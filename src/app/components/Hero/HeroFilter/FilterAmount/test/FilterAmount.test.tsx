@@ -31,6 +31,7 @@ const TestFilter = () => {
 
 describe('test FilterAmount component', () => {
   test('plus/minus filter amount', () => {
+    //given
     render(<TestFilter />);
 
     const filterLabel = screen.getByText('TestFilter');
@@ -40,6 +41,8 @@ describe('test FilterAmount component', () => {
     const buttonPlus = screen.getByTestId(`${dataTestIdPrefix}-plus-btn`);
     const buttonMinus = screen.getByTestId(`${dataTestIdPrefix}-minus-btn`);
 
+    //when
+    //then
     expect(filterLabel).toBeInTheDocument();
     expect(currentFilterValue.textContent).toBe('1');
     expect(buttonPlus).not.toBeDisabled();

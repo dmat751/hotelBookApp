@@ -2,13 +2,14 @@ import { Notification } from '../Notification';
 import { render, screen } from '@testing-library/react';
 
 describe('test notification component', () => {
-  type NotificationProps = {
+  //given
+  type TestCase = {
     message: string;
     messageType: 'error' | 'info';
     expectedClass: string;
   };
 
-  const cases: NotificationProps[] = [
+  const cases: TestCase[] = [
     {
       message: 'test msg error',
       messageType: 'error',
@@ -25,13 +26,12 @@ describe('test notification component', () => {
         message: ${notiItem.message}
         messageType: ${notiItem.messageType}
         expectedClass: ${notiItem.expectedClass}`,
-    } as NotificationProps)
+    } as TestCase)
   );
 
-  test.each<NotificationProps>(cases)(
+  test.each<TestCase>(cases)(
     'test for: %s',
     ({ expectedClass, message, messageType }) => {
-      //given
       render(<Notification message={message} msgType={messageType} />);
 
       //when
