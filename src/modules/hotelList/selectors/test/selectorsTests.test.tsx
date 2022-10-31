@@ -160,13 +160,13 @@ describe('test selectFilteredHotelList', () => {
     return true;
   };
 
-  type testCase = {
+  type TestCase = {
     adults: number;
     children: number;
     stars: number;
     expectedHotelLength: number;
   };
-  const cases: testCase[] = [
+  const cases: TestCase[] = [
     {
       adults: initialState.adults,
       children: initialState.children,
@@ -199,7 +199,7 @@ describe('test selectFilteredHotelList', () => {
     },
   ];
 
-  test.each<testCase>(cases)(
+  test.each<TestCase>(cases)(
     'test for: %s',
     ({ adults, children, stars, expectedHotelLength }) => {
       //given
@@ -229,13 +229,13 @@ describe('test selectFilteredHotelList', () => {
 });
 
 describe('test max filter values selectors', () => {
-  type testCase = {
+  type TestCase = {
     hotelListValue: Hotel[] | 'default';
     selectorToTest: Function;
     expectedResult: number;
     selectorNameForPrint: string;
   };
-  const cases: testCase[] = [
+  const cases: TestCase[] = [
     {
       hotelListValue: 'default',
       selectorToTest: selectMaxAdultsInHotels,
@@ -283,10 +283,10 @@ describe('test max filter values selectors', () => {
         selector to test: ${caseItem.selectorNameForPrint}
         expected result: ${caseItem.expectedResult}`;
       },
-    } as testCase)
+    } as TestCase)
   );
 
-  test.each<testCase>(cases)(
+  test.each<TestCase>(cases)(
     'test for: %s',
     ({ hotelListValue, selectorToTest, expectedResult }) => {
       if (hotelListValue !== 'default') {
