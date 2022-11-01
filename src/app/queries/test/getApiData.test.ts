@@ -20,7 +20,7 @@ describe('test getApiData fn', () => {
 
     //when
     try {
-      const hotelData = await getApiData<Hotel[]>(
+      await getApiData<Hotel[]>(
         `${process.env.REACT_APP_INVALID_HOTEL_LIST_URL}`
       );
     } catch (error) {
