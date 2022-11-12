@@ -5,9 +5,9 @@ import { Stars } from '../../../Stars/Stars';
 import { selectMaxHotelStars } from '../../../../../modules/hotelList/selectors/maxHotelStarsSelector';
 
 type Props = Readonly<{
-  starsDataTestId: string;
+  dataTestId: string;
 }>;
-export const StarFilter = ({ starsDataTestId }: Props) => {
+export const StarFilter = ({ dataTestId: DataTestId }: Props) => {
   const currentStarsAmount = useSelector(selectStarsFilter);
   const maxStarsAmount = useSelector(selectMaxHotelStars);
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export const StarFilter = ({ starsDataTestId }: Props) => {
   };
 
   return (
-    <div className="flex" data-testid={starsDataTestId}>
+    <div className="flex" data-testid={DataTestId}>
       <Stars
         borderColor="#fff500"
         fillColor="#fff500"

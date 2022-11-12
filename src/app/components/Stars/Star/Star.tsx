@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 type Props = Readonly<{
   borderColor: string;
   fillColor: string;
@@ -13,9 +15,9 @@ export const Star = ({
 }: Props) => (
   <div onClick={onClickHandler} data-testid={starDataTestId}>
     <svg
-      className={`m-[2px] h-[30px] w-[30px] ${
-        onClickHandler && 'cursor-pointer'
-      }`}
+      className={classNames('m-[2px] h-[30px] w-[30px]', {
+        'cursor-pointer': onClickHandler,
+      })}
       viewBox="0 0 300 275"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
