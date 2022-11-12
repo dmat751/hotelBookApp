@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAdultsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { setAdultsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
@@ -9,13 +10,13 @@ export const FilterByAdults = () => {
   const maxAdults = useSelector(selectMaxAdultsInHotels);
   const dispatch = useDispatch();
 
-  const handleOnIncrease = (): void => {
+  const handleOnIncrease = useCallback((): void => {
     dispatch(setAdultsFilter('ADD'));
-  };
+  }, [dispatch]);
 
-  const handleOnDecrease = (): void => {
+  const handleOnDecrease = useCallback((): void => {
     dispatch(setAdultsFilter('SUB'));
-  };
+  }, [dispatch]);
 
   return (
     <FilterAmount
