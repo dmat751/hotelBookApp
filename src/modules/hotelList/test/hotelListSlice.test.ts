@@ -1,3 +1,4 @@
+import { HotelListSliceState } from './../../../app/types/hotel';
 import { fetchHotelList } from '../fetchHotelList';
 import { Hotel } from '../../../app/types/hotel';
 import {
@@ -11,35 +12,40 @@ import {
 
 describe('test hotel list slice', () => {
   it('test fetchData reducer', () => {
-    expect(hotelListSlice.reducer(initialState, fetchData())).toEqual({
+    const expectedResult: HotelListSliceState = {
       hotelList: [],
       isError: false,
-      isLoading: true,
+      status: 'pending',
       errorMessage: '',
-    });
+    };
+    expect(hotelListSlice.reducer(initialState, fetchData())).toEqual(
+      expectedResult
+    );
   });
 
   it('test getHotelListSuccess reducer', async () => {
     const hotelList: Hotel[] = await fetchHotelList();
+    const expectedState: HotelListSliceState = {
+      hotelList: hotelList,
+      status: 'resolved',
+      errorMessage: '',
+      isError: false,
+    };
     expect(
       hotelListSlice.reducer(initialState, getHotelListSuccess(hotelList))
-    ).toEqual({
-      hotelList: hotelList,
-      isError: false,
-      isLoading: false,
-      errorMessage: '',
-    });
+    ).toEqual(expectedState);
   });
 
   it('test getHotelListFailure reducer', async () => {
-    expect(
-      hotelListSlice.reducer(initialState, getHotelListFailure('test error!!!'))
-    ).toEqual({
-      isLoading: false,
+    const expectedResult: HotelListSliceState = {
+      status: 'resolved',
       isError: true,
       errorMessage: 'test error!!!',
       hotelList: [],
-    });
+    };
+    expect(
+      hotelListSlice.reducer(initialState, getHotelListFailure('test error!!!'))
+    ).toEqual(expectedResult);
   });
 
   const cases: string[] = ['fetchData', 'fetchSuccess', 'fetchFailure'];

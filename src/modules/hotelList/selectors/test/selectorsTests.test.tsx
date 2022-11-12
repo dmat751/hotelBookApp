@@ -2,7 +2,7 @@ import { selectAllHotelList } from '../allHotelListSelector';
 import {
   selectErrorType,
   selectIsDataError,
-  selectIsDataLoading,
+  selectIsDataStatus,
 } from '../dataStatusSelectors';
 import { Hotel } from '../../../../app/types/hotel';
 import { RootState } from '../../../../app/types/rootState';
@@ -25,7 +25,7 @@ const resetRootState = () => {
       hotelList: fetchedHotelsWithRoomsData,
       errorMessage: '',
       isError: false,
-      isLoading: false,
+      status: 'pending',
     },
   };
 };
@@ -46,28 +46,28 @@ describe('test allHotelListSelector', () => {
 });
 
 describe('test selectIsDataLoading', () => {
-  it('should return correct value (false)', () => {
+  it('should return correct value (pending)', () => {
     //given
     //when
-    const selectedValue = selectIsDataLoading(rootState);
+    const selectedValue = selectIsDataStatus(rootState);
 
     //then
-    expect(selectedValue).toBe(false);
+    expect(selectedValue).toBe('pending');
   });
 
-  it('should return correct value (true)', () => {
+  it('should return correct value (resolved)', () => {
     //given
     //when
     rootState = {
       hotelList: produce(rootState.hotelList, (draft) => {
-        draft.isLoading = true;
+        draft.status = 'resolved';
       }),
       hotelFilters: rootState.hotelFilters,
     };
-    const selectedValue = selectIsDataLoading(rootState);
+    const selectedValue = selectIsDataStatus(rootState);
 
     //then
-    expect(selectedValue).toBe(true);
+    expect(selectedValue).toBe('resolved');
   });
 });
 

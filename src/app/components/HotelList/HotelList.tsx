@@ -8,13 +8,13 @@ import { fetchData } from '../../../modules/hotelList/hotelListSlice';
 import {
   selectErrorType,
   selectIsDataError,
-  selectIsDataLoading,
+  selectIsDataStatus,
 } from '../../../modules/hotelList/selectors/dataStatusSelectors';
 
 export const HotelList = () => {
   const dispatch = useDispatch();
   const hotelListLength = useSelector(selectFilteredHotelList).length;
-  const isDataLoading = useSelector(selectIsDataLoading);
+  const dataStatus = useSelector(selectIsDataStatus);
   const apiNotification = useSelector(selectErrorType);
   const isApiError = useSelector(selectIsDataError);
 
@@ -22,14 +22,14 @@ export const HotelList = () => {
     dispatch(fetchData());
   }, [dispatch]);
 
-  const isContentVisible = !isDataLoading;
+  const isContentVisible = dataStatus === 'resolved';
   const isVisibleHotelsNoFoundNotification =
-    hotelListLength === 0 && !isDataLoading;
+    hotelListLength === 0 && isContentVisible;
 
   return (
     <div className="flex flex-col items-center">
       {isContentVisible && <HotelListContent />}
-      {isDataLoading && Spinner}
+      {!isContentVisible && Spinner}
       {isApiError && <Notification message={apiNotification} msgType="error" />}
       {isVisibleHotelsNoFoundNotification && (
         <Notification message="We can not find any hotels" msgType="info" />

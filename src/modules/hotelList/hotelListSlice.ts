@@ -4,7 +4,7 @@ import { Hotel, HotelListSliceState } from '../../app/types/hotel';
 export const initialState: HotelListSliceState = {
   hotelList: [],
   isError: false,
-  isLoading: false,
+  status: 'pending',
   errorMessage: '',
 };
 
@@ -13,14 +13,14 @@ export const hotelListSlice = createSlice({
   initialState,
   reducers: {
     fetchData: (state) => {
-      state.isLoading = true;
+      state.status = 'pending';
     },
     getHotelListSuccess: (state, { payload }: PayloadAction<Hotel[]>) => {
       state.hotelList = payload;
-      state.isLoading = false;
+      state.status = 'resolved';
     },
     getHotelListFailure: (state, { payload }: PayloadAction<string>) => {
-      state.isLoading = false;
+      state.status = 'resolved';
       state.isError = true;
       state.errorMessage = payload;
       state.hotelList = [];
