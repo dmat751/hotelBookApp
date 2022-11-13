@@ -1,3 +1,4 @@
+import { createHotelImages } from './../../../app/queries/createHotelImages';
 import { Photo } from './../../../app/types/room';
 import { getRandomNumber } from '../../../app/queries/getRandomNumber';
 import { createSelector } from '@reduxjs/toolkit';
@@ -7,18 +8,7 @@ export const selectRandomHotelPhoto = createSelector(
   [selectAllHotelList],
   (hotelList): Photo => {
     const defaultResult: Photo = { alt: '', url: '' };
-    const imgArray: Photo[] = hotelList
-      .map(({ images }) =>
-        images.map((image) => {
-          const resultImage: Photo = {
-            alt: image?.alt ? image.alt : '',
-            url: image?.url ? image.url : '',
-          };
-
-          return resultImage;
-        })
-      )
-      .flat();
+    const imgArray: Photo[] = createHotelImages(hotelList);
 
     if (imgArray.length === 0) {
       return defaultResult;
