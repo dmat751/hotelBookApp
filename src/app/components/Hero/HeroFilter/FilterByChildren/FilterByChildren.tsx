@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectChildrenFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { setChildrenFilter } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
-import { selectMaxChildrenInHotels } from '../../../../../modules/hotelList/selectors/maxChildrenSelector';
+import { selectMaxChildrenInHotels } from '../../../../../modules/hotelList/selectors/maxFilterValueSelectors';
 import { FilterAmount } from '../FilterAmount/FilterAmount';
 
 export const FilterByChildren = () => {

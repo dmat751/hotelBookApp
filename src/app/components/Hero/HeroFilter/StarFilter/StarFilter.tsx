@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { setStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
 import { Stars } from '../../../Stars/Stars';
-import { selectMaxHotelStars } from '../../../../../modules/hotelList/selectors/maxHotelStarsSelector';
+import { selectMaxHotelStars } from '../../../../../modules/hotelList/selectors/maxFilterValueSelectors';
 
 type Props = Readonly<{
   dataTestId: string;
