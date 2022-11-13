@@ -235,6 +235,7 @@ describe('test max filter values selectors', () => {
     selectorToTest: Function;
     expectedResult: number;
     selectorNameForPrint: string;
+    toString: () => string;
   };
   const cases: TestCase[] = [
     {
@@ -273,18 +274,20 @@ describe('test max filter values selectors', () => {
       expectedResult: 5,
       selectorNameForPrint: 'selectMaxHotelStars',
     },
-  ].map((caseItem) =>
-    Object.assign(caseItem, {
-      toString: () => {
-        const hotelListValueToPrint =
-          caseItem.hotelListValue !== 'default' ? 'custom' : 'default';
+  ].map(
+    (caseItem) =>
+      ({
+        ...caseItem,
+        toString: () => {
+          const hotelListValueToPrint =
+            caseItem.hotelListValue !== 'default' ? 'custom' : 'default';
 
-        return `
+          return `
         hotelListValue: ${hotelListValueToPrint}
         selector to test: ${caseItem.selectorNameForPrint}
         expected result: ${caseItem.expectedResult}`;
-      },
-    } as TestCase)
+        },
+      } as TestCase)
   );
 
   test.each<TestCase>(cases)(
