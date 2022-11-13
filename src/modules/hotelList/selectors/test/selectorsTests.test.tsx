@@ -140,26 +140,19 @@ describe('test selectFilteredHotelList', () => {
     childrenValue: number,
     starsValue: number,
     filteredHotels: Hotel[]
-  ) => {
-    filteredHotels.forEach((hotel) => {
-      hotel.roomsDetails.rooms.forEach((room) => {
+  ) =>
+    filteredHotels.every((hotel) => {
+      const isHotelFiltersValid = isHotelStarsRatingValid(hotel, starsValue);
+      const isRoomFilterValid = hotel.roomsDetails.rooms.every((room) => {
         const isRoomsFiltersValid =
           isMaxAdultsOccupancyValid(room, adultsValue) &&
           isMaxChildrenOccupancyValid(room, childrenValue);
 
-        if (!isRoomsFiltersValid) {
-          return false;
-        }
+        return isRoomsFiltersValid;
       });
-
-      const isHotelFiltersValid = isHotelStarsRatingValid(hotel, starsValue);
-      if (!isHotelFiltersValid) {
-        return false;
-      }
+      const isAllFiltersValid = isHotelFiltersValid && isRoomFilterValid;
+      return isAllFiltersValid;
     });
-
-    return true;
-  };
 
   type TestCase = {
     adults: number;
