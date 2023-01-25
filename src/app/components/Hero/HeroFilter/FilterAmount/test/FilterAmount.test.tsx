@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { act } from 'react-dom/test-utils';
 import { FilterAmount } from '../FilterAmount';
 
@@ -9,13 +9,13 @@ const TestFilter = () => {
   const [currentFilterAmount, setCurrentFilterAmount] = useState(1);
   const maxFilterValue = 2;
 
-  const handleOnIncrease = () => {
+  const handleOnIncrease = useCallback(() => {
     setCurrentFilterAmount((prev) => prev + 1);
-  };
+  }, []);
 
-  const handleOnDecrease = () => {
+  const handleOnDecrease = useCallback(() => {
     setCurrentFilterAmount((prev) => prev - 1);
-  };
+  }, []);
 
   return (
     <FilterAmount
