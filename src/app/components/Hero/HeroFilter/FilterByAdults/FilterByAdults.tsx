@@ -1,7 +1,8 @@
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAdultsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
-import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
-import { selectMaxAdultsInHotels } from '../../../../../modules/hotelList/selectors/maxAdultsSelector';
+import { setAdultsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
+import { selectMaxAdultsInHotels } from '../../../../../modules/hotelList/selectors/maxFilterValueSelectors';
 import { FilterAmount } from '../FilterAmount/FilterAmount';
 
 export const FilterByAdults = () => {
@@ -9,13 +10,13 @@ export const FilterByAdults = () => {
   const maxAdults = useSelector(selectMaxAdultsInHotels);
   const dispatch = useDispatch();
 
-  const handleOnIncrease = (): void => {
-    dispatch(hotelFiltersSlice.actions.setAdultsFilter('ADD'));
-  };
+  const handleOnIncrease = useCallback((): void => {
+    dispatch(setAdultsFilter('ADD'));
+  }, [dispatch]);
 
-  const handleOnDecrease = (): void => {
-    dispatch(hotelFiltersSlice.actions.setAdultsFilter('SUB'));
-  };
+  const handleOnDecrease = useCallback((): void => {
+    dispatch(setAdultsFilter('SUB'));
+  }, [dispatch]);
 
   return (
     <FilterAmount
@@ -24,6 +25,7 @@ export const FilterByAdults = () => {
       isPlusButtonDisabled={currentFilterAmount >= maxAdults}
       onDecreaseFilterHandler={handleOnDecrease}
       onIncreaseFilterHandler={handleOnIncrease}
+      dataTestIdPrefix="adults-filter"
     />
   );
 };

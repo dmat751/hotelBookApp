@@ -1,13 +1,13 @@
 import { fetchHotelList } from './fetchHotelList';
 import { Hotel } from './../../app/types/hotel';
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   getHotelListFailure,
   getHotelListSuccess,
   hotelListActions,
 } from './hotelListSlice';
 
-function* hotelListFetchSaga() {
+export function* hotelListFetchSaga() {
   try {
     const hotelList: Hotel[] = yield call(fetchHotelList);
     yield put(getHotelListSuccess(hotelList));

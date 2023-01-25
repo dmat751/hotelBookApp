@@ -1,6 +1,6 @@
-import { Hotel } from './../types/hotel';
+import { Hotel } from '../types/hotel';
 
-export const getMaxValueByProp = (
+export const getHotelFilterMaxValueByProp = (
   hotelList: Hotel[],
   prop: 'maxChildren' | 'maxAdults'
 ) => {
@@ -9,5 +9,6 @@ export const getMaxValueByProp = (
       hotel.roomsDetails.rooms.map((room) => room?.occupancy?.[prop] ?? 0)
     )
     .flat();
+
   return childrenMaxes.length > 0 ? Math.max(...childrenMaxes) : 0;
 };

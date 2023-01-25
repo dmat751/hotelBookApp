@@ -1,20 +1,29 @@
+import classNames from 'classnames';
+
 type Props = Readonly<{
   borderColor: string;
   fillColor: string;
   onClickHandler?: () => void;
+  starDataTestId: string;
 }>;
 
-export const Star = ({ borderColor, fillColor, onClickHandler }: Props) => (
-  <div onClick={onClickHandler}>
+export const Star = ({
+  borderColor,
+  fillColor,
+  onClickHandler,
+  starDataTestId,
+}: Props) => (
+  <div onClick={onClickHandler} data-testid={starDataTestId}>
     <svg
-      className={`m-[2px] h-[30px] w-[30px] ${
-        onClickHandler && 'cursor-pointer'
-      }`}
+      className={classNames('m-[2px] h-[30px] w-[30px]', {
+        'cursor-pointer': onClickHandler,
+      })}
       viewBox="0 0 300 275"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
     >
       <polygon
+        data-testid={`star-polygon-${fillColor}`}
         fill={fillColor}
         stroke={borderColor}
         strokeWidth="15"

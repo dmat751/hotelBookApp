@@ -34,6 +34,7 @@ export const Stars = ({
           onClickHandler={
             onFilterChange ? () => onFilterChange(index) : undefined
           }
+          starDataTestId={`star-rendered-${index}`}
         />
       ))}
     </div>

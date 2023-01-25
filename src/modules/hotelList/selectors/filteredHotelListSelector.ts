@@ -27,6 +27,7 @@ const amountFilter = (
 
     return filteredHotel;
   });
+
   return result;
 };
 
@@ -58,5 +59,6 @@ export const selectFilteredHotelList = (state: RootState) => {
   } catch (error) {
     console.log('filter Error');
   }
+
   return filteredHotelList;
 };

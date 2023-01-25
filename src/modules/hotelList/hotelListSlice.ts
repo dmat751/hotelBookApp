@@ -1,11 +1,11 @@
-import { createSlice, createAction } from '@reduxjs/toolkit';
+import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit';
 import { Hotel, HotelListSliceState } from '../../app/types/hotel';
 
-const initialState: HotelListSliceState = {
+export const initialState: HotelListSliceState = {
   hotelList: [],
   isError: false,
-  isLoading: false,
-  errorType: '',
+  status: 'pending',
+  errorMessage: '',
 };
 
 export const hotelListSlice = createSlice({
@@ -13,16 +13,16 @@ export const hotelListSlice = createSlice({
   initialState,
   reducers: {
     fetchData: (state) => {
-      state.isLoading = true;
+      state.status = 'pending';
     },
-    getHotelListSuccess: (state, { payload }) => {
+    getHotelListSuccess: (state, { payload }: PayloadAction<Hotel[]>) => {
       state.hotelList = payload;
-      state.isLoading = false;
+      state.status = 'resolved';
     },
-    getHotelListFailure: (state, { payload }) => {
-      state.isLoading = false;
+    getHotelListFailure: (state, { payload }: PayloadAction<string>) => {
+      state.status = 'resolved';
       state.isError = true;
-      state.errorType = payload;
+      state.errorMessage = payload;
       state.hotelList = [];
     },
   },

@@ -10,11 +10,12 @@ export const fetchHotelList = async () => {
 
   const fetchRoomListResults = await PromisePool.withConcurrency(5)
     .for(hotelList)
-    .process(async (hotelItem) => {
-      return (hotelItem.roomsDetails = await getApiData<RoomsDetails>(
-        `${process.env.REACT_APP_ROOM_LIST_URL + hotelItem.id}`
-      ));
-    });
+    .process(
+      async (hotelItem) =>
+        (hotelItem.roomsDetails = await getApiData<RoomsDetails>(
+          `${process.env.REACT_APP_ROOM_LIST_URL + hotelItem.id}`
+        ))
+    );
 
   if (fetchRoomListResults.errors.length > 0) {
     throw new Error('fetch rooms error');
