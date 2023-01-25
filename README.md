@@ -1,7 +1,17 @@
 How to run project ?
 
-1. Run yarn install
-2. Run yarn start
+    1. Run yarn install
+    2. Run yarn start
+
+How to run unit and integrated tests?
+-> Run: yarn test
+
+How to run E2E tests?
+
+    1. Run: yarn cypress open
+    2. In Cypress window click E2E testing
+    3. Select browser
+    4. Run specific test scenario e.g. heroFilter.cy.ts
 
 Project was tested for:
 
