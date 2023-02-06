@@ -1,7 +1,7 @@
 {
   "name": "private-hotel-book-app-v2",
   "version": "0.1.0",
-  "homepage": "http://dmat751.github.io/hotel-book-app",
+  "homepage": "https://dmat751.github.io/hotelBookApp",
   "private": true,
   "dependencies": {
     "@heroicons/react": "^2.0.12",
