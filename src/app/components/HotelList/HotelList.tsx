@@ -7,9 +7,10 @@ import { HotelListContent } from './HotelListContent/HotelListContent';
 import { selectFilteredHotelList } from '../../../modules/hotelList/filteredHotelListSelector';
 import { selectHotelListStatus } from '../../../modules/hotelList/statusSelector';
 import { selectHotelListError } from '../../../modules/hotelList/errorSelector';
+import { AppDispatch } from '../../types/rootState';
 
 export const HotelList = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const hotelListLength = useSelector(selectFilteredHotelList).length;
   const dataStatus = useSelector(selectHotelListStatus);
   const isDataError = useSelector(selectHotelListError);

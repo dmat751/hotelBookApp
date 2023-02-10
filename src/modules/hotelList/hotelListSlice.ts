@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Hotel, HotelListSliceState } from '../../app/types/hotel';
+import { createSlice } from '@reduxjs/toolkit';
+import { HotelListSliceState } from '../../app/types/hotel';
 import { fetchHotelListData } from './hotelListAction';
 
 const initialState: HotelListSliceState = {
@@ -11,11 +11,7 @@ const initialState: HotelListSliceState = {
 export const hotelListSlice = createSlice({
   name: 'hotelList',
   initialState,
-  reducers: {
-    replaceHotelList(state, action: PayloadAction<Hotel[]>) {
-      state.hotelList = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchHotelListData.pending, (state, action) => {
@@ -32,5 +28,3 @@ export const hotelListSlice = createSlice({
       });
   },
 });
-
-export const { replaceHotelList } = hotelListSlice.actions;

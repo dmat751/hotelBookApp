@@ -13,7 +13,7 @@ const getApiData = async <T>(url: string): Promise<T> => {
   return await dataResp.json();
 };
 
-export const fetchHotelListData = createAsyncThunk(
+export const fetchHotelListData = createAsyncThunk<Hotel[]>(
   'hotel/fetchHotels',
   async (data, thunkAPI) => {
     try {
