@@ -8,6 +8,7 @@ import { selectFilteredHotelList } from '../../../modules/hotelList/filteredHote
 import { selectHotelListStatus } from '../../../modules/hotelList/statusSelector';
 import { selectHotelListError } from '../../../modules/hotelList/errorSelector';
 import { AppDispatch } from '../../types/rootState';
+import { useGetHotelListQuery } from '../../../modules/hotelList/api/hotelList';
 
 export const HotelList = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,6 +19,9 @@ export const HotelList = () => {
   useEffect(() => {
     dispatch(fetchHotelListData());
   }, [dispatch]);
+
+  const { data, error, isLoading } = useGetHotelListQuery();
+  console.log(data);
 
   const isApiLoading = dataStatus === 'loading';
   const isContentVisible = !isApiLoading && !isDataError;
