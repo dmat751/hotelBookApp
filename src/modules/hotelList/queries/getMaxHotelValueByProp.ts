@@ -4,11 +4,11 @@ export const getMaxHotelValueByProp = (
   hotelList: Hotel[],
   prop: 'maxChildren' | 'maxAdults'
 ) => {
-  const childrenMaxes = hotelList
+  const maxValue = hotelList
     .map((hotel) =>
       hotel.roomsDetails.rooms.map((room) => room?.occupancy?.[prop] ?? 0)
     )
     .flat();
 
-  return Math.max(...childrenMaxes) || 0;
+  return Math.max(...maxValue) || 0;
 };

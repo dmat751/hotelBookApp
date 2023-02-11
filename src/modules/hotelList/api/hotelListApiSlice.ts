@@ -5,7 +5,6 @@ import { Hotel } from '../types/hotel';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { RoomsDetails } from '../types/room';
 
-// Define a service using a base URL and expected endpoints
 export const hotelApi = createApi({
   reducerPath: 'hotelApi',
   baseQuery: fetchBaseQuery({
