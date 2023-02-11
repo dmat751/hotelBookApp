@@ -9,26 +9,22 @@ export const selectFilteredHotelList = createSelector(
   [selectAllHotelList, selectHotelFilters],
   (unfilteredHotelList, hotelFilters) => {
     let filteredHotelList = unfilteredHotelList;
-    console.log(filteredHotelList);
-    try {
-      filteredHotelList = amountFilter(
-        filteredHotelList,
-        hotelFilters.children,
-        'children'
-      );
+    filteredHotelList = amountFilter(
+      filteredHotelList,
+      hotelFilters.children,
+      'children'
+    );
 
-      filteredHotelList = amountFilter(
-        filteredHotelList,
-        hotelFilters.adults,
-        'adults'
-      );
+    filteredHotelList = amountFilter(
+      filteredHotelList,
+      hotelFilters.adults,
+      'adults'
+    );
 
-      filteredHotelList = starFilter(filteredHotelList, hotelFilters.stars);
+    filteredHotelList = starFilter(filteredHotelList, hotelFilters.stars);
 
-      filteredHotelList = removeHotelsWithoutRooms(filteredHotelList);
-    } catch (error) {
-      console.log('filter Error');
-    }
+    filteredHotelList = removeHotelsWithoutRooms(filteredHotelList);
+
     return filteredHotelList;
   }
 );

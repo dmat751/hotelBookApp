@@ -5,7 +5,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './Swiper.scss';
-import nextId from 'react-id-generator';
 
 type Props = Readonly<{ images: { url: string; alt: string }[] }>;
 export const Slider = ({ images }: Props) => {
@@ -25,7 +24,7 @@ export const Slider = ({ images }: Props) => {
       >
         {images.map((item) => {
           return (
-            <SwiperSlide key={nextId()}>
+            <SwiperSlide key={item.url}>
               <img
                 className="w-full h-full object-cover"
                 src={item.url}
