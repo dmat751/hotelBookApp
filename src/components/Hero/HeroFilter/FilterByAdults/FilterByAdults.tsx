@@ -25,6 +25,7 @@ export const FilterByAdults = () => {
       isPlusButtonDisabled={currentFilterAmount >= maxAdults}
       onDecreaseFilterHandler={handleOnDecrease}
       onIncreaseFilterHandler={handleOnIncrease}
+      dataTestIdPrefix="adults-filter"
     />
   );
 };
