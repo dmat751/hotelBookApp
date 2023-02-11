@@ -1,6 +1,6 @@
 import { FormFilter } from './HeroFilter/HeroFilter';
 import { useSelector } from 'react-redux';
-import { selectRandomHotelPhoto } from '../../../modules/hotelList/randomHotelPhotoSelector';
+import { selectRandomHotelPhoto } from '../../../modules/hotelList/selectors/selectRandomHotelPhoto';
 
 export const Hero = () => {
   const { url, alt } = useSelector(selectRandomHotelPhoto);

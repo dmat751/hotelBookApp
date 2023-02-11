@@ -1,21 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchHotelListData } from '../../../modules/hotelList/hotelListAction';
+import { useSelector } from 'react-redux';
 import { spinner } from '../../../UI/Spinner/Spinner';
 import { Notification } from '../../../UI/Notification/Notification';
 import { HotelListContent } from './HotelListContent/HotelListContent';
-import { AppDispatch } from '../../types/rootState';
 import { useGetHotelListQuery } from '../../../modules/hotelList/api/hotelList';
-import { selectFilteredHotelListApi } from '../../../modules/hotelList/api/selector';
+import { selectFilteredHotelListApi } from '../../../modules/hotelList/selectors/selectAllHotelList';
 
 export const HotelList = () => {
-  const dispatch = useDispatch<AppDispatch>();
   const hotelListLength = useSelector(selectFilteredHotelListApi).length;
-
-  useEffect(() => {
-    dispatch(fetchHotelListData());
-  }, [dispatch]);
-
   const { isLoading, isError } = useGetHotelListQuery();
 
   const isContentVisible = !isLoading && !isError;
