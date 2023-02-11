@@ -1,7 +1,7 @@
 import { selectHotelFilters } from '../../hotelFilters/hotelFiltersSelectors';
 import { Hotel } from '../../../app/types/hotel';
 import { createSelector } from '@reduxjs/toolkit';
-import { hotelApi } from '../api/hotelList';
+import { hotelApi } from '../api/hotelListApiSlice';
 
 export const selectAllHotelList = createSelector(
   [hotelApi.endpoints.getHotelList.select()],

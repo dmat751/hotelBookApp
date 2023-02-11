@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { spinner } from '../../../UI/Spinner/Spinner';
 import { Notification } from '../../../UI/Notification/Notification';
 import { HotelListContent } from './HotelListContent/HotelListContent';
-import { useGetHotelListQuery } from '../../../modules/hotelList/api/hotelList';
+import { useGetHotelListQuery } from '../../../modules/hotelList/api/hotelListApiSlice';
 import { selectFilteredHotelListApi } from '../../../modules/hotelList/selectors/selectAllHotelList';
 
 export const HotelList = () => {

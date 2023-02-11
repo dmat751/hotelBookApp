@@ -1,18 +1,9 @@
+import { getApiData } from './../queries/getApiData';
 import { PromisePool } from '@supercharge/promise-pool';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Hotel } from '../../../app/types/hotel';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { RoomsDetails } from '../../../app/types/room';
-
-const getApiData = async <T>(url: string): Promise<T> => {
-  const dataResp = await fetch(url);
-
-  if (!dataResp.ok) {
-    throw new Error('Could not fetch data!');
-  }
-
-  return await dataResp.json();
-};
 
 // Define a service using a base URL and expected endpoints
 export const hotelApi = createApi({

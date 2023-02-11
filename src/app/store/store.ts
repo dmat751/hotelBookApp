@@ -1,4 +1,4 @@
-import { hotelApi } from './../../modules/hotelList/api/hotelList';
+import { hotelApi } from '../../modules/hotelList/api/hotelListApiSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import { hotelFiltersSlice } from '../../modules/hotelFilters/hotelFiltersSlice';
 
