@@ -5,6 +5,11 @@ import { App } from './app/App';
 import { Provider } from 'react-redux';
 import { store } from './app/store/store';
 
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = require('./mocks/browser');
+  worker.start();
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
