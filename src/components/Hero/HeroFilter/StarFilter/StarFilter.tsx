@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFiltersSelectors';
-import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
+import { selectStarsFilter } from '../../../../modules/hotelFilters/hotelFiltersSelectors';
+import { hotelFiltersSlice } from '../../../../modules/hotelFilters/hotelFiltersSlice';
 import { Stars } from '../../../Stars/Stars';
-import { selectMaxHotelStars } from '../../../../../modules/hotelList/selectors/selectMaxHotelStars';
+import { selectMaxHotelStars } from '../../../../modules/hotelList/selectors/selectMaxHotelStars';
 import { useCallback } from 'react';
 
 export const StarFilter = () => {

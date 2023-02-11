@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { spinner } from '../../../UI/Spinner/Spinner';
-import { Notification } from '../../../UI/Notification/Notification';
+import { Notification } from '../Notification/Notification';
 import { HotelListContent } from './HotelListContent/HotelListContent';
-import { useGetHotelListQuery } from '../../../modules/hotelList/api/hotelListApiSlice';
-import { selectFilteredHotelList } from '../../../modules/hotelList/selectors/selectFilteredHotelList';
+import { useGetHotelListQuery } from '../../modules/hotelList/api/hotelListApiSlice';
+import { selectFilteredHotelList } from '../../modules/hotelList/selectors/selectFilteredHotelList';
+import { spinner } from '../Spinner/Spinner';
 
 export const HotelList = () => {
   const hotelListLength = useSelector(selectFilteredHotelList).length;

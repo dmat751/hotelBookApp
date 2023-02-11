@@ -1,5 +1,5 @@
 import { Star } from './Star/Star';
-import { StarOptions } from '../../types/star';
+import { StarOptions } from '../../app/types/star';
 import { memo } from 'react';
 
 type Props = Readonly<{

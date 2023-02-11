@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectRandomHotelPhoto } from '../../../../modules/hotelList/selectors/selectRandomHotelPhoto';
+import { selectRandomHotelPhoto } from '../../../modules/hotelList/selectors/selectRandomHotelPhoto';
 
 export const HeroBackground = () => {
   const { url, alt } = useSelector(selectRandomHotelPhoto);
