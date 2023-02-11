@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { selectAllHotelList } from './allHotelListSelector';
+import { selectAllHotelList } from './api/selector';
 
 export const selectMaxHotelStars = createSelector(
   [selectAllHotelList],

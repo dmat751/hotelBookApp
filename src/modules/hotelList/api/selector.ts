@@ -4,7 +4,10 @@ import { createSelector } from '@reduxjs/toolkit';
 import { hotelApi } from './hotelList';
 import { RootState } from '../../../app/types/rootState';
 
-export const selectHotelListApi = hotelApi.endpoints.getHotelList.select();
+export const selectAllHotelList = createSelector(
+  [hotelApi.endpoints.getHotelList.select()],
+  (hotelList) => hotelList.data ?? []
+);
 
 const amountFilter = (
   hotelList: Hotel[],
@@ -42,9 +45,9 @@ const removeHotelsWithoutRooms = (hotelList: Hotel[]): Hotel[] =>
   hotelList.filter(({ roomsDetails }) => roomsDetails.rooms.length !== 0);
 
 export const selectFilteredHotelListApi = createSelector(
-  [selectHotelListApi, selectHotelFilters],
-  ({ data }, hotelFilters) => {
-    let filteredHotelList = data ?? [];
+  [selectAllHotelList, selectHotelFilters],
+  (unfilteredHotelList, hotelFilters) => {
+    let filteredHotelList = unfilteredHotelList;
     console.log(filteredHotelList);
     try {
       filteredHotelList = amountFilter(

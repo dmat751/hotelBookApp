@@ -1,6 +1,6 @@
+import { selectAllHotelList } from './api/selector';
 import { getRandomNumber } from '../../app/queries/getRandomNumber';
 import { createSelector } from '@reduxjs/toolkit';
-import { selectAllHotelList } from './allHotelListSelector';
 
 export const selectRandomHotelPhoto = createSelector(
   [selectAllHotelList],

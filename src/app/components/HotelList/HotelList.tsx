@@ -4,35 +4,31 @@ import { fetchHotelListData } from '../../../modules/hotelList/hotelListAction';
 import { spinner } from '../../../UI/Spinner/Spinner';
 import { Notification } from '../../../UI/Notification/Notification';
 import { HotelListContent } from './HotelListContent/HotelListContent';
-import { selectFilteredHotelList } from '../../../modules/hotelList/filteredHotelListSelector';
-import { selectHotelListStatus } from '../../../modules/hotelList/statusSelector';
-import { selectHotelListError } from '../../../modules/hotelList/errorSelector';
 import { AppDispatch } from '../../types/rootState';
 import { useGetHotelListQuery } from '../../../modules/hotelList/api/hotelList';
+import { selectFilteredHotelListApi } from '../../../modules/hotelList/api/selector';
 
 export const HotelList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const hotelListLength = useSelector(selectFilteredHotelList).length;
-  const dataStatus = useSelector(selectHotelListStatus);
-  const isDataError = useSelector(selectHotelListError);
+  const hotelListLength = useSelector(selectFilteredHotelListApi).length;
 
   useEffect(() => {
     dispatch(fetchHotelListData());
   }, [dispatch]);
 
-  const { data, error, isLoading } = useGetHotelListQuery();
-  console.log(data);
+  const { isLoading, isError } = useGetHotelListQuery();
 
-  const isApiLoading = dataStatus === 'loading';
-  const isContentVisible = !isApiLoading && !isDataError;
+  const isContentVisible = !isLoading && !isError;
   const isHotelsNoFoundNotificationVisible =
-    hotelListLength === 0 && !isApiLoading;
+    hotelListLength === 0 && !isLoading;
 
   return (
     <div className="flex flex-col items-center">
       {isContentVisible && <HotelListContent />}
-      {isApiLoading && spinner}
-      {isDataError && <Notification message={isDataError} msgType="error" />}
+      {isLoading && spinner}
+      {isError && (
+        <Notification message="Sorry, can't fetch data" msgType="error" />
+      )}
       {isHotelsNoFoundNotificationVisible && (
         <Notification message="We can not find any hotels" msgType="info" />
       )}
