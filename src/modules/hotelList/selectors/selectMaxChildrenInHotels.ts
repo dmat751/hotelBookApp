@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { getMaxHotelValueByProp } from '../../../app/queries/getMaxHotelValueByProp';
+import { getMaxHotelValueByProp } from '../queries/getMaxHotelValueByProp';
 import { selectAllHotelList } from './selectAllHotelList';
 
 export const selectMaxChildrenInHotels = createSelector(

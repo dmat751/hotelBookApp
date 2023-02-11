@@ -1,4 +1,4 @@
-import { Hotel } from '../../modules/hotelList/types/hotel';
+import { Hotel } from '../types/hotel';
 
 export const getMaxHotelValueByProp = (
   hotelList: Hotel[],

@@ -3,7 +3,7 @@ export type RoomsDetails = {
   rooms: Room[];
 };
 
-export type RatePlan = {
+type RatePlan = {
   cancellationPolicy: {
     amount: number;
     applicable: string;
@@ -37,7 +37,7 @@ type Occupancy = {
   maxOverall: number;
 };
 
-export type Facility = {
+type Facility = {
   code: string;
   name: string;
 };

@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { HotelItem } from '../HotelItem/HotelItem';
 import baseClasses from '../../../assets/baseClasses.module.scss';
-import { selectFilteredHotelListApi } from '../../../../modules/hotelList/selectors/selectAllHotelList';
+import { selectFilteredHotelList } from '../../../../modules/hotelList/selectors/selectFilteredHotelList';
 
 export const HotelListContent = () => {
   // const hotelListItems = useSelector(selectFilteredHotelList);
-  const hotelListItems = useSelector(selectFilteredHotelListApi);
+  const hotelListItems = useSelector(selectFilteredHotelList);
   // console.log(hotelListItems2);
 
   return (

@@ -3,10 +3,10 @@ import { spinner } from '../../../UI/Spinner/Spinner';
 import { Notification } from '../../../UI/Notification/Notification';
 import { HotelListContent } from './HotelListContent/HotelListContent';
 import { useGetHotelListQuery } from '../../../modules/hotelList/api/hotelListApiSlice';
-import { selectFilteredHotelListApi } from '../../../modules/hotelList/selectors/selectAllHotelList';
+import { selectFilteredHotelList } from '../../../modules/hotelList/selectors/selectFilteredHotelList';
 
 export const HotelList = () => {
-  const hotelListLength = useSelector(selectFilteredHotelListApi).length;
+  const hotelListLength = useSelector(selectFilteredHotelList).length;
   const { isLoading, isError } = useGetHotelListQuery();
 
   const isContentVisible = !isLoading && !isError;
