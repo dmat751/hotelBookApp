@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import { useCallback, useState } from 'react';
 import { act } from 'react-dom/test-utils';
 import { FilterAmount } from '../FilterAmount';
-import '@testing-library/jest-dom';
 
 const dataTestIdPrefix = 'test-filter';
 
