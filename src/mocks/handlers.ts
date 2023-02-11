@@ -33,14 +33,17 @@ const validRoomsEndpoints = genearateApiRoomsEndpoints(
 );
 
 export const handlers = [
-  rest.get(`${process.env.REACT_APP_HOTEL_BASE_LIST_URL}`, (req, res, ctx) => {
-    const collectionId = req.url.searchParams.get('collection-id');
-    if (collectionId === 'OBMNG') {
-      return res(ctx.status(200), ctx.json(validHotelData));
+  rest.get(
+    `${process.env.REACT_APP_HOTEL_LIST_BASE_URL_MSW}`,
+    (req, res, ctx) => {
+      const collectionId = req.url.searchParams.get('collection-id');
+      if (collectionId === 'OBMNG') {
+        return res(ctx.status(200), ctx.json(validHotelData));
+      }
+      if (collectionId === 'INVALID') {
+        return res(ctx.status(500), ctx.json('invalid hotel json data'));
+      }
     }
-    if (collectionId === 'INVALID') {
-      return res(ctx.status(500), ctx.json('invalid hotel json data'));
-    }
-  }),
+  ),
   ...validRoomsEndpoints,
 ];

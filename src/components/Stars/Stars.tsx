@@ -39,6 +39,7 @@ export const Stars = memo(
             onClickHandler={
               onFilterChange ? () => onFilterChange(index) : undefined
             }
+            starDataTestId={`star-rendered-${index}`}
           />
         ))}
       </div>
