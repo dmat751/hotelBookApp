@@ -3,15 +3,19 @@ import { selectStarsFilter } from '../../../../../modules/hotelFilters/hotelFilt
 import { hotelFiltersSlice } from '../../../../../modules/hotelFilters/hotelFiltersSlice';
 import { Stars } from '../../../Stars/Stars';
 import { selectMaxHotelStars } from '../../../../../modules/hotelList/selectors/selectMaxHotelStars';
+import { useCallback } from 'react';
 
 export const StarFilter = () => {
   const currentStarsAmount = useSelector(selectStarsFilter);
   const maxStarsAmount = useSelector(selectMaxHotelStars);
   const dispatch = useDispatch();
 
-  const onClickHandlerStar = (starIndex: number): void => {
-    dispatch(hotelFiltersSlice.actions.setStarsFilter(starIndex + 1));
-  };
+  const onClickHandlerStar = useCallback(
+    (starIndex: number): void => {
+      dispatch(hotelFiltersSlice.actions.setStarsFilter(starIndex + 1));
+    },
+    [dispatch]
+  );
 
   return (
     <div className="flex">
