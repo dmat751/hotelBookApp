@@ -1,5 +1,5 @@
 import { selectHotelFilters } from '../../hotelFilters/hotelFiltersSelectors';
-import { Hotel } from '../../../app/types/hotel';
+import { Hotel } from '../types/hotel';
 import { createSelector } from '@reduxjs/toolkit';
 import { hotelApi } from '../api/hotelListApiSlice';
 

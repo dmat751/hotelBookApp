@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { selectMaxHotelStars } from '../../../../../modules/hotelList/selectors/selectMaxHotelStars';
-import { Hotel } from '../../../../types/hotel';
+import { Hotel } from '../../../../../modules/hotelList/types/hotel';
 import { Stars } from '../../../Stars/Stars';
 import { HotelInfo } from './HotelInfo/HotelInfo';
 import { Slider } from './Slider/Slider';

@@ -26,9 +26,3 @@ export type Hotel = {
   town: string;
   roomsDetails: RoomsDetails;
 };
-
-export type HotelListSliceState = {
-  hotelList: Hotel[];
-  dataStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: null | string;
-};

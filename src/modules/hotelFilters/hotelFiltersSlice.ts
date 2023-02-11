@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { HotelsFilters } from '../../app/types/hotelFilters';
+import { HotelsFilters } from './types/hotelFilters';
 
 const initialState: HotelsFilters = {
   adults: 2,
