@@ -8,7 +8,7 @@ export const HeroFilter = () => {
 
   return (
     <div
-      data-testId="stars-hero-filter-test-id"
+      data-testid="stars-hero-filter-test-id"
       className="w-full flex justify-center -translate-y-1/2"
     >
       <div className={formFilterContentClassNames}>
