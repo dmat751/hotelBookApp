@@ -9,9 +9,7 @@ export const HotelListContent = () => {
   return (
     <ul className={baseClasses['basic-container-1']}>
       {hotelListItems.map((hotelItem) => (
-        <li className="mb-[50px]" key={hotelItem.id}>
-          <HotelItem hotelItem={hotelItem} />
-        </li>
+        <HotelItem hotelItem={hotelItem} />
       ))}
     </ul>
   );

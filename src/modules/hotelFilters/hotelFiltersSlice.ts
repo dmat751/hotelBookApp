@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { HotelsFilters } from './types/hotelFilters';
 
-const initialState: HotelsFilters = {
+export const hotelFiltersSliceInitialState: HotelsFilters = {
   adults: 2,
   children: 0,
   stars: 1,
@@ -9,7 +9,7 @@ const initialState: HotelsFilters = {
 
 export const hotelFiltersSlice = createSlice({
   name: 'hotelFilters',
-  initialState,
+  initialState: hotelFiltersSliceInitialState,
   reducers: {
     setAdultsFilter(state, action: PayloadAction<'ADD' | 'SUB'>) {
       state.adults =
