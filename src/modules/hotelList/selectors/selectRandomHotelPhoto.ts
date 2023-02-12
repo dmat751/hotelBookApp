@@ -8,6 +8,7 @@ export const selectRandomHotelPhoto = createSelector(
   [selectAllHotelList],
   (hotelList) => {
     const defaultResult: Photo = { alt: '', url: '' };
+    console.log(hotelList.length);
     const imgArray: Photo[] = createHotelImages(hotelList);
 
     if (imgArray.length === 0) {
@@ -16,8 +17,6 @@ export const selectRandomHotelPhoto = createSelector(
 
     const randomImgArrayIndex = getRandomNumber(0, imgArray.length - 1);
 
-    return randomImgArrayIndex !== 0
-      ? imgArray[randomImgArrayIndex]
-      : defaultResult;
+    return imgArray[randomImgArrayIndex];
   }
 );

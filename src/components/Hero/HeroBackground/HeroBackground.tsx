@@ -7,7 +7,12 @@ export const HeroBackground = () => {
   return (
     <div className="bg-[#868686] h-[300px]">
       {url && (
-        <img className="w-full h-full object-cover block" src={url} alt={alt} />
+        <img
+          data-testid={url}
+          className="w-full h-full object-cover block"
+          src={url}
+          alt={alt}
+        />
       )}
     </div>
   );
