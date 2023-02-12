@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import { App } from '../../../../app/App';
-import { renderWithProviders } from '../../../../app/utils/test-utils';
+import { renderWithProviders } from '../../../../app/utils/testUtils';
 import { Photo } from '../../types/room';
 
 describe('test randomHotelPhotoSelector', () => {

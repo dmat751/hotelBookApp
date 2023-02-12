@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import { HotelList } from '../../../../components/HotelList/HotelList';
-import { renderWithProviders } from '../../../../app/utils/test-utils';
+import { renderWithProviders } from '../../../../app/utils/testUtils';
 
 describe('test allHotelListSelector', () => {
   //given
@@ -125,8 +125,8 @@ describe('test allHotelListSelector', () => {
       });
       await Promise.all(checkRoomItemPromises);
 
-      const allHotemItems = screen.queryAllByTestId(/hotel-item*/i);
-      expect(await (await allHotemItems).length).toBe(expectedHotelListLength);
+      const allHotelItems = screen.queryAllByTestId(/hotel-item*/i);
+      expect(await (await allHotelItems).length).toBe(expectedHotelListLength);
     }
   );
 });

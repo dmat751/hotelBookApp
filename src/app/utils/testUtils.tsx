@@ -1,36 +1,35 @@
 import React, { PropsWithChildren } from 'react';
 import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
-import type { PreloadedState } from '@reduxjs/toolkit';
+import { configureStore, PreloadedState } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { AppStore, RootState } from '../store/rootState';
-import { setupStore } from '../store/store';
-
+import { rootReducer } from '../store/store';
+import { hotelListApiSlice } from '../../modules/hotelList/api/hotelListApiSlice';
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>;
   store?: AppStore;
 }
 
-export function renderWithProviders(
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(hotelListApiSlice.middleware),
+    preloadedState,
+  });
+};
+
+export const renderWithProviders = (
   ui: React.ReactElement,
   {
     preloadedState = {},
-    // Automatically create a store instance if no store was passed in
     store = setupStore(preloadedState),
     ...renderOptions
   }: ExtendedRenderOptions = {}
-) {
-  function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
+) => {
+  const Wrapper = ({ children }: PropsWithChildren<{}>): JSX.Element => {
     return <Provider store={store}>{children}</Provider>;
-  }
+  };
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
-}
-
-export function getCustomStore({
-  preloadedState = {},
-  // Automatically create a store instance if no store was passed in
-  store = setupStore(preloadedState),
-  ...renderOptions
-}: ExtendedRenderOptions = {}) {
-  return store;
-}
+};

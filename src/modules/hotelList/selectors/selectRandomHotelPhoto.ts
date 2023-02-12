@@ -7,11 +7,10 @@ import { createSelector } from '@reduxjs/toolkit';
 export const selectRandomHotelPhoto = createSelector(
   [selectAllHotelList],
   (hotelList) => {
-    const defaultResult: Photo = { alt: '', url: '' };
-    console.log(hotelList.length);
     const imgArray: Photo[] = createHotelImages(hotelList);
 
     if (imgArray.length === 0) {
+      const defaultResult: Photo = { alt: '', url: '' };
       return defaultResult;
     }
 

@@ -5,7 +5,7 @@ import { Hotel } from '../types/hotel';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { RoomsDetails } from '../types/room';
 
-export const hotelApi = createApi({
+export const hotelListApiSlice = createApi({
   reducerPath: 'hotelApi',
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_HOTEL_LIST_BASE_URL}`,
@@ -44,4 +44,4 @@ export const hotelApi = createApi({
   }),
 });
 
-export const { useGetHotelListQuery } = hotelApi;
+export const { useGetHotelListQuery } = hotelListApiSlice;
