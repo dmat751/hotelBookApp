@@ -8,7 +8,7 @@ How to run unit and integrated tests?
 
 How to run E2E tests?
 
-    1. Run: yarn cypress open
+    1. Run: yarn cypress open (Before you should run: yarn start)
     2. In Cypress window click E2E testing
     3. Select browser
     4. Run specific test scenario e.g. heroFilter.cy.ts
@@ -16,7 +16,7 @@ How to run E2E tests?
 Project was tested for:
 
     node:
-    v14.17.6
+    v16.16.0
 
     yarn:
     1.22.11

@@ -10,7 +10,7 @@ const getHotelIds = (validHotelData: Hotel[]) =>
 const getRoomsUrls = (roomsUrl: string, hotelIds: string[]) =>
   hotelIds.map((hotelID) => roomsUrl + hotelID);
 
-const genearateApiRoomsEndpoints = (
+const generateApiRoomsEndpoints = (
   basicRoomsUrl: string,
   hotelIds: string[],
   roomsData: RoomsDetails[]
@@ -26,7 +26,7 @@ const validRoomsDataObj: RoomsDetails[] = JSON.parse(
   JSON.stringify(validRoomsData)
 );
 
-const validRoomsEndpoints = genearateApiRoomsEndpoints(
+const validRoomsEndpoints = generateApiRoomsEndpoints(
   `${process.env.REACT_APP_ROOM_LIST_URL}`,
   getHotelIds(validHotelDataObj),
   validRoomsDataObj
