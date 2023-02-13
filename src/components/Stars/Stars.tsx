@@ -18,24 +18,22 @@ export const Stars = memo(
     numberOfStars,
     onFilterChange,
   }: Props) => {
-    const starsState: StarOptions[] = [];
-    for (let i = 1; i <= numberOfStars; i++) {
-      i <= numberOfSelectedStarts
-        ? starsState.push({ borderColor, fillColor, id: i + '' })
-        : starsState.push({
-            borderColor,
-            fillColor: 'transparent',
-            id: i + '',
-          });
-    }
+    const starsState: StarOptions[] = Array.from(
+      { length: numberOfStars },
+      (_, i) => ({
+        borderColor,
+        fillColor: i < numberOfSelectedStarts ? fillColor : 'transparent',
+        id: `${i + 1}`,
+      })
+    );
 
     return (
       <div className="flex order-1  mb-3 md:mb-0">
-        {starsState.map((item, index) => (
+        {starsState.map(({ id, borderColor, fillColor }, index) => (
           <Star
-            key={item.id}
-            borderColor={item.borderColor}
-            fillColor={item.fillColor}
+            key={id}
+            borderColor={borderColor}
+            fillColor={fillColor}
             onClickHandler={
               onFilterChange ? () => onFilterChange(index) : undefined
             }
