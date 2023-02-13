@@ -2,7 +2,7 @@ import type { Hotel } from '../../types/hotel';
 import { getApiData } from '../getApiData';
 import validHotelData from '../../../../mocks/hotelsData/validHotelData.json';
 
-describe('test getApiData fn', () => {
+describe('test getApiData function', () => {
   test('get hotel data', async () => {
     //given
     //when

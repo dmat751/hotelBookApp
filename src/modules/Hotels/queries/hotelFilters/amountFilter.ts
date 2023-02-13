@@ -1,6 +1,6 @@
 import type { Hotel } from './../../types/hotel';
 
-export const amountFilter = (
+export const roomOccupancyFilter = (
   hotelList: Hotel[],
   amount: number,
   filterType: 'children' | 'adults'

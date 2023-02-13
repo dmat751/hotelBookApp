@@ -1,82 +1,75 @@
-import {createSelector} from "@reduxjs/toolkit";
-import {hotelsApiSlice} from "./api/hotelsApiSlice";
-import {Photo} from "./types/room";
-import {createHotelImages} from "./queries/createHotelImages";
-import {getRandomNumber} from "../../app/utils/getRandomNumber";
-import {getMaxHotelValueByProp} from "./queries/getMaxHotelValueByProp";
-import {selectHotelFilters} from "../HotelFilters/hotelFiltersSelectors";
-import {amountFilter} from "./queries/hotelFilters/amountFilter";
-import {starFilter} from "./queries/hotelFilters/starFilter";
-import {removeHotelsWithoutRooms} from "./queries/hotelFilters/removeHotelsWithoutRooms";
+import { createSelector } from '@reduxjs/toolkit';
+import { hotelsApiSlice } from './api/hotelsApiSlice';
+import { Photo } from './types/room';
+import { createHotelImages } from './queries/createHotelImages';
+import { getRandomNumber } from '../../app/utils/getRandomNumber';
+import { getMaxHotelValueByProp } from './queries/getMaxHotelValueByProp';
+import { selectHotelFilters } from '../HotelFilters/hotelFiltersSelectors';
+import { roomOccupancyFilter } from './queries/hotelFilters/amountFilter';
+import { hotelStarFilter } from './queries/hotelFilters/hotelStarFilter';
+import { removeHotelsWithoutRooms } from './queries/hotelFilters/removeHotelsWithoutRooms';
+import type { Hotel } from './types/hotel';
 
-export const selectAllHotels = createSelector(
-    [hotelsApiSlice.endpoints.getHotels.select()],
-    (hotelList) => hotelList.data ?? []
+const DEFAULT_MAX_STAR_VALUE = 5;
+
+export const selectHotels = createSelector(
+  [hotelsApiSlice.endpoints.getHotels.select()],
+  (hotelList) => hotelList.data ?? []
 );
 
 export const selectRandomHotelPhoto = createSelector(
-    [selectAllHotels],
-    (hotelList) => {
-        const imgArray: Photo[] = createHotelImages(hotelList);
+  [selectHotels],
+  (hotelList) => {
+    const hotelImages: Photo[] = createHotelImages(hotelList);
 
-        if (imgArray.length === 0) {
-            const defaultResult: Photo = {alt: '', url: ''};
-            return defaultResult;
-        }
-
-        const randomImgArrayIndex = getRandomNumber(0, imgArray.length - 1);
-
-        return imgArray[randomImgArrayIndex];
+    if (hotelImages.length === 0) {
+      return { alt: '', url: '' } as Photo;
     }
+
+    const randomImgArrayIndex = getRandomNumber(0, hotelImages.length - 1);
+
+    return hotelImages[randomImgArrayIndex];
+  }
 );
 
 export const selectFilteredHotels = createSelector(
-    [selectAllHotels, selectHotelFilters],
-    (unfilteredHotelList, hotelFilters) => {
-        let filteredHotelList = unfilteredHotelList;
-        filteredHotelList = amountFilter(
-            filteredHotelList,
-            hotelFilters.children,
-            'children'
-        );
-
-        filteredHotelList = amountFilter(
-            filteredHotelList,
-            hotelFilters.adults,
-            'adults'
-        );
-
-        filteredHotelList = starFilter(filteredHotelList, hotelFilters.stars);
-
-        filteredHotelList = removeHotelsWithoutRooms(filteredHotelList);
-
-        return filteredHotelList;
-    }
+  [selectHotels, selectHotelFilters],
+  (unfilteredHotels, hotelFilters) =>
+    [
+      (hotels: Hotel[]) =>
+        roomOccupancyFilter(hotels, hotelFilters.children, 'children'),
+      (hotels: Hotel[]) =>
+        roomOccupancyFilter(hotels, hotelFilters.adults, 'adults'),
+      (hotels: Hotel[]) => hotelStarFilter(hotels, hotelFilters.stars),
+      (hotels: Hotel[]) => removeHotelsWithoutRooms(hotels),
+    ].reduce(
+      (filteredHotels, currentFilter) => currentFilter(filteredHotels),
+      unfilteredHotels
+    )
 );
 
 export const selectHotelsLength = createSelector(
-    [selectFilteredHotels],
-    (hotelList) => hotelList.length
+  [selectFilteredHotels],
+  (hotelList) => hotelList.length
 );
 
 export const selectMaxHotelStars = createSelector(
-    [selectAllHotels],
-    (hotelList) => {
-        const starsMaxes = hotelList.map((hotel) => hotel.starRating);
-        const defaultMaxStarsValue = 5;
+  [selectHotels],
+  (hotelList) => {
+    const starsRating = hotelList.map(({ starRating }) => starRating);
 
-        return starsMaxes.length > 0
-            ? Math.max(...starsMaxes)
-            : defaultMaxStarsValue;
-    }
+    return starsRating.length > 0
+      ? Math.max(...starsRating)
+      : DEFAULT_MAX_STAR_VALUE;
+  }
 );
 
 export const selectMaxChildrenInHotels = createSelector(
-    [selectAllHotels],
-    (hotelList) => getMaxHotelValueByProp(hotelList, 'maxChildren')
+  [selectHotels],
+  (hotelList) => getMaxHotelValueByProp(hotelList, 'maxChildren')
 );
 
 export const selectMaxAdultsInHotels = createSelector(
-    [selectAllHotels],
-    (hotelList) => getMaxHotelValueByProp(hotelList, 'maxAdults')
+  [selectHotels],
+  (hotelList) => getMaxHotelValueByProp(hotelList, 'maxAdults')
 );
