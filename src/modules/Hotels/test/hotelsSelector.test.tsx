@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react';
-import { HotelList } from '../../../components/HotelList/HotelList';
+import { Hotels } from '../../../components/Hotels/Hotels';
 import { renderWithProviders } from '../../../app/utils/testUtils';
 
-describe('test allHotelListSelector', () => {
+describe('test allHotelsSelector', () => {
   //given
   type TestCase = {
     adults: number;
@@ -10,7 +10,7 @@ describe('test allHotelListSelector', () => {
     stars: number;
     expectedHotelIds: string[];
     expectedRoomIds: string[];
-    expectedHotelListLength: number;
+    expectedHotelsLength: number;
   };
 
   const cases: TestCase[] = [
@@ -59,7 +59,7 @@ describe('test allHotelListSelector', () => {
         'room-item-OBMNG4-K1B',
         'room-item-OBMNG4-E1X',
       ],
-      expectedHotelListLength: 4,
+      expectedHotelsLength: 4,
     },
     {
       adults: 2,
@@ -77,7 +77,7 @@ describe('test allHotelListSelector', () => {
         'room-item-OBMNG2-TWIN',
         'room-item-OBMNG2-SEAVU',
       ],
-      expectedHotelListLength: 2,
+      expectedHotelsLength: 2,
     },
     {
       adults: 6,
@@ -85,7 +85,7 @@ describe('test allHotelListSelector', () => {
       stars: 4,
       expectedHotelIds: ['hotel-item-OBMNG1'],
       expectedRoomIds: ['room-item-OBMNG1-DLXDBL'],
-      expectedHotelListLength: 1,
+      expectedHotelsLength: 1,
     },
     {
       adults: 6,
@@ -93,7 +93,7 @@ describe('test allHotelListSelector', () => {
       stars: 5,
       expectedHotelIds: [],
       expectedRoomIds: [],
-      expectedHotelListLength: 0,
+      expectedHotelsLength: 0,
     },
   ];
 
@@ -105,10 +105,10 @@ describe('test allHotelListSelector', () => {
       stars,
       expectedHotelIds,
       expectedRoomIds,
-      expectedHotelListLength,
+      expectedHotelsLength,
     }) => {
       //when
-      renderWithProviders(<HotelList />, {
+      renderWithProviders(<Hotels />, {
         preloadedState: { hotelFilters: { adults, children, stars } },
       });
 
@@ -126,7 +126,7 @@ describe('test allHotelListSelector', () => {
       await Promise.all(checkRoomItemPromises);
 
       const allHotelItems = screen.queryAllByTestId(/hotel-item*/i);
-      expect(await (await allHotelItems).length).toBe(expectedHotelListLength);
+      expect(await (await allHotelItems).length).toBe(expectedHotelsLength);
     }
   );
 });

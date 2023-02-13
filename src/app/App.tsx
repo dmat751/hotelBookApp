@@ -1,9 +1,9 @@
 import { Hero } from '../components/Hero/Hero';
-import { HotelList } from '../components/HotelList/HotelList';
+import { Hotels } from '../components/Hotels/Hotels';
 
 export const App = () => (
   <>
     <Hero />
-    <HotelList />
+    <Hotels />
   </>
 );

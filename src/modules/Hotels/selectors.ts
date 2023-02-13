@@ -1,21 +1,21 @@
 import {createSelector} from "@reduxjs/toolkit";
-import {hotelListApiSlice} from "./api/hotelListApiSlice";
+import {hotelsApiSlice} from "./api/hotelsApiSlice";
 import {Photo} from "./types/room";
 import {createHotelImages} from "./queries/createHotelImages";
 import {getRandomNumber} from "../../app/utils/getRandomNumber";
 import {getMaxHotelValueByProp} from "./queries/getMaxHotelValueByProp";
-import {selectHotelFilters} from "../hotelFilters/hotelFiltersSelectors";
+import {selectHotelFilters} from "../HotelFilters/hotelFiltersSelectors";
 import {amountFilter} from "./queries/hotelFilters/amountFilter";
 import {starFilter} from "./queries/hotelFilters/starFilter";
 import {removeHotelsWithoutRooms} from "./queries/hotelFilters/removeHotelsWithoutRooms";
 
-export const selectAllHotelList = createSelector(
-    [hotelListApiSlice.endpoints.getHotelList.select()],
+export const selectAllHotels = createSelector(
+    [hotelsApiSlice.endpoints.getHotels.select()],
     (hotelList) => hotelList.data ?? []
 );
 
 export const selectRandomHotelPhoto = createSelector(
-    [selectAllHotelList],
+    [selectAllHotels],
     (hotelList) => {
         const imgArray: Photo[] = createHotelImages(hotelList);
 
@@ -31,7 +31,7 @@ export const selectRandomHotelPhoto = createSelector(
 );
 
 export const selectFilteredHotels = createSelector(
-    [selectAllHotelList, selectHotelFilters],
+    [selectAllHotels, selectHotelFilters],
     (unfilteredHotelList, hotelFilters) => {
         let filteredHotelList = unfilteredHotelList;
         filteredHotelList = amountFilter(
@@ -60,7 +60,7 @@ export const selectHotelsLength = createSelector(
 );
 
 export const selectMaxHotelStars = createSelector(
-    [selectAllHotelList],
+    [selectAllHotels],
     (hotelList) => {
         const starsMaxes = hotelList.map((hotel) => hotel.starRating);
         const defaultMaxStarsValue = 5;
@@ -72,11 +72,11 @@ export const selectMaxHotelStars = createSelector(
 );
 
 export const selectMaxChildrenInHotels = createSelector(
-    [selectAllHotelList],
+    [selectAllHotels],
     (hotelList) => getMaxHotelValueByProp(hotelList, 'maxChildren')
 );
 
 export const selectMaxAdultsInHotels = createSelector(
-    [selectAllHotelList],
+    [selectAllHotels],
     (hotelList) => getMaxHotelValueByProp(hotelList, 'maxAdults')
 );

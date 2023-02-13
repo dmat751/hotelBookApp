@@ -5,13 +5,13 @@ import type { Hotel } from '../types/hotel';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import type { RoomsDetails } from '../types/room';
 
-export const hotelListApiSlice = createApi({
+export const hotelsApiSlice = createApi({
   reducerPath: 'hotelApi',
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_HOTEL_LIST_BASE_URL}`,
   }),
   endpoints: (builder) => ({
-    getHotelList: builder.query<Hotel[], void>({
+    getHotels: builder.query<Hotel[], void>({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
         const hotelListResult = await fetchWithBQ(
           '/hotels?collection-id=OBMNG'
@@ -44,4 +44,4 @@ export const hotelListApiSlice = createApi({
   }),
 });
 
-export const { useGetHotelListQuery } = hotelListApiSlice;
+export const { useGetHotelsQuery } = hotelsApiSlice;

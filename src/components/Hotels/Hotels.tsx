@@ -1,13 +1,13 @@
 import { Notification } from '../Notification/Notification';
-import { HotelListContent } from './HotelListContent/HotelListContent';
-import { useGetHotelListQuery } from '../../modules/hotelList/api/hotelListApiSlice';
+import { HotelsContent } from './HotelsContent/HotelsContent';
 import { spinner } from '../Spinner/Spinner';
 import { useAppSelector } from '../../app/store/hooks';
-import {selectMaxAdultsInHotels} from "../../modules/hotelList/selectors";
+import {selectMaxAdultsInHotels} from "../../modules/Hotels/selectors";
+import {useGetHotelsQuery} from "../../modules/Hotels/api/hotelsApiSlice";
 
-export const HotelList = () => {
+export const Hotels = () => {
   const hotelListLength = useAppSelector(selectMaxAdultsInHotels);
-  const { isLoading, isError } = useGetHotelListQuery();
+  const { isLoading, isError } = useGetHotelsQuery();
 
   const canShowHotelList = !isLoading && !isError;
   const isHotelsNoFoundNotificationVisible =
@@ -15,7 +15,7 @@ export const HotelList = () => {
 
   return (
     <div className="flex flex-col items-center">
-      {canShowHotelList && <HotelListContent />}
+      {canShowHotelList && <HotelsContent />}
       {isLoading && spinner}
       {isError && (
         <Notification message="Sorry, can't fetch data" msgType="error" />
