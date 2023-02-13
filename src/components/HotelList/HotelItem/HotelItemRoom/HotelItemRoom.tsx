@@ -1,4 +1,4 @@
-import { Room } from '../../../../modules/hotelList/types/room';
+import type { Room } from '../../../../modules/hotelList/types/room';
 
 type Props = Readonly<{ dataTestId: string; room: Room }>;
 export const HotelItemRoom = ({ dataTestId, room }: Props) => (

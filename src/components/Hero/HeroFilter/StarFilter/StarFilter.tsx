@@ -1,5 +1,5 @@
 import { selectStarsFilter } from '../../../../modules/hotelFilters/hotelFiltersSelectors';
-import { hotelFiltersSlice } from '../../../../modules/hotelFilters/hotelFiltersSlice';
+import { setStarsFilter } from '../../../../modules/hotelFilters/hotelFiltersSlice';
 import { Stars } from '../../../Stars/Stars';
 import { selectMaxHotelStars } from '../../../../modules/hotelList/selectors/selectMaxHotelStars';
 import { useCallback } from 'react';
@@ -12,7 +12,7 @@ export const StarFilter = () => {
 
   const onClickHandlerStar = useCallback(
     (starIndex: number): void => {
-      dispatch(hotelFiltersSlice.actions.setStarsFilter(starIndex + 1));
+      dispatch(setStarsFilter(starIndex + 1));
     },
     [dispatch]
   );

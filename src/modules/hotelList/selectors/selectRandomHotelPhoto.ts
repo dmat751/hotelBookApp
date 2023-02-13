@@ -1,4 +1,4 @@
-import { Photo } from './../types/room';
+import type { Photo } from './../types/room';
 import { createHotelImages } from './../queries/createHotelImages';
 import { selectAllHotelList } from './selectAllHotelList';
 import { getRandomNumber } from '../../../app/utils/getRandomNumber';

@@ -9,11 +9,11 @@ const TestFilter = () => {
   const [currentFilterAmount, setCurrentFilterAmount] = useState(1);
   const maxFilterValue = 2;
 
-  const handleOnIncrease = useCallback(() => {
+  const onIncreaseFilter = useCallback(() => {
     setCurrentFilterAmount((prev) => prev + 1);
   }, []);
 
-  const handleOnDecrease = useCallback(() => {
+  const onDecreaseFilter = useCallback(() => {
     setCurrentFilterAmount((prev) => prev - 1);
   }, []);
 
@@ -22,8 +22,8 @@ const TestFilter = () => {
       currentFilterAmount={currentFilterAmount}
       filterLabel="TestFilter"
       isPlusButtonDisabled={currentFilterAmount >= maxFilterValue}
-      onDecreaseFilterHandler={handleOnDecrease}
-      onIncreaseFilterHandler={handleOnIncrease}
+      onDecreaseFilterHandler={onDecreaseFilter}
+      onIncreaseFilterHandler={onIncreaseFilter}
       dataTestIdPrefix={dataTestIdPrefix}
     />
   );

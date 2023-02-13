@@ -1,9 +1,9 @@
 import { getApiData } from './../queries/getApiData';
 import { PromisePool } from '@supercharge/promise-pool';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Hotel } from '../types/hotel';
+import type { Hotel } from '../types/hotel';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { RoomsDetails } from '../types/room';
+import type { RoomsDetails } from '../types/room';
 
 export const hotelListApiSlice = createApi({
   reducerPath: 'hotelApi',

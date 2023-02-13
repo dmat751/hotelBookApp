@@ -1,5 +1,5 @@
-import { Photo } from './../types/room';
-import { Hotel } from './../types/hotel';
+import type { Photo } from './../types/room';
+import type { Hotel } from './../types/hotel';
 
 export const createHotelImages = (hotelList: Hotel[]) =>
   hotelList

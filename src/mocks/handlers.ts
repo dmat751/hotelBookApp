@@ -1,5 +1,5 @@
-import { RoomsDetails } from './../modules/hotelList/types/room';
-import { Hotel } from './../modules/hotelList/types/hotel';
+import type { RoomsDetails } from './../modules/hotelList/types/room';
+import type { Hotel } from './../modules/hotelList/types/hotel';
 import { rest } from 'msw';
 import validHotelData from './hotelsData/validHotelData.json';
 import validRoomsData from './roomsData/validRoomsData.json';
