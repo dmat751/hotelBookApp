@@ -3,19 +3,19 @@ import { StarOptions } from '../../app/types/StarOptions';
 import { memo } from 'react';
 
 type Props = Readonly<{
-  numberOfStars: number;
-  numberOfSelectedStarts: number;
   borderColor: string;
   fillColor: string;
+  numberOfSelectedStarts: number;
+  numberOfStars: number;
   onFilterChange?: (value: number) => void;
 }>;
 
 export const Stars = memo(
   ({
-    numberOfStars,
-    numberOfSelectedStarts,
     borderColor,
     fillColor,
+    numberOfSelectedStarts,
+    numberOfStars,
     onFilterChange,
   }: Props) => {
     const starsState: StarOptions[] = [];

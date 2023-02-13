@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 
 type Props = Readonly<{
-  hotelName: string;
   hotelAddress1: string;
   hotelAddress2: string;
+  hotelName: string;
 }>;
 export const HotelInfo = ({
   hotelAddress1,

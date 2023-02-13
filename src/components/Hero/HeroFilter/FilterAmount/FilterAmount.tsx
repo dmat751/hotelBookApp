@@ -1,24 +1,24 @@
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
-import React from 'react';
+import { memo } from 'react';
 
 type Props = Readonly<{
   currentFilterAmount: number;
-  onIncreaseFilterHandler: () => void;
-  onDecreaseFilterHandler: () => void;
+  dataTestIdPrefix: string;
   filterLabel: string;
   isPlusButtonDisabled: boolean;
-  dataTestIdPrefix: string;
+  onDecreaseFilterHandler: () => void;
+  onIncreaseFilterHandler: () => void;
 }>;
 
-export const FilterAmount = React.memo(
+export const FilterAmount = memo(
   ({
     currentFilterAmount,
-    onIncreaseFilterHandler,
-    onDecreaseFilterHandler,
+    dataTestIdPrefix,
     filterLabel,
     isPlusButtonDisabled,
-    dataTestIdPrefix,
+    onDecreaseFilterHandler,
+    onIncreaseFilterHandler,
   }: Props) => {
     const filterButtonClassNames = classNames(
       'p-1 rounded-full bg-blue-300 mx-1 disabled:cursor-not-allowed disabled:bg-gray-400'
