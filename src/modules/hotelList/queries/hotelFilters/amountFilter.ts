@@ -4,8 +4,8 @@ export const amountFilter = (
   hotelList: Hotel[],
   amount: number,
   filterType: 'children' | 'adults'
-) => {
-  const result = hotelList.map((hotelItem) => {
+): Hotel[] => {
+  const result: Hotel[] = hotelList.map((hotelItem) => {
     let filteredRoom = hotelItem.roomsDetails.rooms.filter((room) => {
       if (filterType === 'children') {
         return room.occupancy.maxChildren >= amount;
@@ -16,7 +16,7 @@ export const amountFilter = (
       }
     });
 
-    const filteredHotel = {
+    const filteredHotel: Hotel = {
       ...hotelItem,
       roomsDetails: {
         ratePlans: hotelItem.roomsDetails.ratePlans,
