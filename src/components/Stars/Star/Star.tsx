@@ -3,17 +3,17 @@ import classNames from 'classnames';
 type Props = Readonly<{
   borderColor: string;
   fillColor: string;
-  starDataTestId: string;
+  dataTestId: string;
   onClickHandler?: () => void;
 }>;
 
 export const Star = ({
   borderColor,
   fillColor,
-  starDataTestId,
+  dataTestId,
   onClickHandler,
 }: Props) => (
-  <div onClick={onClickHandler} data-testid={starDataTestId}>
+  <div onClick={onClickHandler} data-testid={dataTestId}>
     <svg
       className={classNames('m-[2px] h-[30px] w-[30px]', {
         'cursor-pointer': onClickHandler,

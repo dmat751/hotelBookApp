@@ -5,8 +5,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './Swiper.scss';
+import type { Photo } from '../../../../../modules/hotelList/types/room';
 
-type Props = Readonly<{ images: { url: string; alt: string }[] }>;
+type Props = Readonly<{ images: Photo[] }>;
 
 export const Slider = ({ images }: Props) => {
   const SliderContainerClassNames =
@@ -23,17 +24,15 @@ export const Slider = ({ images }: Props) => {
         modules={[Navigation, Pagination]}
         className="mySwiper"
       >
-        {images.map((item) => {
-          return (
-            <SwiperSlide key={item.url}>
-              <img
-                className="w-full h-full object-cover"
-                src={item.url}
-                alt={item.alt}
-              />
-            </SwiperSlide>
-          );
-        })}
+        {images.map((item) => (
+          <SwiperSlide key={item.url}>
+            <img
+              className="w-full h-full object-cover"
+              src={item.url}
+              alt={item.alt}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

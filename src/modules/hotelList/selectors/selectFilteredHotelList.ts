@@ -5,7 +5,7 @@ import { selectHotelFilters } from './../../hotelFilters/hotelFiltersSelectors';
 import { selectAllHotelList } from './selectAllHotelList';
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectFilteredHotelList = createSelector(
+export const selectFilteredHotels = createSelector(
   [selectAllHotelList, selectHotelFilters],
   (unfilteredHotelList, hotelFilters) => {
     let filteredHotelList = unfilteredHotelList;
