@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux';
 import { Notification } from '../Notification/Notification';
 import { HotelListContent } from './HotelListContent/HotelListContent';
 import { useGetHotelListQuery } from '../../modules/hotelList/api/hotelListApiSlice';
 import { selectFilteredHotelList } from '../../modules/hotelList/selectors/selectFilteredHotelList';
 import { spinner } from '../Spinner/Spinner';
+import { useAppSelector } from '../../app/store/hooks';
 
 export const HotelList = () => {
-  const hotelListLength = useSelector(selectFilteredHotelList).length;
+  const hotelListLength = useAppSelector(selectFilteredHotelList).length;
   const { isLoading, isError } = useGetHotelListQuery();
 
   const isContentVisible = !isLoading && !isError;

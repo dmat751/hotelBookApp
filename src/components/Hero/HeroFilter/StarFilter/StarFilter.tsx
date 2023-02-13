@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { selectStarsFilter } from '../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { hotelFiltersSlice } from '../../../../modules/hotelFilters/hotelFiltersSlice';
 import { Stars } from '../../../Stars/Stars';
 import { selectMaxHotelStars } from '../../../../modules/hotelList/selectors/selectMaxHotelStars';
 import { useCallback } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../../app/store/hooks';
 
 export const StarFilter = () => {
-  const currentStarsAmount = useSelector(selectStarsFilter);
-  const maxStarsAmount = useSelector(selectMaxHotelStars);
-  const dispatch = useDispatch();
+  const currentStarsAmount = useAppSelector(selectStarsFilter);
+  const maxStarsAmount = useAppSelector(selectMaxHotelStars);
+  const dispatch = useAppDispatch();
 
   const onClickHandlerStar = useCallback(
     (starIndex: number): void => {

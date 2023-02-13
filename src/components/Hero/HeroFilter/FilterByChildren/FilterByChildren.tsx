@@ -1,14 +1,14 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../../app/store/hooks';
 import { selectChildrenFilter } from '../../../../modules/hotelFilters/hotelFiltersSelectors';
 import { hotelFiltersSlice } from '../../../../modules/hotelFilters/hotelFiltersSlice';
 import { selectMaxChildrenInHotels } from '../../../../modules/hotelList/selectors/selectMaxChildrenInHotels';
 import { FilterAmount } from '../FilterAmount/FilterAmount';
 
 export const FilterByChildren = () => {
-  const currentFilterAmount = useSelector(selectChildrenFilter);
-  const maxChildren = useSelector(selectMaxChildrenInHotels);
-  const dispatch = useDispatch();
+  const currentFilterAmount = useAppSelector(selectChildrenFilter);
+  const maxChildren = useAppSelector(selectMaxChildrenInHotels);
+  const dispatch = useAppDispatch();
 
   const handleOnIncrease = useCallback((): void => {
     dispatch(hotelFiltersSlice.actions.setChildrenFilter('ADD'));

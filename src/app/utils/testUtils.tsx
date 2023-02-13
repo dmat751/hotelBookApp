@@ -3,8 +3,7 @@ import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import { configureStore, PreloadedState } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { AppStore, RootState } from '../store/rootState';
-import { rootReducer } from '../store/store';
+import { AppStore, rootReducer, RootState } from '../store/store';
 import { hotelListApiSlice } from '../../modules/hotelList/api/hotelListApiSlice';
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>;
