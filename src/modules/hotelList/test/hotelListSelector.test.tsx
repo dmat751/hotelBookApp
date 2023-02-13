@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
-import { HotelList } from '../../../../components/HotelList/HotelList';
-import { renderWithProviders } from '../../../../app/utils/testUtils';
+import { HotelList } from '../../../components/HotelList/HotelList';
+import { renderWithProviders } from '../../../app/utils/testUtils';
 
 describe('test allHotelListSelector', () => {
   //given

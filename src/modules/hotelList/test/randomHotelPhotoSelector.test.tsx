@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
-import { App } from '../../../../app/App';
-import { renderWithProviders } from '../../../../app/utils/testUtils';
-import type { Photo } from '../../types/room';
+import { App } from '../../../app/App';
+import { renderWithProviders } from '../../../app/utils/testUtils';
+import type { Photo } from '../types/room';
 
 describe('test randomHotelPhotoSelector', () => {
   //given
@@ -39,7 +39,7 @@ describe('test randomHotelPhotoSelector', () => {
     'test for %s',
     async ({ getRandomNumberMockedValue, expectedResult }) => {
       //when
-      const getRandomNumber = require('../../../../app/utils/getRandomNumber');
+      const getRandomNumber = require('../../../app/utils/getRandomNumber');
       const mock = jest
         .spyOn(getRandomNumber, 'getRandomNumber')
         .mockReturnValue(getRandomNumberMockedValue);

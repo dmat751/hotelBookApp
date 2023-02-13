@@ -3,7 +3,7 @@ import { HotelListContent } from './HotelListContent/HotelListContent';
 import { useGetHotelListQuery } from '../../modules/hotelList/api/hotelListApiSlice';
 import { spinner } from '../Spinner/Spinner';
 import { useAppSelector } from '../../app/store/hooks';
-import { selectMaxAdultsInHotels } from '../../modules/hotelList/selectors/selectMaxAdultsInHotels';
+import {selectMaxAdultsInHotels} from "../../modules/hotelList/selectors";
 
 export const HotelList = () => {
   const hotelListLength = useAppSelector(selectMaxAdultsInHotels);
