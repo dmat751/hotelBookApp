@@ -1,5 +1,5 @@
-import { useAppSelector } from '../../../app/store/hooks';
-import {selectRandomHotelPhoto} from "../../../modules/Hotels/selectors";
+import { useAppSelector } from '../../../../../app/store/hooks';
+import {selectRandomHotelPhoto} from "../../../../Hotels/Selectors";
 
 export const HeroBackground = () => {
   const { url, alt } = useAppSelector(selectRandomHotelPhoto);

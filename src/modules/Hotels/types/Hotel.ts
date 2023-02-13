@@ -1,4 +1,5 @@
-import { Photo, RoomsDetails } from './room';
+import {Photo} from "./Photo";
+import {RoomsDetails} from "./RoomDetails";
 
 export type Hotel = {
   address1: string;

@@ -4,7 +4,7 @@ import type { RenderOptions } from '@testing-library/react';
 import { configureStore, PreloadedState } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { type AppStore, rootReducer, type RootState } from '../store/store';
-import { hotelsApiSlice } from '../../modules/Hotels/api/hotelsApiSlice';
+import { api } from '../../modules/Hotels/Api';
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>;
   store?: AppStore;
@@ -14,7 +14,7 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   return configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(hotelsApiSlice.middleware),
+      getDefaultMiddleware().concat(api.middleware),
     preloadedState,
   });
 };

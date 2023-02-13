@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { Hotels } from '../../../components/Hotels/Hotels';
+import { Hotels } from '../components/Hotels/Hotels';
 import { renderWithProviders } from '../../../app/utils/testUtils';
 
 describe('test allHotelsSelector', () => {

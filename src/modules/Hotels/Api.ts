@@ -1,11 +1,11 @@
-import { getApiData } from './../queries/getApiData';
+import { getApiData } from './queries/getApiData';
 import { PromisePool } from '@supercharge/promise-pool';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { Hotel } from '../types/hotel';
+import type { Hotel } from './types/Hotel';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import type { RoomsDetails } from '../types/room';
+import {RoomsDetails} from "./types/RoomDetails";
 
-export const hotelsApiSlice = createApi({
+export const api = createApi({
   reducerPath: 'hotelApi',
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_HOTEL_LIST_BASE_URL}`,
@@ -44,4 +44,4 @@ export const hotelsApiSlice = createApi({
   }),
 });
 
-export const { useGetHotelsQuery } = hotelsApiSlice;
+export const { useGetHotelsQuery } = api;

@@ -1,19 +1,19 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { hotelsApiSlice } from './api/hotelsApiSlice';
-import { Photo } from './types/room';
+import { api } from './Api';
 import { createHotelImages } from './queries/createHotelImages';
 import { getRandomNumber } from '../../app/utils/getRandomNumber';
 import { getMaxHotelValueByProp } from './queries/getMaxHotelValueByProp';
-import { selectHotelFilters } from '../HotelFilters/hotelFiltersSelectors';
+import { selectHotelFilters } from '../HotelFilters/Selectors';
 import { roomOccupancyFilter } from './queries/hotelFilters/amountFilter';
 import { hotelStarFilter } from './queries/hotelFilters/hotelStarFilter';
 import { removeHotelsWithoutRooms } from './queries/hotelFilters/removeHotelsWithoutRooms';
-import type { Hotel } from './types/hotel';
+import type { Hotel } from './types/Hotel';
+import {Photo} from "./types/Photo";
 
 const DEFAULT_MAX_STAR_VALUE = 5;
 
 export const selectHotels = createSelector(
-  [hotelsApiSlice.endpoints.getHotels.select()],
+  [api.endpoints.getHotels.select()],
   (hotelList) => hotelList.data ?? []
 );
 

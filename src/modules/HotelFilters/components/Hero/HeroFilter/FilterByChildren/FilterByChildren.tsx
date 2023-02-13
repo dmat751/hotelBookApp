@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../app/store/hooks';
-import { selectChildrenFilter } from '../../../../modules/HotelFilters/hotelFiltersSelectors';
-import { setChildrenFilter } from '../../../../modules/HotelFilters/hotelFiltersSlice';
+import { useAppDispatch, useAppSelector } from '../../../../../../app/store/hooks';
+import { selectChildrenFilter } from '../../../../Selectors';
+import { setChildrenFilter } from '../../../../Slice';
 import { FilterAmount } from '../FilterAmount/FilterAmount';
-import {selectMaxChildrenInHotels} from "../../../../modules/Hotels/selectors";
+import {selectMaxChildrenInHotels} from "../../../../../Hotels/Selectors";
 
 export const FilterByChildren = () => {
   const currentFilterAmount = useAppSelector(selectChildrenFilter);

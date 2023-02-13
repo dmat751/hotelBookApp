@@ -1,9 +1,9 @@
-import { Notification } from '../Notification/Notification';
+import { Notification } from '../../../../components/Notification/Notification';
 import { HotelsContent } from './HotelsContent/HotelsContent';
-import { spinner } from '../Spinner/Spinner';
-import { useAppSelector } from '../../app/store/hooks';
-import {selectMaxAdultsInHotels} from "../../modules/Hotels/selectors";
-import {useGetHotelsQuery} from "../../modules/Hotels/api/hotelsApiSlice";
+import { spinner } from '../../../../components/Spinner/Spinner';
+import { useAppSelector } from '../../../../app/store/hooks';
+import {selectMaxAdultsInHotels} from "../../Selectors";
+import {useGetHotelsQuery} from "../../Api";
 
 export const Hotels = () => {
   const hotelListLength = useAppSelector(selectMaxAdultsInHotels);

@@ -1,4 +1,4 @@
-import type { Hotel } from '../../../modules/Hotels/types/hotel';
+import type { Hotel } from '../../../types/Hotel';
 import { HotelItemHero } from './HotelItemHero/HotelItemHero';
 import { HotelItemRoom } from './HotelItemRoom/HotelItemRoom';
 

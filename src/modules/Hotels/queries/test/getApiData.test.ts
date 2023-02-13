@@ -1,4 +1,4 @@
-import type { Hotel } from '../../types/hotel';
+import type { Hotel } from '../../types/Hotel';
 import { getApiData } from '../getApiData';
 import validHotelData from '../../../../mocks/hotelsData/validHotelData.json';
 

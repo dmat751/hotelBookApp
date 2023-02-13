@@ -1,16 +1,16 @@
-import { hotelsApiSlice } from '../../modules/Hotels/api/hotelsApiSlice';
+import { api } from '../../modules/Hotels/Api';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { hotelFiltersSlice } from '../../modules/HotelFilters/hotelFiltersSlice';
+import { hotelFiltersSlice } from '../../modules/HotelFilters/Slice';
 
 export const rootReducer = combineReducers({
   hotelFilters: hotelFiltersSlice.reducer,
-  [hotelsApiSlice.reducerPath]: hotelsApiSlice.reducer,
+  [api.reducerPath]: api.reducer,
 });
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(hotelsApiSlice.middleware),
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,3 +1,3 @@
-import type { Hotel } from '../../modules/Hotels/types/hotel';
+import type { Hotel } from '../../modules/Hotels/types/Hotel';
 
 export const fetchedHotelsWithRoomsData: Hotel[] = require('./hotelsWithRoomsData.json');
