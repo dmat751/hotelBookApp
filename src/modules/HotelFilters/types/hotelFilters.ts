@@ -3,5 +3,3 @@ export type HotelsFilters = {
   children: number;
   stars: number;
 };
-
-export type FilterAction = 'ADD' | 'SUB';

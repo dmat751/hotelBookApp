@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { HotelsFilters, FilterAction } from './types/hotelFilters';
+import type { HotelsFilters } from './types/HotelFilters';
+import { FilterAction } from './types/FilterAction';
 
 export const hotelFiltersSliceInitialState: HotelsFilters = {
   adults: 2,

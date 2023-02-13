@@ -2,11 +2,11 @@ import { Notification } from '../../../../components/Notification/Notification';
 import { HotelsContent } from './HotelsContent/HotelsContent';
 import { spinner } from '../../../../components/Spinner/Spinner';
 import { useAppSelector } from '../../../../app/store/hooks';
-import {selectMaxAdultsInHotels} from "../../Selectors";
-import {useGetHotelsQuery} from "../../Api";
+import { useGetHotelsQuery } from '../../Api';
+import { selectHotelsLength } from '../../Selectors';
 
 export const Hotels = () => {
-  const hotelListLength = useAppSelector(selectMaxAdultsInHotels);
+  const hotelListLength = useAppSelector(selectHotelsLength);
   const { isLoading, isError } = useGetHotelsQuery();
 
   const canShowHotelList = !isLoading && !isError;

@@ -1,14 +1,14 @@
 import { HotelItem } from '../HotelItem/HotelItem';
 import baseClasses from '../../../../../app/assets/baseClasses.module.scss';
 import { useAppSelector } from '../../../../../app/store/hooks';
-import {selectFilteredHotels} from "../../../Selectors";
+import { selectFilteredHotels } from '../../../Selectors';
 
 export const HotelsContent = () => {
-  const hotelListItems = useAppSelector(selectFilteredHotels);
+  const filteredHotels = useAppSelector(selectFilteredHotels);
 
   return (
     <ul className={baseClasses['basic-container-1']}>
-      {hotelListItems.map((hotelItem) => (
+      {filteredHotels.map((hotelItem) => (
         <HotelItem hotelItem={hotelItem} key={hotelItem.id} />
       ))}
     </ul>
