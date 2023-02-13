@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import './Swiper.scss';
 
 type Props = Readonly<{ images: { url: string; alt: string }[] }>;
+
 export const Slider = ({ images }: Props) => {
   const SliderContainerClassNames =
     'md:order-[-1] order-2 h-[200px] max-w-[300px] w-full b-[#CCCCCC]';

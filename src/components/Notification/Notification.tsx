@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 
 type Props = Readonly<{ message: string; msgType: 'error' | 'info' }>;
+
 export const Notification = ({ message, msgType }: Props) => {
   const classes = classNames(
     'font-varela text-xl mx-auto text-center',

@@ -1,6 +1,7 @@
 import type { Room } from '../../../../modules/hotelList/types/room';
 
 type Props = Readonly<{ dataTestId: string; room: Room }>;
+
 export const HotelItemRoom = ({ dataTestId, room }: Props) => (
   <div
     data-testid={dataTestId}

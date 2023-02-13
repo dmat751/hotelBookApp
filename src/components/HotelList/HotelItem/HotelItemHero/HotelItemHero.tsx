@@ -7,6 +7,7 @@ import { HotelInfo } from './HotelInfo/HotelInfo';
 import { Slider } from './Slider/Slider';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
+
 export const HotelItemHero = ({
   hotelItem: { images, name, address1, address2, starRating },
 }: Props) => {

@@ -5,6 +5,7 @@ type Props = Readonly<{
   hotelAddress2: string;
   hotelName: string;
 }>;
+
 export const HotelInfo = ({
   hotelAddress1,
   hotelAddress2,

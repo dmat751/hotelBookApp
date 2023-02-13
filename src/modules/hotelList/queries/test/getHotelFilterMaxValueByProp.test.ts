@@ -1,5 +1,6 @@
 import { fetchedHotelsWithRoomsData } from './../../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 import { getMaxHotelValueByProp } from './../getMaxHotelValueByProp';
+
 describe('test getHotelFilterMaxValueByProp fn', () => {
   test('maxChildren case', async () => {
     //given

@@ -3,6 +3,7 @@ import { HotelItemHero } from './HotelItemHero/HotelItemHero';
 import { HotelItemRoom } from './HotelItemRoom/HotelItemRoom';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
+
 export const HotelItem = ({ hotelItem }: Props) => (
   <li
     className="mb-[50px]"
