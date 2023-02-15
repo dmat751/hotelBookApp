@@ -6,9 +6,9 @@ import { getMaxHotelValueByProp } from './queries/getMaxHotelValueByProp';
 import { selectHotelFilters } from '../HotelFilters/Selectors';
 import { roomOccupancyFilter } from './queries/hotelFilters/amountFilter';
 import { hotelStarFilter } from './queries/hotelFilters/hotelStarFilter';
-import { removeHotelsWithoutRooms } from './queries/hotelFilters/removeHotelsWithoutRooms';
+import { getHotelsWithAvailableRooms } from './queries/hotelFilters/removeHotelsWithoutRooms';
 import type { Hotel } from './types/Hotel';
-import {Photo} from "./types/Photo";
+import { Photo } from './types/Photo';
 
 const DEFAULT_MAX_STAR_VALUE = 5;
 
@@ -34,21 +34,21 @@ export const selectRandomHotelPhoto = createSelector(
 
 export const selectFilteredHotels = createSelector(
   [selectHotels, selectHotelFilters],
-  (unfilteredHotels, hotelFilters) =>
+  (hotels, hotelFilters) =>
     [
       (hotels: Hotel[]) =>
         roomOccupancyFilter(hotels, hotelFilters.children, 'children'),
       (hotels: Hotel[]) =>
         roomOccupancyFilter(hotels, hotelFilters.adults, 'adults'),
       (hotels: Hotel[]) => hotelStarFilter(hotels, hotelFilters.stars),
-      (hotels: Hotel[]) => removeHotelsWithoutRooms(hotels),
+      (hotels: Hotel[]) => getHotelsWithAvailableRooms(hotels),
     ].reduce(
       (filteredHotels, currentFilter) => currentFilter(filteredHotels),
-      unfilteredHotels
+      hotels
     )
 );
 
-export const selectHotelsLength = createSelector(
+export const selectNumberOfFilteredHotels = createSelector(
   [selectFilteredHotels],
   (hotelList) => hotelList.length
 );

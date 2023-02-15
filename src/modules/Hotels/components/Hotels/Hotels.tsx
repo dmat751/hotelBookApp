@@ -3,10 +3,10 @@ import { HotelsContent } from './HotelsContent/HotelsContent';
 import { spinner } from '../../../../components/Spinner/Spinner';
 import { useAppSelector } from '../../../../app/store/hooks';
 import { useGetHotelsQuery } from '../../Api';
-import { selectHotelsLength } from '../../Selectors';
+import { selectNumberOfFilteredHotels } from '../../Selectors';
 
 export const Hotels = () => {
-  const hotelListLength = useAppSelector(selectHotelsLength);
+  const hotelListLength = useAppSelector(selectNumberOfFilteredHotels);
   const { isLoading, isError } = useGetHotelsQuery();
 
   const canShowHotelList = !isLoading && !isError;
