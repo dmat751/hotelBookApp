@@ -3,7 +3,8 @@ import { PromisePool } from '@supercharge/promise-pool';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { Hotel } from './types/Hotel';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import {RoomsDetails} from "./types/RoomDetails";
+import { RoomsDetails } from './types/RoomDetails';
+import { CLIENT_RENEG_LIMIT } from 'tls';
 
 export const api = createApi({
   reducerPath: 'hotelApi',
@@ -13,32 +14,27 @@ export const api = createApi({
   endpoints: (builder) => ({
     getHotels: builder.query<Hotel[], void>({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
-        const hotelListResult = await fetchWithBQ(
-          '/hotels?collection-id=OBMNG'
-        );
-        if (hotelListResult.error) {
-          return { error: hotelListResult.error as FetchBaseQueryError };
+        const hotelsResult = await fetchWithBQ('/hotels?collection-id=OBMNG');
+        if (hotelsResult.error) {
+          return { error: hotelsResult.error as FetchBaseQueryError };
         }
-        const hotelList = hotelListResult.data as Hotel[];
+        const hotels = hotelsResult.data as Hotel[];
 
-        const fetchHotelRoomsResult = await PromisePool.withConcurrency(5)
-          .for(hotelList)
-          .process(
-            async (hotelItem) =>
-              (hotelItem.roomsDetails = await getApiData<RoomsDetails>(
-                `${process.env.REACT_APP_ROOM_LIST_URL + hotelItem.id}`
-              ))
+        const hotelPromises = hotels.map(async (hotel) => {
+          const rooms = await getApiData<RoomsDetails>(
+            `${process.env.REACT_APP_ROOM_LIST_URL + hotel.id}`
           );
+          const result = { ...hotel, roomsDetails: rooms } as Hotel;
+          return result;
+        });
+
+        const hotelsWithRooms = await Promise.all(hotelPromises);
 
         const fetchRoomError: { error: FetchBaseQueryError } = {
           error: { error: '501', status: 'FETCH_ERROR' },
         };
 
-        if (fetchHotelRoomsResult.errors.length > 0) {
-          return fetchRoomError;
-        }
-
-        return hotelList ? { data: hotelList } : fetchRoomError;
+        return hotelsWithRooms ? { data: hotelsWithRooms } : fetchRoomError;
       },
     }),
   }),

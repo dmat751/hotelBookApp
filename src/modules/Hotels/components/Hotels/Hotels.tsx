@@ -11,7 +11,7 @@ export const Hotels = () => {
 
   const canShowHotelList = !isLoading && !isError;
   const isHotelsNoFoundNotificationVisible =
-    hotelListLength === 0 && !isLoading;
+    hotelListLength === 0 && canShowHotelList;
 
   return (
     <div className="flex flex-col items-center">
