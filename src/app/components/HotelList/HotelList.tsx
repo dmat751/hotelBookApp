@@ -29,7 +29,7 @@ export const HotelList = () => {
   return (
     <div className="flex flex-col items-center">
       {isContentVisible && <HotelListContent />}
-      {!isContentVisible && Spinner}
+      {!isContentVisible && <Spinner />}
       {isApiError && <Notification message={apiNotification} msgType="error" />}
       {isVisibleHotelsNoFoundNotification && (
         <Notification message="We can not find any hotels" msgType="info" />

@@ -1,25 +1,25 @@
 import { RoomsDetails } from './../../app/types/room';
-import { PromisePool } from '@supercharge/promise-pool/dist';
 import { Hotel } from './../../app/types/hotel';
 import { getApiData } from './../../app/queries/getApiData';
 
 export const fetchHotelList = async () => {
-  const hotelList = await getApiData<Hotel[]>(
+  const hotels = await getApiData<Hotel[]>(
     `${process.env.REACT_APP_HOTEL_LIST_URL}`
   );
 
-  const fetchRoomListResults = await PromisePool.withConcurrency(5)
-    .for(hotelList)
-    .process(
-      async (hotelItem) =>
-        (hotelItem.roomsDetails = await getApiData<RoomsDetails>(
-          `${process.env.REACT_APP_ROOM_LIST_URL + hotelItem.id}`
-        ))
+  const hotelPromises = hotels.map(async (hotel) => {
+    const rooms = await getApiData<RoomsDetails>(
+      `${process.env.REACT_APP_ROOM_LIST_URL + hotel.id}`
     );
+    const result = { ...hotel, roomsDetails: rooms } as Hotel;
+    return result;
+  });
 
-  if (fetchRoomListResults.errors.length > 0) {
+  const hotelsWithRooms = await Promise.all(hotelPromises);
+
+  if (!hotelsWithRooms) {
     throw new Error('fetch rooms error');
   }
 
-  return hotelList;
+  return hotelsWithRooms;
 };
