@@ -1,27 +1,31 @@
 import { Star } from './Star/Star';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 type Props = Readonly<{
   borderColor: string;
   fillColor: string;
-  numberOfSelectedStarts: number;
+  numberOfSelectedStars: number;
   numberOfStars: number;
-  onFilterChange?: (value: number) => void;
+  onChange?: (value: number) => void;
 }>;
 
 export const Stars = memo(
   ({
     borderColor,
     fillColor,
-    numberOfSelectedStarts,
+    numberOfSelectedStars,
     numberOfStars,
-    onFilterChange,
+    onChange: onFilterChange,
   }: Props) => {
-    const starsState = Array.from({ length: numberOfStars }, (_, i) => ({
-      borderColor,
-      fillColor: i < numberOfSelectedStarts ? fillColor : 'transparent',
-      id: `${i + 1}`,
-    }));
+    const starsState = useMemo(
+      () =>
+        Array.from({ length: numberOfStars }, (_, i) => ({
+          borderColor,
+          fillColor: i < numberOfSelectedStars ? fillColor : 'transparent',
+          id: `${i + 1}`,
+        })),
+      [borderColor, fillColor, numberOfSelectedStars, numberOfStars]
+    );
 
     return (
       <div className="flex order-1  mb-3 md:mb-0">

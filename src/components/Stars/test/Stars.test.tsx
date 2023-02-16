@@ -14,9 +14,9 @@ const TestStarComponent = () => {
     <Stars
       borderColor="black"
       fillColor="red"
-      numberOfSelectedStarts={selectedStars}
+      numberOfSelectedStars={selectedStars}
       numberOfStars={5}
-      onFilterChange={onStarClickHandler}
+      onChange={onStarClickHandler}
     />
   );
 };

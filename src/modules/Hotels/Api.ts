@@ -1,10 +1,8 @@
 import { getApiData } from './queries/getApiData';
-import { PromisePool } from '@supercharge/promise-pool';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { Hotel } from './types/Hotel';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { RoomsDetails } from './types/RoomDetails';
-import { CLIENT_RENEG_LIMIT } from 'tls';
 
 export const api = createApi({
   reducerPath: 'hotelApi',

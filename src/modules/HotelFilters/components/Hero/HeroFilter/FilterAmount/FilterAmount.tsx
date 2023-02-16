@@ -7,8 +7,8 @@ type Props = Readonly<{
   dataTestIdPrefix: string;
   filterLabel: string;
   isPlusButtonDisabled: boolean;
-  onDecreaseFilterHandler: () => void;
-  onIncreaseFilterHandler: () => void;
+  onDecrease: () => void;
+  onIncrease: () => void;
 }>;
 
 export const FilterAmount = memo(
@@ -17,8 +17,8 @@ export const FilterAmount = memo(
     dataTestIdPrefix,
     filterLabel,
     isPlusButtonDisabled,
-    onDecreaseFilterHandler,
-    onIncreaseFilterHandler,
+    onDecrease,
+    onIncrease,
   }: Props) => {
     const filterButtonClassNames = classNames(
       'p-1 rounded-full bg-blue-300 mx-1 disabled:cursor-not-allowed disabled:bg-gray-400'
@@ -30,7 +30,7 @@ export const FilterAmount = memo(
         <button
           data-testid={`${dataTestIdPrefix}-plus-btn`}
           disabled={isPlusButtonDisabled}
-          onClick={onIncreaseFilterHandler}
+          onClick={onIncrease}
           className={filterButtonClassNames}
         >
           <PlusSmallIcon width={20} />
@@ -44,7 +44,7 @@ export const FilterAmount = memo(
         <button
           data-testid={`${dataTestIdPrefix}-minus-btn`}
           disabled={currentFilterAmount === 0}
-          onClick={onDecreaseFilterHandler}
+          onClick={onDecrease}
           className={filterButtonClassNames}
         >
           <MinusSmallIcon width={20} />

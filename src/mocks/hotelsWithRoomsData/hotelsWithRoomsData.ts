@@ -1,3 +1,5 @@
-import type { Hotel } from '../../modules/Hotels/types/Hotel';
+import { Hotel } from '../../modules/Hotels/types/Hotel';
 
-export const fetchedHotelsWithRoomsData: Hotel[] = require('./hotelsWithRoomsData.json');
+import data from './hotelsWithRoomsData.json';
+
+export const fetchedHotelsWithRoomsData: Hotel[] = data as unknown as Hotel[];

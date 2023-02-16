@@ -22,8 +22,8 @@ const TestFilter = () => {
       currentFilterAmount={currentFilterAmount}
       filterLabel="TestFilter"
       isPlusButtonDisabled={currentFilterAmount >= maxFilterValue}
-      onDecreaseFilterHandler={onDecreaseFilter}
-      onIncreaseFilterHandler={onIncreaseFilter}
+      onDecrease={onDecreaseFilter}
+      onIncrease={onIncreaseFilter}
       dataTestIdPrefix={dataTestIdPrefix}
     />
   );

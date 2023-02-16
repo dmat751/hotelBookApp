@@ -1,3 +1,4 @@
+import { createHotelFilters } from './queries/createHotelFilters';
 import { createSelector } from '@reduxjs/toolkit';
 import { api } from './Api';
 import { createHotelImages } from './queries/createHotelImages';
@@ -35,14 +36,7 @@ export const selectRandomHotelPhoto = createSelector(
 export const selectFilteredHotels = createSelector(
   [selectHotels, selectHotelFilters],
   (hotels, hotelFilters) =>
-    [
-      (hotels: Hotel[]) =>
-        roomOccupancyFilter(hotels, hotelFilters.children, 'children'),
-      (hotels: Hotel[]) =>
-        roomOccupancyFilter(hotels, hotelFilters.adults, 'adults'),
-      (hotels: Hotel[]) => hotelStarFilter(hotels, hotelFilters.stars),
-      (hotels: Hotel[]) => getHotelsWithAvailableRooms(hotels),
-    ].reduce(
+    createHotelFilters(hotelFilters).reduce(
       (filteredHotels, currentFilter) => currentFilter(filteredHotels),
       hotels
     )

@@ -4,7 +4,7 @@ import type { Hotel } from '../../../../types/Hotel';
 import { Stars } from '../../../../../../components/Stars/Stars';
 import { HotelInfo } from './HotelInfo/HotelInfo';
 import { Slider } from './Slider/Slider';
-import {selectMaxHotelStars} from "../../../../Selectors";
+import { selectMaxHotelStars } from '../../../../Selectors';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
 
@@ -19,15 +19,11 @@ export const HotelItemHero = ({
   return (
     <div className={hotelItemHeroClassNames}>
       <Slider images={images} />
-      <HotelInfo
-        hotelName={name}
-        hotelAddress1={address1}
-        hotelAddress2={address2}
-      />
+      <HotelInfo name={name} address1={address1} address2={address2} />
       <Stars
         borderColor="#fff500"
         fillColor="#fff500"
-        numberOfSelectedStarts={starRating}
+        numberOfSelectedStars={starRating}
         numberOfStars={hotelMaxStars}
       />
     </div>
