@@ -27,7 +27,7 @@ export const StarFilter = () => {
         fillColor="#fff500"
         numberOfSelectedStars={currentStarsAmount}
         numberOfStars={maxStarsAmount}
-        onChange={handleClick}
+        onClick={handleClick}
       />
     </div>
   );

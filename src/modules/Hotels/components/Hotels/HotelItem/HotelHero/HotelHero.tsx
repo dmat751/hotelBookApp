@@ -8,7 +8,7 @@ import { selectMaxHotelStars } from '../../../../Selectors';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
 
-export const HotelItemHero = ({
+export const HotelHero = ({
   hotelItem: { images, name, address1, address2, starRating },
 }: Props) => {
   const hotelMaxStars = useAppSelector(selectMaxHotelStars);

@@ -6,7 +6,7 @@ type Props = Readonly<{
   fillColor: string;
   numberOfSelectedStars: number;
   numberOfStars: number;
-  onChange?: (value: number) => void;
+  onClick?: (value: number) => void;
 }>;
 
 export const Stars = memo(
@@ -15,7 +15,7 @@ export const Stars = memo(
     fillColor,
     numberOfSelectedStars,
     numberOfStars,
-    onChange: onFilterChange,
+    onClick,
   }: Props) => {
     const starsState = useMemo(
       () =>
@@ -34,9 +34,7 @@ export const Stars = memo(
             key={id}
             borderColor={borderColor}
             fillColor={fillColor}
-            onClickHandler={
-              onFilterChange ? () => onFilterChange(index) : undefined
-            }
+            onClickHandler={onClick ? () => onClick(index) : undefined}
             dataTestId={`star-rendered-${index}`}
           />
         ))}

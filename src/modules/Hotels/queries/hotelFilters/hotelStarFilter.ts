@@ -1,6 +1,4 @@
 import type { Hotel } from '../../types/Hotel';
 
-export const hotelStarFilter = (
-  hotelList: Hotel[],
-  starAmount: number
-): Hotel[] => hotelList.filter(({ starRating }) => starRating >= starAmount);
+export const hotelStarFilter = (hotels: Hotel[], starAmount: number): Hotel[] =>
+  hotels.filter(({ starRating }) => starRating >= starAmount);

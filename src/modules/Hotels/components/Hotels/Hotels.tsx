@@ -6,12 +6,12 @@ import { useGetHotelsQuery } from '../../Api';
 import { selectNumberOfFilteredHotels } from '../../Selectors';
 
 export const Hotels = () => {
-  const hotelListLength = useAppSelector(selectNumberOfFilteredHotels);
+  const numberOfHotels = useAppSelector(selectNumberOfFilteredHotels);
   const { isLoading, isError } = useGetHotelsQuery();
 
   const canShowHotelList = !isLoading && !isError;
   const isHotelsNoFoundNotificationVisible =
-    hotelListLength === 0 && canShowHotelList;
+    numberOfHotels === 0 && canShowHotelList;
 
   return (
     <div className="flex flex-col items-center">

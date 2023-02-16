@@ -1,6 +1,6 @@
 import type { Hotel } from '../../../types/Hotel';
-import { HotelItemHero } from './HotelItemHero/HotelItemHero';
-import { HotelItemRoom } from './HotelItemRoom/HotelItemRoom';
+import { HotelHero } from './HotelHero/HotelHero';
+import { HotelRoom } from './HotelRoom/HotelRoom';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
 
@@ -9,10 +9,10 @@ export const HotelItem = ({ hotelItem }: Props) => {
   return (
     <li className="mb-[50px]" data-testid={`hotel-item-${id}`} key={id}>
       <div className="p-[20px] bg-[#e7e7e7]">
-        <HotelItemHero hotelItem={hotelItem} />
+        <HotelHero hotelItem={hotelItem} />
         <ul>
           {hotelItem.roomsDetails.rooms.map((roomItem) => (
-            <HotelItemRoom
+            <HotelRoom
               key={roomItem.id}
               room={roomItem}
               dataTestId={`room-item-${id}-${roomItem.id}`}

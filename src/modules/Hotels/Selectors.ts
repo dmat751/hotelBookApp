@@ -5,10 +5,6 @@ import { createHotelImages } from './queries/createHotelImages';
 import { getRandomNumber } from '../../app/utils/getRandomNumber';
 import { getMaxHotelValueByProp } from './queries/getMaxHotelValueByProp';
 import { selectHotelFilters } from '../HotelFilters/Selectors';
-import { roomOccupancyFilter } from './queries/hotelFilters/amountFilter';
-import { hotelStarFilter } from './queries/hotelFilters/hotelStarFilter';
-import { getHotelsWithAvailableRooms } from './queries/hotelFilters/removeHotelsWithoutRooms';
-import type { Hotel } from './types/Hotel';
 import { Photo } from './types/Photo';
 
 const DEFAULT_MAX_STAR_VALUE = 5;
@@ -20,11 +16,11 @@ export const selectHotels = createSelector(
 
 export const selectRandomHotelPhoto = createSelector(
   [selectHotels],
-  (hotelList) => {
-    const hotelImages: Photo[] = createHotelImages(hotelList);
+  (hotelList): Photo => {
+    const hotelImages = createHotelImages(hotelList);
 
     if (hotelImages.length === 0) {
-      return { alt: '', url: '' } as Photo;
+      return { alt: '', url: '' };
     }
 
     const randomImgArrayIndex = getRandomNumber(0, hotelImages.length - 1);

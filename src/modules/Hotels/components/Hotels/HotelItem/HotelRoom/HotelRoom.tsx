@@ -2,7 +2,7 @@ import type { Room } from '../../../../types/Room';
 
 type Props = Readonly<{ dataTestId: string; room: Room }>;
 
-export const HotelItemRoom = ({ dataTestId, room }: Props) => {
+export const HotelRoom = ({ dataTestId, room }: Props) => {
   const { name, occupancy, longDescription } = room;
   return (
     <div

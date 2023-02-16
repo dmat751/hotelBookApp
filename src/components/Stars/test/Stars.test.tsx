@@ -6,7 +6,7 @@ import { Stars } from '../Stars';
 const TestStarComponent = () => {
   const [selectedStars, setSelectedStars] = useState(3);
 
-  const onStarClickHandler = (starIndex: number) => {
+  const handleClick = (starIndex: number) => {
     setSelectedStars(starIndex + 1);
   };
 
@@ -16,7 +16,7 @@ const TestStarComponent = () => {
       fillColor="red"
       numberOfSelectedStars={selectedStars}
       numberOfStars={5}
-      onChange={onStarClickHandler}
+      onClick={handleClick}
     />
   );
 };
