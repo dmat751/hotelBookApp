@@ -1,9 +1,9 @@
-import { Hero } from './components/Hero/Hero';
-import { HotelList } from './components/HotelList/HotelList';
+import { Hero } from '../modules/HotelFilters/components/Hero/Hero';
+import { Hotels } from '../modules/Hotels/components/Hotels/Hotels';
 
 export const App = () => (
   <>
     <Hero />
-    <HotelList />
+    <Hotels />
   </>
 );
