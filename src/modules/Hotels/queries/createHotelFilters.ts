@@ -1,5 +1,5 @@
+import { HotelsFilters } from './../../HotelFilters/types/hotelFilters';
 import { Hotel } from './../types/Hotel';
-import { HotelsFilters } from './../../HotelFilters/types/HotelFilters';
 import { getHotelsWithAvailableRooms } from './hotelFilters/removeHotelsWithoutRooms';
 import { hotelStarFilter } from './hotelFilters/hotelStarFilter';
 import { roomOccupancyFilter } from './hotelFilters/amountFilter';
