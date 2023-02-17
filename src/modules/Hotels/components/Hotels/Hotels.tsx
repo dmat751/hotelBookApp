@@ -1,6 +1,6 @@
 import { Notification } from '../../../../components/Notification/Notification';
 import { HotelsContent } from './HotelsContent/HotelsContent';
-import { spinner } from '../../../../components/Spinner/Spinner';
+import { Spinner } from '../../../../components/Spinner/Spinner';
 import { useAppSelector } from '../../../../app/store/hooks';
 import { useGetHotelsQuery } from '../../Api';
 import { selectNumberOfFilteredHotels } from '../../Selectors';
@@ -16,7 +16,7 @@ export const Hotels = () => {
   return (
     <div className="flex flex-col items-center">
       {canShowHotelList && <HotelsContent />}
-      {isLoading && spinner}
+      {isLoading && <Spinner />}
       {isError && (
         <Notification message="Sorry, can't fetch data" msgType="error" />
       )}
