@@ -20,13 +20,15 @@ describe('test notification component', () => {
       messageType: 'info',
       expectedClass: 'text-black',
     },
-  ].map((notiItem) =>
-    Object.assign(notiItem, {
-      toString: () => `
+  ].map(
+    (notiItem) =>
+      ({
+        ...notiItem,
+        toString: () => `
         message: ${notiItem.message}
         messageType: ${notiItem.messageType}
         expectedClass: ${notiItem.expectedClass}`,
-    } as TestCase)
+      } as TestCase)
   );
 
   test.each<TestCase>(cases)(

@@ -6,6 +6,7 @@ type Props = Readonly<{ hotelItem: Hotel }>;
 
 export const HotelItem = ({ hotelItem }: Props) => {
   const { id } = hotelItem;
+
   return (
     <li className="mb-[50px]" data-testid={`hotel-item-${id}`} key={id}>
       <div className="p-[20px] bg-[#e7e7e7]">

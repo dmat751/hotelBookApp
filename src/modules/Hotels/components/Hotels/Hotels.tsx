@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import {
   selectErrorType,
   selectIsDataError,
-  selectIsDataStatus,
+  selectDataStatus,
   selectNumberOfFilteredHotels,
 } from '../../Selectors';
 import { Spinner } from '../../../../components/Spinner/Spinner';
@@ -15,7 +15,7 @@ import { useAppDispatch } from '../../../../app/store/hooks';
 export const Hotels = () => {
   const dispatch = useAppDispatch();
   const numberOfFilteredHotels = useSelector(selectNumberOfFilteredHotels);
-  const dataStatus = useSelector(selectIsDataStatus);
+  const dataStatus = useSelector(selectDataStatus);
   const apiNotification = useSelector(selectErrorType);
   const isApiError = useSelector(selectIsDataError);
 

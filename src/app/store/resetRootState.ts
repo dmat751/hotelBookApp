@@ -1,4 +1,3 @@
-import { initialState } from './../../modules/Hotels/Slice';
 import { hotelFiltersSliceInitialState } from '../../modules/HotelFilters/Slice';
 import { fetchedHotelsWithRoomsData } from '../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 import { RootState } from './store';

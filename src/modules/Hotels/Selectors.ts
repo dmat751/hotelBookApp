@@ -59,6 +59,6 @@ export const selectMaxAdultsInHotels = createSelector(
   (hotels) => getMaxHotelValueByProp(hotels, 'maxAdults')
 );
 
-export const selectIsDataStatus = (state: RootState) => state.hotels.status;
+export const selectDataStatus = (state: RootState) => state.hotels.status;
 export const selectErrorType = (state: RootState) => state.hotels.errorMessage;
 export const selectIsDataError = (state: RootState) => state.hotels.isError;

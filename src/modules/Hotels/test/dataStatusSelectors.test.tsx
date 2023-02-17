@@ -4,7 +4,7 @@ import { RootState } from '../../../app/store/store';
 import {
   selectErrorType,
   selectIsDataError,
-  selectIsDataStatus,
+  selectDataStatus,
 } from '../Selectors';
 
 let rootState: RootState;
@@ -17,7 +17,7 @@ describe('test selectIsDataLoading', () => {
   it('should return correct value (pending)', () => {
     //given
     //when
-    const selectedValue = selectIsDataStatus(rootState);
+    const selectedValue = selectDataStatus(rootState);
 
     //then
     expect(selectedValue).toBe('pending');
@@ -32,7 +32,7 @@ describe('test selectIsDataLoading', () => {
       }),
       hotelFilters: rootState.hotelFilters,
     };
-    const selectedValue = selectIsDataStatus(rootState);
+    const selectedValue = selectDataStatus(rootState);
 
     //then
     expect(selectedValue).toBe('resolved');

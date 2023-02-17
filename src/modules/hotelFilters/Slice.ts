@@ -9,7 +9,7 @@ export const hotelFiltersSliceInitialState: HotelsFilters = {
 };
 
 export const hotelFiltersSlice = createSlice({
-  name: 'hotelFilters',
+  name: 'HotelFilters',
   initialState: hotelFiltersSliceInitialState,
   reducers: {
     setAdultsFilter(state, { payload }: PayloadAction<FilterAction>) {
@@ -17,7 +17,7 @@ export const hotelFiltersSlice = createSlice({
     },
     setChildrenFilter(state, { payload }: PayloadAction<FilterAction>) {
       state.children =
-          payload === 'ADD' ? state.children + 1 : state.children - 1;
+        payload === 'ADD' ? state.children + 1 : state.children - 1;
     },
     setStarsFilter(state, { payload }: PayloadAction<number>) {
       state.stars = payload;
@@ -26,4 +26,4 @@ export const hotelFiltersSlice = createSlice({
 });
 
 export const { setAdultsFilter, setChildrenFilter, setStarsFilter } =
-    hotelFiltersSlice.actions;
+  hotelFiltersSlice.actions;
