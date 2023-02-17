@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {
   selectErrorType,
@@ -10,10 +10,11 @@ import { Spinner } from '../../../../components/Spinner/Spinner';
 import { fetchData } from '../../Slice';
 import { HotelsContent } from './HotelsContent/HotelsContent';
 import { Notification } from '../../../../components/Notification/Notification';
+import { useAppDispatch } from '../../../../app/store/hooks';
 
 export const Hotels = () => {
-  const dispatch = useDispatch();
-  const hotelListLength = useSelector(selectNumberOfFilteredHotels);
+  const dispatch = useAppDispatch();
+  const numberOfFilteredHotels = useSelector(selectNumberOfFilteredHotels);
   const dataStatus = useSelector(selectIsDataStatus);
   const apiNotification = useSelector(selectErrorType);
   const isApiError = useSelector(selectIsDataError);
@@ -24,7 +25,7 @@ export const Hotels = () => {
 
   const isContentVisible = dataStatus === 'resolved';
   const isVisibleHotelsNoFoundNotification =
-    hotelListLength === 0 && isContentVisible;
+    numberOfFilteredHotels === 0 && isContentVisible;
 
   return (
     <div className="flex flex-col items-center">

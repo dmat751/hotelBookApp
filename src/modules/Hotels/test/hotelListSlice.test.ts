@@ -1,19 +1,19 @@
 import { Hotel } from './../types/Hotel';
-import { HotelListSliceState } from './../types/HotelListSliceState';
-import { fetchHotelList } from '../actions/fetchHotelList';
+import { HotelsSliceState } from '../types/HotelsSliceState';
+import { fetchHotels } from '../actions/fetchHotels';
 import {
   fetchData,
-  getHotelListFailure,
-  getHotelListSuccess,
-  hotelListActions,
+  getHotelsFailure,
+  getHotelsSuccess,
+  hotelsActions,
   hotelsSlice,
   initialState,
 } from '../Slice';
 
-describe('test hotel list slice', () => {
+describe('test hotels slice', () => {
   it('test fetchData reducer', () => {
-    const expectedResult: HotelListSliceState = {
-      hotelList: [],
+    const expectedResult: HotelsSliceState = {
+      hotels: [],
       isError: false,
       status: 'pending',
       errorMessage: '',
@@ -23,35 +23,35 @@ describe('test hotel list slice', () => {
     );
   });
 
-  it('test getHotelListSuccess reducer', async () => {
-    const hotelList: Hotel[] = await fetchHotelList();
-    const expectedState: HotelListSliceState = {
-      hotelList: hotelList,
+  it('test getHotelsSuccess reducer', async () => {
+    const hotels: Hotel[] = await fetchHotels();
+    const expectedState: HotelsSliceState = {
+      hotels: hotels,
       status: 'resolved',
       errorMessage: '',
       isError: false,
     };
-    expect(
-      hotelsSlice.reducer(initialState, getHotelListSuccess(hotelList))
-    ).toEqual(expectedState);
+    expect(hotelsSlice.reducer(initialState, getHotelsSuccess(hotels))).toEqual(
+      expectedState
+    );
   });
 
-  it('test getHotelListFailure reducer', async () => {
-    const expectedResult: HotelListSliceState = {
+  it('test getHotelsFailure reducer', async () => {
+    const expectedResult: HotelsSliceState = {
       status: 'resolved',
       isError: true,
       errorMessage: 'test error!!!',
-      hotelList: [],
+      hotels: [],
     };
     expect(
-      hotelsSlice.reducer(initialState, getHotelListFailure('test error!!!'))
+      hotelsSlice.reducer(initialState, getHotelsFailure('test error!!!'))
     ).toEqual(expectedResult);
   });
 
   const cases: string[] = ['fetchData', 'fetchSuccess', 'fetchFailure'];
   test.each<string>(cases)('%s should exist in Hotels reducer', (propName) => {
-    expect(
-      Object.prototype.hasOwnProperty.call(hotelListActions, propName)
-    ).toBe(true);
+    expect(Object.prototype.hasOwnProperty.call(hotelsActions, propName)).toBe(
+      true
+    );
   });
 });

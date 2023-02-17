@@ -1,40 +1,36 @@
-import { fetchHotelList } from '../actions/fetchHotelList';
+import { fetchHotels } from '../actions/fetchHotels';
 import { testSaga, expectSaga } from 'redux-saga-test-plan';
-import { hotelListFetchSaga } from '../Saga';
-import {
-  getHotelListFailure,
-  getHotelListSuccess,
-  initialState,
-} from '../Slice';
+import { hotelsFetchSaga } from '../Saga';
+import { getHotelsFailure, getHotelsSuccess, initialState } from '../Slice';
 import { fetchedHotelsWithRoomsData } from '../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 
-describe('test hotelListSagas', () => {
+describe('test hotelsSagas', () => {
   it('test success fetch api data', async () => {
-    testSaga(hotelListFetchSaga)
+    testSaga(hotelsFetchSaga)
       .next()
-      .call(fetchHotelList)
+      .call(fetchHotels)
       .next(fetchedHotelsWithRoomsData)
-      .put(getHotelListSuccess(fetchedHotelsWithRoomsData))
+      .put(getHotelsSuccess(fetchedHotelsWithRoomsData))
       .next()
       .isDone();
   });
 
   it('test failed fetch api data', () => {
-    testSaga(hotelListFetchSaga)
+    testSaga(hotelsFetchSaga)
       .next()
-      .call(fetchHotelList)
+      .call(fetchHotels)
       .throw(new Error('test error'))
-      .put(getHotelListFailure('test error'))
+      .put(getHotelsFailure('test error'))
       .next()
       .isDone();
   });
 
   it('integration test', async () => {
-    const hotelData = await fetchHotelList();
+    const hotelData = await fetchHotels();
 
-    return expectSaga(hotelListFetchSaga)
+    return expectSaga(hotelsFetchSaga)
       .withState({ initialState })
-      .put({ type: 'Hotels/getHotelListSuccess', payload: hotelData })
+      .put({ type: 'Hotels/getHotelsSuccess', payload: hotelData })
       .run();
   });
 });

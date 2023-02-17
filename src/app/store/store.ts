@@ -8,7 +8,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
-    hotelList: hotelsSlice.reducer,
+    hotels: hotelsSlice.reducer,
     hotelFilters: hotelFiltersSlice.reducer,
   },
   middleware: [sagaMiddleware],

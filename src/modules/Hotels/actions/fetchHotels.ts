@@ -2,7 +2,7 @@ import { getApiData } from '../queries/getApiData';
 import { Hotel } from '../types/Hotel';
 import { RoomsDetails } from '../types/RoomDetails';
 
-export const fetchHotelList = async () => {
+export const fetchHotels = async () => {
   const hotels = await getApiData<Hotel[]>(
     `${process.env.REACT_APP_HOTEL_LIST_URL}`
   );

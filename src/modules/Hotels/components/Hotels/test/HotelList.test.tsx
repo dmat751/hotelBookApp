@@ -4,7 +4,7 @@ import { store } from '../../../../../app/store/store';
 import { Hotels } from '../Hotels';
 
 describe('Hotels test', () => {
-  test('get data form API and render hotel list.', async () => {
+  test('get data form API and render hotels.', async () => {
     render(
       <Provider store={store}>
         <Hotels />

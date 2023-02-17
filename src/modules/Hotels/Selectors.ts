@@ -10,13 +10,12 @@ import { Hotel } from './types/Hotel';
 
 const DEFAULT_MAX_STAR_VALUE = 5;
 
-export const selectHotels = (state: RootState): Hotel[] =>
-  state.hotelList.hotelList;
+export const selectHotels = (state: RootState): Hotel[] => state.hotels.hotels;
 
 export const selectRandomHotelPhoto = createSelector(
   [selectHotels],
-  (hotelList): Photo => {
-    const hotelImages = createHotelImages(hotelList);
+  (hotels): Photo => {
+    const hotelImages = createHotelImages(hotels);
 
     if (hotelImages.length === 0) {
       return { alt: '', url: '' };
@@ -39,31 +38,27 @@ export const selectFilteredHotels = createSelector(
 
 export const selectNumberOfFilteredHotels = createSelector(
   [selectFilteredHotels],
-  (hotelList) => hotelList.length
+  (hotels) => hotels.length
 );
 
-export const selectMaxHotelStars = createSelector(
-  [selectHotels],
-  (hotelList) => {
-    const starsRating = hotelList.map(({ starRating }) => starRating);
+export const selectMaxHotelStars = createSelector([selectHotels], (hotels) => {
+  const starsRating = hotels.map(({ starRating }) => starRating);
 
-    return starsRating.length > 0
-      ? Math.max(...starsRating)
-      : DEFAULT_MAX_STAR_VALUE;
-  }
-);
+  return starsRating.length > 0
+    ? Math.max(...starsRating)
+    : DEFAULT_MAX_STAR_VALUE;
+});
 
 export const selectMaxChildrenInHotels = createSelector(
   [selectHotels],
-  (hotelList) => getMaxHotelValueByProp(hotelList, 'maxChildren')
+  (hotels) => getMaxHotelValueByProp(hotels, 'maxChildren')
 );
 
 export const selectMaxAdultsInHotels = createSelector(
   [selectHotels],
-  (hotelList) => getMaxHotelValueByProp(hotelList, 'maxAdults')
+  (hotels) => getMaxHotelValueByProp(hotels, 'maxAdults')
 );
 
-export const selectIsDataStatus = (state: RootState) => state.hotelList.status;
-export const selectErrorType = (state: RootState) =>
-  state.hotelList.errorMessage;
-export const selectIsDataError = (state: RootState) => state.hotelList.isError;
+export const selectIsDataStatus = (state: RootState) => state.hotels.status;
+export const selectErrorType = (state: RootState) => state.hotels.errorMessage;
+export const selectIsDataError = (state: RootState) => state.hotels.isError;

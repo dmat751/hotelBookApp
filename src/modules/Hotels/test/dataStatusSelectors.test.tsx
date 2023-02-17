@@ -27,7 +27,7 @@ describe('test selectIsDataLoading', () => {
     //given
     //when
     rootState = {
-      hotelList: produce(rootState.hotelList, (draft) => {
+      hotels: produce(rootState.hotels, (draft) => {
         draft.status = 'resolved';
       }),
       hotelFilters: rootState.hotelFilters,
@@ -54,7 +54,7 @@ describe('test selectErrorType', () => {
     //when
     const testErrorMsg = 'test error msg';
     rootState = {
-      hotelList: produce(rootState.hotelList, (draft) => {
+      hotels: produce(rootState.hotels, (draft) => {
         draft.errorMessage = testErrorMsg;
       }),
       hotelFilters: rootState.hotelFilters,
@@ -80,7 +80,7 @@ describe('test selectIsDataError', () => {
     //given
     //when
     rootState = {
-      hotelList: produce(rootState.hotelList, (draft) => {
+      hotels: produce(rootState.hotels, (draft) => {
         draft.isError = true;
       }),
       hotelFilters: rootState.hotelFilters,

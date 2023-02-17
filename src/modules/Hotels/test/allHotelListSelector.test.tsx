@@ -9,13 +9,13 @@ beforeEach(() => {
   rootState = resetRootState(rootState);
 });
 
-describe('test allHotelListSelector', () => {
+describe('test hotelsSelector', () => {
   it('should return fetched Hotels', () => {
     //given
     //when
-    const hotelList = selectHotels(rootState);
+    const hotels = selectHotels(rootState);
 
     //then
-    expect(hotelList).toEqual(fetchedHotelsWithRoomsData);
+    expect(hotels).toEqual(fetchedHotelsWithRoomsData);
   });
 });

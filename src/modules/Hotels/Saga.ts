@@ -1,23 +1,19 @@
 import { Hotel } from './types/Hotel';
-import { fetchHotelList } from './actions/fetchHotelList';
+import { fetchHotels } from './actions/fetchHotels';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import {
-  getHotelListFailure,
-  getHotelListSuccess,
-  hotelListActions,
-} from './Slice';
+import { getHotelsFailure, getHotelsSuccess, hotelsActions } from './Slice';
 
-export function* hotelListFetchSaga() {
+export function* hotelsFetchSaga() {
   try {
-    const hotelList: Hotel[] = yield call(fetchHotelList);
-    yield put(getHotelListSuccess(hotelList));
+    const hotels: Hotel[] = yield call(fetchHotels);
+    yield put(getHotelsSuccess(hotels));
   } catch (error) {
     const errorMsg =
       error instanceof Error ? error.message : 'fetch error, unknown error';
-    yield put(getHotelListFailure(errorMsg));
+    yield put(getHotelsFailure(errorMsg));
   }
 }
 
-export function* hotelListSagas() {
-  yield takeLatest(hotelListActions.fetchData, hotelListFetchSaga);
+export function* hotelsSagas() {
+  yield takeLatest(hotelsActions.fetchData, hotelsFetchSaga);
 }

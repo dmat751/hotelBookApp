@@ -4,6 +4,7 @@ type Props = Readonly<{ dataTestId: string; room: Room }>;
 
 export const HotelRoom = ({ dataTestId, room }: Props) => {
   const { name, occupancy, longDescription } = room;
+
   return (
     <div
       data-testid={dataTestId}

@@ -12,7 +12,7 @@ beforeEach(() => {
   rootState = resetRootState(rootState);
 });
 
-describe('test selectFilteredHotelList', () => {
+describe('test selectFilteredHotels', () => {
   //given
   const isMaxAdultsOccupancyValid = (room: Room, adultsValue: number) =>
     room.occupancy.maxAdults >= adultsValue;
@@ -86,7 +86,7 @@ describe('test selectFilteredHotelList', () => {
     ({ adults, children, stars, expectedHotelLength }) => {
       //when
       rootState = {
-        hotelList: rootState.hotelList,
+        hotels: rootState.hotels,
         hotelFilters: produce(rootState.hotelFilters, (draft) => {
           draft.adults = adults;
           draft.children = children;

@@ -17,7 +17,7 @@ beforeEach(() => {
 describe('test max filter values selectors', () => {
   //given
   type TestCase = {
-    hotelListValue: Hotel[] | 'default';
+    hotelsValue: Hotel[] | 'default';
     selectorToTest: Function;
     expectedResult: number;
     selectorNameForPrint: string;
@@ -25,37 +25,37 @@ describe('test max filter values selectors', () => {
   };
   const cases: TestCase[] = [
     {
-      hotelListValue: 'default',
+      hotelsValue: 'default',
       selectorToTest: selectMaxAdultsInHotels,
       expectedResult: 6,
       selectorNameForPrint: 'selectMaxAdultsInHotels',
     },
     {
-      hotelListValue: [],
+      hotelsValue: [],
       selectorToTest: selectMaxAdultsInHotels,
       expectedResult: 0,
       selectorNameForPrint: 'selectMaxAdultsInHotels',
     },
     {
-      hotelListValue: 'default',
+      hotelsValue: 'default',
       selectorToTest: selectMaxChildrenInHotels,
       expectedResult: 4,
       selectorNameForPrint: 'selectMaxChildrenInHotels',
     },
     {
-      hotelListValue: [],
+      hotelsValue: [],
       selectorToTest: selectMaxChildrenInHotels,
       expectedResult: 0,
       selectorNameForPrint: 'selectMaxChildrenInHotels',
     },
     {
-      hotelListValue: 'default',
+      hotelsValue: 'default',
       selectorToTest: selectMaxHotelStars,
       expectedResult: 5,
       selectorNameForPrint: 'selectMaxHotelStars',
     },
     {
-      hotelListValue: [],
+      hotelsValue: [],
       selectorToTest: selectMaxHotelStars,
       expectedResult: 5,
       selectorNameForPrint: 'selectMaxHotelStars',
@@ -65,11 +65,11 @@ describe('test max filter values selectors', () => {
       ({
         ...caseItem,
         toString: () => {
-          const hotelListValueToPrint =
-            caseItem.hotelListValue !== 'default' ? 'custom' : 'default';
+          const hotelsValueToPrint =
+            caseItem.hotelsValue !== 'default' ? 'custom' : 'default';
 
           return `
-        hotelListValue: ${hotelListValueToPrint}
+        hotelsValue: ${hotelsValueToPrint}
         selector to test: ${caseItem.selectorNameForPrint}
         expected result: ${caseItem.expectedResult}`;
         },
@@ -78,12 +78,12 @@ describe('test max filter values selectors', () => {
 
   test.each<TestCase>(cases)(
     'test for: %s',
-    ({ hotelListValue, selectorToTest, expectedResult }) => {
+    ({ hotelsValue, selectorToTest, expectedResult }) => {
       //when
-      if (hotelListValue !== 'default') {
+      if (hotelsValue !== 'default') {
         rootState = {
-          hotelList: produce(rootState.hotelList, (draft) => {
-            draft.hotelList = hotelListValue;
+          hotels: produce(rootState.hotels, (draft) => {
+            draft.hotels = hotelsValue;
           }),
           hotelFilters: rootState.hotelFilters,
         };

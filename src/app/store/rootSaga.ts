@@ -1,7 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
-import { hotelListSagas } from '../../modules/Hotels/Saga';
+import { hotelsSagas } from '../../modules/Hotels/Saga';
 
-const combinedSagas = [fork(hotelListSagas)];
+const combinedSagas = [fork(hotelsSagas)];
 
 export default function* rootSaga() {
   yield all(combinedSagas);

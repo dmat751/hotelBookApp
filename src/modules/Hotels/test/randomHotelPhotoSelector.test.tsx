@@ -15,7 +15,7 @@ beforeEach(() => {
 describe('test randomHotelPhotoSelector', () => {
   //given
   type TestCase = {
-    hotelListValue: Hotel[] | 'default';
+    hotelsValue: Hotel[] | 'default';
     expectedResult: Photo;
     getRandomNumberMockedValue: number;
   };
@@ -27,7 +27,7 @@ describe('test randomHotelPhotoSelector', () => {
         url: 'https://rl-uk2.azureedge.net/picturemanager/images/OBMNG1/hotel4.jpg',
       },
       getRandomNumberMockedValue: 1,
-      hotelListValue: 'default',
+      hotelsValue: 'default',
     },
     {
       expectedResult: {
@@ -35,7 +35,7 @@ describe('test randomHotelPhotoSelector', () => {
         url: '',
       },
       getRandomNumberMockedValue: -1,
-      hotelListValue: [],
+      hotelsValue: [],
     },
     {
       expectedResult: {
@@ -43,16 +43,16 @@ describe('test randomHotelPhotoSelector', () => {
         url: 'https://rl-uk2.azureedge.net/picturemanager/images/OBMNG1/Hotel1.JPG',
       },
       getRandomNumberMockedValue: 0,
-      hotelListValue: fetchedHotelsWithRoomsData.slice(0, 1),
+      hotelsValue: fetchedHotelsWithRoomsData.slice(0, 1),
     },
   ].map((caseItem) =>
     Object.assign(caseItem, {
       toString: () => {
-        const hotelListValueToPrint =
-          caseItem.hotelListValue !== 'default' ? 'custom' : 'default';
+        const hotelsValueToPrint =
+          caseItem.hotelsValue !== 'default' ? 'custom' : 'default';
 
         return `
-        hotelListValue: ${hotelListValueToPrint}
+        hotelsValue: ${hotelsValueToPrint}
         getRandomNumberMockedValue: ${caseItem.getRandomNumberMockedValue}
         expected result: {url: ${caseItem.expectedResult.url}, alt: ${caseItem.expectedResult.alt}}`;
       },
@@ -61,17 +61,17 @@ describe('test randomHotelPhotoSelector', () => {
 
   test.each<TestCase>(cases)(
     'test for %s',
-    ({ hotelListValue, getRandomNumberMockedValue, expectedResult }) => {
+    ({ hotelsValue, getRandomNumberMockedValue, expectedResult }) => {
       //when
-      const getRandomNumber = require('../../../../app/queries/getRandomNumber');
+      const getRandomNumber = require('../../../app/utils/getRandomNumber');
       const mock = jest
         .spyOn(getRandomNumber, 'getRandomNumber')
         .mockReturnValue(getRandomNumberMockedValue);
 
-      if (hotelListValue !== 'default') {
+      if (hotelsValue !== 'default') {
         rootState = {
-          hotelList: produce(rootState.hotelList, (draft) => {
-            draft.hotelList = hotelListValue;
+          hotels: produce(rootState.hotels, (draft) => {
+            draft.hotels = hotelsValue;
           }),
           hotelFilters: rootState.hotelFilters,
         };

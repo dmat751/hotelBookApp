@@ -1,9 +1,9 @@
 import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit';
 import { Hotel } from './types/Hotel';
-import { HotelListSliceState } from './types/HotelListSliceState';
+import { HotelsSliceState } from './types/HotelsSliceState';
 
-export const initialState: HotelListSliceState = {
-  hotelList: [],
+export const initialState: HotelsSliceState = {
+  hotels: [],
   isError: false,
   status: 'pending',
   errorMessage: '',
@@ -16,24 +16,24 @@ export const hotelsSlice = createSlice({
     fetchData: (state) => {
       state.status = 'pending';
     },
-    getHotelListSuccess: (state, { payload }: PayloadAction<Hotel[]>) => {
-      state.hotelList = payload;
+    getHotelsSuccess: (state, { payload }: PayloadAction<Hotel[]>) => {
+      state.hotels = payload;
       state.status = 'resolved';
     },
-    getHotelListFailure: (state, { payload }: PayloadAction<string>) => {
+    getHotelsFailure: (state, { payload }: PayloadAction<string>) => {
       state.status = 'resolved';
       state.isError = true;
       state.errorMessage = payload;
-      state.hotelList = [];
+      state.hotels = [];
     },
   },
 });
 
-export const hotelListActions = {
+export const hotelsActions = {
   fetchData: createAction('Hotels/fetchData'),
-  fetchSuccess: createAction<Hotel[]>('Hotels/getHotelListSuccess'),
-  fetchFailure: createAction<String>('Hotels/getHotelListFailure'),
+  fetchSuccess: createAction<Hotel[]>('Hotels/getHotelsSuccess'),
+  fetchFailure: createAction<String>('Hotels/getHotelsFailure'),
 };
 
-export const { fetchData, getHotelListFailure, getHotelListSuccess } =
+export const { fetchData, getHotelsFailure, getHotelsSuccess } =
   hotelsSlice.actions;

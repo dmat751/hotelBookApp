@@ -6,8 +6,8 @@ import { RootState } from './store';
 export const resetRootState = (rootState: RootState) =>
   (rootState = {
     hotelFilters: hotelFiltersSliceInitialState,
-    hotelList: {
-      hotelList: fetchedHotelsWithRoomsData,
+    hotels: {
+      hotels: fetchedHotelsWithRoomsData,
       errorMessage: '',
       isError: false,
       status: 'pending',
