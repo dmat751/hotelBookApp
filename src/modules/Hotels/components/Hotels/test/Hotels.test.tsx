@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from '../../../../../app/store/store';
 
 describe('Hotels test', () => {
-  test('get data form API and render hotel list.', async () => {
+  test('get data form API and render hotels.', async () => {
     render(
       <Provider store={store}>
         <Hotels />

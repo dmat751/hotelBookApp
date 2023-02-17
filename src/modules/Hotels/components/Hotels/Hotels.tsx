@@ -9,13 +9,13 @@ export const Hotels = () => {
   const numberOfHotels = useAppSelector(selectNumberOfFilteredHotels);
   const { isLoading, isError } = useGetHotelsQuery();
 
-  const canShowHotelList = !isLoading && !isError;
+  const canShowHotels = !isLoading && !isError;
   const isHotelsNoFoundNotificationVisible =
-    numberOfHotels === 0 && canShowHotelList;
+    numberOfHotels === 0 && canShowHotels;
 
   return (
     <div className="flex flex-col items-center">
-      {canShowHotelList && <HotelsContent />}
+      {canShowHotels && <HotelsContent />}
       {isLoading && <Spinner />}
       {isError && (
         <Notification message="Sorry, can't fetch data" msgType="error" />
