@@ -45,18 +45,20 @@ describe('test randomHotelPhotoSelector', () => {
       getRandomNumberMockedValue: 0,
       hotelsValue: fetchedHotelsWithRoomsData.slice(0, 1),
     },
-  ].map((caseItem) =>
-    Object.assign(caseItem, {
-      toString: () => {
-        const hotelsValueToPrint =
-          caseItem.hotelsValue !== 'default' ? 'custom' : 'default';
+  ].map(
+    (caseItem) =>
+      ({
+        ...caseItem,
+        toString: () => {
+          const hotelsValueToPrint =
+            caseItem.hotelsValue !== 'default' ? 'custom' : 'default';
 
-        return `
+          return `
         hotelsValue: ${hotelsValueToPrint}
         getRandomNumberMockedValue: ${caseItem.getRandomNumberMockedValue}
         expected result: {url: ${caseItem.expectedResult.url}, alt: ${caseItem.expectedResult.alt}}`;
-      },
-    } as TestCase)
+        },
+      } as TestCase)
   );
 
   test.each<TestCase>(cases)(
