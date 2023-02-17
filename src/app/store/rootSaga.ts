@@ -1,5 +1,5 @@
 import { all, fork } from 'redux-saga/effects';
-import { hotelListSagas } from '../../modules/hotelList/hotelListSaga';
+import { hotelListSagas } from '../../modules/Hotels/Saga';
 
 const combinedSagas = [fork(hotelListSagas)];
 
