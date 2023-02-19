@@ -4,7 +4,7 @@ import {
   initialState,
   fetchedHotels,
   fetchedHotelsSuccess,
-  fetchedHotelsFailure,
+  fetchedHotelsFailed,
   hotelsActions,
 } from '@/modules/Hotels/slice';
 import { Hotel } from '@/modules/Hotels/types/Hotel';
@@ -56,7 +56,7 @@ describe('test hotels slice', () => {
     //when
     //then
     expect(
-      hotelsSlice.reducer(initialState, fetchedHotelsFailure('test error!!!'))
+      hotelsSlice.reducer(initialState, fetchedHotelsFailed('test error!!!'))
     ).toEqual(expectedResult);
   });
 

@@ -4,7 +4,7 @@ import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWi
 import { hotelsFetchSaga } from '@/modules/Hotels/saga';
 import {
   fetchedHotelsSuccess,
-  fetchedHotelsFailure,
+  fetchedHotelsFailed,
   initialState,
 } from '@/modules/Hotels/slice';
 
@@ -24,7 +24,7 @@ describe('test hotelsSagas', () => {
       .next()
       .call(fetchHotels)
       .throw(new Error('test error'))
-      .put(fetchedHotelsFailure('test error'))
+      .put(fetchedHotelsFailed('test error'))
       .next()
       .isDone();
   });
