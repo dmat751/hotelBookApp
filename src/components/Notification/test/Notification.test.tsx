@@ -1,4 +1,4 @@
-import { Notification } from '../Notification';
+import { Notification } from '@/components/Notification/Notification';
 import { render, screen } from '@testing-library/react';
 
 describe('test notification component', () => {

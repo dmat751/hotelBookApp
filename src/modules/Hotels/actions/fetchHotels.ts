@@ -1,6 +1,6 @@
-import { getApiData } from '../queries/getApiData';
-import { Hotel } from '../types/Hotel';
-import { RoomsDetails } from '../types/RoomDetails';
+import { getApiData } from '@/modules/Hotels/queries/getApiData';
+import { Hotel } from '@/modules/Hotels/types/Hotel';
+import { RoomsDetails } from '@/modules/Hotels/types/RoomDetails';
 
 export const fetchHotels = async () => {
   const hotels = await getApiData<Hotel[]>(

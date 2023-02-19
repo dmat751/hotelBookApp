@@ -1,8 +1,12 @@
 import { fetchHotels } from '../actions/fetchHotels';
 import { testSaga, expectSaga } from 'redux-saga-test-plan';
-import { hotelsFetchSaga } from '../saga';
-import { getHotelsFailure, getHotelsSuccess, initialState } from '../slice';
-import { fetchedHotelsWithRoomsData } from '../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
+import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
+import { hotelsFetchSaga } from '@/modules/Hotels/saga';
+import {
+  getHotelsSuccess,
+  getHotelsFailure,
+  initialState,
+} from '@/modules/Hotels/slice';
 
 describe('test hotelsSagas', () => {
   it('test success fetch api data', async () => {

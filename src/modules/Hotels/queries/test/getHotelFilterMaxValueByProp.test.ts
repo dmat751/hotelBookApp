@@ -1,5 +1,5 @@
-import { fetchedHotelsWithRoomsData } from './../../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
-import { getMaxHotelValueByProp } from './../getMaxHotelValueByProp';
+import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
+import { getMaxHotelValueByProp } from '@/modules/Hotels/queries/getMaxHotelValueByProp';
 
 describe('test getHotelFilterMaxValueByProp function', () => {
   test('maxChildren case', async () => {

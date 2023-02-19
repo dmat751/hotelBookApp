@@ -1,11 +1,11 @@
-import produce from 'immer';
-import { resetRootState } from '../../../app/store/resetRootState';
-import { RootState } from '../../../app/store/store';
+import { resetRootState } from '@/app/store/resetRootState';
+import { RootState } from '@/app/store/store';
 import {
+  selectDataStatus,
   selectErrorType,
   selectIsDataError,
-  selectDataStatus,
-} from '../selectors';
+} from '@/modules/Hotels/selectors';
+import produce from 'immer';
 
 let rootState: RootState;
 

@@ -1,7 +1,7 @@
-import { resetRootState } from '../../../app/store/resetRootState';
-import { RootState } from '../../../app/store/store';
-import { fetchedHotelsWithRoomsData } from '../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
-import { selectHotels } from '../selectors';
+import { resetRootState } from '@/app/store/resetRootState';
+import { RootState } from '@/app/store/store';
+import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
+import { selectHotels } from '@/modules/Hotels/selectors';
 
 let rootState: RootState;
 

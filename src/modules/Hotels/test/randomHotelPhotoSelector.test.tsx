@@ -1,10 +1,10 @@
+import { resetRootState } from '@/app/store/resetRootState';
+import { RootState } from '@/app/store/store';
+import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
+import { selectRandomHotelPhoto } from '@/modules/Hotels/selectors';
+import { Hotel } from '@/modules/Hotels/types/Hotel';
+import { Photo } from '@/modules/Hotels/types/Photo';
 import produce from 'immer';
-import { resetRootState } from '../../../app/store/resetRootState';
-import { RootState } from '../../../app/store/store';
-import { fetchedHotelsWithRoomsData } from '../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
-import { selectRandomHotelPhoto } from '../selectors';
-import { Hotel } from '../types/Hotel';
-import { Photo } from '../types/Photo';
 
 let rootState: RootState;
 

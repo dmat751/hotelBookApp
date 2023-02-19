@@ -1,7 +1,7 @@
+import { FilterAmount } from '@/modules/HotelFilters/components/Hero/HeroFilter/FilterAmount/FilterAmount';
 import { render, screen } from '@testing-library/react';
 import { useCallback, useState } from 'react';
 import { act } from 'react-dom/test-utils';
-import { FilterAmount } from '../FilterAmount';
 
 const dataTestIdPrefix = 'test-filter';
 

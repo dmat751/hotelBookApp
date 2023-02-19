@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+import { Notification } from '@/components/Notification/Notification';
+import { Spinner } from '@/components/Spinner/Spinner';
+import { HotelsContent } from '@/modules/Hotels/components/Hotels/HotelsContent/HotelsContent';
 import {
+  selectNumberOfFilteredHotels,
+  selectDataStatus,
   selectErrorType,
   selectIsDataError,
-  selectDataStatus,
-  selectNumberOfFilteredHotels,
-} from '../../selectors';
-import { Spinner } from '../../../../components/Spinner/Spinner';
-import { fetchData } from '../../slice';
-import { HotelsContent } from './HotelsContent/HotelsContent';
-import { Notification } from '../../../../components/Notification/Notification';
-import { useAppDispatch, useAppSelector } from '../../../../app/store/hooks';
+} from '@/modules/Hotels/selectors';
+import { fetchData } from '@/modules/Hotels/slice';
+import { useEffect } from 'react';
 
 export const Hotels = () => {
   const dispatch = useAppDispatch();

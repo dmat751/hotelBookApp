@@ -1,10 +1,10 @@
+import { useAppSelector } from '@/app/store/hooks';
+import { Stars } from '@/components/Stars/Stars';
+import { HotelInfo } from '@/modules/Hotels/components/Hotels/HotelItem/HotelHero/HotelInfo/HotelInfo';
+import { Slider } from '@/modules/Hotels/components/Hotels/HotelItem/HotelHero/Slider/Slider';
+import { selectMaxHotelStars } from '@/modules/Hotels/selectors';
+import { Hotel } from '@/modules/Hotels/types/Hotel';
 import classNames from 'classnames';
-import { useAppSelector } from '../../../../../../app/store/hooks';
-import type { Hotel } from '../../../../types/Hotel';
-import { Stars } from '../../../../../../components/Stars/Stars';
-import { HotelInfo } from './HotelInfo/HotelInfo';
-import { Slider } from './Slider/Slider';
-import { selectMaxHotelStars } from '../../../../selectors';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
 

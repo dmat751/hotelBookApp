@@ -1,12 +1,12 @@
-import produce from 'immer';
-import { resetRootState } from '../../../app/store/resetRootState';
-import { RootState } from '../../../app/store/store';
+import { resetRootState } from '@/app/store/resetRootState';
+import { RootState } from '@/app/store/store';
 import {
   selectMaxAdultsInHotels,
   selectMaxChildrenInHotels,
   selectMaxHotelStars,
-} from '../selectors';
-import { Hotel } from '../types/Hotel';
+} from '@/modules/Hotels/selectors';
+import { Hotel } from '@/modules/Hotels/types/Hotel';
+import produce from 'immer';
 
 let rootState: RootState;
 

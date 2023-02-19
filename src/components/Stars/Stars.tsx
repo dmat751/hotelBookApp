@@ -1,4 +1,4 @@
-import { Star } from './Star/Star';
+import { Star } from '@/components/Stars/Star/Star';
 import { memo, useMemo } from 'react';
 
 type Props = Readonly<{

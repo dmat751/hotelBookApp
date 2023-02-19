@@ -1,6 +1,6 @@
-import { HotelsFilters } from './types/HotelFilters';
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { FilterAction } from './types/FilterAction';
+import { FilterAction } from '@/modules/HotelFilters/types/FilterAction';
+import { HotelsFilters } from '@/modules/HotelFilters/types/HotelFilters';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: HotelsFilters = {
   adults: 2,

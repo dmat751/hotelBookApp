@@ -1,6 +1,6 @@
-import { initialState } from '../../modules/HotelFilters/slice';
-import { fetchedHotelsWithRoomsData } from '../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
-import { RootState } from './store';
+import { RootState } from '@/app/store/store';
+import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
+import { initialState } from '@/modules/HotelFilters/slice';
 
 export const resetRootState = (rootState: RootState) =>
   (rootState = {

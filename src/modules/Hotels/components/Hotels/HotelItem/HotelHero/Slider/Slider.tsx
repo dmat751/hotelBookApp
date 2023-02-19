@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './Swiper.scss';
-import {Photo} from "../../../../../types/Photo";
+import { Photo } from '@/modules/Hotels/types/Photo';
 
 type Props = Readonly<{ images: Photo[] }>;
 
