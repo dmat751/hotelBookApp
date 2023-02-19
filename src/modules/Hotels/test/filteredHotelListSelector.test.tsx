@@ -1,8 +1,8 @@
 import produce from 'immer';
 import { resetRootState } from '../../../app/store/resetRootState';
 import { RootState } from '../../../app/store/store';
-import { hotelFiltersSliceInitialState } from '../../HotelFilters/Slice';
-import { selectFilteredHotels } from '../Selectors';
+import { initialState } from '../../HotelFilters/slice';
+import { selectFilteredHotels } from '../selectors';
 import { Hotel } from '../types/Hotel';
 import { Room } from '../types/Room';
 
@@ -50,14 +50,14 @@ describe('test selectFilteredHotels', () => {
   };
   const cases: TestCase[] = [
     {
-      adults: hotelFiltersSliceInitialState.adults,
-      children: hotelFiltersSliceInitialState.children,
-      stars: hotelFiltersSliceInitialState.stars,
+      adults: initialState.adults,
+      children: initialState.children,
+      stars: initialState.stars,
       expectedHotelLength: 4,
     },
     {
-      adults: hotelFiltersSliceInitialState.adults,
-      children: hotelFiltersSliceInitialState.children,
+      adults: initialState.adults,
+      children: initialState.children,
       stars: 5,
       expectedHotelLength: 2,
     },

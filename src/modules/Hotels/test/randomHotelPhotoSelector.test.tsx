@@ -2,7 +2,7 @@ import produce from 'immer';
 import { resetRootState } from '../../../app/store/resetRootState';
 import { RootState } from '../../../app/store/store';
 import { fetchedHotelsWithRoomsData } from '../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
-import { selectRandomHotelPhoto } from '../Selectors';
+import { selectRandomHotelPhoto } from '../selectors';
 import { Hotel } from '../types/Hotel';
 import { Photo } from '../types/Photo';
 

@@ -1,10 +1,10 @@
-import { hotelFiltersSliceInitialState } from '../../modules/HotelFilters/Slice';
+import { initialState } from '../../modules/HotelFilters/slice';
 import { fetchedHotelsWithRoomsData } from '../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 import { RootState } from './store';
 
 export const resetRootState = (rootState: RootState) =>
   (rootState = {
-    hotelFilters: hotelFiltersSliceInitialState,
+    hotelFilters: initialState,
     hotels: {
       hotels: fetchedHotelsWithRoomsData,
       errorMessage: '',

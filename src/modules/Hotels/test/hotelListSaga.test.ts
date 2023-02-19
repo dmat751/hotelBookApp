@@ -1,7 +1,7 @@
 import { fetchHotels } from '../actions/fetchHotels';
 import { testSaga, expectSaga } from 'redux-saga-test-plan';
-import { hotelsFetchSaga } from '../Saga';
-import { getHotelsFailure, getHotelsSuccess, initialState } from '../Slice';
+import { hotelsFetchSaga } from '../saga';
+import { getHotelsFailure, getHotelsSuccess, initialState } from '../slice';
 import { fetchedHotelsWithRoomsData } from '../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 
 describe('test hotelsSagas', () => {
@@ -25,7 +25,7 @@ describe('test hotelsSagas', () => {
       .isDone();
   });
 
-  it('integration test', async () => {
+  it('run saga integration test', async () => {
     const hotelData = await fetchHotels();
 
     return expectSaga(hotelsFetchSaga)

@@ -4,7 +4,7 @@ import type { Hotel } from '../../../../types/Hotel';
 import { Stars } from '../../../../../../components/Stars/Stars';
 import { HotelInfo } from './HotelInfo/HotelInfo';
 import { Slider } from './Slider/Slider';
-import { selectMaxHotelStars } from '../../../../Selectors';
+import { selectMaxHotelStars } from '../../../../selectors';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
 

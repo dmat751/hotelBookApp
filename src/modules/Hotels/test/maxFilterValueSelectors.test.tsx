@@ -5,7 +5,7 @@ import {
   selectMaxAdultsInHotels,
   selectMaxChildrenInHotels,
   selectMaxHotelStars,
-} from '../Selectors';
+} from '../selectors';
 import { Hotel } from '../types/Hotel';
 
 let rootState: RootState;

@@ -4,7 +4,7 @@ import { RootState } from '../../app/store/store';
 import { Photo } from './types/Photo';
 import { getRandomNumber } from '../../app/utils/getRandomNumber';
 import { getMaxHotelValueByProp } from './queries/getMaxHotelValueByProp';
-import { selectHotelFilters } from '../HotelFilters/Selectors';
+import { selectHotelFilters } from '../HotelFilters/selectors';
 import { createHotelFilters } from './queries/createHotelFilters';
 import { Hotel } from './types/Hotel';
 

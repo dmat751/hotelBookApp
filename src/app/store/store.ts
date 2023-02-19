@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { hotelsSlice } from '../../modules/Hotels/Slice';
-import { hotelFiltersSlice } from '../../modules/HotelFilters/Slice';
+import { hotelsSlice } from '../../modules/Hotels/slice';
+import { hotelFiltersSlice } from '../../modules/HotelFilters/slice';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './rootSaga';
 

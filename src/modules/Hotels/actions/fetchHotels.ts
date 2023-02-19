@@ -11,8 +11,8 @@ export const fetchHotels = async () => {
     const rooms = await getApiData<RoomsDetails>(
       `${process.env.REACT_APP_ROOM_LIST_URL + hotel.id}`
     );
-    const result = { ...hotel, roomsDetails: rooms } as Hotel;
-    return result;
+
+    return { ...hotel, roomsDetails: rooms } as Hotel;
   });
 
   const hotelsWithRooms = await Promise.all(hotelPromises);

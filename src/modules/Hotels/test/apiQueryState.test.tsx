@@ -5,7 +5,7 @@ import {
   selectErrorType,
   selectIsDataError,
   selectDataStatus,
-} from '../Selectors';
+} from '../selectors';
 
 let rootState: RootState;
 
@@ -13,7 +13,7 @@ beforeEach(() => {
   rootState = resetRootState(rootState);
 });
 
-describe('test selectIsDataLoading', () => {
+describe('test selectDataStatus', () => {
   it('should return correct value (pending)', () => {
     //given
     //when

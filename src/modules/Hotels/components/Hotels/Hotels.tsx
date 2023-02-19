@@ -1,23 +1,22 @@
-import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {
   selectErrorType,
   selectIsDataError,
   selectDataStatus,
   selectNumberOfFilteredHotels,
-} from '../../Selectors';
+} from '../../selectors';
 import { Spinner } from '../../../../components/Spinner/Spinner';
-import { fetchData } from '../../Slice';
+import { fetchData } from '../../slice';
 import { HotelsContent } from './HotelsContent/HotelsContent';
 import { Notification } from '../../../../components/Notification/Notification';
-import { useAppDispatch } from '../../../../app/store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../app/store/hooks';
 
 export const Hotels = () => {
   const dispatch = useAppDispatch();
-  const numberOfFilteredHotels = useSelector(selectNumberOfFilteredHotels);
-  const dataStatus = useSelector(selectDataStatus);
-  const apiNotification = useSelector(selectErrorType);
-  const isApiError = useSelector(selectIsDataError);
+  const numberOfFilteredHotels = useAppSelector(selectNumberOfFilteredHotels);
+  const dataStatus = useAppSelector(selectDataStatus);
+  const apiNotification = useAppSelector(selectErrorType);
+  const isApiError = useAppSelector(selectIsDataError);
 
   useEffect(() => {
     dispatch(fetchData());

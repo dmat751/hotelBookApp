@@ -1,11 +1,11 @@
-import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Hotel } from './types/Hotel';
 import { HotelsSliceState } from './types/HotelsSliceState';
 
 export const initialState: HotelsSliceState = {
   hotels: [],
   isError: false,
-  status: 'pending',
+  status: 'idle',
   errorMessage: '',
 };
 
@@ -30,9 +30,9 @@ export const hotelsSlice = createSlice({
 });
 
 export const hotelsActions = {
-  fetchData: createAction('Hotels/fetchData'),
-  fetchSuccess: createAction<Hotel[]>('Hotels/getHotelsSuccess'),
-  fetchFailure: createAction<String>('Hotels/getHotelsFailure'),
+  fetchData: 'Hotels/fetchData',
+  fetchSuccess: 'Hotels/getHotelsSuccess',
+  fetchFailure: 'Hotels/getHotelsFailure',
 };
 
 export const { fetchData, getHotelsFailure, getHotelsSuccess } =

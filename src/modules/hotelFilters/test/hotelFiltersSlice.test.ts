@@ -1,21 +1,18 @@
-import { hotelFiltersSlice, hotelFiltersSliceInitialState } from './../Slice';
-import { setAdultsFilter, setChildrenFilter, setStarsFilter } from '../Slice';
+import { hotelFiltersSlice, initialState } from '../slice';
+import { setAdultsFilter, setChildrenFilter, setStarsFilter } from '../slice';
 
 describe('test setAdultsFilter reducer', () => {
   it('test ADD option', () => {
     //given
     //when
     const expectedResult = {
-      ...hotelFiltersSliceInitialState,
-      adults: hotelFiltersSliceInitialState.adults + 1,
+      ...initialState,
+      adults: initialState.adults + 1,
     };
 
     //then
     expect(
-      hotelFiltersSlice.reducer(
-        hotelFiltersSliceInitialState,
-        setAdultsFilter('ADD')
-      )
+      hotelFiltersSlice.reducer(initialState, setAdultsFilter('ADD'))
     ).toEqual(expectedResult);
   });
 
@@ -23,16 +20,13 @@ describe('test setAdultsFilter reducer', () => {
     //given
     //when
     const expectedResult = {
-      ...hotelFiltersSliceInitialState,
-      adults: hotelFiltersSliceInitialState.adults - 1,
+      ...initialState,
+      adults: initialState.adults - 1,
     };
 
     //then
     expect(
-      hotelFiltersSlice.reducer(
-        hotelFiltersSliceInitialState,
-        setAdultsFilter('SUB')
-      )
+      hotelFiltersSlice.reducer(initialState, setAdultsFilter('SUB'))
     ).toEqual(expectedResult);
   });
 });
@@ -42,16 +36,13 @@ describe('test setChildrenFilter reducer', () => {
     //given
     //when
     const expectedResult = {
-      ...hotelFiltersSliceInitialState,
-      children: hotelFiltersSliceInitialState.children + 1,
+      ...initialState,
+      children: initialState.children + 1,
     };
 
     //then
     expect(
-      hotelFiltersSlice.reducer(
-        hotelFiltersSliceInitialState,
-        setChildrenFilter('ADD')
-      )
+      hotelFiltersSlice.reducer(initialState, setChildrenFilter('ADD'))
     ).toEqual(expectedResult);
   });
 
@@ -59,16 +50,13 @@ describe('test setChildrenFilter reducer', () => {
     //given
     //when
     const expectedResult = {
-      ...hotelFiltersSliceInitialState,
-      children: hotelFiltersSliceInitialState.children - 1,
+      ...initialState,
+      children: initialState.children - 1,
     };
 
     //then
     expect(
-      hotelFiltersSlice.reducer(
-        hotelFiltersSliceInitialState,
-        setChildrenFilter('SUB')
-      )
+      hotelFiltersSlice.reducer(initialState, setChildrenFilter('SUB'))
     ).toEqual(expectedResult);
   });
 });
@@ -78,16 +66,13 @@ describe('test setStarsFilter reducer', () => {
     //given
     //when
     const expectedResult = {
-      ...hotelFiltersSliceInitialState,
+      ...initialState,
       stars: 3,
     };
 
     //then
-    expect(
-      hotelFiltersSlice.reducer(
-        hotelFiltersSliceInitialState,
-        setStarsFilter(3)
-      )
-    ).toEqual(expectedResult);
+    expect(hotelFiltersSlice.reducer(initialState, setStarsFilter(3))).toEqual(
+      expectedResult
+    );
   });
 });

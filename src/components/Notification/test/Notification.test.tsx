@@ -21,13 +21,13 @@ describe('test notification component', () => {
       expectedClass: 'text-black',
     },
   ].map(
-    (notiItem) =>
+    (notification) =>
       ({
-        ...notiItem,
+        ...notification,
         toString: () => `
-        message: ${notiItem.message}
-        messageType: ${notiItem.messageType}
-        expectedClass: ${notiItem.expectedClass}`,
+        message: ${notification.message}
+        messageType: ${notification.messageType}
+        expectedClass: ${notification.expectedClass}`,
       } as TestCase)
   );
 

@@ -22,7 +22,7 @@ const TestStarComponent = () => {
 };
 
 describe('test Stars component', () => {
-  test('fill correct clicked stars', () => {
+  test('amount of clicked stars should be correct filled', () => {
     //given
     render(<TestStarComponent />);
 

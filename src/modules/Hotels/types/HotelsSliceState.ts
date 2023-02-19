@@ -2,7 +2,7 @@ import { Hotel } from './Hotel';
 
 export type HotelsSliceState = {
   hotels: Hotel[];
-  status: 'pending' | 'resolved';
+  status: 'idle' | 'pending' | 'resolved';
   isError: boolean;
   errorMessage: string;
 };

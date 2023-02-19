@@ -3,10 +3,10 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../../../../../../app/store/hooks';
-import { selectChildrenFilter } from '../../../../Selectors';
-import { setChildrenFilter } from '../../../../Slice';
+import { selectChildrenFilter } from '../../../../selectors';
+import { setChildrenFilter } from '../../../../slice';
 import { FilterAmount } from '../FilterAmount/FilterAmount';
-import { selectMaxChildrenInHotels } from '../../../../../Hotels/Selectors';
+import { selectMaxChildrenInHotels } from '../../../../../Hotels/selectors';
 
 export const FilterByChildren = () => {
   const currentFilterAmount = useAppSelector(selectChildrenFilter);

@@ -5,12 +5,15 @@ import { Hotels } from '../Hotels';
 
 describe('Hotels test', () => {
   test('get data form API and render hotels.', async () => {
+    //given
     render(
       <Provider store={store}>
         <Hotels />
       </Provider>
     );
 
+    //when
+    //then
     const hotelItem = screen.findByText('OBM Hotel 1');
     expect(await hotelItem).toBeInTheDocument();
 
