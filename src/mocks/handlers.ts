@@ -1,8 +1,8 @@
-import type { Hotel } from '../modules/Hotels/types/Hotel';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { RoomsDetails } from '@/modules/Hotels/types/RoomDetails';
 import { rest } from 'msw';
 import validHotelData from './hotelsData/validHotelData.json';
 import validRoomsData from './roomsData/validRoomsData.json';
-import { RoomsDetails } from '../modules/Hotels/types/RoomDetails';
 
 const getHotelIds = (validHotelData: Hotel[]) =>
   validHotelData.map((hotel) => hotel.id);

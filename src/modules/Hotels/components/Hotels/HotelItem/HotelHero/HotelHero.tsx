@@ -3,7 +3,7 @@ import { Stars } from '@/components/Stars/Stars';
 import { HotelInfo } from '@/modules/Hotels/components/Hotels/HotelItem/HotelHero/HotelInfo/HotelInfo';
 import { Slider } from '@/modules/Hotels/components/Hotels/HotelItem/HotelHero/Slider/Slider';
 import { selectMaxHotelStars } from '@/modules/Hotels/selectors';
-import { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
 import classNames from 'classnames';
 
 type Props = Readonly<{ hotelItem: Hotel }>;

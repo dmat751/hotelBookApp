@@ -4,8 +4,8 @@ import { selectHotelFilters } from '@/modules/HotelFilters/selectors';
 import { createHotelFilters } from '@/modules/Hotels/queries/createHotelFilters';
 import { createHotelImages } from '@/modules/Hotels/queries/createHotelImages';
 import { getMaxHotelValueByProp } from '@/modules/Hotels/queries/getMaxHotelValueByProp';
-import { Hotel } from '@/modules/Hotels/types/Hotel';
-import { Photo } from '@/modules/Hotels/types/Photo';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Photo } from '@/modules/Hotels/types/Photo';
 import { createSelector } from '@reduxjs/toolkit';
 
 const DEFAULT_MAX_STAR_VALUE = 5;

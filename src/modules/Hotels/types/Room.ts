@@ -1,4 +1,4 @@
-import { Photo } from '@/modules/Hotels/types/Photo';
+import type { Photo } from '@/modules/Hotels/types/Photo';
 
 export type Room = {
   bedConfiguration: string;

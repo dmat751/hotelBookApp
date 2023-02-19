@@ -1,5 +1,5 @@
-import { Hotel } from '@/modules/Hotels/types/Hotel';
-import { Room } from '@/modules/Hotels/types/Room';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Room } from '@/modules/Hotels/types/Room';
 
 export const roomOccupancyFilter = (
   hotels: Hotel[],

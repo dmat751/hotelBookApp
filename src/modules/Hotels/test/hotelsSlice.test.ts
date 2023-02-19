@@ -7,8 +7,8 @@ import {
   fetchedHotelsFailed,
   hotelsActions,
 } from '@/modules/Hotels/slice';
-import { Hotel } from '@/modules/Hotels/types/Hotel';
-import { HotelsSliceState } from '@/modules/Hotels/types/HotelsSliceState';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { HotelsSliceState } from '@/modules/Hotels/types/HotelsSliceState';
 
 describe('test hotels slice', () => {
   it('should return status: "pending"', () => {

@@ -5,7 +5,7 @@ import {
   selectMaxChildrenInHotels,
   selectMaxHotelStars,
 } from '@/modules/Hotels/selectors';
-import { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
 import produce from 'immer';
 
 let rootState: RootState;

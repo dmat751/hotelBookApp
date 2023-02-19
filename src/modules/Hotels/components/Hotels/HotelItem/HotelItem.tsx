@@ -1,6 +1,6 @@
 import { HotelHero } from '@/modules/Hotels/components/Hotels/HotelItem/HotelHero/HotelHero';
 import { HotelRoom } from '@/modules/Hotels/components/Hotels/HotelItem/HotelRoom/HotelRoom';
-import { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
 

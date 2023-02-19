@@ -1,5 +1,5 @@
-import { Hotel } from '@/modules/Hotels/types/Hotel';
-import { HotelsSliceState } from '@/modules/Hotels/types/HotelsSliceState';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { HotelsSliceState } from '@/modules/Hotels/types/HotelsSliceState';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: HotelsSliceState = {

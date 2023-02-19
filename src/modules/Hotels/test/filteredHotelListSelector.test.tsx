@@ -2,8 +2,8 @@ import { resetRootState } from '@/app/store/resetRootState';
 import { RootState } from '@/app/store/store';
 import { selectFilteredHotels } from '@/modules/Hotels/selectors';
 import { initialState } from '@/modules/HotelFilters/slice';
-import { Hotel } from '@/modules/Hotels/types/Hotel';
-import { Room } from '@/modules/Hotels/types/Room';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Room } from '@/modules/Hotels/types/Room';
 import produce from 'immer';
 
 let rootState: RootState;

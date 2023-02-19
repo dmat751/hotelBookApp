@@ -1,4 +1,4 @@
-import { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
 
 export type HotelsSliceState = {
   hotels: Hotel[];

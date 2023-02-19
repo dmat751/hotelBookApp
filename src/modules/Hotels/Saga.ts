@@ -4,7 +4,7 @@ import {
   fetchedHotelsFailed,
   hotelsActions,
 } from '@/modules/Hotels/slice';
-import { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 export function* hotelsFetchSaga() {

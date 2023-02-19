@@ -2,8 +2,8 @@ import { resetRootState } from '@/app/store/resetRootState';
 import { RootState } from '@/app/store/store';
 import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 import { selectRandomHotelPhoto } from '@/modules/Hotels/selectors';
-import { Hotel } from '@/modules/Hotels/types/Hotel';
-import { Photo } from '@/modules/Hotels/types/Photo';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Photo } from '@/modules/Hotels/types/Photo';
 import produce from 'immer';
 
 let rootState: RootState;

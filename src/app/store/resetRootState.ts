@@ -1,4 +1,4 @@
-import { RootState } from '@/app/store/store';
+import type { RootState } from '@/app/store/store';
 import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 import { initialState } from '@/modules/HotelFilters/slice';
 
