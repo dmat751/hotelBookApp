@@ -2,8 +2,8 @@ import { Hotel } from './types/Hotel';
 import { fetchHotels } from './actions/fetchHotels';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
-  getHotelsFailure as fetchedHotelsFailed,
-  getHotelsSuccess as fetchedHotelsSuccess,
+  fetchedHotelsFailure as fetchedHotelsFailed,
+  fetchedHotelsSuccess,
   hotelsActions,
 } from './slice';
 

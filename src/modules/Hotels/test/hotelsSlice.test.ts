@@ -2,9 +2,9 @@ import { fetchHotels } from '@/modules/Hotels/actions/fetchHotels';
 import {
   hotelsSlice,
   initialState,
-  fetchData,
-  getHotelsSuccess,
-  getHotelsFailure,
+  fetchedHotels,
+  fetchedHotelsSuccess,
+  fetchedHotelsFailure,
   hotelsActions,
 } from '@/modules/Hotels/slice';
 import { Hotel } from '@/modules/Hotels/types/Hotel';
@@ -22,7 +22,7 @@ describe('test hotels slice', () => {
 
     //when
     //then
-    expect(hotelsSlice.reducer(initialState, fetchData())).toEqual(
+    expect(hotelsSlice.reducer(initialState, fetchedHotels())).toEqual(
       expectedResult
     );
   });
@@ -39,9 +39,9 @@ describe('test hotels slice', () => {
 
     //when
     //then
-    expect(hotelsSlice.reducer(initialState, getHotelsSuccess(hotels))).toEqual(
-      expectedState
-    );
+    expect(
+      hotelsSlice.reducer(initialState, fetchedHotelsSuccess(hotels))
+    ).toEqual(expectedState);
   });
 
   it('should return error message', async () => {
@@ -56,7 +56,7 @@ describe('test hotels slice', () => {
     //when
     //then
     expect(
-      hotelsSlice.reducer(initialState, getHotelsFailure('test error!!!'))
+      hotelsSlice.reducer(initialState, fetchedHotelsFailure('test error!!!'))
     ).toEqual(expectedResult);
   });
 

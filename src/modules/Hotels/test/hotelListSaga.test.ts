@@ -3,8 +3,8 @@ import { testSaga, expectSaga } from 'redux-saga-test-plan';
 import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 import { hotelsFetchSaga } from '@/modules/Hotels/saga';
 import {
-  getHotelsSuccess,
-  getHotelsFailure,
+  fetchedHotelsSuccess,
+  fetchedHotelsFailure,
   initialState,
 } from '@/modules/Hotels/slice';
 
@@ -14,7 +14,7 @@ describe('test hotelsSagas', () => {
       .next()
       .call(fetchHotels)
       .next(fetchedHotelsWithRoomsData)
-      .put(getHotelsSuccess(fetchedHotelsWithRoomsData))
+      .put(fetchedHotelsSuccess(fetchedHotelsWithRoomsData))
       .next()
       .isDone();
   });
@@ -24,7 +24,7 @@ describe('test hotelsSagas', () => {
       .next()
       .call(fetchHotels)
       .throw(new Error('test error'))
-      .put(getHotelsFailure('test error'))
+      .put(fetchedHotelsFailure('test error'))
       .next()
       .isDone();
   });
@@ -34,7 +34,7 @@ describe('test hotelsSagas', () => {
 
     return expectSaga(hotelsFetchSaga)
       .withState({ initialState })
-      .put({ type: 'Hotels/getHotelsSuccess', payload: hotelData })
+      .put({ type: 'Hotels/fetchedHotelsSuccess', payload: hotelData })
       .run();
   });
 });

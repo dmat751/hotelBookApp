@@ -8,7 +8,7 @@ import {
   selectErrorType,
   selectIsDataError,
 } from '@/modules/Hotels/selectors';
-import { fetchData } from '@/modules/Hotels/slice';
+import { fetchedHotels } from '@/modules/Hotels/slice';
 import { useEffect } from 'react';
 
 export const Hotels = () => {
@@ -19,7 +19,7 @@ export const Hotels = () => {
   const isApiError = useAppSelector(selectIsDataError);
 
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(fetchedHotels());
   }, [dispatch]);
 
   const isContentVisible = dataStatus === 'resolved';

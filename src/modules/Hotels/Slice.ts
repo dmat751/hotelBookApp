@@ -13,14 +13,14 @@ export const hotelsSlice = createSlice({
   name: 'Hotels',
   initialState,
   reducers: {
-    fetchData: (state) => {
+    fetchedHotels: (state) => {
       state.status = 'pending';
     },
-    getHotelsSuccess: (state, { payload }: PayloadAction<Hotel[]>) => {
+    fetchedHotelsSuccess: (state, { payload }: PayloadAction<Hotel[]>) => {
       state.hotels = payload;
       state.status = 'resolved';
     },
-    getHotelsFailure: (state, { payload }: PayloadAction<string>) => {
+    fetchedHotelsFailure: (state, { payload }: PayloadAction<string>) => {
       state.status = 'resolved';
       state.isError = true;
       state.errorMessage = payload;
@@ -30,10 +30,10 @@ export const hotelsSlice = createSlice({
 });
 
 export const hotelsActions = {
-  fetchData: 'Hotels/fetchData',
-  fetchSuccess: 'Hotels/getHotelsSuccess',
-  fetchFailure: 'Hotels/getHotelsFailure',
+  fetchData: 'Hotels/fetchedHotels',
+  fetchSuccess: 'Hotels/fetchedHotelsSuccess',
+  fetchFailure: 'Hotels/fetchedHotelsFailure',
 };
 
-export const { fetchData, getHotelsFailure, getHotelsSuccess } =
+export const { fetchedHotels, fetchedHotelsFailure, fetchedHotelsSuccess } =
   hotelsSlice.actions;
