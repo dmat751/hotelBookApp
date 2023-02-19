@@ -1,4 +1,4 @@
-import { useAppSelector, useAppDispatch } from '@/app/store/hooks';
+import { useAppSelector, useAppDispatch } from '@store/hooks';
 import { Stars } from '@/components/Stars/Stars';
 import { selectStarsFilter } from '@/modules/HotelFilters/selectors';
 import { setStarsFilter } from '@/modules/HotelFilters/slice';

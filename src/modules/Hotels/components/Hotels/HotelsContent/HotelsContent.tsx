@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/app/store/hooks';
+import { useAppSelector } from '@store/hooks';
 import { HotelItem } from '@/modules/Hotels/components/Hotels/HotelItem/HotelItem';
 import { selectFilteredHotels } from '@/modules/Hotels/selectors';
 import baseClasses from '@/app/assets/baseClasses.module.scss';

@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/app/store/hooks';
+import { useAppSelector } from '@store/hooks';
 import { Stars } from '@/components/Stars/Stars';
 import { HotelInfo } from '@/modules/Hotels/components/Hotels/HotelItem/HotelHero/HotelInfo/HotelInfo';
 import { Slider } from '@/modules/Hotels/components/Hotels/HotelItem/HotelHero/Slider/Slider';

@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { Notification } from '@/components/Notification/Notification';
 import { Spinner } from '@/components/Spinner/Spinner';
 import { HotelsContent } from '@/modules/Hotels/components/Hotels/HotelsContent/HotelsContent';

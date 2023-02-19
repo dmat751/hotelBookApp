@@ -1,4 +1,4 @@
-import { RootState } from '@/app/store/store';
+import { RootState } from '@store/store';
 import { getRandomNumber } from '@/app/utils/getRandomNumber';
 import { selectHotelFilters } from '@/modules/HotelFilters/selectors';
 import { createHotelFilters } from '@/modules/Hotels/queries/createHotelFilters';

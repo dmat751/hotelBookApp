@@ -1,4 +1,4 @@
-import rootSaga from '@/app/store/rootSaga';
+import rootSaga from '@store/rootSaga';
 import { hotelFiltersSlice } from '@/modules/HotelFilters/slice';
 import { hotelsSlice } from '@/modules/Hotels/slice';
 import { configureStore } from '@reduxjs/toolkit';

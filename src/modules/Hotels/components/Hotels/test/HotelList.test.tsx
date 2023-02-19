@@ -1,4 +1,4 @@
-import { store } from '@/app/store/store';
+import { store } from '@store/store';
 import { Hotels } from '@/modules/Hotels/components/Hotels/Hotels';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';

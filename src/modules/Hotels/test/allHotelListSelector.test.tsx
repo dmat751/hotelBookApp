@@ -1,5 +1,5 @@
-import { resetRootState } from '@/app/store/resetRootState';
-import { RootState } from '@/app/store/store';
+import { resetRootState } from '@store/resetRootState';
+import { RootState } from '@store/store';
 import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 import { selectHotels } from '@/modules/Hotels/selectors';
 

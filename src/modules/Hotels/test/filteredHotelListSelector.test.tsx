@@ -1,5 +1,5 @@
-import { resetRootState } from '@/app/store/resetRootState';
-import { RootState } from '@/app/store/store';
+import { resetRootState } from '@store/resetRootState';
+import { RootState } from '@store/store';
 import { selectFilteredHotels } from '@/modules/Hotels/selectors';
 import { initialState } from '@/modules/HotelFilters/slice';
 import type { Hotel } from '@/modules/Hotels/types/Hotel';

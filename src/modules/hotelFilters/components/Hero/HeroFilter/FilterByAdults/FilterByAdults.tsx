@@ -1,4 +1,4 @@
-import { useAppSelector, useAppDispatch } from '@/app/store/hooks';
+import { useAppSelector, useAppDispatch } from '@store/hooks';
 import { FilterAmount } from '@/modules/HotelFilters/components/Hero/HeroFilter/FilterAmount/FilterAmount';
 import { selectAdultsFilter } from '@/modules/HotelFilters/selectors';
 import { setAdultsFilter } from '@/modules/HotelFilters/slice';
