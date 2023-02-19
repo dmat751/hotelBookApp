@@ -1,11 +1,11 @@
-import { Hotel } from './types/Hotel';
-import { fetchHotels } from './actions/fetchHotels';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { fetchHotels } from '@/modules/Hotels/actions/fetchHotels';
 import {
-  fetchedHotelsFailed,
   fetchedHotelsSuccess,
+  fetchedHotelsFailed,
   hotelsActions,
-} from './slice';
+} from '@/modules/Hotels/slice';
+import { Hotel } from '@/modules/Hotels/types/Hotel';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 export function* hotelsFetchSaga() {
   try {
