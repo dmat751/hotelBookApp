@@ -7,12 +7,7 @@ module.exports = {
       '@': path.resolve(__dirname, 'src'),
     },
   },
-  //   jest: {
-  //     preset: 'ts-jest',
-  //     alias: {
-  //       '@': path.resolve(__dirname, 'src'),
-  //     },
-  //   },
+
   jest: {
     configure: {
       preset: 'ts-jest',
