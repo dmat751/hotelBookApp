@@ -1,11 +1,19 @@
 const path = require('path');
 const { pathsToModuleNameMapper } = require('ts-jest');
 const { compilerOptions } = require('./tsconfig.paths.json');
+
+const pathsObject = compilerOptions.paths;
+
+const resolvedPaths = Object.fromEntries(
+  Object.entries(pathsObject).map(([key, [value]]) => {
+    const resolvedValue = path.resolve(__dirname, value.replace('/*', ''));
+    return [key.replace('/*', ''), resolvedValue];
+  })
+);
+
 module.exports = {
   webpack: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
+    alias: resolvedPaths,
   },
 
   jest: {
