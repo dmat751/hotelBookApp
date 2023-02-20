@@ -1,10 +1,10 @@
 import {
   hotelFiltersSlice,
-  initialState,
   setAdultsFilter,
   setChildrenFilter,
   setStarsFilter,
-} from '../hotelFiltersSlice';
+} from '@/modules/HotelFilters/slice';
+import { initialState } from '@/modules/HotelFilters/slice';
 
 describe('test setAdultsFilter reducer', () => {
   it('test ADD option', () => {

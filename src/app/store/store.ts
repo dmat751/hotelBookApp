@@ -1,17 +1,21 @@
+import rootSaga from '@store/rootSaga';
+import { hotelFiltersSlice } from '@/modules/HotelFilters/slice';
+import { hotelsSlice } from '@/modules/Hotels/slice';
 import { configureStore } from '@reduxjs/toolkit';
-import { hotelListSlice } from '../../modules/hotelList/hotelListSlice';
-import { hotelFiltersSlice } from '../../modules/hotelFilters/hotelFiltersSlice';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
-    hotelList: hotelListSlice.reducer,
+    hotels: hotelsSlice.reducer,
     hotelFilters: hotelFiltersSlice.reducer,
   },
   middleware: [sagaMiddleware],
 });
 
 sagaMiddleware.run(rootSaga);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export type AppStore = typeof store;

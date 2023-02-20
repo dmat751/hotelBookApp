@@ -1,15 +1,15 @@
+import { App } from '@/app/App';
+import { store } from '@store/store';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './app/App';
 import { Provider } from 'react-redux';
-import { store } from './app/store/store';
-import './index.scss';
+import '@/index.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.REACT_APP_NODE_ENV === 'development') {
   const { worker } = require('./mocks/browser');
   worker.start();
 }
