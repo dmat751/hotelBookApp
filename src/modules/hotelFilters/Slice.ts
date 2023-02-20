@@ -1,8 +1,8 @@
 import { FilterAction } from '@/modules/HotelFilters/types/FilterAction';
-import { HotelsFilters } from '@/modules/HotelFilters/types/HotelFilters';
+import { HotelsFiltersState } from '@/modules/HotelFilters/types/HotelFilters';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export const initialState: HotelsFilters = {
+export const initialState: HotelsFiltersState = {
   adults: 2,
   children: 0,
   stars: 1,
