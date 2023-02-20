@@ -4,7 +4,7 @@ import { api } from '@/modules/Hotels/api';
 import { createHotelFilters } from '@/modules/Hotels/queries/createHotelFilters';
 import { createHotelImages } from '@/modules/Hotels/queries/createHotelImages';
 import { getMaxHotelValueByProp } from '@/modules/Hotels/queries/getMaxHotelValueByProp';
-import { Photo } from '@/modules/Hotels/types/Photo';
+import type { Photo } from '@/modules/Hotels/types/Photo';
 import { createSelector } from '@reduxjs/toolkit';
 
 const DEFAULT_MAX_STAR_VALUE = 5;

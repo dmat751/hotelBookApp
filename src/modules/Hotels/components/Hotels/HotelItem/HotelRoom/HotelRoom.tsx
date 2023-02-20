@@ -1,4 +1,4 @@
-import { Room } from '@/modules/Hotels/types/Room';
+import type { Room } from '@/modules/Hotels/types/Room';
 
 type Props = Readonly<{ dataTestId: string; room: Room }>;
 

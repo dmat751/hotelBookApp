@@ -1,5 +1,5 @@
-import { Photo } from '@/modules/Hotels/types/Photo';
-import { RoomsDetails } from '@/modules/Hotels/types/RoomDetails';
+import type { Photo } from '@/modules/Hotels/types/Photo';
+import type { RoomsDetails } from '@/modules/Hotels/types/RoomDetails';
 
 export type Hotel = {
   address1: string;

@@ -1,5 +1,5 @@
-import { FilterAction } from '@/modules/HotelFilters/types/FilterAction';
-import { HotelsFiltersState } from '@/modules/HotelFilters/types/hotelFilters';
+import type { FilterAction } from '@/modules/HotelFilters/types/FilterAction';
+import type { HotelsFiltersState } from '@/modules/HotelFilters/types/hotelFilters';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: HotelsFiltersState = {

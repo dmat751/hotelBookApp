@@ -1,5 +1,5 @@
 import { getApiData } from '@/modules/Hotels/queries/getApiData';
-import { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
 import validHotelData from '../../../../mocks/hotelsData/validHotelData.json';
 
 describe('test getApiData function', () => {
