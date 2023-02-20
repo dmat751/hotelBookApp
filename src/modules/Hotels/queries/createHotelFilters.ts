@@ -1,8 +1,8 @@
-import { HotelsFiltersState } from './../../HotelFilters/types/hotelFilters';
-import { Hotel } from './../types/Hotel';
-import { getHotelsWithAvailableRooms } from './hotelFilters/removeHotelsWithoutRooms';
-import { hotelStarFilter } from './hotelFilters/hotelStarFilter';
-import { roomOccupancyFilter } from './hotelFilters/amountFilter';
+import { HotelsFiltersState } from '@/modules/HotelFilters/types/hotelFilters';
+import { roomOccupancyFilter } from '@/modules/Hotels/queries/hotelFilters/amountFilter';
+import { hotelStarFilter } from '@/modules/Hotels/queries/hotelFilters/hotelStarFilter';
+import { getHotelsWithAvailableRooms } from '@/modules/Hotels/queries/hotelFilters/removeHotelsWithoutRooms';
+import { Hotel } from '@/modules/Hotels/types/Hotel';
 
 export const createHotelFilters = (hotelFilters: HotelsFiltersState) => [
   (hotels: Hotel[]) =>

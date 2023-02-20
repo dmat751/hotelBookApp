@@ -1,12 +1,9 @@
-import { selectStarsFilter } from '../../../../selectors';
-import { setStarsFilter } from '../../../../slice';
-import { Stars } from '../../../../../../components/Stars/Stars';
+import { Stars } from '@/components/Stars/Stars';
+import { selectStarsFilter } from '@/modules/HotelFilters/selectors';
+import { setStarsFilter } from '@/modules/HotelFilters/slice';
+import { selectMaxHotelStars } from '@/modules/Hotels/selectors';
+import { useAppSelector, useAppDispatch } from '@store/hooks';
 import { useCallback } from 'react';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../../../../app/store/hooks';
-import { selectMaxHotelStars } from '../../../../../Hotels/selectors';
 
 export const StarFilter = () => {
   const currentStarsAmount = useAppSelector(selectStarsFilter);

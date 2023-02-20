@@ -1,5 +1,5 @@
-import type { Hotel } from '../types/Hotel';
-import { Photo } from '../types/Photo';
+import { Hotel } from '@/modules/Hotels/types/Hotel';
+import { Photo } from '@/modules/Hotels/types/Photo';
 
 export const createHotelImages = (hotels: Hotel[]): Photo[] =>
   hotels.flatMap(({ images }) =>

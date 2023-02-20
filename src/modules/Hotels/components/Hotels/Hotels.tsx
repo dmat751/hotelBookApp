@@ -1,9 +1,9 @@
-import { Notification } from '../../../../components/Notification/Notification';
-import { HotelsContent } from './HotelsContent/HotelsContent';
-import { Spinner } from '../../../../components/Spinner/Spinner';
-import { useAppSelector } from '../../../../app/store/hooks';
-import { useGetHotelsQuery } from '../../api';
-import { selectNumberOfFilteredHotels } from '../../selectors';
+import { Notification } from '@/components/Notification/Notification';
+import { Spinner } from '@/components/Spinner/Spinner';
+import { useGetHotelsQuery } from '@/modules/Hotels/api';
+import { HotelsContent } from '@/modules/Hotels/components/Hotels/HotelsContent/HotelsContent';
+import { selectNumberOfFilteredHotels } from '@/modules/Hotels/selectors';
+import { useAppSelector } from '@store/hooks';
 
 export const Hotels = () => {
   const numberOfHotels = useAppSelector(selectNumberOfFilteredHotels);

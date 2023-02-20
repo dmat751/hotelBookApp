@@ -1,6 +1,6 @@
-import { StarFilter } from './StarFilter/StarFilter';
-import { FilterByChildren } from './FilterByChildren/FilterByChildren';
-import { FilterByAdults } from './FilterByAdults/FilterByAdults';
+import { FilterByAdults } from '@/modules/HotelFilters/components/Hero/HeroFilter/FilterByAdults/FilterByAdults';
+import { FilterByChildren } from '@/modules/HotelFilters/components/Hero/HeroFilter/FilterByChildren/FilterByChildren';
+import { StarFilter } from '@/modules/HotelFilters/components/Hero/HeroFilter/StarFilter/StarFilter';
 
 export const HeroFilter = () => {
   const formFilterContentClassNames =

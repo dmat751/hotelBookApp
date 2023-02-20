@@ -1,7 +1,7 @@
+import { renderWithProviders } from '@/app/utils/testUtils';
+import { Photo } from '@/modules/Hotels/types/Photo';
 import { screen } from '@testing-library/react';
 import { App } from '../../../app/App';
-import { renderWithProviders } from '../../../app/utils/testUtils';
-import { Photo } from '../types/Photo';
 
 describe('test randomHotelPhotoSelector', () => {
   //given

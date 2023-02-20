@@ -1,11 +1,11 @@
-import { createHotelFilters } from './queries/createHotelFilters';
+import { getRandomNumber } from '@/app/utils/getRandomNumber';
+import { selectHotelFilters } from '@/modules/HotelFilters/selectors';
+import { api } from '@/modules/Hotels/api';
+import { createHotelFilters } from '@/modules/Hotels/queries/createHotelFilters';
+import { createHotelImages } from '@/modules/Hotels/queries/createHotelImages';
+import { getMaxHotelValueByProp } from '@/modules/Hotels/queries/getMaxHotelValueByProp';
+import { Photo } from '@/modules/Hotels/types/Photo';
 import { createSelector } from '@reduxjs/toolkit';
-import { api } from './api';
-import { createHotelImages } from './queries/createHotelImages';
-import { getRandomNumber } from '../../app/utils/getRandomNumber';
-import { getMaxHotelValueByProp } from './queries/getMaxHotelValueByProp';
-import { selectHotelFilters } from '../HotelFilters/selectors';
-import { Photo } from './types/Photo';
 
 const DEFAULT_MAX_STAR_VALUE = 5;
 

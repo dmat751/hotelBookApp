@@ -1,4 +1,4 @@
-import type { Hotel } from '../types/Hotel';
+import { Hotel } from '@/modules/Hotels/types/Hotel';
 
 const DEFAULT_MAX_VALUE = 0;
 
