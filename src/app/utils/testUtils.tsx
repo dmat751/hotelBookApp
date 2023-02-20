@@ -4,7 +4,7 @@ import type { RenderOptions } from '@testing-library/react';
 import { configureStore, PreloadedState } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { type AppStore, rootReducer, type RootState } from '../store/store';
-import { api } from '../../modules/Hotels/Api';
+import { api } from '../../modules/Hotels/api';
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>;
   store?: AppStore;

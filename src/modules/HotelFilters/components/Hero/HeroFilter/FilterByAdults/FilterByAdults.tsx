@@ -3,10 +3,10 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../../../../../../app/store/hooks';
-import { selectAdultsFilter } from '../../../../Selectors';
-import { setAdultsFilter } from '../../../../Slice';
+import { selectAdultsFilter } from '../../../../selectors';
+import { setAdultsFilter } from '../../../../slice';
 import { FilterAmount } from '../FilterAmount/FilterAmount';
-import { selectMaxAdultsInHotels } from '../../../../../Hotels/Selectors';
+import { selectMaxAdultsInHotels } from '../../../../../Hotels/selectors';
 
 export const FilterByAdults = () => {
   const currentFilterAmount = useAppSelector(selectAdultsFilter);
