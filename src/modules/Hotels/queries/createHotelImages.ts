@@ -1,7 +1,7 @@
-import type { Hotel } from '../types/Hotel';
-import {Photo} from "../types/Photo";
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Photo } from '@/modules/Hotels/types/Photo';
 
-export const createHotelImages = (hotelList: Hotel[]): Photo[] =>
-  hotelList.flatMap(({ images }) =>
+export const createHotelImages = (hotels: Hotel[]): Photo[] =>
+  hotels.flatMap(({ images }) =>
     images.map(({ alt = '', url = '' }) => ({ alt, url }))
   );

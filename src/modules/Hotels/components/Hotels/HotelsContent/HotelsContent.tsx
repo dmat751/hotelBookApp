@@ -1,7 +1,7 @@
-import { HotelItem } from '../HotelItem/HotelItem';
-import baseClasses from '../../../../../app/assets/baseClasses.module.scss';
-import { useAppSelector } from '../../../../../app/store/hooks';
-import { selectFilteredHotels } from '../../../Selectors';
+import { HotelItem } from '@/modules/Hotels/components/Hotels/HotelItem/HotelItem';
+import { selectFilteredHotels } from '@/modules/Hotels/selectors';
+import { useAppSelector } from '@store/hooks';
+import baseClasses from '@/app/assets/baseClasses.module.scss';
 
 export const HotelsContent = () => {
   const filteredHotels = useAppSelector(selectFilteredHotels);

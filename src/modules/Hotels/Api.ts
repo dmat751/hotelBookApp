@@ -1,8 +1,8 @@
-import { getApiData } from './queries/getApiData';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { Hotel } from './types/Hotel';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { RoomsDetails } from './types/RoomDetails';
+import { getApiData } from '@/modules/Hotels/queries/getApiData';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { RoomsDetails } from '@/modules/Hotels/types/RoomDetails';
 
 export const api = createApi({
   reducerPath: 'hotelApi',

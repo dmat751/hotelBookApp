@@ -1,7 +1,7 @@
+import { renderWithProviders } from '@/app/utils/testUtils';
+import type { Photo } from '@/modules/Hotels/types/Photo';
 import { screen } from '@testing-library/react';
 import { App } from '../../../app/App';
-import { renderWithProviders } from '../../../app/utils/testUtils';
-import {Photo} from "../types/Photo";
 
 describe('test randomHotelPhotoSelector', () => {
   //given
@@ -25,14 +25,14 @@ describe('test randomHotelPhotoSelector', () => {
       },
       getRandomNumberMockedValue: 1,
     },
-  ].map((caseItem) =>
-    Object.assign(caseItem, {
-      toString: () => {
-        return `
-        getRandomNumberMockedValue: ${caseItem.getRandomNumberMockedValue}
-        expected result: {url: ${caseItem.expectedResult.url}, alt: ${caseItem.expectedResult.alt}}`;
-      },
-    } as TestCase)
+  ].map(
+    (caseItem) =>
+      ({
+        ...caseItem,
+        toString: () =>
+          `getRandomNumberMockedValue: ${caseItem.getRandomNumberMockedValue}
+        expected result: {url: ${caseItem.expectedResult.url}, alt: ${caseItem.expectedResult.alt}}`,
+      } as TestCase)
   );
 
   test.each<TestCase>(cases)(

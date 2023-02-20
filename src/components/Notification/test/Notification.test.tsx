@@ -1,4 +1,4 @@
-import { Notification } from '../Notification';
+import { Notification } from '@/components/Notification/Notification';
 import { render, screen } from '@testing-library/react';
 
 describe('test notification component', () => {
@@ -20,13 +20,15 @@ describe('test notification component', () => {
       messageType: 'info',
       expectedClass: 'text-black',
     },
-  ].map((notiItem) =>
-    Object.assign(notiItem, {
-      toString: () => `
-        message: ${notiItem.message}
+  ].map(
+    (notiItem) =>
+      ({
+        ...notiItem,
+        toString: () =>
+          ` message: ${notiItem.message}
         messageType: ${notiItem.messageType}
         expectedClass: ${notiItem.expectedClass}`,
-    } as TestCase)
+      } as TestCase)
   );
 
   test.each<TestCase>(cases)(

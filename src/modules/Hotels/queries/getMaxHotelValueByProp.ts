@@ -1,12 +1,12 @@
-import type { Hotel } from '../types/Hotel';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
 
 const DEFAULT_MAX_VALUE = 0;
 
 export const getMaxHotelValueByProp = (
-  hotelList: Hotel[],
+  hotels: Hotel[],
   prop: 'maxChildren' | 'maxAdults'
 ) => {
-  const maxValue = hotelList
+  const values = hotels
     .map((hotel) =>
       hotel.roomsDetails.rooms.map(
         (room) => room?.occupancy?.[prop] ?? DEFAULT_MAX_VALUE
@@ -14,5 +14,5 @@ export const getMaxHotelValueByProp = (
     )
     .flat();
 
-  return Math.max(...maxValue) || DEFAULT_MAX_VALUE;
+  return values.length ? Math.max(...values) : DEFAULT_MAX_VALUE;
 };

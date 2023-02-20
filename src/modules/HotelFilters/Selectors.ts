@@ -1,4 +1,4 @@
-import type { RootState } from './../../app/store/store';
+import type { RootState } from '@store/store';
 
 export const selectHotelFilters = (state: RootState) => state.hotelFilters;
 export const selectChildrenFilter = (state: RootState) =>

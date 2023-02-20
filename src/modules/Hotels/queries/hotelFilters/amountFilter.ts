@@ -1,11 +1,11 @@
-import { Room } from './../../types/Room';
-import type { Hotel } from '../../types/Hotel';
+import type { Hotel } from '@/modules/Hotels/types/Hotel';
+import type { Room } from '@/modules/Hotels/types/Room';
 
 export const roomOccupancyFilter = (
-  hotelList: Hotel[],
+  hotels: Hotel[],
   amount: number,
   filterType: 'children' | 'adults'
-): Hotel[] => hotelList.map((hotel) => filterRooms(filterType, amount, hotel));
+): Hotel[] => hotels.map((hotel) => filterRooms(filterType, amount, hotel));
 
 const filterRooms = (filterType: string, amount: number, hotel: Hotel) => {
   const { roomsDetails } = hotel;

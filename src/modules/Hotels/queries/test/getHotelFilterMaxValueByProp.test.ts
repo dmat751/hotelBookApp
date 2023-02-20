@@ -1,12 +1,12 @@
-import { fetchedHotelsWithRoomsData } from './../../../../mocks/hotelsWithRoomsData/hotelsWithRoomsData';
-import { getMaxHotelValueByProp } from './../getMaxHotelValueByProp';
+import { getMaxHotelValueByProp } from '@/modules/Hotels/queries/getMaxHotelValueByProp';
+import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 
 describe('test getHotelFilterMaxValueByProp function', () => {
   test('maxChildren case', async () => {
     //given
     //when
-    const hotelList = fetchedHotelsWithRoomsData;
-    const maxAdults = getMaxHotelValueByProp(hotelList, 'maxChildren');
+    const hotels = fetchedHotelsWithRoomsData;
+    const maxAdults = getMaxHotelValueByProp(hotels, 'maxChildren');
 
     //then
     expect(maxAdults).toBe(4);
@@ -15,8 +15,8 @@ describe('test getHotelFilterMaxValueByProp function', () => {
   test('maxAdults case', async () => {
     //given
     //when
-    const hotelList = fetchedHotelsWithRoomsData;
-    const maxAdults = getMaxHotelValueByProp(hotelList, 'maxAdults');
+    const hotels = fetchedHotelsWithRoomsData;
+    const maxAdults = getMaxHotelValueByProp(hotels, 'maxAdults');
 
     //then
     expect(maxAdults).toBe(6);

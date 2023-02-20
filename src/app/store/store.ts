@@ -1,6 +1,6 @@
-import { api } from '../../modules/Hotels/Api';
+import { hotelFiltersSlice } from '@/modules/HotelFilters/slice';
+import { api } from '@/modules/Hotels/api';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { hotelFiltersSlice } from '../../modules/HotelFilters/Slice';
 
 export const rootReducer = combineReducers({
   hotelFilters: hotelFiltersSlice.reducer,

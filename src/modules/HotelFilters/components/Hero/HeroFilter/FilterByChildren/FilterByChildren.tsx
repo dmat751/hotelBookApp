@@ -1,31 +1,27 @@
-import { useCallback } from 'react';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../../../../app/store/hooks';
-import { selectChildrenFilter } from '../../../../Selectors';
-import { setChildrenFilter } from '../../../../Slice';
-import { FilterAmount } from '../FilterAmount/FilterAmount';
-import { selectMaxChildrenInHotels } from '../../../../../Hotels/Selectors';
+import { FilterAmount } from '@/modules/HotelFilters/components/Hero/HeroFilter/FilterAmount/FilterAmount';
+import { useGuestFilterCounter } from '@/modules/HotelFilters/hooks/useGuestFilterCounter';
+import { selectChildrenFilter } from '@/modules/HotelFilters/selectors';
+import { setChildrenFilter } from '@/modules/HotelFilters/slice';
+import { selectMaxChildrenInHotels } from '@/modules/Hotels/selectors';
+import { useAppSelector } from '@store/hooks';
 
 export const FilterByChildren = () => {
-  const currentFilterAmount = useAppSelector(selectChildrenFilter);
-  const maxChildren = useAppSelector(selectMaxChildrenInHotels);
-  const dispatch = useAppDispatch();
-
-  const handleIncrease = useCallback((): void => {
-    dispatch(setChildrenFilter('ADD'));
-  }, [dispatch]);
-
-  const handleDecrease = useCallback((): void => {
-    dispatch(setChildrenFilter('SUB'));
-  }, [dispatch]);
+  const {
+    handleDecrease,
+    handleIncrease,
+    isPlusButtonDisabled,
+    currentFilterAmount,
+  } = useGuestFilterCounter(
+    setChildrenFilter,
+    useAppSelector(selectMaxChildrenInHotels),
+    useAppSelector(selectChildrenFilter)
+  );
 
   return (
     <FilterAmount
       currentFilterAmount={currentFilterAmount}
       filterLabel="Children"
-      isPlusButtonDisabled={currentFilterAmount >= maxChildren}
+      isPlusButtonDisabled={isPlusButtonDisabled}
       onDecrease={handleDecrease}
       onIncrease={handleIncrease}
       dataTestIdPrefix="children-filter"

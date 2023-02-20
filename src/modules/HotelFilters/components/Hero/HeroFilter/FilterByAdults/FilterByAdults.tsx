@@ -1,31 +1,27 @@
-import { useCallback } from 'react';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../../../../app/store/hooks';
-import { selectAdultsFilter } from '../../../../Selectors';
-import { setAdultsFilter } from '../../../../Slice';
-import { FilterAmount } from '../FilterAmount/FilterAmount';
-import { selectMaxAdultsInHotels } from '../../../../../Hotels/Selectors';
+import { FilterAmount } from '@/modules/HotelFilters/components/Hero/HeroFilter/FilterAmount/FilterAmount';
+import { useGuestFilterCounter } from '@/modules/HotelFilters/hooks/useGuestFilterCounter';
+import { selectAdultsFilter } from '@/modules/HotelFilters/selectors';
+import { setAdultsFilter } from '@/modules/HotelFilters/slice';
+import { selectMaxAdultsInHotels } from '@/modules/Hotels/selectors';
+import { useAppSelector } from '@store/hooks';
 
 export const FilterByAdults = () => {
-  const currentFilterAmount = useAppSelector(selectAdultsFilter);
-  const maxAdults = useAppSelector(selectMaxAdultsInHotels);
-  const dispatch = useAppDispatch();
-
-  const handleIncrease = useCallback((): void => {
-    dispatch(setAdultsFilter('ADD'));
-  }, [dispatch]);
-
-  const handleDecrease = useCallback((): void => {
-    dispatch(setAdultsFilter('SUB'));
-  }, [dispatch]);
+  const {
+    handleDecrease,
+    handleIncrease,
+    isPlusButtonDisabled,
+    currentFilterAmount,
+  } = useGuestFilterCounter(
+    setAdultsFilter,
+    useAppSelector(selectMaxAdultsInHotels),
+    useAppSelector(selectAdultsFilter)
+  );
 
   return (
     <FilterAmount
       currentFilterAmount={currentFilterAmount}
       filterLabel="Adults"
-      isPlusButtonDisabled={currentFilterAmount >= maxAdults}
+      isPlusButtonDisabled={isPlusButtonDisabled}
       onDecrease={handleDecrease}
       onIncrease={handleIncrease}
       dataTestIdPrefix="adults-filter"
