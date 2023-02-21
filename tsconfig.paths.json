@@ -3,7 +3,6 @@
     "baseUrl": ".",
     "paths": {
       "@store/*": ["./src/app/store/*"],
-      "@mocks/*": ["./src/mocks/*"],
       "@/*": ["./src/*"]
     }
   }
