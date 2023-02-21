@@ -1,14 +1,14 @@
 import { Stars } from '@/components/Stars/Stars';
 import { render, screen } from '@testing-library/react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { act } from 'react-dom/test-utils';
 
 const TestStarComponent = () => {
   const [selectedStars, setSelectedStars] = useState(3);
 
-  const handleClick = (starIndex: number) => {
+  const handleClick = useCallback((starIndex: number) => {
     setSelectedStars(starIndex + 1);
-  };
+  }, []);
 
   return (
     <Stars
