@@ -34,7 +34,7 @@ export const Stars = memo(
             key={id}
             borderColor={borderColor}
             fillColor={fillColor}
-            onClickHandler={onClick ? () => onClick(index) : undefined}
+            onClick={onClick ? () => onClick(index) : undefined}
             dataTestId={`star-rendered-${index}`}
           />
         ))}
