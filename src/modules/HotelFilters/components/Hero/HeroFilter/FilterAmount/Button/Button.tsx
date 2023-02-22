@@ -6,6 +6,7 @@ type Props = Readonly<{
   disabled: boolean;
   onClick: () => void;
 }>;
+
 export const Button = memo(
   ({ dataTestId, disabled, children, onClick }: Props) => (
     <button
