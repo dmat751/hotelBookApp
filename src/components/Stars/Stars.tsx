@@ -27,22 +27,20 @@ export const Stars = memo(
       [borderColor, fillColor, numberOfSelectedStars, numberOfStars]
     );
 
-    return (
-      <div className="flex order-1  mb-3 md:mb-0">
-        {useMemo(
-          () =>
-            starsState.map(({ id, borderColor, fillColor }, index) => (
-              <Star
-                key={id}
-                borderColor={borderColor}
-                fillColor={fillColor}
-                onClickHandler={onClick ? () => onClick(index) : undefined}
-                dataTestId={`star-rendered-${index}`}
-              />
-            )),
-          [onClick, starsState]
-        )}
-      </div>
+    const stars = useMemo(
+      () =>
+        starsState.map(({ id, borderColor, fillColor }, index) => (
+          <Star
+            key={id}
+            borderColor={borderColor}
+            fillColor={fillColor}
+            onClickHandler={onClick ? () => onClick(index) : undefined}
+            dataTestId={`star-rendered-${index}`}
+          />
+        )),
+      [onClick, starsState]
     );
+
+    return <div className="flex order-1  mb-3 md:mb-0">{stars}</div>;
   }
 );

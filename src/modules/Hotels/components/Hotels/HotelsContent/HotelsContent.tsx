@@ -7,15 +7,13 @@ import { useMemo } from 'react';
 export const HotelsContent = () => {
   const filteredHotels = useAppSelector(selectFilteredHotels);
 
-  return (
-    <ul className={baseClasses['basic-container-1']}>
-      {useMemo(
-        () =>
-          filteredHotels.map((hotelItem) => (
-            <HotelItem hotelItem={hotelItem} key={hotelItem.id} />
-          )),
-        [filteredHotels]
-      )}
-    </ul>
+  const hotels = useMemo(
+    () =>
+      filteredHotels.map((hotelItem) => (
+        <HotelItem hotelItem={hotelItem} key={hotelItem.id} />
+      )),
+    [filteredHotels]
   );
+
+  return <ul className={baseClasses['basic-container-1']}>{hotels}</ul>;
 };

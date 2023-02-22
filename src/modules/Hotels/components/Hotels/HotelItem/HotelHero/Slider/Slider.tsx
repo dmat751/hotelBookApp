@@ -14,6 +14,20 @@ const SliderContainerClassNames =
 type Props = Readonly<{ images: Photo[] }>;
 
 export const Slider = ({ images }: Props) => {
+  const slides = useMemo(
+    () =>
+      images.map((item) => (
+        <SwiperSlide key={item.url}>
+          <img
+            className="w-full h-full object-cover"
+            src={item.url}
+            alt={item.alt}
+          />
+        </SwiperSlide>
+      )),
+    [images]
+  );
+
   return (
     <div className={SliderContainerClassNames}>
       <Swiper
@@ -25,19 +39,7 @@ export const Slider = ({ images }: Props) => {
         modules={[Navigation, Pagination]}
         className="mySwiper"
       >
-        {useMemo(
-          () =>
-            images.map((item) => (
-              <SwiperSlide key={item.url}>
-                <img
-                  className="w-full h-full object-cover"
-                  src={item.url}
-                  alt={item.alt}
-                />
-              </SwiperSlide>
-            )),
-          [images]
-        )}
+        {slides}
       </Swiper>
     </div>
   );
