@@ -6,15 +6,30 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './Swiper.scss';
 import type { Photo } from '@/modules/Hotels/types/Photo';
+import { useMemo } from 'react';
 
 type Props = Readonly<{ images: Photo[] }>;
 
+const sliderContainerClassNames =
+  'md:order-[-1] order-2 h-[200px] max-w-[300px] w-full b-[#CCCCCC]';
+
 export const Slider = ({ images }: Props) => {
-  const SliderContainerClassNames =
-    'md:order-[-1] order-2 h-[200px] max-w-[300px] w-full b-[#CCCCCC]';
+  const slides = useMemo(
+    () =>
+      images.map((item) => (
+        <SwiperSlide key={item.url}>
+          <img
+            className="w-full h-full object-cover"
+            src={item.url}
+            alt={item.alt}
+          />
+        </SwiperSlide>
+      )),
+    [images]
+  );
 
   return (
-    <div className={SliderContainerClassNames}>
+    <div className={sliderContainerClassNames}>
       <Swiper
         style={{ height: '100%' }}
         pagination={{
@@ -24,15 +39,7 @@ export const Slider = ({ images }: Props) => {
         modules={[Navigation, Pagination]}
         className="mySwiper"
       >
-        {images.map((item) => (
-          <SwiperSlide key={item.url}>
-            <img
-              className="w-full h-full object-cover"
-              src={item.url}
-              alt={item.alt}
-            />
-          </SwiperSlide>
-        ))}
+        {slides}
       </Swiper>
     </div>
   );

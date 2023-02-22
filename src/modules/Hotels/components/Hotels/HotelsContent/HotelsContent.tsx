@@ -2,15 +2,18 @@ import { useAppSelector } from '@store/hooks';
 import { HotelItem } from '@/modules/Hotels/components/Hotels/HotelItem/HotelItem';
 import { selectFilteredHotels } from '@/modules/Hotels/selectors';
 import baseClasses from '@/app/assets/baseClasses.module.scss';
+import { useMemo } from 'react';
 
 export const HotelsContent = () => {
   const filteredHotels = useAppSelector(selectFilteredHotels);
 
-  return (
-    <ul className={baseClasses['basic-container-1']}>
-      {filteredHotels.map((hotelItem) => (
+  const hotels = useMemo(
+    () =>
+      filteredHotels.map((hotelItem) => (
         <HotelItem hotelItem={hotelItem} key={hotelItem.id} />
-      ))}
-    </ul>
+      )),
+    [filteredHotels]
   );
+
+  return <ul className={baseClasses['basic-container-1']}>{hotels}</ul>;
 };

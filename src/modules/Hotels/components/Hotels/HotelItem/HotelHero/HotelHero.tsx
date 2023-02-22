@@ -8,13 +8,14 @@ import classNames from 'classnames';
 
 type Props = Readonly<{ hotelItem: Hotel }>;
 
+const hotelItemHeroClassNames = classNames(
+  'flex md:justify-between md:flex-row md:items-start flex-col items-center'
+);
+
 export const HotelHero = ({
   hotelItem: { images, name, address1, address2, starRating },
 }: Props) => {
   const hotelMaxStars = useAppSelector(selectMaxHotelStars);
-  const hotelItemHeroClassNames = classNames(
-    'flex md:justify-between md:flex-row md:items-start flex-col items-center'
-  );
 
   return (
     <div className={hotelItemHeroClassNames}>

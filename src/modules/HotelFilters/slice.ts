@@ -1,5 +1,5 @@
-import { FilterAction } from '@/modules/HotelFilters/types/FilterAction';
-import { HotelsFiltersState } from '@/modules/HotelFilters/types/HotelFilters';
+import type { FilterAction } from '@/modules/HotelFilters/types/FilterAction';
+import type { HotelsFiltersState } from '@/modules/HotelFilters/types/HotelFilters';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: HotelsFiltersState = {
@@ -13,11 +13,10 @@ export const hotelFiltersSlice = createSlice({
   initialState,
   reducers: {
     setAdultsFilter(state, { payload }: PayloadAction<FilterAction>) {
-      state.adults = payload === 'ADD' ? state.adults + 1 : state.adults - 1;
+      state.adults = payload === 'ADD' ? ++state.adults : --state.adults;
     },
     setChildrenFilter(state, { payload }: PayloadAction<FilterAction>) {
-      state.children =
-        payload === 'ADD' ? state.children + 1 : state.children - 1;
+      state.children = payload === 'ADD' ? ++state.children : --state.children;
     },
     setStarsFilter(state, { payload }: PayloadAction<number>) {
       state.stars = payload;

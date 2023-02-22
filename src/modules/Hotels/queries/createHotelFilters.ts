@@ -1,4 +1,4 @@
-import { HotelsFiltersState } from '@/modules/HotelFilters/types/HotelFilters';
+import type { HotelsFiltersState } from '@/modules/HotelFilters/types/HotelFilters';
 import { roomOccupancyFilter } from '@/modules/Hotels/queries/hotelFilters/amountFilter';
 import { hotelStarFilter } from '@/modules/Hotels/queries/hotelFilters/hotelStarFilter';
 import { getHotelsWithAvailableRooms } from '@/modules/Hotels/queries/hotelFilters/removeHotelsWithoutRooms';
