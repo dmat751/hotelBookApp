@@ -1,7 +1,7 @@
-import { fetchHotels } from '../actions/fetchHotels';
 import { testSaga, expectSaga } from 'redux-saga-test-plan';
 import { fetchedHotelsWithRoomsData } from '@/mocks/hotelsWithRoomsData/hotelsWithRoomsData';
 import { hotelsFetchSaga } from '@/modules/Hotels/saga';
+import { fetchHotels } from '@/modules/Hotels/actions/fetchHotels';
 import {
   fetchedHotelsSuccess,
   fetchedHotelsFailed,
