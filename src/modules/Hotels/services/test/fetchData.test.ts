@@ -1,8 +1,8 @@
 import { fetchData } from '@/modules/Hotels/services/fetchData';
 import type { Hotel } from '@/modules/Hotels/types/Hotel';
-import validHotelData from '../../../../mocks/hotelsData/validHotelData.json';
+import validHotelData from '@/mocks/hotelsData/validHotelData.json';
 
-describe('test getApiData function', () => {
+describe('test fetchData function', () => {
   test('get hotel data', async () => {
     //given
     //when
