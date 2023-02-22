@@ -1,6 +1,5 @@
 {
   "name": "hotelBookApp",
-  "homepage": "https://dmat751.github.io/hotelBookApp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
