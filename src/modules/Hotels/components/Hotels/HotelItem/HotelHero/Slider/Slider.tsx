@@ -8,7 +8,7 @@ import './Swiper.scss';
 import type { Photo } from '@/modules/Hotels/types/Photo';
 import { useMemo } from 'react';
 
-const SliderContainerClassNames =
+const sliderContainerClassNames =
   'md:order-[-1] order-2 h-[200px] max-w-[300px] w-full b-[#CCCCCC]';
 
 type Props = Readonly<{ images: Photo[] }>;
@@ -29,7 +29,7 @@ export const Slider = ({ images }: Props) => {
   );
 
   return (
-    <div className={SliderContainerClassNames}>
+    <div className={sliderContainerClassNames}>
       <Swiper
         style={{ height: '100%' }}
         pagination={{

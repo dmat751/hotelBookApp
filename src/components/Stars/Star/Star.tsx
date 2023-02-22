@@ -5,15 +5,15 @@ type Props = Readonly<{
   borderColor: string;
   fillColor: string;
   dataTestId: string;
-  onClickHandler?: () => void;
+  onClick?: () => void;
 }>;
 
 export const Star = memo(
-  ({ borderColor, fillColor, dataTestId, onClickHandler }: Props) => (
-    <div onClick={onClickHandler} data-testid={dataTestId}>
+  ({ borderColor, fillColor, dataTestId, onClick }: Props) => (
+    <div onClick={onClick} data-testid={dataTestId}>
       <svg
         className={classNames('m-[2px] h-[30px] w-[30px]', {
-          'cursor-pointer': onClickHandler,
+          'cursor-pointer': onClick,
         })}
         viewBox="0 0 300 275"
         xmlns="http://www.w3.org/2000/svg"
