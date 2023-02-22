@@ -21,4 +21,4 @@ Project was tested for:
     yarn:
     1.22.11
 
-If you want to disable/enable mock service worker change REACT_APP_NODE_ENV variable in .env file
+If you want to disable/enable mock service worker change REACT_APP_NODE_ENV variable in .env file to value: production/development
