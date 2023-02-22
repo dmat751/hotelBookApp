@@ -27,9 +27,9 @@ export const Stars = memo(
       [borderColor, fillColor, numberOfSelectedStars, numberOfStars]
     );
 
-    return (
-      <div className="flex order-1  mb-3 md:mb-0">
-        {starsState.map(({ id, borderColor, fillColor }, index) => (
+    const stars = useMemo(
+      () =>
+        starsState.map(({ id, borderColor, fillColor }, index) => (
           <Star
             key={id}
             borderColor={borderColor}
@@ -37,8 +37,10 @@ export const Stars = memo(
             onClick={onClick ? () => onClick(index) : undefined}
             dataTestId={`star-rendered-${index}`}
           />
-        ))}
-      </div>
+        )),
+      [onClick, starsState]
     );
+
+    return <div className="flex order-1  mb-3 md:mb-0">{stars}</div>;
   }
 );

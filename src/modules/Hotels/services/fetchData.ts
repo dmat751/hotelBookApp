@@ -1,4 +1,4 @@
-export const getApiData = async <T>(url: string): Promise<T> => {
+export const fetchData = async <T>(url: string): Promise<T> => {
   const dataResp = await fetch(url);
 
   if (!dataResp.ok) {

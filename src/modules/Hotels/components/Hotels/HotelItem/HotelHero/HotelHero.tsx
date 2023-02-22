@@ -6,15 +6,16 @@ import type { Hotel } from '@/modules/Hotels/types/Hotel';
 import { useAppSelector } from '@store/hooks';
 import classNames from 'classnames';
 
+const hotelItemHeroClassNames = classNames(
+  'flex md:justify-between md:flex-row md:items-start flex-col items-center'
+);
+
 type Props = Readonly<{ hotelItem: Hotel }>;
 
 export const HotelHero = ({
   hotelItem: { images, name, address1, address2, starRating },
 }: Props) => {
   const hotelMaxStars = useAppSelector(selectMaxHotelStars);
-  const hotelItemHeroClassNames = classNames(
-    'flex md:justify-between md:flex-row md:items-start flex-col items-center'
-  );
 
   return (
     <div className={hotelItemHeroClassNames}>
