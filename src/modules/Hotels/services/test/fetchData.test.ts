@@ -1,12 +1,12 @@
-import { getApiData } from '@/modules/Hotels/queries/getApiData';
+import { fetchData } from '@/modules/Hotels/services/fetchData';
 import type { Hotel } from '@/modules/Hotels/types/Hotel';
 import validHotelData from '@/mocks/hotelsData/validHotelData.json';
 
-describe('test getApiData function', () => {
+describe('test fetchData function', () => {
   test('get hotel data', async () => {
     //given
     //when
-    const hotelData = await getApiData<Hotel[]>(
+    const hotelData = await fetchData<Hotel[]>(
       `${process.env.REACT_APP_HOTEL_LIST_URL}`
     );
 
@@ -20,7 +20,7 @@ describe('test getApiData function', () => {
 
     //when
     try {
-      await getApiData<Hotel[]>(
+      await fetchData<Hotel[]>(
         `${process.env.REACT_APP_INVALID_HOTEL_LIST_URL}`
       );
     } catch (error) {
